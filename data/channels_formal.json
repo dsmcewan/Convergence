@@ -1,0 +1,7 @@
+[
+  {"seq": 1, "thread": "summary", "sender": "Quinn", "timestamp": "2025-02-03T09:00", "domain": "logistics", "body": "Sending you this week's summary as agreed."},
+  {"seq": 2, "thread": "health", "sender": "Quinn", "timestamp": "2025-02-03T09:05", "domain": "medical", "body": "For clarity, I have always kept you fully informed about every appointment with the dentist."},
+  {"seq": 3, "thread": "planning", "sender": "Quinn", "timestamp": "2025-02-03T09:07", "domain": "schedule", "body": "The appointment calendar has been shared with you well ahead of time."},
+  {"seq": 4, "thread": "arrangement", "sender": "Quinn", "timestamp": "2025-02-04T11:00", "domain": "finance", "body": "My lawyer says the current arrangement should remain in place."},
+  {"seq": 5, "thread": "summary", "sender": "Devin", "timestamp": "2025-02-04T12:30", "domain": "logistics", "body": "Received, thank you."}
+]

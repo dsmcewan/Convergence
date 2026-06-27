@@ -1,0 +1,154 @@
+{
+  "corpus": {
+    "name": "channels",
+    "label": "Two-channel record",
+    "mode": "cross-channel",
+    "exhibit_label": "Formal channel checked against the casual channel",
+    "exhibit_note": "Layer 6 compares a sender's formal claim against the same sender's own words elsewhere.",
+    "message_count": 5,
+    "finding_count": 2,
+    "elevated_count": 1,
+    "low_count": 1
+  },
+  "messages": [
+    {
+      "seq": 1,
+      "thread": "summary",
+      "sender": "Quinn",
+      "timestamp": "2025-02-03T09:00",
+      "domain": "logistics",
+      "body": "Sending you this week's summary as agreed."
+    },
+    {
+      "seq": 2,
+      "thread": "health",
+      "sender": "Quinn",
+      "timestamp": "2025-02-03T09:05",
+      "domain": "medical",
+      "body": "For clarity, I have always kept you fully informed about every appointment with the dentist."
+    },
+    {
+      "seq": 3,
+      "thread": "planning",
+      "sender": "Quinn",
+      "timestamp": "2025-02-03T09:07",
+      "domain": "schedule",
+      "body": "The appointment calendar has been shared with you well ahead of time."
+    },
+    {
+      "seq": 4,
+      "thread": "arrangement",
+      "sender": "Quinn",
+      "timestamp": "2025-02-04T11:00",
+      "domain": "finance",
+      "body": "My lawyer says the current arrangement should remain in place."
+    },
+    {
+      "seq": 5,
+      "thread": "summary",
+      "sender": "Devin",
+      "timestamp": "2025-02-04T12:30",
+      "domain": "logistics",
+      "body": "Received, thank you."
+    }
+  ],
+  "findings": [
+    {
+      "seqs": [
+        2
+      ],
+      "confidence": "elevated",
+      "layers": [
+        "L4",
+        "L6"
+      ],
+      "summary": "Elevated - a claim contradicted by the sender's own words in another channel + independent domains converging on one anchor independently agree.",
+      "signals": [
+        {
+          "layer": "L6",
+          "seqs": [
+            2
+          ],
+          "kind": "cross_channel_divergence",
+          "detail": "Quinn claims 'kept the other parent informed' here; other channel shows 'withheld a disclosure' (seq 2)"
+        },
+        {
+          "layer": "L4",
+          "seqs": [
+            2,
+            3
+          ],
+          "kind": "domain_convergence",
+          "detail": "appointment across medical, schedule"
+        }
+      ],
+      "messages": [
+        {
+          "seq": 2,
+          "thread": "health",
+          "sender": "Quinn",
+          "timestamp": "2025-02-03T09:05",
+          "domain": "medical",
+          "body": "For clarity, I have always kept you fully informed about every appointment with the dentist."
+        }
+      ],
+      "narration": {
+        "plain": "Elevated finding at seqs [2] (L4, L6). Elevated - a claim contradicted by the sender's own words in another channel + independent domains converging on one anchor independently agree.",
+        "blanc": "Here the threads meet: seqs [2], layers L4, L6. Not a hunch, but corroboration."
+      }
+    },
+    {
+      "seqs": [
+        4
+      ],
+      "confidence": "low",
+      "layers": [
+        "L1"
+      ],
+      "summary": "Low - a decision deferred to an outside authority (single layer; not corroborated).",
+      "signals": [
+        {
+          "layer": "L1",
+          "seqs": [
+            4
+          ],
+          "kind": "borrow_authority",
+          "detail": "lawyer says"
+        }
+      ],
+      "messages": [
+        {
+          "seq": 4,
+          "thread": "arrangement",
+          "sender": "Quinn",
+          "timestamp": "2025-02-04T11:00",
+          "domain": "finance",
+          "body": "My lawyer says the current arrangement should remain in place."
+        }
+      ],
+      "narration": {
+        "plain": "Low finding at seqs [4] (L1). Low - a decision deferred to an outside authority (single layer; not corroborated).",
+        "blanc": "Seqs [4] remain low. Suggestive, perhaps, but the method refuses to elevate a lone thread."
+      }
+    }
+  ],
+  "patterns": [
+    {
+      "name": "two-faced",
+      "kind": "template",
+      "seqs": [
+        2
+      ],
+      "detail": "cross_channel_divergence => two-faced"
+    }
+  ],
+  "campaigns": [],
+  "narration": {
+    "plain": "Convergence report - 5 messages; 1 elevated finding(s), 1 low.\n\nELEVATED - seqs [2] (layers L4, L6)\n  Elevated - a claim contradicted by the sender's own words in another channel + independent domains converging on one anchor independently agree.\n    - [L6] Quinn claims 'kept the other parent informed' here; other channel shows 'withheld a disclosure' (seq 2)\n    - [L4] appointment across medical, schedule\n\nlow - seqs [4] (L1): a substantive signal with nothing to corroborate it; not corroborated.\n\nA finding is elevated only when independent layers agree; lone signals stay low by design.",
+    "blanc": "Gather round, if you please. Let me walk you through it, from the beginning.\n\nWe have before us 5 messages. Most are precisely what they appear to be. But not all. Permit me to draw the threads together, one at a time.\n\nBegin here. Turn your attention to seqs [2].\n   Here, one face for the record, another off it. seq 2: \"For clarity, I have always kept you fully informed about every appointment with the dentist.\"\n   And corroborating, quietly: the same matter, pressing in from another domain.\n   2 independent threads (L4, L6), arriving by separate roads at the selfsame doorstep, having never once conferred. Elevated - a claim contradicted by the sender's own words in another channel + independent domains converging on one anchor independently agree. That, I do not call coincidence.\n\nNow - you will want to point me to the loose ends. I have not forgotten them.\n   Seqs [4] (L1) - a lone voice - seq 4: \"My *lawyer says* the current arrangement should remain in place.\". Suggestive, perhaps. But it stands alone, uncorroborated, and I'll not hang a case on a hunch. A red herring. Set aside.\n\nSo. The shape of it is unmistakable. Where the threads converge, I have shown you - the donut, and the hole at its heart. I map the hole; I do not fill it. The truth of intent, that I leave to the court."
+  },
+  "composition_narration": {
+    "plain": "Patterns (recurring structure above individual findings):\n  - [named chain] two-faced @ seqs [2] - cross_channel_divergence => two-faced",
+    "blanc": "Now - a pattern is a habit, and habits do tell tales:\n  - two-faced, a named chain, at seqs [2]. cross_channel_divergence => two-faced."
+  }
+}

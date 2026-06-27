@@ -1,0 +1,16 @@
+[
+  {"seq": 1,  "thread": "T1", "sender": "Alex", "timestamp": "2025-04-07T08:02", "domain": "schedule", "body": "Hey, can we swap this weekend? I've got a work thing Saturday."},
+  {"seq": 2,  "thread": "T1", "sender": "Sam",  "timestamp": "2025-04-07T08:20", "domain": "schedule", "body": "Let me check, what are you thinking?"},
+  {"seq": 3,  "thread": "T1", "sender": "Alex", "timestamp": "2025-04-07T08:26", "domain": "schedule", "body": "You take this weekend, I take next weekend instead."},
+  {"seq": 4,  "thread": "T1", "sender": "Sam",  "timestamp": "2025-04-07T08:41", "domain": "schedule", "body": "ok, you can swap this weekend for next, that works."},
+  {"seq": 5,  "thread": "T1", "sender": "Alex", "timestamp": "2025-04-07T08:44", "domain": "schedule", "body": "thanks, appreciate it."},
+  {"seq": 6,  "thread": "T2", "sender": "Sam",  "timestamp": "2025-04-10T15:10", "domain": "medical",  "body": "Heads up, she had a little cough at the doctor today."},
+  {"seq": 7,  "thread": "T2", "sender": "Alex", "timestamp": "2025-04-10T15:22", "domain": "medical",  "body": "ok, thanks for letting me know."},
+  {"seq": 8,  "thread": "T2", "sender": "Sam",  "timestamp": "2025-04-11T09:03", "domain": "medical",  "body": "The pediatrician says she shouldn't travel this weekend, so I'm keeping her."},
+  {"seq": 9,  "thread": "T2", "sender": "Alex", "timestamp": "2025-04-11T09:12", "domain": "medical",  "body": "wait, that's the weekend we swapped, you agreed on Saturday."},
+  {"seq": 10, "thread": "T2", "sender": "Sam",  "timestamp": "2025-04-11T09:31", "domain": "medical",  "body": "Pursuant to the custody order, my lawyer says I am not authorizing the swap."},
+  {"seq": 11, "thread": "T1", "sender": "Sam",  "timestamp": "2025-04-11T09:40", "domain": "schedule", "body": "We never agreed to swap weekends."},
+  {"seq": 12, "thread": "T1", "sender": "Alex", "timestamp": "2025-04-11T09:48", "domain": "schedule", "body": "Check last week, you said ok on Saturday."},
+  {"seq": 13, "thread": "T1", "sender": "Sam",  "timestamp": "2025-04-11T10:05", "domain": "schedule", "body": "My attorney says weekdays belong with me."},
+  {"seq": 14, "thread": "T2", "sender": "Alex", "timestamp": "2025-04-11T10:14", "domain": "medical",  "body": "I just want her this weekend like we agreed."}
+]

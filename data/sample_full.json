@@ -1,0 +1,16 @@
+[
+  {"seq": 1,  "thread": "T1", "sender": "Morgan", "timestamp": "2025-03-03T09:01", "domain": "scope",    "body": "Can we make the homepage hero full-width? The client loves the mockup."},
+  {"seq": 2,  "thread": "T1", "sender": "Riley",  "timestamp": "2025-03-03T09:14", "domain": "scope",    "body": "Full-width works. That's a scope change though, adds about 3 hours."},
+  {"seq": 3,  "thread": "T1", "sender": "Morgan", "timestamp": "2025-03-03T09:20", "domain": "scope",    "body": "Let's not get into cost right now. Can you just start it?"},
+  {"seq": 4,  "thread": "T1", "sender": "Riley",  "timestamp": "2025-03-03T09:31", "domain": "scope",    "body": "Starting it now. Logging the 3 hours against a change order."},
+  {"seq": 5,  "thread": "T1", "sender": "Morgan", "timestamp": "2025-03-03T10:02", "domain": "scope",    "body": "The platform's billing policy says revisions are included, so I won't be approving extra hours."},
+  {"seq": 6,  "thread": "T1", "sender": "Riley",  "timestamp": "2025-03-03T10:09", "domain": "scope",    "body": "Revisions are included; new scope isn't. I can send you the policy section if helpful."},
+  {"seq": 7,  "thread": "T1", "sender": "Morgan", "timestamp": "2025-03-03T10:15", "domain": "scope",    "body": "Let's just talk later."},
+  {"seq": 8,  "thread": "T2", "sender": "Morgan", "timestamp": "2025-03-19T16:40", "domain": "payment",  "body": "Got the invoice. Why is it higher than the quote?"},
+  {"seq": 9,  "thread": "T2", "sender": "Riley",  "timestamp": "2025-03-19T16:52", "domain": "payment",  "body": "The change order from the homepage thread, the extra 3 hours."},
+  {"seq": 10, "thread": "T2", "sender": "Morgan", "timestamp": "2025-03-19T17:01", "domain": "payment",  "body": "I never agreed to extra hours."},
+  {"seq": 11, "thread": "T2", "sender": "Riley",  "timestamp": "2025-03-19T17:08", "domain": "payment",  "body": "You did on the 3rd: 'can you just start it?' I've attached that thread."},
+  {"seq": 12, "thread": "T2", "sender": "Morgan", "timestamp": "2025-03-19T17:25", "domain": "payment",  "body": "My accountant says I only owe the original quote."},
+  {"seq": 13, "thread": "T2", "sender": "Riley",  "timestamp": "2025-03-19T17:33", "domain": "payment",  "body": "Send me the accountant's basis and I'll review it."},
+  {"seq": 14, "thread": "T2", "sender": "Morgan", "timestamp": "2025-03-19T17:40", "domain": "payment",  "body": "I'll have my accountant reach out."}
+]

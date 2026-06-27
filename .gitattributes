@@ -1,0 +1,7 @@
+# Normalize all text to LF in the repository; check out LF everywhere.
+* text=auto eol=lf
+
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary

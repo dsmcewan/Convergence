@@ -1,0 +1,3 @@
+[
+  {"id": "R1", "subject": "weekend_swap", "predicate": "agreed_to_weekend_swap", "value": true, "source_seq": 4, "note": "Sam agreed to the swap on the 7th ('ok, you can swap this weekend for next', seq 4)."}
+]

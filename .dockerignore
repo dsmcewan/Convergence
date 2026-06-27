@@ -1,0 +1,15 @@
+.git
+.gitignore
+.venv
+**/__pycache__
+**/*.pyc
+.pytest_cache
+tests
+docs
+.remember
+.superpowers
+.agents
+.env
+web/site/data
+Dockerfile
+.dockerignore

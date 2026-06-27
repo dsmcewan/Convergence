@@ -1,0 +1,690 @@
+{
+  "corpus": {
+    "name": "contractor",
+    "label": "Contractor record",
+    "mode": "exhibit-vs-full-record",
+    "exhibit_label": "Morgan's exhibit: 'Riley overbilled for work I never approved'",
+    "exhibit_note": "Submitted as the complete record. Compare against sample_full.json.",
+    "message_count": 14,
+    "finding_count": 9,
+    "elevated_count": 3,
+    "low_count": 6
+  },
+  "messages": [
+    {
+      "seq": 1,
+      "thread": "T1",
+      "sender": "Morgan",
+      "timestamp": "2025-03-03T09:01",
+      "domain": "scope",
+      "body": "Can we make the homepage hero full-width? The client loves the mockup."
+    },
+    {
+      "seq": 2,
+      "thread": "T1",
+      "sender": "Riley",
+      "timestamp": "2025-03-03T09:14",
+      "domain": "scope",
+      "body": "Full-width works. That's a scope change though, adds about 3 hours."
+    },
+    {
+      "seq": 3,
+      "thread": "T1",
+      "sender": "Morgan",
+      "timestamp": "2025-03-03T09:20",
+      "domain": "scope",
+      "body": "Let's not get into cost right now. Can you just start it?"
+    },
+    {
+      "seq": 4,
+      "thread": "T1",
+      "sender": "Riley",
+      "timestamp": "2025-03-03T09:31",
+      "domain": "scope",
+      "body": "Starting it now. Logging the 3 hours against a change order."
+    },
+    {
+      "seq": 5,
+      "thread": "T1",
+      "sender": "Morgan",
+      "timestamp": "2025-03-03T10:02",
+      "domain": "scope",
+      "body": "The platform's billing policy says revisions are included, so I won't be approving extra hours."
+    },
+    {
+      "seq": 6,
+      "thread": "T1",
+      "sender": "Riley",
+      "timestamp": "2025-03-03T10:09",
+      "domain": "scope",
+      "body": "Revisions are included; new scope isn't. I can send you the policy section if helpful."
+    },
+    {
+      "seq": 7,
+      "thread": "T1",
+      "sender": "Morgan",
+      "timestamp": "2025-03-03T10:15",
+      "domain": "scope",
+      "body": "Let's just talk later."
+    },
+    {
+      "seq": 8,
+      "thread": "T2",
+      "sender": "Morgan",
+      "timestamp": "2025-03-19T16:40",
+      "domain": "payment",
+      "body": "Got the invoice. Why is it higher than the quote?"
+    },
+    {
+      "seq": 9,
+      "thread": "T2",
+      "sender": "Riley",
+      "timestamp": "2025-03-19T16:52",
+      "domain": "payment",
+      "body": "The change order from the homepage thread, the extra 3 hours."
+    },
+    {
+      "seq": 10,
+      "thread": "T2",
+      "sender": "Morgan",
+      "timestamp": "2025-03-19T17:01",
+      "domain": "payment",
+      "body": "I never agreed to extra hours."
+    },
+    {
+      "seq": 11,
+      "thread": "T2",
+      "sender": "Riley",
+      "timestamp": "2025-03-19T17:08",
+      "domain": "payment",
+      "body": "You did on the 3rd: 'can you just start it?' I've attached that thread."
+    },
+    {
+      "seq": 12,
+      "thread": "T2",
+      "sender": "Morgan",
+      "timestamp": "2025-03-19T17:25",
+      "domain": "payment",
+      "body": "My accountant says I only owe the original quote."
+    },
+    {
+      "seq": 13,
+      "thread": "T2",
+      "sender": "Riley",
+      "timestamp": "2025-03-19T17:33",
+      "domain": "payment",
+      "body": "Send me the accountant's basis and I'll review it."
+    },
+    {
+      "seq": 14,
+      "thread": "T2",
+      "sender": "Morgan",
+      "timestamp": "2025-03-19T17:40",
+      "domain": "payment",
+      "body": "I'll have my accountant reach out."
+    }
+  ],
+  "findings": [
+    {
+      "seqs": [
+        3,
+        10
+      ],
+      "confidence": "elevated",
+      "layers": [
+        "L2",
+        "L3",
+        "L4"
+      ],
+      "summary": "Elevated - a claim contradicted by an external record + independent domains converging on one anchor + a message cut from inside a continuous thread independently agree.",
+      "signals": [
+        {
+          "layer": "L3",
+          "seqs": [
+            3,
+            10
+          ],
+          "kind": "claim_contradicted",
+          "detail": "record R1: agreed_to_extra_hours=True"
+        },
+        {
+          "layer": "L2",
+          "seqs": [
+            3
+          ],
+          "kind": "within_thread_omission",
+          "detail": "cut between shown 2 and 4"
+        },
+        {
+          "layer": "L4",
+          "seqs": [
+            5,
+            9,
+            10
+          ],
+          "kind": "domain_convergence",
+          "detail": "extra across payment, scope"
+        },
+        {
+          "layer": "L4",
+          "seqs": [
+            5,
+            10
+          ],
+          "kind": "domain_convergence",
+          "detail": "extra hours across payment, scope"
+        },
+        {
+          "layer": "L4",
+          "seqs": [
+            2,
+            4,
+            5,
+            9,
+            10
+          ],
+          "kind": "domain_convergence",
+          "detail": "hours across payment, scope"
+        },
+        {
+          "layer": "L4",
+          "seqs": [
+            3,
+            11
+          ],
+          "kind": "domain_convergence",
+          "detail": "start across payment, scope"
+        }
+      ],
+      "messages": [
+        {
+          "seq": 3,
+          "thread": "T1",
+          "sender": "Morgan",
+          "timestamp": "2025-03-03T09:20",
+          "domain": "scope",
+          "body": "Let's not get into cost right now. Can you just start it?"
+        },
+        {
+          "seq": 10,
+          "thread": "T2",
+          "sender": "Morgan",
+          "timestamp": "2025-03-19T17:01",
+          "domain": "payment",
+          "body": "I never agreed to extra hours."
+        }
+      ],
+      "narration": {
+        "plain": "Elevated finding at seqs [3, 10] (L2, L3, L4). Elevated - a claim contradicted by an external record + independent domains converging on one anchor + a message cut from inside a continuous thread independently agree.",
+        "blanc": "Here the threads meet: seqs [3, 10], layers L2, L3, L4. Not a hunch, but corroboration."
+      }
+    },
+    {
+      "seqs": [
+        5
+      ],
+      "confidence": "elevated",
+      "layers": [
+        "L1",
+        "L2",
+        "L4",
+        "L5"
+      ],
+      "summary": "Elevated - a decision deferred to an outside authority + independent domains converging on one anchor + a register shift from the sender's baseline + a message cut from inside a continuous thread independently agree.",
+      "signals": [
+        {
+          "layer": "L5",
+          "seqs": [
+            5
+          ],
+          "kind": "register_anomaly",
+          "detail": "register deviates from Morgan's baseline (score 0.2765)"
+        },
+        {
+          "layer": "L2",
+          "seqs": [
+            5
+          ],
+          "kind": "within_thread_omission",
+          "detail": "cut between shown 4 and 6"
+        },
+        {
+          "layer": "L1",
+          "seqs": [
+            5
+          ],
+          "kind": "borrow_authority",
+          "detail": "policy says"
+        },
+        {
+          "layer": "L4",
+          "seqs": [
+            5,
+            9,
+            10
+          ],
+          "kind": "domain_convergence",
+          "detail": "extra across payment, scope"
+        },
+        {
+          "layer": "L4",
+          "seqs": [
+            5,
+            10
+          ],
+          "kind": "domain_convergence",
+          "detail": "extra hours across payment, scope"
+        },
+        {
+          "layer": "L4",
+          "seqs": [
+            2,
+            4,
+            5,
+            9,
+            10
+          ],
+          "kind": "domain_convergence",
+          "detail": "hours across payment, scope"
+        }
+      ],
+      "messages": [
+        {
+          "seq": 5,
+          "thread": "T1",
+          "sender": "Morgan",
+          "timestamp": "2025-03-03T10:02",
+          "domain": "scope",
+          "body": "The platform's billing policy says revisions are included, so I won't be approving extra hours."
+        }
+      ],
+      "narration": {
+        "plain": "Elevated finding at seqs [5] (L1, L2, L4, L5). Elevated - a decision deferred to an outside authority + independent domains converging on one anchor + a register shift from the sender's baseline + a message cut from inside a continuous thread independently agree.",
+        "blanc": "Here the threads meet: seqs [5], layers L1, L2, L4, L5. Not a hunch, but corroboration."
+      }
+    },
+    {
+      "seqs": [
+        11
+      ],
+      "confidence": "elevated",
+      "layers": [
+        "L2",
+        "L4",
+        "L5"
+      ],
+      "summary": "Elevated - independent domains converging on one anchor + a register shift from the sender's baseline + a message cut from inside a continuous thread independently agree.",
+      "signals": [
+        {
+          "layer": "L5",
+          "seqs": [
+            11
+          ],
+          "kind": "register_anomaly",
+          "detail": "register deviates from Riley's baseline (score 0.2056)"
+        },
+        {
+          "layer": "L2",
+          "seqs": [
+            11
+          ],
+          "kind": "within_thread_omission",
+          "detail": "cut between shown 10 and 12"
+        },
+        {
+          "layer": "L4",
+          "seqs": [
+            3,
+            11
+          ],
+          "kind": "domain_convergence",
+          "detail": "start across payment, scope"
+        }
+      ],
+      "messages": [
+        {
+          "seq": 11,
+          "thread": "T2",
+          "sender": "Riley",
+          "timestamp": "2025-03-19T17:08",
+          "domain": "payment",
+          "body": "You did on the 3rd: 'can you just start it?' I've attached that thread."
+        }
+      ],
+      "narration": {
+        "plain": "Elevated finding at seqs [11] (L2, L4, L5). Elevated - independent domains converging on one anchor + a register shift from the sender's baseline + a message cut from inside a continuous thread independently agree.",
+        "blanc": "Here the threads meet: seqs [11], layers L2, L4, L5. Not a hunch, but corroboration."
+      }
+    },
+    {
+      "seqs": [
+        1
+      ],
+      "confidence": "low",
+      "layers": [
+        "L4",
+        "L5"
+      ],
+      "summary": "Low - independent domains converging on one anchor, a register shift from the sender's baseline (single layer; not corroborated).",
+      "signals": [
+        {
+          "layer": "L5",
+          "seqs": [
+            1
+          ],
+          "kind": "register_anomaly",
+          "detail": "register deviates from Morgan's baseline (score 0.1613)"
+        },
+        {
+          "layer": "L4",
+          "seqs": [
+            1,
+            9
+          ],
+          "kind": "domain_convergence",
+          "detail": "homepage across payment, scope"
+        }
+      ],
+      "messages": [
+        {
+          "seq": 1,
+          "thread": "T1",
+          "sender": "Morgan",
+          "timestamp": "2025-03-03T09:01",
+          "domain": "scope",
+          "body": "Can we make the homepage hero full-width? The client loves the mockup."
+        }
+      ],
+      "narration": {
+        "plain": "Low finding at seqs [1] (L4, L5). Low - independent domains converging on one anchor, a register shift from the sender's baseline (single layer; not corroborated).",
+        "blanc": "Seqs [1] remain low. Suggestive, perhaps, but the method refuses to elevate a lone thread."
+      }
+    },
+    {
+      "seqs": [
+        2
+      ],
+      "confidence": "low",
+      "layers": [
+        "L4",
+        "L5"
+      ],
+      "summary": "Low - independent domains converging on one anchor, a register shift from the sender's baseline (single layer; not corroborated).",
+      "signals": [
+        {
+          "layer": "L5",
+          "seqs": [
+            2
+          ],
+          "kind": "register_anomaly",
+          "detail": "register deviates from Riley's baseline (score 0.1527)"
+        },
+        {
+          "layer": "L4",
+          "seqs": [
+            2,
+            4,
+            9
+          ],
+          "kind": "domain_convergence",
+          "detail": "3 hours across payment, scope"
+        },
+        {
+          "layer": "L4",
+          "seqs": [
+            2,
+            4,
+            5,
+            9,
+            10
+          ],
+          "kind": "domain_convergence",
+          "detail": "hours across payment, scope"
+        }
+      ],
+      "messages": [
+        {
+          "seq": 2,
+          "thread": "T1",
+          "sender": "Riley",
+          "timestamp": "2025-03-03T09:14",
+          "domain": "scope",
+          "body": "Full-width works. That's a scope change though, adds about 3 hours."
+        }
+      ],
+      "narration": {
+        "plain": "Low finding at seqs [2] (L4, L5). Low - independent domains converging on one anchor, a register shift from the sender's baseline (single layer; not corroborated).",
+        "blanc": "Seqs [2] remain low. Suggestive, perhaps, but the method refuses to elevate a lone thread."
+      }
+    },
+    {
+      "seqs": [
+        8
+      ],
+      "confidence": "low",
+      "layers": [
+        "L5"
+      ],
+      "summary": "Low - a register shift from the sender's baseline (single layer; not corroborated).",
+      "signals": [
+        {
+          "layer": "L5",
+          "seqs": [
+            8
+          ],
+          "kind": "register_anomaly",
+          "detail": "register deviates from Morgan's baseline (score 0.1578)"
+        }
+      ],
+      "messages": [
+        {
+          "seq": 8,
+          "thread": "T2",
+          "sender": "Morgan",
+          "timestamp": "2025-03-19T16:40",
+          "domain": "payment",
+          "body": "Got the invoice. Why is it higher than the quote?"
+        }
+      ],
+      "narration": {
+        "plain": "Low finding at seqs [8] (L5). Low - a register shift from the sender's baseline (single layer; not corroborated).",
+        "blanc": "Seqs [8] remain low. Suggestive, perhaps, but the method refuses to elevate a lone thread."
+      }
+    },
+    {
+      "seqs": [
+        9
+      ],
+      "confidence": "low",
+      "layers": [
+        "L4",
+        "L5"
+      ],
+      "summary": "Low - independent domains converging on one anchor, a register shift from the sender's baseline (single layer; not corroborated).",
+      "signals": [
+        {
+          "layer": "L5",
+          "seqs": [
+            9
+          ],
+          "kind": "register_anomaly",
+          "detail": "register deviates from Riley's baseline (score 0.1968)"
+        },
+        {
+          "layer": "L4",
+          "seqs": [
+            2,
+            4,
+            9
+          ],
+          "kind": "domain_convergence",
+          "detail": "3 hours across payment, scope"
+        },
+        {
+          "layer": "L4",
+          "seqs": [
+            4,
+            9
+          ],
+          "kind": "domain_convergence",
+          "detail": "change order across payment, scope"
+        },
+        {
+          "layer": "L4",
+          "seqs": [
+            5,
+            9,
+            10
+          ],
+          "kind": "domain_convergence",
+          "detail": "extra across payment, scope"
+        },
+        {
+          "layer": "L4",
+          "seqs": [
+            1,
+            9
+          ],
+          "kind": "domain_convergence",
+          "detail": "homepage across payment, scope"
+        },
+        {
+          "layer": "L4",
+          "seqs": [
+            2,
+            4,
+            5,
+            9,
+            10
+          ],
+          "kind": "domain_convergence",
+          "detail": "hours across payment, scope"
+        }
+      ],
+      "messages": [
+        {
+          "seq": 9,
+          "thread": "T2",
+          "sender": "Riley",
+          "timestamp": "2025-03-19T16:52",
+          "domain": "payment",
+          "body": "The change order from the homepage thread, the extra 3 hours."
+        }
+      ],
+      "narration": {
+        "plain": "Low finding at seqs [9] (L4, L5). Low - independent domains converging on one anchor, a register shift from the sender's baseline (single layer; not corroborated).",
+        "blanc": "Seqs [9] remain low. Suggestive, perhaps, but the method refuses to elevate a lone thread."
+      }
+    },
+    {
+      "seqs": [
+        12
+      ],
+      "confidence": "low",
+      "layers": [
+        "L1"
+      ],
+      "summary": "Low - a decision deferred to an outside authority (single layer; not corroborated).",
+      "signals": [
+        {
+          "layer": "L1",
+          "seqs": [
+            12
+          ],
+          "kind": "borrow_authority",
+          "detail": "accountant says"
+        }
+      ],
+      "messages": [
+        {
+          "seq": 12,
+          "thread": "T2",
+          "sender": "Morgan",
+          "timestamp": "2025-03-19T17:25",
+          "domain": "payment",
+          "body": "My accountant says I only owe the original quote."
+        }
+      ],
+      "narration": {
+        "plain": "Low finding at seqs [12] (L1). Low - a decision deferred to an outside authority (single layer; not corroborated).",
+        "blanc": "Seqs [12] remain low. Suggestive, perhaps, but the method refuses to elevate a lone thread."
+      }
+    },
+    {
+      "seqs": [
+        13
+      ],
+      "confidence": "low",
+      "layers": [
+        "L4",
+        "L5"
+      ],
+      "summary": "Low - independent domains converging on one anchor, a register shift from the sender's baseline (single layer; not corroborated).",
+      "signals": [
+        {
+          "layer": "L5",
+          "seqs": [
+            13
+          ],
+          "kind": "register_anomaly",
+          "detail": "register deviates from Riley's baseline (score 0.2477)"
+        },
+        {
+          "layer": "L4",
+          "seqs": [
+            6,
+            13
+          ],
+          "kind": "domain_convergence",
+          "detail": "send across payment, scope"
+        }
+      ],
+      "messages": [
+        {
+          "seq": 13,
+          "thread": "T2",
+          "sender": "Riley",
+          "timestamp": "2025-03-19T17:33",
+          "domain": "payment",
+          "body": "Send me the accountant's basis and I'll review it."
+        }
+      ],
+      "narration": {
+        "plain": "Low finding at seqs [13] (L4, L5). Low - independent domains converging on one anchor, a register shift from the sender's baseline (single layer; not corroborated).",
+        "blanc": "Seqs [13] remain low. Suggestive, perhaps, but the method refuses to elevate a lone thread."
+      }
+    }
+  ],
+  "patterns": [
+    {
+      "name": "repeated:within_thread_omission",
+      "kind": "recurrence",
+      "seqs": [
+        3,
+        5,
+        11
+      ],
+      "detail": "within_thread_omission recurs across 3 messages"
+    },
+    {
+      "name": "sanitize-record",
+      "kind": "template",
+      "seqs": [
+        3,
+        5,
+        10,
+        11
+      ],
+      "detail": "reliance, authority shift, denial, and record pressure repeat the sanitize-record structure"
+    }
+  ],
+  "campaigns": [],
+  "narration": {
+    "plain": "Convergence report - 14 messages; 3 elevated finding(s), 6 low.\n\nELEVATED - seqs [3, 10] (layers L2, L3, L4)\n  Elevated - a claim contradicted by an external record + independent domains converging on one anchor + a message cut from inside a continuous thread independently agree.\n    - [L3] record R1: agreed_to_extra_hours=True\n    - [L2] cut between shown 2 and 4\n    - [L4] extra across payment, scope\n    - [L4] extra hours across payment, scope\n    - [L4] hours across payment, scope\n    - [L4] start across payment, scope\n\nELEVATED - seqs [5] (layers L1, L2, L4, L5)\n  Elevated - a decision deferred to an outside authority + independent domains converging on one anchor + a register shift from the sender's baseline + a message cut from inside a continuous thread independently agree.\n    - [L5] register deviates from Morgan's baseline (score 0.2765)\n    - [L2] cut between shown 4 and 6\n    - [L1] policy says\n    - [L4] extra across payment, scope\n    - [L4] extra hours across payment, scope\n    - [L4] hours across payment, scope\n\nELEVATED - seqs [11] (layers L2, L4, L5)\n  Elevated - independent domains converging on one anchor + a register shift from the sender's baseline + a message cut from inside a continuous thread independently agree.\n    - [L5] register deviates from Riley's baseline (score 0.2056)\n    - [L2] cut between shown 10 and 12\n    - [L4] start across payment, scope\n\nlow - seqs [12] (L1): a substantive signal with nothing to corroborate it; not corroborated.\n\nlow - 5 context-only signal(s) (domain overlap / register shift) held low; not corroborated by any tactic, omission, or contradiction.\n\nA finding is elevated only when independent layers agree; lone signals stay low by design.",
+    "blanc": "Gather round, if you please. Let me walk you through it, from the beginning.\n\nWe have before us 14 messages. Most are precisely what they appear to be. But not all. Permit me to draw the threads together, one at a time.\n\nBegin here. Turn your attention to seqs [3, 10].\n   First, a claim the record itself contradicts - Morgan says one thing, then its opposite, as it suits them:\n      Date 1 (2025-03-03): Morgan says \"Let's not get into cost right now. Can you just start it?\"\n      But lo and behold, as it suits them - Date 2 (2025-03-19): Morgan says \"I never agreed to extra hours.\"\n      Must be nice, to have the luxury of a life that suits you.\n   And at last, a line lifted clean out of the conversation. The line they removed - seq 3 - read: \"Let's not get into cost right now. Can you just start it?\"\n   And corroborating, quietly: the same matter, pressing in from another domain.\n   3 independent threads (L2, L3, L4), arriving by separate roads at the selfsame doorstep, having never once conferred. Elevated - a claim contradicted by an external record + independent domains converging on one anchor + a message cut from inside a continuous thread independently agree. That, I do not call coincidence.\n\nNow - the next of it. Turn your attention to seqs [5].\n   First, a line lifted clean out of the conversation. The line they removed - seq 5 - read: \"The platform's billing policy says revisions are included, so I won't be approving extra hours.\"\n   And at last, he leans on a borrowed authority. seq 5: \"The platform's billing *policy says* revisions are included, so I won't be approving extra hours.\"\n   And corroborating, quietly: the same matter, pressing in from another domain; the voice stiffens into a legal register.\n   4 independent threads (L1, L2, L4, L5), arriving by separate roads at the selfsame doorstep, having never once conferred. Elevated - a decision deferred to an outside authority + independent domains converging on one anchor + a register shift from the sender's baseline + a message cut from inside a continuous thread independently agree. That, I do not call coincidence.\n\nAnd then, this. Turn your attention to seqs [11].\n   Here, a line lifted clean out of the conversation. The line they removed - seq 11 - read: \"You did on the 3rd: 'can you just start it?' I've attached that thread.\"\n   And corroborating, quietly: the same matter, pressing in from another domain; the voice stiffens into a legal register.\n   3 independent threads (L2, L4, L5), arriving by separate roads at the selfsame doorstep, having never once conferred. Elevated - independent domains converging on one anchor + a register shift from the sender's baseline + a message cut from inside a continuous thread independently agree. That, I do not call coincidence.\n\nNow - you will want to point me to the loose ends. I have not forgotten them.\n   Seqs [12] (L1) - a lone voice - seq 12: \"My *accountant says* I only owe the original quote.\". Suggestive, perhaps. But it stands alone, uncorroborated, and I'll not hang a case on a hunch. A red herring. Set aside.\n   And 5 faint murmurs besides - mere atmosphere, not evidence. Noted, and dismissed.\n\nSo. The shape of it is unmistakable. Where the threads converge, I have shown you - the donut, and the hole at its heart. I map the hole; I do not fill it. The truth of intent, that I leave to the court."
+  },
+  "composition_narration": {
+    "plain": "Patterns (recurring structure above individual findings):\n  - [recurring tactic] repeated:within_thread_omission @ seqs [3, 5, 11] - within_thread_omission recurs across 3 messages\n  - [named chain] sanitize-record @ seqs [3, 5, 10, 11] - reliance, authority shift, denial, and record pressure repeat the sanitize-record structure",
+    "blanc": "Now - a pattern is a habit, and habits do tell tales:\n  - repeated:within_thread_omission, a tactic repeated, at seqs [3, 5, 11]. within_thread_omission recurs across 3 messages.\n  - sanitize-record, a named chain, at seqs [3, 5, 10, 11]. reliance, authority shift, denial, and record pressure repeat the sanitize-record structure."
+  }
+}

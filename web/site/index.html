@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>convergence demo</title>
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="scene" aria-hidden="true"></div>
+    <main class="demo-frame" aria-labelledby="demo-title">
+      <header class="topbar">
+        <a class="brand" href="#review-window" aria-label="convergence demo">
+          <span class="brand-mark">cv</span>
+          <span>
+            <strong>convergence</strong>
+            <small>high-conflict signal cipher</small>
+          </span>
+        </a>
+        <nav class="nav" aria-label="corpus">
+          <div class="segmented" id="corpus-tabs"></div>
+        </nav>
+      </header>
+
+      <section class="presentation" aria-label="bottom-up lecture slideshow">
+        <div class="stage-copy">
+          <p class="kicker">fragment -> purpose -> behavior -> pattern -> campaign -> phase</p>
+          <h1 id="demo-title">
+            <span>The cipher</span>
+            <span>for high-conflict</span>
+            <span>messages.</span>
+          </h1>
+          <p>
+            A disembodied Blanc lecture. First the phrase fragments light up inside
+            the messages. Then the fragments climb into behavior, pattern, campaign,
+            and phase. The review window opens only after the trail is built.
+          </p>
+          <div class="slide-progress" id="slide-progress" aria-label="lecture progress"></div>
+        </div>
+
+        <div class="slide-stage" id="slide-stage" aria-live="polite"></div>
+      </section>
+
+      <aside class="review-window" id="review-window" aria-label="lecture and review window">
+        <div class="review-head">
+          <span id="panel-mode">lecture</span>
+          <strong id="review-title">loading</strong>
+        </div>
+        <div class="review-controls" aria-label="finding controls">
+          <button type="button" id="previous-finding">back</button>
+          <button type="button" id="next-finding">next slide</button>
+          <button type="button" id="copy-active-cipher">copy cipher</button>
+        </div>
+        <div class="review-body" id="review-body"></div>
+        <form class="chat-form" id="chat-form">
+          <label for="question">Ask Blanc from the locked finding</label>
+          <textarea id="question" name="question" rows="3">Why is this finding elevated?</textarea>
+          <div class="chat-actions">
+            <select id="model" name="model" aria-label="model">
+              <option value="claude">Claude</option>
+              <option value="openai">OpenAI</option>
+              <option value="grok">Grok</option>
+              <option value="gemini">Gemini</option>
+              <option value="agy">Agy</option>
+            </select>
+            <button type="submit">Ask</button>
+          </div>
+        </form>
+        <pre class="chat-answer" id="chat-answer" aria-live="polite" role="status"></pre>
+      </aside>
+    </main>
+
+    <div class="interaction-toast" id="interaction-toast" role="status" aria-live="polite"></div>
+    <script src="app.js" defer></script>
+  </body>
+</html>

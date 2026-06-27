@@ -1,0 +1,5 @@
+[
+  {"seq": 1, "thread": "texts", "sender": "Devin", "timestamp": "2025-01-20T18:40", "domain": "chat", "body": "you free this weekend?"},
+  {"seq": 2, "thread": "texts", "sender": "Quinn", "timestamp": "2025-01-20T18:52", "domain": "chat", "body": "honestly I forgot to tell you about the dentist, my bad."},
+  {"seq": 3, "thread": "texts", "sender": "Quinn", "timestamp": "2025-01-20T18:55", "domain": "chat", "body": "it's been super hectic lol."}
+]

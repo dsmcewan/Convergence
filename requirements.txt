@@ -1,0 +1,20 @@
+# convergence — dependencies
+#
+# The engine core (convergence/, minus adapters/) is STDLIB ONLY and needs nothing
+# here. These are for the test runner and the OPTIONAL LLM backends; install only
+# what you use. Every adapter degrades to the deterministic narrator if its
+# dependency (or key/CLI) is missing.
+
+# --- tests ---
+pytest>=7.0
+
+# --- optional conversational backends (convergence/adapters/) ---
+# Pick the one(s) you want; none is required to run the demo or the engine.
+anthropic            # --model claude   (needs ANTHROPIC_API_KEY)
+openai               # --model openai and --model grok (grok uses the xAI OpenAI-compatible API)
+google-generativeai  # --model gemini   (API-key path; the gemini CLI path needs no pip dep)
+
+# agy (Antigravity CLI) backend: --model agy. Keyless (the app's OAuth), but `agy`
+# only prints to a real terminal, so the adapter drives it inside a ConPTY.
+# Windows-only, matching where the Antigravity CLI and ConPTY exist.
+pywinpty; sys_platform == "win32"   # --model agy

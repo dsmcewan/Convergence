@@ -1,0 +1,10 @@
+[
+  {"seq": 1, "thread": "swap", "sender": "Alex", "timestamp": "2025-05-01T08:00", "domain": "schedule", "body": "Can we confirm I'm taking her this weekend like we agreed?"},
+  {"seq": 2, "thread": "swap", "sender": "Sam", "timestamp": "2025-05-01T09:10", "domain": "schedule", "body": "I don't agree that this weekend works."},
+  {"seq": 3, "thread": "swap", "sender": "Sam", "timestamp": "2025-05-01T13:42", "domain": "schedule", "body": "Let's just talk about this later, I'll get back to you."},
+  {"seq": 4, "thread": "swap", "sender": "Sam", "timestamp": "2025-05-02T10:05", "domain": "schedule", "body": "On what basis are you assuming you get this weekend?"},
+  {"seq": 5, "thread": "swap", "sender": "Sam", "timestamp": "2025-05-02T16:20", "domain": "schedule", "body": "I'm only trying to protect her, and my lawyer says the schedule stands."},
+  {"seq": 6, "thread": "swap", "sender": "Sam", "timestamp": "2025-05-03T08:30", "domain": "schedule", "body": "I still don't agree to the swap."},
+  {"seq": 7, "thread": "swap", "sender": "Sam", "timestamp": "2025-05-03T11:15", "domain": "schedule", "body": "Per the agreement, weekdays are mine."},
+  {"seq": 8, "thread": "swap", "sender": "Sam", "timestamp": "2025-05-03T19:50", "domain": "schedule", "body": "It's already done - she's staying with me, there's nothing to discuss."}
+]

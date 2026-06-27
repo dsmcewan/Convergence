@@ -1,0 +1,19 @@
+{
+  "title": "convergence",
+  "tagline": "A deterministic communication-forensics engine.",
+  "corpora": [
+    {
+      "name": "contractor",
+      "label": "Contractor record"
+    },
+    {
+      "name": "coparenting",
+      "label": "Coparenting record"
+    },
+    {
+      "name": "channels",
+      "label": "Two-channel record"
+    }
+  ],
+  "default_corpus": "contractor"
+}

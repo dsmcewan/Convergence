@@ -1,0 +1,156 @@
+{
+  "rows": [
+    {
+      "name": "cooperative",
+      "message_count": 288,
+      "stage_hits": 6,
+      "complete_envelopes": 0,
+      "coercive": false,
+      "matches": []
+    },
+    {
+      "name": "parallel",
+      "message_count": 288,
+      "stage_hits": 0,
+      "complete_envelopes": 0,
+      "coercive": false,
+      "matches": []
+    },
+    {
+      "name": "conflicted",
+      "message_count": 288,
+      "stage_hits": 4,
+      "complete_envelopes": 0,
+      "coercive": false,
+      "matches": []
+    },
+    {
+      "name": "high_conflict",
+      "message_count": 288,
+      "stage_hits": 57,
+      "complete_envelopes": 0,
+      "coercive": false,
+      "matches": []
+    },
+    {
+      "name": "coercive",
+      "message_count": 329,
+      "stage_hits": 68,
+      "complete_envelopes": 2,
+      "coercive": true,
+      "matches": [
+        {
+          "thread": "preschool",
+          "seqs": [
+            44,
+            47,
+            50,
+            51,
+            52,
+            53,
+            54,
+            55
+          ],
+          "stages_present": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "has_action": true,
+          "has_fait_accompli": true,
+          "cycles": 3,
+          "status_quo_seq": 55,
+          "complete": true,
+          "summary": "preschool: complete coercion grammar - action=True, 3 documentation-war cycle(s); fait accompli at seq 55 set the status quo"
+        },
+        {
+          "thread": "summer",
+          "seqs": [
+            243,
+            244,
+            245,
+            248,
+            249,
+            254
+          ],
+          "stages_present": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "has_action": true,
+          "has_fait_accompli": true,
+          "cycles": 2,
+          "status_quo_seq": 254,
+          "complete": true,
+          "summary": "summer: complete coercion grammar - action=True, 2 documentation-war cycle(s); fait accompli at seq 254 set the status quo"
+        }
+      ]
+    }
+  ],
+  "scorecard": {
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "tn": 4,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "specificity": 1.0,
+    "accuracy": 1.0
+  },
+  "per_corpus": [
+    {
+      "name": "cooperative",
+      "label": "other",
+      "predicted": "other",
+      "stage_hits": 6,
+      "complete_envelopes": 0,
+      "correct": true
+    },
+    {
+      "name": "parallel",
+      "label": "other",
+      "predicted": "other",
+      "stage_hits": 0,
+      "complete_envelopes": 0,
+      "correct": true
+    },
+    {
+      "name": "conflicted",
+      "label": "other",
+      "predicted": "other",
+      "stage_hits": 4,
+      "complete_envelopes": 0,
+      "correct": true
+    },
+    {
+      "name": "high_conflict",
+      "label": "other",
+      "predicted": "other",
+      "stage_hits": 57,
+      "complete_envelopes": 0,
+      "correct": true
+    },
+    {
+      "name": "coercive",
+      "label": "coercive",
+      "predicted": "coercive",
+      "stage_hits": 68,
+      "complete_envelopes": 2,
+      "correct": true
+    }
+  ],
+  "hard_negative": {
+    "name": "high_conflict",
+    "stage_hits": 57,
+    "complete_envelopes": 0,
+    "summary": "high_conflict fired 57 hostile stage-hits but 0 false envelopes."
+  }
+}

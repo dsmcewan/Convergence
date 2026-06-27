@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "convergence"
+version = "0.1.0"
+description = "A corroboration-first communication-forensics engine: findings elevate only when independent layers converge."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "The Convergence Authors" }]
+keywords = ["forensics", "nlp", "communication-analysis", "corroboration", "deterministic", "auditability"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Topic :: Text Processing :: Linguistic",
+]
+dependencies = []  # the engine core is stdlib-only by design
+
+[project.optional-dependencies]
+dev = ["pytest>=7"]
+llm = ["anthropic>=0.40", "openai>=1.0"]  # only needed for optional conversational narration
+
+[project.scripts]
+convergence = "demo:main"               # narrated CLI walkthrough (--corpus, --chat, ...)
+convergence-web = "web.server:main"     # local frontend at http://127.0.0.1:8765/
+convergence-build = "web.build:main"    # write web/site/data/*.json for static hosting
+
+# TODO: set these to the real repo URL once created.
+[project.urls]
+Homepage = "https://github.com/OWNER/convergence"
+Source = "https://github.com/OWNER/convergence"
+
+[tool.setuptools]
+py-modules = ["demo"]                    # demo.py is a top-level module, not a package
+
+[tool.setuptools.packages.find]
+include = ["convergence*", "web*"]       # web/ ships too so `import web` works after install
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

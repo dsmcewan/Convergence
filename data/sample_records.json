@@ -1,0 +1,3 @@
+[
+  {"id": "R1", "subject": "change_order", "predicate": "agreed_to_extra_hours", "value": true, "source_seq": 3, "note": "Morgan authorized the change order on the 3rd ('just start it', seq 3)."}
+]
