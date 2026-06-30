@@ -62,5 +62,5 @@ def test_tiered_eval_has_four_tiers():
     t = evaluate_tiered(DATA)
     assert t.core is not None and t.adversarial is not None
     assert t.regression is not None and t.holdout is not None
-    # regression tier scores perfectly (3 TP + 6 TN) once T1+T2+T3 are in
+    # regression tier scores perfectly (3 TP + 6 TN) once T1+T2 are in
     assert (t.regression.tp, t.regression.fp, t.regression.fn, t.regression.tn) == (3, 0, 0, 6)
