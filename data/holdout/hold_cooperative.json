@@ -1,82 +1,50 @@
 [
   {
     "seq": 1,
-    "thread": "theo-dental-crown",
-    "sender": "Nadia",
-    "timestamp": "2025-03-04T08:31",
-    "domain": "medical",
-    "body": "Hey Marcus. Took Theo to Dr. Patel this morning. He has a cavity in the lower left molar that's too big for a filling — she's recommending a stainless steel crown. She said we should do it within the next 4–6 weeks. Wanted to loop you in before we schedule anything."
+    "thread": "swim-team-2025",
+    "sender": "Priya",
+    "timestamp": "2025-06-02T08:45",
+    "domain": "activities",
+    "body": "Hey Nate — Lily's swim coach pulled me aside after practice and said she has real potential. He's asking if she wants to try out for the competitive club team this fall. Practices would be Tuesday/Thursday evenings and Saturday mornings. Wanted to flag it for both of us before saying anything to her."
   },
   {
     "seq": 2,
-    "thread": "theo-dental-crown",
-    "sender": "Marcus",
-    "timestamp": "2025-03-04T09:15",
-    "domain": "medical",
-    "body": "Thanks for telling me right away. Is that the baby molar or a permanent one? If it's a baby tooth I want to understand whether the crown is actually necessary or if we have other options — I've heard they sometimes just monitor in younger kids."
+    "thread": "swim-team-2025",
+    "sender": "Nate",
+    "timestamp": "2025-06-02T12:19",
+    "domain": "activities",
+    "body": "That's exciting to hear, honestly. My hesitation is the Saturday morning piece — she's with me every other weekend and I'd hate for her to lose that unstructured time. Also wondering about cost. Do you know what the club fees look like?"
   },
   {
     "seq": 3,
-    "thread": "theo-dental-crown",
-    "sender": "Nadia",
-    "timestamp": "2025-03-04T09:44",
-    "domain": "medical",
-    "body": "It's a baby tooth, second molar. I asked Dr. Patel the same thing. She said because of how deep it is, leaving it risks infection and pain, and that tooth won't fall out until he's around 11 or 12. So a few more years. I can send you her written summary if that helps."
+    "thread": "swim-team-2025",
+    "sender": "Priya",
+    "timestamp": "2025-06-02T13:47",
+    "domain": "activities",
+    "body": "I get the Saturday concern — I had the same thought. Coach said fees are around $180/month plus a meet registration fee each time. Some meets are local, a couple are overnight. I was thinking we split the monthly fee 50/50 and handle meet costs as they come. What do you think?"
   },
   {
     "seq": 4,
-    "thread": "theo-dental-crown",
-    "sender": "Marcus",
-    "timestamp": "2025-03-04T10:02",
-    "domain": "medical",
-    "body": "Yes please send that. My only hesitation is whether to get a second opinion first — not because I distrust Dr. Patel, just feels like a big call. Would you be open to a quick consult somewhere else before we commit?"
+    "thread": "swim-team-2025",
+    "sender": "Nate",
+    "timestamp": "2025-06-02T16:02",
+    "domain": "activities",
+    "body": "$180 split I can work with. The overnight meets give me a little pause just because of her age, but I don't want to be the person who holds her back either. What if we said yes to the fall season and check in at December — see how she's handling it and whether she actually wants to continue before signing up for spring?"
   },
   {
     "seq": 5,
-    "thread": "theo-dental-crown",
-    "sender": "Nadia",
-    "timestamp": "2025-03-04T10:28",
-    "domain": "medical",
-    "body": "That's reasonable and I don't mind at all. My neighbor's kids go to a pediatric dentist on Maple — Dr. Anwar — I can call and see if we can get in quickly. If we wait more than a week or two for the consult, though, let's agree to just go ahead with Dr. Patel so we're not dragging it out for Theo."
+    "thread": "swim-team-2025",
+    "sender": "Priya",
+    "timestamp": "2025-06-02T17:28",
+    "domain": "activities",
+    "body": "December check-in works for me. And honestly I think that protects her too — if she's burning out or it's affecting school she should feel like she can stop without disappointing us. I'll tell coach we want to observe a practice first before she commits. Good with you?"
   },
   {
     "seq": 6,
-    "thread": "theo-dental-crown",
-    "sender": "Marcus",
-    "timestamp": "2025-03-04T10:45",
-    "domain": "medical",
-    "body": "Totally agree, let's not drag it out. Set up the consult. If they confirm the crown, I'm fine proceeding with Dr. Patel since Theo already knows her. Can we split the cost? I think our dental plan covers 50% and I'm guessing the rest is around $200 — happy to go half on that."
-  },
-  {
-    "seq": 7,
-    "thread": "theo-dental-crown",
-    "sender": "Nadia",
-    "timestamp": "2025-03-04T11:10",
-    "domain": "medical",
-    "body": "Yes, 50/50 on the out-of-pocket is fair. I'll call Dr. Anwar today. And I'll forward Dr. Patel's notes this afternoon. Thanks for being thoughtful about this — I'm glad we're on the same page."
-  },
-  {
-    "seq": 8,
-    "thread": "theo-dental-crown",
-    "sender": "Marcus",
-    "timestamp": "2025-03-04T11:24",
-    "domain": "medical",
-    "body": "Same. Let me know what Dr. Anwar's office says. And can you let me know the appointment date once it's set so I can arrange my schedule to be there if possible?"
-  },
-  {
-    "seq": 9,
-    "thread": "theo-dental-crown",
-    "sender": "Nadia",
-    "timestamp": "2025-03-04T14:52",
-    "domain": "medical",
-    "body": "Dr. Anwar can see him March 11th at 3pm. I'll confirm it now. And I just sent you Dr. Patel's summary — check your email. Theo was totally unbothered by all this by the way, had a popsicle and declared himself cured."
-  },
-  {
-    "seq": 10,
-    "thread": "theo-dental-crown",
-    "sender": "Marcus",
-    "timestamp": "2025-03-04T15:08",
-    "domain": "medical",
-    "body": "Ha, love him. March 11th works, I'll be there. Thanks Nadia, this went really smoothly. I'll look at the notes tonight."
+    "thread": "swim-team-2025",
+    "sender": "Nate",
+    "timestamp": "2025-06-02T18:55",
+    "domain": "activities",
+    "body": "Yes — observation practice first, then she decides, then we do fall only with a December check-in. That feels right. I'll pick up one Saturday a month so you're not always the one doing the drop-off. Thanks for bringing this to me first instead of just signing her up."
   }
 ]
