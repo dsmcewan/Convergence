@@ -1,66 +1,66 @@
 [
   {
     "seq": 1,
-    "thread": "tonsillectomy-2025",
-    "sender": "Maya",
-    "timestamp": "2025-05-06T10:14",
-    "domain": "medical",
-    "body": "Hi Derek. Dr. Flores saw Caleb yesterday and said his tonsils are chronically inflamed — he's had 7 strep infections in 12 months. She's recommending a tonsillectomy. I'd like to schedule a consult with the ENT she referred us to and get your thoughts before we decide anything."
+    "thread": "apartment-move",
+    "sender": "Marcus",
+    "timestamp": "2025-07-03T10:14",
+    "domain": "relocation",
+    "body": "Hey Diana, wanted to give you a heads up — I found an apartment in Millbrook, about 8 miles from our current place, still inside the same school district. Lease would start August 1. Zoe's school, her pediatrician, everything stays the same. I think it makes sense and I wanted to let you know before I signed anything."
   },
   {
     "seq": 2,
-    "thread": "tonsillectomy-2025",
-    "sender": "Derek",
-    "timestamp": "2025-05-06T14:52",
-    "domain": "medical",
-    "body": "I don't think that's necessary. Lots of kids get strep. Surgery seems extreme. I'm not agreeing to this."
+    "thread": "apartment-move",
+    "sender": "Diana",
+    "timestamp": "2025-07-03T11:42",
+    "domain": "relocation",
+    "body": "You can't just move without telling me in advance. The parenting plan requires 30 days written notice for any change of residence. This is the first I'm hearing about it."
   },
   {
     "seq": 3,
-    "thread": "tonsillectomy-2025",
-    "sender": "Maya",
-    "timestamp": "2025-05-06T15:31",
-    "domain": "medical",
-    "body": "I hear you, but 7 infections in a year is above the clinical threshold. He's missed almost 3 weeks of school and he's not sleeping well because of the size of his tonsils. I'm not asking we decide today — just that we go to the ENT consult together and hear the specialist out. Can you do that?"
+    "thread": "apartment-move",
+    "sender": "Marcus",
+    "timestamp": "2025-07-03T12:05",
+    "domain": "relocation",
+    "body": "I am telling you in advance — August 1 is 4 weeks away. The parenting plan says 30 days notice and I'm giving that. Same school district, same distance from you, nothing changes for Zoe's schedule. I'm not asking permission, I'm keeping you informed like I'm supposed to."
   },
   {
     "seq": 4,
-    "thread": "tonsillectomy-2025",
-    "sender": "Derek",
-    "timestamp": "2025-05-06T18:07",
-    "domain": "medical",
-    "body": "You don't have the right to schedule any procedure without my consent. The parenting plan is very clear that major medical decisions require both parents. I've reviewed it with my attorney and she agrees you're out of line even contacting the ENT. This is a unilateral move and I won't be part of it."
+    "thread": "apartment-move",
+    "sender": "Diana",
+    "timestamp": "2025-07-03T14:30",
+    "domain": "relocation",
+    "body": "I spoke with my attorney. She says the notice has to be written and delivered formally, not a text message. And she raised questions about whether this affects the custody exchange logistics. You should have discussed this with me before you even started looking. That's what co-parenting means."
   },
   {
     "seq": 5,
-    "thread": "tonsillectomy-2025",
-    "sender": "Maya",
-    "timestamp": "2025-05-07T08:22",
-    "domain": "medical",
-    "body": "Derek, I have not scheduled anything. I said consult — a conversation with a doctor, not a surgery date. I'm literally asking for your input before we decide. That IS following the parenting plan. Please come to the appointment with me."
+    "thread": "apartment-move",
+    "sender": "Marcus",
+    "timestamp": "2025-07-03T15:02",
+    "domain": "relocation",
+    "body": "I'll send an email right now if that's what you need for the record. But Diana, I'm moving 8 miles away. The exchanges don't change. Zoe's life doesn't change. I don't need your sign-off on where I choose to live."
   },
   {
     "seq": 6,
-    "thread": "tonsillectomy-2025",
-    "sender": "Derek",
-    "timestamp": "2025-05-07T11:45",
-    "domain": "medical",
-    "body": "My attorney reviewed the referral paperwork you sent and says you've already started the intake process, which counts as initiating a procedure under the order. I'm not attending any appointment that you set up without my knowledge. If you want to discuss Caleb's health you go through the co-parenting coordinator, not text me directly. That's what the court requires."
+    "thread": "apartment-move",
+    "sender": "Diana",
+    "timestamp": "2025-07-04T09:18",
+    "domain": "relocation",
+    "body": "I've thought about this more and I don't think this is in Zoe's best interest. You're moving farther from her school, which adds to her commute on your weeks. My attorney agrees that this warrants a review. I'm going to need you to hold off on signing anything."
   },
   {
     "seq": 7,
-    "thread": "tonsillectomy-2025",
-    "sender": "Maya",
-    "timestamp": "2025-05-08T09:05",
-    "domain": "medical",
-    "body": "The intake form is just insurance verification — it's not consenting to surgery. I sent it to you so you'd be informed, which is what the coordinator told us to do. Caleb is struggling, Derek. Can we please focus on what's best for him and just talk to the specialist?"
+    "thread": "apartment-move",
+    "sender": "Marcus",
+    "timestamp": "2025-07-04T10:45",
+    "domain": "relocation",
+    "body": "The school is 3 miles from the new place, 4 miles from my current place. You're describing a one-mile difference. I'm not holding off — I have every legal right to move within the same county. Please have your attorney explain that to you."
   },
   {
     "seq": 8,
-    "thread": "tonsillectomy-2025",
-    "sender": "Derek",
-    "timestamp": "2025-05-08T20:33",
-    "domain": "medical",
-    "body": "I've already spoken with Dr. Nguyen — our family physician, the one listed first on Caleb's insurance — and he agrees watchful waiting is appropriate for another six months. I've documented that recommendation. There will be no ENT consult and no surgery. This is my final position and it's backed by a physician of record. Consider this matter closed."
+    "thread": "apartment-move",
+    "sender": "Diana",
+    "timestamp": "2025-07-07T16:55",
+    "domain": "relocation",
+    "body": "Marcus, I filed an emergency motion this morning to temporarily enjoin any change of residence pending a court review. My attorney filed it today. You will be served. I'm not doing this to be difficult — I'm doing it because Zoe deserves stability and you're not thinking about that. The court will decide. This is done."
   }
 ]

@@ -1,0 +1,66 @@
+[
+  {
+    "seq": 1,
+    "thread": "tonsillectomy-2025",
+    "sender": "Maya",
+    "timestamp": "2025-05-06T10:14",
+    "domain": "medical",
+    "body": "Hi Derek. Dr. Flores saw Caleb yesterday and said his tonsils are chronically inflamed — he's had 7 strep infections in 12 months. She's recommending a tonsillectomy. I'd like to schedule a consult with the ENT she referred us to and get your thoughts before we decide anything."
+  },
+  {
+    "seq": 2,
+    "thread": "tonsillectomy-2025",
+    "sender": "Derek",
+    "timestamp": "2025-05-06T14:52",
+    "domain": "medical",
+    "body": "I don't think that's necessary. Lots of kids get strep. Surgery seems extreme. I'm not agreeing to this."
+  },
+  {
+    "seq": 3,
+    "thread": "tonsillectomy-2025",
+    "sender": "Maya",
+    "timestamp": "2025-05-06T15:31",
+    "domain": "medical",
+    "body": "I hear you, but 7 infections in a year is above the clinical threshold. He's missed almost 3 weeks of school and he's not sleeping well because of the size of his tonsils. I'm not asking we decide today — just that we go to the ENT consult together and hear the specialist out. Can you do that?"
+  },
+  {
+    "seq": 4,
+    "thread": "tonsillectomy-2025",
+    "sender": "Derek",
+    "timestamp": "2025-05-06T18:07",
+    "domain": "medical",
+    "body": "You don't have the right to schedule any procedure without my consent. The parenting plan is very clear that major medical decisions require both parents. I've reviewed it with my attorney and she agrees you're out of line even contacting the ENT. This is a unilateral move and I won't be part of it."
+  },
+  {
+    "seq": 5,
+    "thread": "tonsillectomy-2025",
+    "sender": "Maya",
+    "timestamp": "2025-05-07T08:22",
+    "domain": "medical",
+    "body": "Derek, I have not scheduled anything. I said consult — a conversation with a doctor, not a surgery date. I'm literally asking for your input before we decide. That IS following the parenting plan. Please come to the appointment with me."
+  },
+  {
+    "seq": 6,
+    "thread": "tonsillectomy-2025",
+    "sender": "Derek",
+    "timestamp": "2025-05-07T11:45",
+    "domain": "medical",
+    "body": "My attorney reviewed the referral paperwork you sent and says you've already started the intake process, which counts as initiating a procedure under the order. I'm not attending any appointment that you set up without my knowledge. If you want to discuss Caleb's health you go through the co-parenting coordinator, not text me directly. That's what the court requires."
+  },
+  {
+    "seq": 7,
+    "thread": "tonsillectomy-2025",
+    "sender": "Maya",
+    "timestamp": "2025-05-08T09:05",
+    "domain": "medical",
+    "body": "The intake form is just insurance verification — it's not consenting to surgery. I sent it to you so you'd be informed, which is what the coordinator told us to do. Caleb is struggling, Derek. Can we please focus on what's best for him and just talk to the specialist?"
+  },
+  {
+    "seq": 8,
+    "thread": "tonsillectomy-2025",
+    "sender": "Derek",
+    "timestamp": "2025-05-08T20:33",
+    "domain": "medical",
+    "body": "I've already spoken with Dr. Nguyen — our family physician, the one listed first on Caleb's insurance — and he agrees watchful waiting is appropriate for another six months. I've documented that recommendation. There will be no ENT consult and no surgery. This is my final position and it's backed by a physician of record. Consider this matter closed."
+  }
+]

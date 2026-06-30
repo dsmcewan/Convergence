@@ -1,0 +1,50 @@
+[
+  {
+    "seq": 1,
+    "thread": "swim-team-2025",
+    "sender": "Priya",
+    "timestamp": "2025-06-02T08:45",
+    "domain": "activities",
+    "body": "Hey Nate — Lily's swim coach pulled me aside after practice and said she has real potential. He's asking if she wants to try out for the competitive club team this fall. Practices would be Tuesday/Thursday evenings and Saturday mornings. Wanted to flag it for both of us before saying anything to her."
+  },
+  {
+    "seq": 2,
+    "thread": "swim-team-2025",
+    "sender": "Nate",
+    "timestamp": "2025-06-02T12:19",
+    "domain": "activities",
+    "body": "That's exciting to hear, honestly. My hesitation is the Saturday morning piece — she's with me every other weekend and I'd hate for her to lose that unstructured time. Also wondering about cost. Do you know what the club fees look like?"
+  },
+  {
+    "seq": 3,
+    "thread": "swim-team-2025",
+    "sender": "Priya",
+    "timestamp": "2025-06-02T13:47",
+    "domain": "activities",
+    "body": "I get the Saturday concern — I had the same thought. Coach said fees are around $180/month plus a meet registration fee each time. Some meets are local, a couple are overnight. I was thinking we split the monthly fee 50/50 and handle meet costs as they come. What do you think?"
+  },
+  {
+    "seq": 4,
+    "thread": "swim-team-2025",
+    "sender": "Nate",
+    "timestamp": "2025-06-02T16:02",
+    "domain": "activities",
+    "body": "$180 split I can work with. The overnight meets give me a little pause just because of her age, but I don't want to be the person who holds her back either. What if we said yes to the fall season and check in at December — see how she's handling it and whether she actually wants to continue before signing up for spring?"
+  },
+  {
+    "seq": 5,
+    "thread": "swim-team-2025",
+    "sender": "Priya",
+    "timestamp": "2025-06-02T17:28",
+    "domain": "activities",
+    "body": "December check-in works for me. And honestly I think that protects her too — if she's burning out or it's affecting school she should feel like she can stop without disappointing us. I'll tell coach we want to observe a practice first before she commits. Good with you?"
+  },
+  {
+    "seq": 6,
+    "thread": "swim-team-2025",
+    "sender": "Nate",
+    "timestamp": "2025-06-02T18:55",
+    "domain": "activities",
+    "body": "Yes — observation practice first, then she decides, then we do fall only with a December check-in. That feels right. I'll pick up one Saturday a month so you're not always the one doing the drop-off. Thanks for bringing this to me first instead of just signing her up."
+  }
+]
