@@ -45,6 +45,18 @@ _KIND_PHRASES = {
     "cross_channel_divergence": "a claim contradicted by the sender's own words in another channel",
 }
 
+# Canonical within-finding signal order: substantive layers first (the moves),
+# then contextual corroborators, matching the collection order in
+# `_collect_signals`. A signal's position must NOT depend on the set/dict
+# iteration order of any layer's detector (which can vary across Python
+# versions), so findings sort their signals by this total key before freezing.
+_LAYER_ORDER = {"L1": 0, "L2": 1, "L3": 2, "L6": 3, "L4": 4, "L5": 5}
+
+
+def _signal_sort_key(s) -> tuple:
+    """Total, version-stable ordering key for a Signal: (layer, seqs, kind, detail)."""
+    return (_LAYER_ORDER.get(s.layer, 99), s.seqs, s.kind, s.detail)
+
 
 @dataclass(frozen=True)
 class Signal:
@@ -139,7 +151,7 @@ def run_engine(full: list[Message], included_seqs=None, records=None, cross_chan
             seqs=tuple(sorted(g["seqs"])),
             confidence=confidence,
             layers=layers,
-            signals=tuple(g["sigs"]),
+            signals=tuple(sorted(g["sigs"], key=_signal_sort_key)),
             summary=_summary(g["sigs"], confidence),
         ))
     findings.sort(key=lambda f: (f.confidence != "elevated", f.seqs))

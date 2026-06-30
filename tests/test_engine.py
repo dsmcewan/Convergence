@@ -4,7 +4,7 @@ from pathlib import Path
 
 from convergence.corpus import Message, load_corpus
 from convergence.records import load_records
-from convergence.engine import run_engine
+from convergence.engine import run_engine, Signal, _signal_sort_key
 
 DATA = Path(__file__).parent.parent / "data"
 
@@ -105,3 +105,32 @@ def test_integration_headline_and_self_disqualification():
             assert any(layer in {"L1", "L2", "L3", "L6"} for layer in f.layers)
         if set(f.layers) <= {"L4", "L5"}:
             assert f.confidence == "low"
+
+
+def test_signal_order_is_canonical_and_input_independent():
+    # Multiple L4 corroborators on one anchor: their emission order from
+    # find_convergences can vary with set/dict iteration (and thus across Python
+    # versions), so a finding must impose a total, version-stable signal order.
+    a = Signal("L4", (8,), "domain_convergence", "weekend across medical, schedule")
+    b = Signal("L4", (8,), "domain_convergence", "agreed across medical, schedule")
+    c = Signal("L4", (8,), "domain_convergence", "swap across medical, schedule")
+    forward = sorted([a, b, c], key=_signal_sort_key)
+    reverse = sorted([c, b, a], key=_signal_sort_key)
+    assert forward == reverse  # final order does not depend on input order
+    # canonical: ascending by detail within the same layer + seqs
+    assert [s.detail for s in forward] == sorted(s.detail for s in (a, b, c))
+    # substantive layers sort before contextual ones regardless of input order
+    sub = Signal("L1", (8,), "borrow_authority", "lawyer says")
+    assert sorted([a, sub], key=_signal_sort_key)[0] is sub
+
+
+def test_engine_emits_signals_in_canonical_order():
+    # Over a real multi-L4 corpus, every finding's signals come out canonically
+    # sorted — so the serialized narration is reproducible across Python versions.
+    full = load_corpus(DATA / "coparenting_full.json")
+    included = json.loads((DATA / "coparenting_exhibit.json").read_text(encoding="utf-8"))["included_seqs"]
+    records = load_records(DATA / "coparenting_records.json")
+    result = run_engine(full, included_seqs=included, records=records)
+    assert result.findings  # corpus does produce findings
+    for f in result.findings:
+        assert list(f.signals) == sorted(f.signals, key=_signal_sort_key)
