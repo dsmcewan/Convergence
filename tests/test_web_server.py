@@ -108,3 +108,13 @@ def test_parse_content_length_enforces_cap():
             parse_content_length(header)
         assert exc.value.status == status
 
+
+def test_call_with_timeout_returns_fast_and_504s_slow():
+    import time
+
+    from web.server import ChatError, call_with_timeout
+    assert call_with_timeout(lambda: 7, 5) == 7
+    with pytest.raises(ChatError) as exc:
+        call_with_timeout(lambda: time.sleep(2), 0.05)
+    assert exc.value.status == 504
+

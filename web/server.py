@@ -5,6 +5,9 @@ import hmac
 import json
 import mimetypes
 import os
+from collections.abc import Callable
+from concurrent.futures import ThreadPoolExecutor
+from concurrent.futures import TimeoutError as FuturesTimeout
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import unquote, urlparse
@@ -28,6 +31,12 @@ MAX_QUESTION_LEN = 4000
 ALLOWED_VOICES = {"blanc", "plain"}
 ALLOWED_MODELS = {"claude", "openai", "grok", "gemini", "agy"}
 
+LLM_TIMEOUT_S = float(os.environ.get("CONVERGENCE_LLM_TIMEOUT_S", "30"))
+# Bounded pool: also caps concurrent chat work. A timed-out worker keeps running
+# to completion in the background (threads can't be force-killed) — acceptable
+# for a local demo; the request already returned 504.
+_CHAT_POOL = ThreadPoolExecutor(max_workers=4)
+
 
 class ChatError(Exception):
     """A client-facing chat error carrying an HTTP status code."""
@@ -36,6 +45,14 @@ class ChatError(Exception):
         super().__init__(message)
         self.status = status
         self.message = message
+
+
+def call_with_timeout(fn: Callable[[], str], timeout_s: float) -> str:
+    future = _CHAT_POOL.submit(fn)
+    try:
+        return future.result(timeout=timeout_s)
+    except FuturesTimeout:
+        raise ChatError(504, "the language model did not respond in time") from None
 
 
 def parse_content_length(headers) -> int:
@@ -146,7 +163,10 @@ class Handler(BaseHTTPRequestHandler):
             length = parse_content_length(self.headers)
             payload = json.loads(self.rfile.read(length).decode("utf-8"))
             corpus, question, voice, model = validate_chat_request(payload)
-            answer = answer_chat(corpus=corpus, question=question, voice=voice, model=model)
+            answer = call_with_timeout(
+                lambda: answer_chat(corpus=corpus, question=question, voice=voice, model=model),
+                LLM_TIMEOUT_S,
+            )
             self._json({"answer": str(answer)})
         except ChatError as exc:
             self._json({"error": exc.message}, status=exc.status)
