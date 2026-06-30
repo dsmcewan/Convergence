@@ -4,7 +4,8 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from web.serialize import corpus_names, serialize_corpus, serialize_dynamics, serialize_index
+from web.curated import serialize_corpus
+from web.serialize import corpus_names, serialize_dynamics, serialize_index
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "web" / "site" / "data"

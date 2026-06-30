@@ -14,10 +14,10 @@ from urllib.parse import unquote, urlparse
 
 from convergence.conversation import BLANC_PERSONA, Conversation
 from web.build import build
+from web.curated import serialize_corpus
 from web.serialize import (
     corpus_names,
     load_analysis,
-    serialize_corpus,
     serialize_dynamics,
     serialize_index,
 )

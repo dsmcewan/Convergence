@@ -229,8 +229,7 @@
         }
       ],
       "narration": {
-        "plain": "Elevated finding at seqs [4, 11] (L2, L3, L4). Elevated - a claim contradicted by an external record + independent domains converging on one anchor + a message cut from inside a continuous thread independently agree.",
-        "blanc": "Here the threads meet: seqs [4, 11], layers L2, L3, L4. Not a hunch, but corroboration."
+        "plain": "Elevated finding at seqs [4, 11] (L2, L3, L4). Elevated - a claim contradicted by an external record + independent domains converging on one anchor + a message cut from inside a continuous thread independently agree."
       }
     },
     {
@@ -298,8 +297,7 @@
         }
       ],
       "narration": {
-        "plain": "Elevated finding at seqs [8] (L1, L4, L5). Elevated - a decision deferred to an outside authority + independent domains converging on one anchor + a register shift from the sender's baseline independently agree.",
-        "blanc": "Here the threads meet: seqs [8], layers L1, L4, L5. Not a hunch, but corroboration."
+        "plain": "Elevated finding at seqs [8] (L1, L4, L5). Elevated - a decision deferred to an outside authority + independent domains converging on one anchor + a register shift from the sender's baseline independently agree."
       }
     },
     {
@@ -365,8 +363,7 @@
         }
       ],
       "narration": {
-        "plain": "Elevated finding at seqs [10] (L1, L4, L5). Elevated - a decision deferred to an outside authority + independent domains converging on one anchor + a register shift from the sender's baseline independently agree.",
-        "blanc": "Here the threads meet: seqs [10], layers L1, L4, L5. Not a hunch, but corroboration."
+        "plain": "Elevated finding at seqs [10] (L1, L4, L5). Elevated - a decision deferred to an outside authority + independent domains converging on one anchor + a register shift from the sender's baseline independently agree."
       }
     },
     {
@@ -455,8 +452,7 @@
         }
       ],
       "narration": {
-        "plain": "Low finding at seqs [1, 9, 12] (L4). Low - independent domains converging on one anchor (single layer; not corroborated).",
-        "blanc": "Seqs [1, 9, 12] remain low. Suggestive, perhaps, but the method refuses to elevate a lone thread."
+        "plain": "Low finding at seqs [1, 9, 12] (L4). Low - independent domains converging on one anchor (single layer; not corroborated)."
       }
     },
     {
@@ -511,8 +507,7 @@
         }
       ],
       "narration": {
-        "plain": "Low finding at seqs [3] (L4, L5). Low - independent domains converging on one anchor, a register shift from the sender's baseline (single layer; not corroborated).",
-        "blanc": "Seqs [3] remain low. Suggestive, perhaps, but the method refuses to elevate a lone thread."
+        "plain": "Low finding at seqs [3] (L4, L5). Low - independent domains converging on one anchor, a register shift from the sender's baseline (single layer; not corroborated)."
       }
     },
     {
@@ -563,8 +558,7 @@
         }
       ],
       "narration": {
-        "plain": "Low finding at seqs [5] (L4, L5). Low - independent domains converging on one anchor, a register shift from the sender's baseline (single layer; not corroborated).",
-        "blanc": "Seqs [5] remain low. Suggestive, perhaps, but the method refuses to elevate a lone thread."
+        "plain": "Low finding at seqs [5] (L4, L5). Low - independent domains converging on one anchor, a register shift from the sender's baseline (single layer; not corroborated)."
       }
     },
     {
@@ -601,8 +595,7 @@
         }
       ],
       "narration": {
-        "plain": "Low finding at seqs [13] (L1). Low - a decision deferred to an outside authority (single layer; not corroborated).",
-        "blanc": "Seqs [13] remain low. Suggestive, perhaps, but the method refuses to elevate a lone thread."
+        "plain": "Low finding at seqs [13] (L1). Low - a decision deferred to an outside authority (single layer; not corroborated)."
       }
     }
   ],
@@ -656,11 +649,22 @@
     }
   ],
   "narration": {
-    "plain": "Convergence report - 14 messages; 3 elevated finding(s), 4 low.\n\nELEVATED - seqs [4, 11] (layers L2, L3, L4)\n  Elevated - a claim contradicted by an external record + independent domains converging on one anchor + a message cut from inside a continuous thread independently agree.\n    - [L2] cut between shown 3 and 5\n    - [L3] record R1: agreed_to_weekend_swap=True\n    - [L4] weekend across medical, schedule\n    - [L4] agreed across medical, schedule\n    - [L4] swap across medical, schedule\n\nELEVATED - seqs [8] (layers L1, L4, L5)\n  Elevated - a decision deferred to an outside authority + independent domains converging on one anchor + a register shift from the sender's baseline independently agree.\n    - [L1] pediatrician says\n    - [L5] register deviates from Sam's baseline (score 0.1503)\n    - [L4] weekend across medical, schedule\n\nELEVATED - seqs [10] (layers L1, L4, L5)\n  Elevated - a decision deferred to an outside authority + independent domains converging on one anchor + a register shift from the sender's baseline independently agree.\n    - [L1] lawyer says\n    - [L5] register deviates from Sam's baseline (score 0.2872)\n    - [L4] swap across medical, schedule\n\nlow - seqs [13] (L1): a substantive signal with nothing to corroborate it; not corroborated.\n\nlow - 3 context-only signal(s) (domain overlap / register shift) held low; not corroborated by any tactic, omission, or contradiction.\n\nA finding is elevated only when independent layers agree; lone signals stay low by design.",
-    "blanc": "Gather round, if you please. Let me walk you through it, from the beginning.\n\nWe have before us 14 messages. Most are precisely what they appear to be. But not all. Permit me to draw the threads together, one at a time.\n\nBegin here. Turn your attention to seqs [4, 11].\n   First, a line lifted clean out of the conversation. The line they removed - seq 4 - read: \"ok, you can swap this weekend for next, that works.\"\n   And at last, a claim the record itself contradicts - Sam says one thing, then its opposite, as it suits them:\n      Date 1 (2025-04-07): Sam says \"ok, you can swap this weekend for next, that works.\"\n      But lo and behold, as it suits them - Date 2 (2025-04-11): Sam says \"We never agreed to swap weekends.\"\n      Must be nice, to have the luxury of a life that suits you.\n   And corroborating, quietly: the same matter, pressing in from another domain.\n   3 independent threads (L2, L3, L4), arriving by separate roads at the selfsame doorstep, having never once conferred. Elevated - a claim contradicted by an external record + independent domains converging on one anchor + a message cut from inside a continuous thread independently agree. That, I do not call coincidence.\n\nNow - the next of it. Turn your attention to seqs [8].\n   Here, he leans on a borrowed authority. seq 8: \"The *pediatrician says* she shouldn't travel this weekend, so I'm keeping her.\"\n   And corroborating, quietly: the same matter, pressing in from another domain; the voice stiffens into a legal register.\n   3 independent threads (L1, L4, L5), arriving by separate roads at the selfsame doorstep, having never once conferred. Elevated - a decision deferred to an outside authority + independent domains converging on one anchor + a register shift from the sender's baseline independently agree. That, I do not call coincidence.\n\nAnd then, this. Turn your attention to seqs [10].\n   Here, he leans on a borrowed authority. seq 10: \"Pursuant to the custody order, my *lawyer says* I am not authorizing the swap.\"\n   And corroborating, quietly: the same matter, pressing in from another domain; the voice stiffens into a legal register.\n   3 independent threads (L1, L4, L5), arriving by separate roads at the selfsame doorstep, having never once conferred. Elevated - a decision deferred to an outside authority + independent domains converging on one anchor + a register shift from the sender's baseline independently agree. That, I do not call coincidence.\n\nNow - you will want to point me to the loose ends. I have not forgotten them.\n   Seqs [13] (L1) - a lone voice - seq 13: \"My *attorney says* weekdays belong with me.\". Suggestive, perhaps. But it stands alone, uncorroborated, and I'll not hang a case on a hunch. A red herring. Set aside.\n   And 3 faint murmurs besides - mere atmosphere, not evidence. Noted, and dismissed.\n\nSo. The shape of it is unmistakable. Where the threads converge, I have shown you - the donut, and the hole at its heart. I map the hole; I do not fill it. The truth of intent, that I leave to the court."
+    "plain": "Convergence report - 14 messages; 3 elevated finding(s), 4 low.\n\nELEVATED - seqs [4, 11] (layers L2, L3, L4)\n  Elevated - a claim contradicted by an external record + independent domains converging on one anchor + a message cut from inside a continuous thread independently agree.\n    - [L2] cut between shown 3 and 5\n    - [L3] record R1: agreed_to_weekend_swap=True\n    - [L4] weekend across medical, schedule\n    - [L4] agreed across medical, schedule\n    - [L4] swap across medical, schedule\n\nELEVATED - seqs [8] (layers L1, L4, L5)\n  Elevated - a decision deferred to an outside authority + independent domains converging on one anchor + a register shift from the sender's baseline independently agree.\n    - [L1] pediatrician says\n    - [L5] register deviates from Sam's baseline (score 0.1503)\n    - [L4] weekend across medical, schedule\n\nELEVATED - seqs [10] (layers L1, L4, L5)\n  Elevated - a decision deferred to an outside authority + independent domains converging on one anchor + a register shift from the sender's baseline independently agree.\n    - [L1] lawyer says\n    - [L5] register deviates from Sam's baseline (score 0.2872)\n    - [L4] swap across medical, schedule\n\nlow - seqs [13] (L1): a substantive signal with nothing to corroborate it; not corroborated.\n\nlow - 3 context-only signal(s) (domain overlap / register shift) held low; not corroborated by any tactic, omission, or contradiction.\n\nA finding is elevated only when independent layers agree; lone signals stay low by design."
   },
   "composition_narration": {
-    "plain": "Patterns (recurring structure above individual findings):\n  - [recurring tactic] repeated:borrow_authority @ seqs [8, 10, 13] - borrow_authority recurs across 3 messages\n  - [named chain] sanitize-record @ seqs [1, 4, 10, 11] - reliance, authority shift, denial, and record pressure repeat the sanitize-record structure\n\nCampaigns (one actor, one target, sustained over time):\n  - Sam sustains 2 elevated findings against 'medical' (2025-04-11T09:03 .. 2025-04-11T09:31); patterns: repeated:borrow_authority",
-    "blanc": "Now - a pattern is a habit, and habits do tell tales:\n  - repeated:borrow_authority, a tactic repeated, at seqs [8, 10, 13]. borrow_authority recurs across 3 messages.\n  - sanitize-record, a named chain, at seqs [1, 4, 10, 11]. reliance, authority shift, denial, and record pressure repeat the sanitize-record structure.\n\nAnd a campaign - well, that is a habit with a purpose. An incident is happenstance; twice against the same soul, over time, is design:\n  - Sam sustains 2 elevated findings against 'medical' (2025-04-11T09:03 .. 2025-04-11T09:31); patterns: repeated:borrow_authority"
+    "plain": "Patterns (recurring structure above individual findings):\n  - [recurring tactic] repeated:borrow_authority @ seqs [8, 10, 13] - borrow_authority recurs across 3 messages\n  - [named chain] sanitize-record @ seqs [1, 4, 10, 11] - reliance, authority shift, denial, and record pressure repeat the sanitize-record structure\n\nCampaigns (one actor, one target, sustained over time):\n  - Sam sustains 2 elevated findings against 'medical' (2025-04-11T09:03 .. 2025-04-11T09:31); patterns: repeated:borrow_authority"
+  },
+  "curated": {
+    "narration_blanc": "Gather round, if you please. Let me walk you through it, from the beginning.\n\nWe have before us 14 messages. Most are precisely what they appear to be. But not all. Permit me to draw the threads together, one at a time.\n\nBegin here. Turn your attention to seqs [4, 11].\n   First, a line lifted clean out of the conversation. The line they removed - seq 4 - read: \"ok, you can swap this weekend for next, that works.\"\n   And at last, a claim the record itself contradicts - Sam says one thing, then its opposite, as it suits them:\n      Date 1 (2025-04-07): Sam says \"ok, you can swap this weekend for next, that works.\"\n      But lo and behold, as it suits them - Date 2 (2025-04-11): Sam says \"We never agreed to swap weekends.\"\n      Must be nice, to have the luxury of a life that suits you.\n   And corroborating, quietly: the same matter, pressing in from another domain.\n   3 independent threads (L2, L3, L4), arriving by separate roads at the selfsame doorstep, having never once conferred. Elevated - a claim contradicted by an external record + independent domains converging on one anchor + a message cut from inside a continuous thread independently agree. That, I do not call coincidence.\n\nNow - the next of it. Turn your attention to seqs [8].\n   Here, he leans on a borrowed authority. seq 8: \"The *pediatrician says* she shouldn't travel this weekend, so I'm keeping her.\"\n   And corroborating, quietly: the same matter, pressing in from another domain; the voice stiffens into a legal register.\n   3 independent threads (L1, L4, L5), arriving by separate roads at the selfsame doorstep, having never once conferred. Elevated - a decision deferred to an outside authority + independent domains converging on one anchor + a register shift from the sender's baseline independently agree. That, I do not call coincidence.\n\nAnd then, this. Turn your attention to seqs [10].\n   Here, he leans on a borrowed authority. seq 10: \"Pursuant to the custody order, my *lawyer says* I am not authorizing the swap.\"\n   And corroborating, quietly: the same matter, pressing in from another domain; the voice stiffens into a legal register.\n   3 independent threads (L1, L4, L5), arriving by separate roads at the selfsame doorstep, having never once conferred. Elevated - a decision deferred to an outside authority + independent domains converging on one anchor + a register shift from the sender's baseline independently agree. That, I do not call coincidence.\n\nNow - you will want to point me to the loose ends. I have not forgotten them.\n   Seqs [13] (L1) - a lone voice - seq 13: \"My *attorney says* weekdays belong with me.\". Suggestive, perhaps. But it stands alone, uncorroborated, and I'll not hang a case on a hunch. A red herring. Set aside.\n   And 3 faint murmurs besides - mere atmosphere, not evidence. Noted, and dismissed.\n\nSo. The shape of it is unmistakable. Where the threads converge, I have shown you - the donut, and the hole at its heart. I map the hole; I do not fill it. The truth of intent, that I leave to the court.",
+    "composition_blanc": "Now - a pattern is a habit, and habits do tell tales:\n  - repeated:borrow_authority, a tactic repeated, at seqs [8, 10, 13]. borrow_authority recurs across 3 messages.\n  - sanitize-record, a named chain, at seqs [1, 4, 10, 11]. reliance, authority shift, denial, and record pressure repeat the sanitize-record structure.\n\nAnd a campaign - well, that is a habit with a purpose. An incident is happenstance; twice against the same soul, over time, is design:\n  - Sam sustains 2 elevated findings against 'medical' (2025-04-11T09:03 .. 2025-04-11T09:31); patterns: repeated:borrow_authority",
+    "finding_blanc": [
+      "Here the threads meet: seqs [4, 11], layers L2, L3, L4. Not a hunch, but corroboration.",
+      "Here the threads meet: seqs [8], layers L1, L4, L5. Not a hunch, but corroboration.",
+      "Here the threads meet: seqs [10], layers L1, L4, L5. Not a hunch, but corroboration.",
+      "Seqs [1, 9, 12] remain low. Suggestive, perhaps, but the method refuses to elevate a lone thread.",
+      "Seqs [3] remain low. Suggestive, perhaps, but the method refuses to elevate a lone thread.",
+      "Seqs [5] remain low. Suggestive, perhaps, but the method refuses to elevate a lone thread.",
+      "Seqs [13] remain low. Suggestive, perhaps, but the method refuses to elevate a lone thread."
+    ]
   }
 }
