@@ -1,0 +1,58 @@
+[
+  {
+    "seq": 1,
+    "thread": "travel-hockey-league",
+    "sender": "Renata",
+    "timestamp": "2025-08-11T19:05",
+    "domain": "finance",
+    "body": "Hey, so Connor's coach pulled me aside after practice today and said he's ready for travel hockey this year. The league registration is $1,800 for the season, plus gear upgrades probably another $400. I think it's a great opportunity for him but wanted to talk before I said yes to anything."
+  },
+  {
+    "seq": 2,
+    "thread": "travel-hockey-league",
+    "sender": "Joel",
+    "timestamp": "2025-08-11T20:22",
+    "domain": "finance",
+    "body": "Wow, that's a big jump. Does the $1,800 include ice time and tournaments or are those on top? I'm not saying no, I just want to understand the full number before we commit."
+  },
+  {
+    "seq": 3,
+    "thread": "travel-hockey-league",
+    "sender": "Renata",
+    "timestamp": "2025-08-11T20:48",
+    "domain": "finance",
+    "body": "Ice time is included but tournaments are extra — coach estimated maybe 6 tournaments at roughly $150 each for travel and fees, so call it another $900. All in we're probably looking at $3,100 between the two of us. I was thinking we'd split it 50/50."
+  },
+  {
+    "seq": 4,
+    "thread": "travel-hockey-league",
+    "sender": "Joel",
+    "timestamp": "2025-08-12T07:30",
+    "domain": "finance",
+    "body": "Okay I ran the numbers. $1,550 is doable for me but it's tight with the fall. I'd feel better if we could cap the tournament travel at 4 this season and see how it goes. I don't want to overcommit him if he burns out, either."
+  },
+  {
+    "seq": 5,
+    "thread": "travel-hockey-league",
+    "sender": "Renata",
+    "timestamp": "2025-08-12T08:15",
+    "domain": "finance",
+    "body": "That's actually a fair point — I asked Connor and he said he's nervous about the time commitment too. What if we sign up for the league and cover the 4 tournaments you mentioned, and then revisit after winter break if he wants to add more? I'd rather he enjoy it than feel pressured."
+  },
+  {
+    "seq": 6,
+    "thread": "travel-hockey-league",
+    "sender": "Joel",
+    "timestamp": "2025-08-12T09:02",
+    "domain": "finance",
+    "body": "Yes, that works for me. Split the league fee and gear 50/50, cap at 4 tournaments this season and split those too, revisit in January. I'll tell him tonight — he's going to be excited."
+  },
+  {
+    "seq": 7,
+    "thread": "travel-hockey-league",
+    "sender": "Renata",
+    "timestamp": "2025-08-12T09:18",
+    "domain": "finance",
+    "body": "Perfect. I'll email the coach and confirm registration. Thanks for talking it through — this is a good call for him."
+  }
+]
