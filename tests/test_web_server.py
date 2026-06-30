@@ -61,3 +61,50 @@ def test_answer_chat_rejects_unknown_corpus():
     else:
         raise AssertionError("unknown corpus should fail")
 
+
+import pytest
+
+
+def _clh(value):
+    import email.message
+    m = email.message.Message()
+    if value is not None:
+        m["content-length"] = value
+    return m
+
+
+def test_validate_chat_request_accepts_valid_and_defaults():
+    from web.server import validate_chat_request
+    assert validate_chat_request({"corpus": "contractor", "question": "why?"}) == (
+        "contractor", "why?", "blanc", "claude")
+    assert validate_chat_request(
+        {"corpus": "contractor", "question": "q", "voice": "plain", "model": "openai"}
+    ) == ("contractor", "q", "plain", "openai")
+
+
+def test_validate_chat_request_rejects_bad_fields():
+    from web.server import ChatError, validate_chat_request
+    bad_payloads = [
+        {},                                                         # missing corpus
+        {"corpus": "nope", "question": "q"},                        # unknown corpus
+        {"corpus": "contractor", "question": "   "},                # blank question
+        {"corpus": "contractor", "question": "x" * 4001},           # over-long
+        {"corpus": "contractor", "question": "q", "voice": "x"},    # bad voice
+        {"corpus": "contractor", "question": "q", "model": "x"},    # bad model
+        "not-a-dict",                                               # wrong type
+    ]
+    for payload in bad_payloads:
+        with pytest.raises(ChatError) as exc:
+            validate_chat_request(payload)
+        assert exc.value.status == 400
+
+
+def test_parse_content_length_enforces_cap():
+    from web.server import MAX_BODY_BYTES, ChatError, parse_content_length
+    assert parse_content_length(_clh("10")) == 10
+    for header, status in [(_clh(None), 400), (_clh("abc"), 400),
+                           (_clh(str(MAX_BODY_BYTES + 1)), 413)]:
+        with pytest.raises(ChatError) as exc:
+            parse_content_length(header)
+        assert exc.value.status == status
+

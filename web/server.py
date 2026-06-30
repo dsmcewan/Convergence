@@ -23,6 +23,55 @@ ROOT = Path(__file__).resolve().parents[1]
 SITE = ROOT / "web" / "site"
 DATA_CACHE: dict[str, dict] = {}
 
+MAX_BODY_BYTES = int(os.environ.get("CONVERGENCE_MAX_BODY_BYTES", "16384"))
+MAX_QUESTION_LEN = 4000
+ALLOWED_VOICES = {"blanc", "plain"}
+ALLOWED_MODELS = {"claude", "openai", "grok", "gemini", "agy"}
+
+
+class ChatError(Exception):
+    """A client-facing chat error carrying an HTTP status code."""
+
+    def __init__(self, status: int, message: str) -> None:
+        super().__init__(message)
+        self.status = status
+        self.message = message
+
+
+def parse_content_length(headers) -> int:
+    raw = headers.get("content-length")
+    if raw is None:
+        raise ChatError(400, "content-length header is required")
+    try:
+        length = int(raw)
+    except (TypeError, ValueError) as exc:
+        raise ChatError(400, "content-length must be an integer") from exc
+    if length < 0:
+        raise ChatError(400, "content-length must be non-negative")
+    if length > MAX_BODY_BYTES:
+        raise ChatError(413, f"request body too large (max {MAX_BODY_BYTES} bytes)")
+    return length
+
+
+def validate_chat_request(payload) -> tuple[str, str, str, str]:
+    if not isinstance(payload, dict):
+        raise ChatError(400, "request body must be a JSON object")
+    corpus = payload.get("corpus")
+    if not isinstance(corpus, str) or corpus not in corpus_names():
+        raise ChatError(400, f"unknown or missing corpus: {corpus!r}")
+    question = payload.get("question")
+    if not isinstance(question, str) or not question.strip():
+        raise ChatError(400, "question is required")
+    if len(question) > MAX_QUESTION_LEN:
+        raise ChatError(400, f"question too long (max {MAX_QUESTION_LEN} chars)")
+    voice = payload.get("voice", "blanc")
+    if voice not in ALLOWED_VOICES:
+        raise ChatError(400, f"voice must be one of {sorted(ALLOWED_VOICES)}")
+    model = payload.get("model", "claude")
+    if model not in ALLOWED_MODELS:
+        raise ChatError(400, f"model must be one of {sorted(ALLOWED_MODELS)}")
+    return corpus, question, voice, model
+
 
 def ensure_static_data() -> None:
     if not (SITE / "data" / "index.json").exists():
@@ -94,15 +143,15 @@ class Handler(BaseHTTPRequestHandler):
             self._json({"error": "unauthorized"}, status=401)
             return
         try:
-            length = int(self.headers.get("content-length", "0"))
+            length = parse_content_length(self.headers)
             payload = json.loads(self.rfile.read(length).decode("utf-8"))
-            answer = answer_chat(
-                corpus=str(payload.get("corpus", "")),
-                question=str(payload.get("question", "")),
-                voice=str(payload.get("voice", "blanc")),
-                model=str(payload.get("model", "claude")),
-            )
-            self._json({"answer": answer})
+            corpus, question, voice, model = validate_chat_request(payload)
+            answer = answer_chat(corpus=corpus, question=question, voice=voice, model=model)
+            self._json({"answer": str(answer)})
+        except ChatError as exc:
+            self._json({"error": exc.message}, status=exc.status)
+        except json.JSONDecodeError:
+            self._json({"error": "request body must be valid JSON"}, status=400)
         except Exception as exc:
             self._json({"error": str(exc)}, status=400)
 
