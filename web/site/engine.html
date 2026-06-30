@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>convergence — engine view</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="engine-view">
+  <header class="engine-topbar">
+    <strong>convergence · engine view</strong>
+    <a href="index.html">lecture →</a>
+  </header>
+  <main class="engine-main">
+    <label for="corpus-select">Corpus</label>
+    <select id="corpus-select" aria-label="corpus"></select>
+    <section id="corpus-summary" class="engine-summary" aria-live="polite"></section>
+    <h2>Findings</h2>
+    <ol id="findings" class="engine-findings"></ol>
+    <h2>Narration</h2>
+    <pre id="narration" class="engine-narration"></pre>
+  </main>
+  <script src="engine.js"></script>
+</body>
+</html>
