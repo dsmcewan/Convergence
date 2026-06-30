@@ -48,7 +48,9 @@ STAGES: tuple[_Stage, ...] = (
     _Stage(2, "objection", re.compile(
         r"\b(i object\b|don't agree|do not agree|i disagree|that won't work|"
         r"that's not acceptable|that is not acceptable|i'm not comfortable|"
-        r"i am not comfortable|i won't agree|i refuse|that's not happening)\b")),
+        r"i am not comfortable|i won't agree|i refuse|that's not happening|"
+        r"i don't think[^.!?]{0,40}\b(right|appropriate|a good idea)\b|"
+        r"i'm not[^.!?]{0,12}sure about\b|i don't know anything about\b)\b")),
     _Stage(3, "obstruction", re.compile(
         r"\b(let's just talk about this later|let's talk about this later|let's talk later|"
         r"i'll get back to you|we'll discuss|i need more time|i need time|"
@@ -62,13 +64,15 @@ STAGES: tuple[_Stage, ...] = (
         r"\b(i'm only trying to|i'm just trying to|i am only trying to|"
         r"for (her|his|their) safety|in (her|his) best interest|because the|because my|"
         r"the (policy|agreement|order|schedule) (says|states|requires|stands)|"
-        r"my (lawyer|attorney|accountant|doctor) (says|said|advised)|"
-        r"pursuant to|per the (agreement|order|policy))\b")),
+        r"my (lawyer|attorney|accountant|doctor)\b[^.!?]{0,40}\b(says|said|told me|advised)\b|"
+        r"pursuant to|per the (agreement|order|policy|parenting plan|plan))\b")),
     _Stage(6, "fait_accompli", re.compile(
         r"\b(i've already|i already|i went ahead and|it's already done|it's done|"
         r"it's final|it's settled|she's now (enrolled|registered|signed up)|"
         r"she's enrolled|we've moved|we've relocated|"
         r"i've (enrolled|booked|switched|withdrawn|moved|scheduled)|"
+        r"i (enrolled|booked|registered|scheduled|withdrew|switched|moved|"
+        r"signed (her|him|them) up)\b|"
         r"too late now|too late to|there's nothing to discuss|nothing to discuss|"
         r"the decision is made|the decision has been made)\b")),
 )

@@ -186,3 +186,43 @@ def test_every_stage_documented_in_all_specs():
         text = (_ROOT / doc).read_text(encoding="utf-8").lower()
         missing = [s.name for s in STAGES if s.name.replace("_", " ") not in text and s.name not in text]  # noqa: E501
         assert missing == [], f"{doc} missing stages: {missing}"
+
+
+# --- vocabulary broadening (recall fix) ------------------------------------
+
+def test_bare_first_person_fait_tags_stage6():
+    assert any(h.stage == 6 for h in tag_stages([_msg(1, "I enrolled Mia at Bright Beginnings this morning. She starts September 4th.")]))  # noqa: E501
+
+
+def test_negated_enrolling_does_not_tag_stage6():
+    # "I'm not enrolling" (present-continuous, negated) is NOT a fait accompli
+    assert all(h.stage != 6 for h in tag_stages([_msg(1, "I'm not enrolling her without you. I'm trying to include you.")]))  # noqa: E501
+
+
+def test_future_intent_does_not_tag_stage6():
+    assert all(h.stage != 6 for h in tag_stages([_msg(1, "I'm going to look at Bright Beginnings this week.")]))  # noqa: E501
+
+
+def test_per_the_parenting_plan_tags_stage5():
+    assert any(h.stage == 5 for h in tag_stages([_msg(1, "Per the parenting plan, major decisions require my agreement.")]))  # noqa: E501
+
+
+def test_de_adjacent_authority_tags_stage5():
+    assert any(h.stage == 5 for h in tag_stages([_msg(1, "I talked to my attorney and she said this is my call.")]))  # noqa: E501
+
+
+def test_i_dont_think_x_is_right_tags_stage2():
+    assert any(h.stage == 2 for h in tag_stages([_msg(1, "I don't think Montessori is the right approach for Mia.")]))  # noqa: E501
+
+
+def test_scoped_soft_doubt_tags_stage2():
+    assert any(h.stage == 2 for h in tag_stages([_msg(1, "I'm not really sure about that place. I don't know anything about it.")]))  # noqa: E501
+
+
+def test_bare_dont_know_does_not_tag_stage2():
+    # bare uncertainty is benign and must NOT be an objection
+    assert all(h.stage != 2 for h in tag_stages([_msg(1, "I don't know. Let me check and get back to you.")]))  # noqa: E501
+
+
+def test_bare_not_sure_does_not_tag_stage2():
+    assert all(h.stage != 2 for h in tag_stages([_msg(1, "I'm not sure. Either day works for me though.")]))  # noqa: E501
