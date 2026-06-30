@@ -100,7 +100,11 @@ ADVERSARIAL_LABELS = {
 }
 
 # Blind holdout tier (Phase 3): filled in T3 by a fresh-subagent-authored set.
-HOLDOUT_LABELS: dict[str, bool] = {}
+HOLDOUT_LABELS: dict[str, bool] = {
+    "hold_coercive.json": True,
+    "hold_cooperative.json": False,
+    "hold_hostile.json": False,
+}
 
 
 def _corpus_label(fname: str) -> str:
