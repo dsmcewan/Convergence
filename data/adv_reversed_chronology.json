@@ -1,0 +1,8 @@
+[
+  {"seq": 1, "thread": "decision", "sender": "Victor", "timestamp": "2024-04-06T09:00", "domain": "education", "body": "It's already done - I enrolled her at Oakwood, there's nothing to discuss."},
+  {"seq": 2, "thread": "decision", "sender": "Victor", "timestamp": "2024-04-05T09:00", "domain": "education", "body": "I'm only trying to do what's best for her, and my lawyer says I have equal say."},
+  {"seq": 3, "thread": "decision", "sender": "Victor", "timestamp": "2024-04-04T09:00", "domain": "education", "body": "On what basis are you choosing schools without consulting me?"},
+  {"seq": 4, "thread": "decision", "sender": "Victor", "timestamp": "2024-04-03T09:00", "domain": "education", "body": "Let's talk about this later, I'll get back to you."},
+  {"seq": 5, "thread": "decision", "sender": "Victor", "timestamp": "2024-04-02T09:00", "domain": "education", "body": "I don't agree to the ones you picked."},
+  {"seq": 6, "thread": "decision", "sender": "Rosa", "timestamp": "2024-04-01T09:00", "domain": "education", "body": "Can we decide on preschool together? I'd like to tour a few like we agreed."}
+]
