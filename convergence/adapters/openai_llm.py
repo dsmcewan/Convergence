@@ -71,7 +71,7 @@ def make_openai_complete(model: str = _MODEL, api_key: str | None = None,
         # same clear, caller-catchable error as a missing key/SDK, so the demo can
         # fall back to the deterministic narrator instead of leaking a raw traceback.
         try:
-            resp = client.chat.completions.create(
+            resp = client.chat.completions.create(  # pragma: no cover - needs network/key
                 model=model,
                 max_completion_tokens=700,  # required by gpt-5.x; also accepted by gpt-4.x
                 messages=[{"role": "user", "content": prompt}],
