@@ -5,7 +5,9 @@ name: pages
 # under the project-pages subpath (https://dsmcewan.github.io/Convergence/).
 
 on:
-  push:
+  workflow_run:
+    workflows: ["tests"]
+    types: [completed]
     branches: [main]
   workflow_dispatch:
 
@@ -14,7 +16,6 @@ permissions:
   pages: write
   id-token: write
 
-# Allow one concurrent deployment; don't cancel an in-progress publish.
 concurrency:
   group: pages
   cancel-in-progress: false
@@ -22,11 +23,15 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    # Deploy only when the tests run that triggered us passed (or on a manual run).
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v5
+        with:
+          ref: main
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
