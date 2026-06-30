@@ -109,3 +109,80 @@ def test_openai_api_error_degrades_to_clear_error():
     complete = make_openai_complete(api_key="test-key", _client=_BoomClient())
     with pytest.raises(RuntimeError):
         complete("hello")
+
+
+def test_anthropic_api_error_degrades_to_clear_error():
+    from convergence.adapters.anthropic_llm import make_anthropic_complete
+
+    class _BoomClient:
+        class messages:
+            @staticmethod
+            def create(**_kwargs):
+                raise ValueError("model_not_found: claude-nope")
+
+    complete = make_anthropic_complete(api_key="test-key", _client=_BoomClient())
+    with pytest.raises(RuntimeError):
+        complete("hello")
+
+
+def test_anthropic_thinking_blocks_printed_and_text_returned(capsys):
+    from convergence.adapters.anthropic_llm import make_anthropic_complete
+
+    class _MockBlock:
+        def __init__(self, type, text=None, thinking=None):
+            self.type = type
+            self.text = text
+            self.thinking = thinking
+
+    class _MockMessage:
+        def __init__(self, content):
+            self.content = content
+
+    last_kwargs = {}
+
+    class _MockClient:
+        class messages:
+            @staticmethod
+            def create(**kwargs):
+                last_kwargs.update(kwargs)
+                return _MockMessage([
+                    _MockBlock("thinking", thinking="I should think about this..."),
+                    _MockBlock("text", text="The final response.")
+                ])
+
+    # 1. Test with default model (claude-sonnet-4-6) -> adaptive thinking enabled
+    complete = make_anthropic_complete(
+        model="claude-sonnet-4-6", api_key="test-key", _client=_MockClient()
+    )
+    res = complete("hello")
+    assert res == "The final response."
+    assert last_kwargs["max_tokens"] == 8192
+    assert last_kwargs["thinking"] == {"type": "adaptive"}
+    assert last_kwargs["output_config"] == {"effort": "high"}
+
+    captured = capsys.readouterr()
+    assert "[Claude Thinking]" in captured.out
+    assert "I should think about this..." in captured.out
+
+    # 2. Test with legacy model -> thinking disabled
+    last_kwargs.clear()
+    complete_legacy = make_anthropic_complete(
+        model="claude-3-5-sonnet-20241022", api_key="test-key", _client=_MockClient()
+    )
+    res_legacy = complete_legacy("hello")
+    assert res_legacy == "The final response."
+    assert last_kwargs["max_tokens"] == 700
+    assert "thinking" not in last_kwargs
+    assert "output_config" not in last_kwargs
+
+    # 3. Test with Claude 3.7 model -> fixed budget thinking enabled
+    last_kwargs.clear()
+    complete_37 = make_anthropic_complete(
+        model="claude-3-7-sonnet-20250219", api_key="test-key", _client=_MockClient()
+    )
+    res_37 = complete_37("hello")
+    assert res_37 == "The final response."
+    assert last_kwargs["max_tokens"] == 4096
+    assert last_kwargs["thinking"] == {"type": "enabled", "budget_tokens": 1024}
+    assert "output_config" not in last_kwargs
+
