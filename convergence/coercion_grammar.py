@@ -137,7 +137,7 @@ def _run_envelope(hits: list[StageHit], coercer: str) -> tuple[int, bool]:
             state = "CYCLED"
         elif state == "CYCLED" and h.stage in _REFUSAL:
             state = "REFUSED"                     # start the next round
-        elif state == "CYCLED" and h.stage == 6 and cycles >= 1:
+        elif state in ("REFUSED", "CYCLED") and h.stage == 6 and cycles >= 1:
             state = "COMPLETE"
             break
     return cycles, state == "COMPLETE"
