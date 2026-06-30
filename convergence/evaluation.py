@@ -111,7 +111,7 @@ def _corpus_label(fname: str) -> str:
     return stem
 
 
-def evaluate_labelset(base_dir, labels: dict) -> EvalResult:
+def evaluate_labelset(base_dir, labels: dict[str, bool]) -> EvalResult:
     """Score a labeled corpus set whose files live directly under base_dir."""
     base = Path(base_dir)
     labeled = [
