@@ -118,7 +118,7 @@ function renderFindingCard(f, idx) {
     : `<span>seqs ${seqStr}</span>`;
 
   const li = document.createElement("li");
-  li.className = `exhibit-card finding ${escapeHtml(f.confidence)}`;
+  li.className = `exhibit-card finding ${f.confidence}`;
   li.innerHTML =
     `<div class="card-head">` +
     `<span class="badge ${escapeHtml(f.confidence)}">${escapeHtml(f.confidence)}</span>` +
@@ -136,12 +136,6 @@ function renderFindingCard(f, idx) {
     const btn = li.querySelector(".trace-btn");
     const legend = li.querySelector(".conv-legend");
     if (btn) btn.addEventListener("click", () => toggleTrace(li, btn, legend));
-    let resizeTimer;
-    window.addEventListener("resize", () => {
-      if (!li.classList.contains("tracing")) return;
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(() => buildTrace(li), 120);
-    });
   }
 
   return li;
@@ -190,5 +184,16 @@ async function init() {
   select.addEventListener("change", () => selectCorpus(select.value));
   await selectCorpus(index.default_corpus);
 }
+
+// Single module-level resize handler: recomputes convergence-trace geometry for
+// all currently-rendered elevated cards that are in tracing state. Registered
+// once — no per-card listeners that accumulate across corpus switches.
+let _resizeTimer;
+window.addEventListener("resize", () => {
+  clearTimeout(_resizeTimer);
+  _resizeTimer = setTimeout(() => {
+    document.querySelectorAll(".finding.elevated.tracing").forEach((card) => buildTrace(card));
+  }, 120);
+});
 
 init();
