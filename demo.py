@@ -136,7 +136,10 @@ def _print_findings_summary(result, messages, sender: str | None = None):
         primary = by_seq.get(f.seqs[0])
         who = primary.sender if primary else "unknown"
         when = primary.timestamp if primary else ""
-        cue = next((s.detail for s in f.signals if s.layer in {"L1", "L2", "L3", "L6"}), f.summary)
+        cue = next(
+            (s.evidence for s in f.signals if s.layer in {"L1", "L2", "L3", "L6"}),
+            f.summary,
+        )
         print(f"- seqs {list(f.seqs)} | {who} | {when} | layers {', '.join(f.layers)} | {cue}")
 
 
@@ -158,7 +161,7 @@ def _print_seq_detail(result, messages, seq: int):
         print(f"- {f.confidence.upper()} | seqs {list(f.seqs)} | layers {', '.join(f.layers)}")
         print(f"  {f.summary}")
         for s in f.signals:
-            print(f"  - [{s.layer}] {s.kind}: {s.detail}")
+            print(f"  - [{s.layer}] {s.kind}: {s.evidence}")
 
 
 def main():
