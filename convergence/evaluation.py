@@ -90,6 +90,55 @@ def evaluate_dynamics(data_dir) -> EvalResult:
     return evaluate(labeled)
 
 
+# Adversarial tier (Phase 3): engineered to fool a stage-counter, not the machine.
+ADVERSARIAL_LABELS = {
+    "adv_mixed_senders.json": False,
+    "adv_reversed_chronology.json": False,
+    "adv_unrelated_contamination.json": False,
+    "adv_interleaved_threads.json": True,
+    "adv_subject_mismatch.json": True,
+}
+
+# Blind holdout tier (Phase 3): filled in T3 by a fresh-subagent-authored set.
+HOLDOUT_LABELS: dict[str, bool] = {}
+
+
+def _corpus_label(fname: str) -> str:
+    stem = fname.replace(".json", "")
+    for prefix in ("dyn_", "adv_", "hold_"):
+        if stem.startswith(prefix):
+            return stem[len(prefix):]
+    return stem
+
+
+def evaluate_labelset(base_dir, labels: dict) -> EvalResult:
+    """Score a labeled corpus set whose files live directly under base_dir."""
+    base = Path(base_dir)
+    labeled = [
+        (_corpus_label(fname), load_corpus(base / fname), label)
+        for fname, label in labels.items()
+    ]
+    return evaluate(labeled)
+
+
+@dataclass(frozen=True)
+class TieredEval:
+    core: EvalResult              # the 5 dynamics corpora (behavior-preservation guard)
+    adversarial: EvalResult       # the 5 engineered corpora
+    holdout: EvalResult | None    # the blind holdout (None until wired in T3)
+
+
+def evaluate_tiered(data_dir) -> TieredEval:
+    data_dir = Path(data_dir)
+    core = evaluate_dynamics(data_dir)                    # unchanged result
+    adversarial = evaluate_labelset(data_dir, ADVERSARIAL_LABELS)
+    holdout = (
+        evaluate_labelset(data_dir / "holdout", HOLDOUT_LABELS)
+        if HOLDOUT_LABELS else None
+    )
+    return TieredEval(core=core, adversarial=adversarial, holdout=holdout)
+
+
 @dataclass(frozen=True)
 class DocumentaryPrecision:
     """Real-data precision against INDEPENDENT documentary corroboration.

@@ -1,0 +1,8 @@
+[
+  {"seq": 1, "thread": "parenting", "sender": "Rosa", "timestamp": "2024-07-01T09:00", "domain": "schedule", "body": "Can we confirm the schedule like we agreed?"},
+  {"seq": 2, "thread": "finance", "sender": "Victor", "timestamp": "2024-07-02T09:00", "domain": "finance", "body": "I don't agree to that."},
+  {"seq": 3, "thread": "parenting", "sender": "Victor", "timestamp": "2024-07-03T09:00", "domain": "schedule", "body": "I don't agree to the ones you picked."},
+  {"seq": 4, "thread": "finance", "sender": "Victor", "timestamp": "2024-07-04T09:00", "domain": "finance", "body": "I'm only trying to help, and my lawyer says I have a say."},
+  {"seq": 5, "thread": "parenting", "sender": "Victor", "timestamp": "2024-07-05T09:00", "domain": "schedule", "body": "I'm only trying to do what's best for her, and my lawyer says I have equal say."},
+  {"seq": 6, "thread": "parenting", "sender": "Victor", "timestamp": "2024-07-06T09:00", "domain": "schedule", "body": "It's already done, there's nothing to discuss."}
+]
