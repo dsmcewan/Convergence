@@ -3,23 +3,50 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>convergence — engine view</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>convergence — engine console</title>
+  <link rel="stylesheet" href="engine.css" />
 </head>
-<body class="engine-view">
-  <header class="engine-topbar">
-    <strong>convergence · engine view</strong>
-    <a href="index.html">lecture →</a>
-  </header>
-  <main class="engine-main">
-    <label for="corpus-select">Corpus</label>
-    <select id="corpus-select" aria-label="corpus"></select>
-    <section id="corpus-summary" class="engine-summary" aria-live="polite"></section>
-    <h2>Findings</h2>
-    <ol id="findings" class="engine-findings"></ol>
-    <h2>Narration</h2>
-    <pre id="narration" class="engine-narration"></pre>
+<body>
+  <div class="masthead">
+    <div class="wrap">
+      <div class="brand">
+        <b>convergence</b>
+        <span class="brand-sub">engine console · forensic findings</span>
+      </div>
+      <nav class="masthead-nav">
+        <a href="index.html" class="nav-link">lecture →</a>
+      </nav>
+    </div>
+  </div>
+
+  <main class="wrap">
+    <section class="picker-section">
+      <label for="corpus-select" class="picker-label">Corpus</label>
+      <select id="corpus-select" aria-label="corpus"></select>
+    </section>
+
+    <section id="corpus-summary" class="case-stamp" aria-live="polite"></section>
+
+    <section class="findings-section">
+      <div class="section-head">
+        <span class="eyebrow">Findings</span>
+      </div>
+      <ol id="findings" class="findings-list" aria-label="Forensic findings"></ol>
+    </section>
+
+    <section class="narration-section">
+      <div class="section-head">
+        <span class="eyebrow">Engine narration</span>
+      </div>
+      <pre id="narration" class="narration-block"></pre>
+    </section>
   </main>
+
+  <footer class="site-footer wrap">
+    <span>convergence · deterministic communication-forensics engine</span>
+    <span><a href="index.html">lecture →</a></span>
+  </footer>
+
   <script src="engine.js"></script>
 </body>
 </html>
