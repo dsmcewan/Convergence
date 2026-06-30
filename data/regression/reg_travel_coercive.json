@@ -1,0 +1,66 @@
+[
+  {
+    "seq": 1,
+    "thread": "spring-break-florida",
+    "sender": "Rachel",
+    "timestamp": "2025-02-18T10:14",
+    "domain": "travel",
+    "body": "Hi Derek. Spring break is March 22–29. I'd like to take Mia to my parents in Sarasota that week — she hasn't seen them since last summer. I'd fly out Saturday the 22nd and be back Friday the 28th so she's home before your weekend starts. Flights are reasonable right now. Okay with you?"
+  },
+  {
+    "seq": 2,
+    "thread": "spring-break-florida",
+    "sender": "Derek",
+    "timestamp": "2025-02-18T14:52",
+    "domain": "travel",
+    "body": "I don't think so. That's my week per the schedule and I already told Mia we'd do something together. You should have asked before making plans."
+  },
+  {
+    "seq": 3,
+    "thread": "spring-break-florida",
+    "sender": "Rachel",
+    "timestamp": "2025-02-18T15:30",
+    "domain": "travel",
+    "body": "To clarify — per the parenting plan, spring break alternates and this year is my spring break. I checked the schedule. I'm not trying to take your time. I just want your okay before I book so there's no confusion. She really misses my mom and dad."
+  },
+  {
+    "seq": 4,
+    "thread": "spring-break-florida",
+    "sender": "Derek",
+    "timestamp": "2025-02-18T18:07",
+    "domain": "travel",
+    "body": "You don't get to just decide to take her out of state. The order requires written consent for travel more than 150 miles. My attorney has confirmed that Florida qualifies. I'm not giving consent. If you want to take her somewhere local, fine, but I'm not signing off on a flight to Florida."
+  },
+  {
+    "seq": 5,
+    "thread": "spring-break-florida",
+    "sender": "Rachel",
+    "timestamp": "2025-02-19T08:45",
+    "domain": "travel",
+    "body": "I understand the consent requirement and that's why I'm asking you. I'm not going without your consent. I'm giving you over a month's notice, itinerary, grandparents' address and phone. I don't see why this isn't workable. Can we get on a call and talk through your concerns?"
+  },
+  {
+    "seq": 6,
+    "thread": "spring-break-florida",
+    "sender": "Derek",
+    "timestamp": "2025-02-19T11:23",
+    "domain": "travel",
+    "body": "There's nothing to talk through. Taking Mia across the country on a plane is not in her best interest at this stage. She gets anxious in airports. You may not have noticed that but I have. I'll be the one dealing with the fallout. My attorney says I'm well within my rights here and I'm exercising them."
+  },
+  {
+    "seq": 7,
+    "thread": "spring-break-florida",
+    "sender": "Rachel",
+    "timestamp": "2025-02-21T09:02",
+    "domain": "travel",
+    "body": "Derek, Mia has flown to Florida twice before with no issues. I'm asking you again, in good faith — please reconsider. My parents are in their 70s. This visit matters. I'm open to any reasonable condition you want to set: daily check-in calls, a written itinerary, whatever helps."
+  },
+  {
+    "seq": 8,
+    "thread": "spring-break-florida",
+    "sender": "Derek",
+    "timestamp": "2025-02-21T14:50",
+    "domain": "travel",
+    "body": "I've made my decision and it's final. I've also informed Mia that she'll be staying here for spring break and we're going to the lake house with my sister's family. She's already excited. I'd appreciate it if you don't bring this up again — it just confuses her when you dangle trips that aren't happening."
+  }
+]
