@@ -84,7 +84,13 @@ def make_gemini_complete(model: str = _MODEL, api_key: str | None = None,
     client = _genai.Client(api_key=key)  # pragma: no cover - needs SDK/network
 
     def complete(prompt: str) -> str:  # pragma: no cover - needs network/key
-        resp = client.models.generate_content(model=model, contents=prompt)
+        try:
+            resp = client.models.generate_content(model=model, contents=prompt)
+        except Exception as e:
+            raise RuntimeError(
+                f"Gemini request failed ({type(e).__name__}: {e}) - check the model "
+                "name/availability, or use the deterministic narrator."
+            ) from e
         return getattr(resp, "text", "") or ""
 
     return complete

@@ -63,11 +63,17 @@ def make_grok_complete(model: str = _MODEL, api_key: str | None = None,
     client = OpenAI(api_key=key, base_url=_BASE_URL)
 
     def complete(prompt: str) -> str:  # pragma: no cover - needs network/key
-        resp = client.chat.completions.create(
-            model=model,
-            max_tokens=700,
-            messages=[{"role": "user", "content": prompt}],
-        )
+        try:
+            resp = client.chat.completions.create(
+                model=model,
+                max_tokens=700,
+                messages=[{"role": "user", "content": prompt}],
+            )
+        except Exception as e:
+            raise RuntimeError(
+                f"Grok request failed ({type(e).__name__}: {e}) - check the model "
+                "name/availability, or use the deterministic narrator."
+            ) from e
         return resp.choices[0].message.content or ""
 
     return complete

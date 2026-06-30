@@ -21,3 +21,10 @@ jobs:
         run: |
           pytest -q
           pytest -q
+      - name: Demo data matches the engine (no drift)
+        # Rebuild the static demo data from the current engine and fail if the
+        # committed web/site/data/ differs — keeps the published demo honest and
+        # re-asserts that the build is reproducible across the Python matrix.
+        run: |
+          python -m web.build
+          git diff --exit-code web/site/data/

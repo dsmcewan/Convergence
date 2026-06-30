@@ -43,7 +43,7 @@ def _read_dotenv(paths) -> str | None:
 
 
 def make_openai_complete(model: str = _MODEL, api_key: str | None = None,
-                         _env=None, _dotenv_paths=None) -> Callable[[str], str]:
+                         _env=None, _dotenv_paths=None, _client=None) -> Callable[[str], str]:
     env = _env if _env is not None else os.environ
     key = api_key or env.get("OPENAI_API_KEY")
     if not key:  # fall back to a local .env file
@@ -54,22 +54,33 @@ def make_openai_complete(model: str = _MODEL, api_key: str | None = None,
             "OPENAI_API_KEY not set in the environment or a .env file - conversational "
             "mode needs a key. Use the deterministic narrator instead."
         )
-    try:
-        from openai import OpenAI
-    except ImportError as e:  # pragma: no cover - depends on environment
-        raise RuntimeError(
-            "openai SDK not installed - run `pip install openai`, or use the "
-            "deterministic narrator."
-        ) from e
+    if _client is not None:
+        client = _client
+    else:
+        try:
+            from openai import OpenAI
+        except ImportError as e:  # pragma: no cover - depends on environment
+            raise RuntimeError(
+                "openai SDK not installed - run `pip install openai`, or use the "
+                "deterministic narrator."
+            ) from e
+        client = OpenAI(api_key=key)
 
-    client = OpenAI(api_key=key)
-
-    def complete(prompt: str) -> str:  # pragma: no cover - needs network/key
-        resp = client.chat.completions.create(
-            model=model,
-            max_completion_tokens=700,  # required by gpt-5.x; also accepted by gpt-4.x
-            messages=[{"role": "user", "content": prompt}],
-        )
+    def complete(prompt: str) -> str:
+        # Any API-side failure (invalid model, rate limit, network) degrades to the
+        # same clear, caller-catchable error as a missing key/SDK, so the demo can
+        # fall back to the deterministic narrator instead of leaking a raw traceback.
+        try:
+            resp = client.chat.completions.create(
+                model=model,
+                max_completion_tokens=700,  # required by gpt-5.x; also accepted by gpt-4.x
+                messages=[{"role": "user", "content": prompt}],
+            )
+        except Exception as e:
+            raise RuntimeError(
+                f"OpenAI request failed ({type(e).__name__}: {e}) - check the model "
+                "name/availability, or use the deterministic narrator."
+            ) from e
         return resp.choices[0].message.content or ""
 
     return complete

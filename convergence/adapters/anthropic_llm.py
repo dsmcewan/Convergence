@@ -32,11 +32,17 @@ def make_anthropic_complete(model: str = _MODEL, api_key: str | None = None, _en
     client = anthropic.Anthropic(api_key=key)
 
     def complete(prompt: str) -> str:  # pragma: no cover - needs network/key
-        msg = client.messages.create(
-            model=model,
-            max_tokens=700,
-            messages=[{"role": "user", "content": prompt}],
-        )
+        try:
+            msg = client.messages.create(
+                model=model,
+                max_tokens=700,
+                messages=[{"role": "user", "content": prompt}],
+            )
+        except Exception as e:
+            raise RuntimeError(
+                f"Anthropic request failed ({type(e).__name__}: {e}) - check the model "
+                "name/availability, or use the deterministic narrator."
+            ) from e
         return "".join(getattr(b, "text", "") for b in msg.content)
 
     return complete

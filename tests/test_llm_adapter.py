@@ -91,3 +91,21 @@ def test_grok_reads_key_from_dotenv(tmp_path):
         grok_llm.make_grok_complete(api_key=None, _env={}, _dotenv_paths=[envfile])
     except RuntimeError as e:
         assert "not set" not in str(e)
+
+
+def test_openai_api_error_degrades_to_clear_error():
+    # An API-side failure (invalid model, rate limit, network) must surface as the
+    # same clear RuntimeError as a missing key, so callers fall back to the
+    # deterministic narrator instead of leaking a raw SDK traceback.
+    from convergence.adapters.openai_llm import make_openai_complete
+
+    class _BoomClient:
+        class chat:
+            class completions:
+                @staticmethod
+                def create(**_kwargs):
+                    raise ValueError("model_not_found: gpt-nope")
+
+    complete = make_openai_complete(api_key="test-key", _client=_BoomClient())
+    with pytest.raises(RuntimeError):
+        complete("hello")

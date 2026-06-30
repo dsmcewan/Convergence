@@ -222,7 +222,8 @@ Two complementary measures, because they answer different questions:
 
 - **Synthetic discriminator (labeled ground truth).** `convergence --eval` scores
   the coercion-grammar discriminator over the five labeled dynamics corpora:
-  `precision = recall = F1 = 1.00`, with the high-conflict corpus held as a *hard
+  `precision = recall = F1 = 1.00` **on synthetic, labeled data** (not a
+  general-population metric), with the high-conflict corpus held as a *hard
   negative* (hostile, many stage-hits, but correctly not coercive). A perfect
   score on synthetic data proves the discriminator separates the classes it was
   designed around — nothing more.
