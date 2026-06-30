@@ -83,6 +83,7 @@ class StageHit:
     stage: int
     name: str
     cue: str
+    sender: str
 
 
 @dataclass(frozen=True)
@@ -105,7 +106,8 @@ def tag_stages(messages: list[Message]) -> list[StageHit]:
         for s in STAGES:
             hit = s.pattern.search(t)
             if hit:
-                out.append(StageHit(seq=m.seq, stage=s.num, name=s.name, cue=hit.group(0)))
+                out.append(StageHit(seq=m.seq, stage=s.num, name=s.name,
+                                    cue=hit.group(0), sender=m.sender))
     out.sort(key=lambda h: (h.seq, h.stage))
     return out
 
