@@ -54,6 +54,11 @@ def test_plain_question_is_not_stage_4():
     assert all(h.stage != 4 for h in tag_stages([_msg(1, "What time is pickup on Saturday?")]))
 
 
+def test_tag_stages_carries_sender():
+    hits = tag_stages([_msg(1, "I don't agree that this weekend works.", sender="Victor")])
+    assert hits and all(h.sender == "Victor" for h in hits)
+
+
 # --- the envelope matcher --------------------------------------------------
 
 def _full_thread():
