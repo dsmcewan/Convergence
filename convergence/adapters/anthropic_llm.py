@@ -23,15 +23,18 @@ def make_anthropic_complete(
             "ANTHROPIC_API_KEY not set - conversational mode needs a key. "
             "Use the deterministic narrator instead."
         )
-    try:
-        import anthropic
-    except ImportError as e:  # pragma: no cover - depends on environment
-        raise RuntimeError(
-            "anthropic SDK not installed - run `pip install anthropic`, "
-            "or use the deterministic narrator."
-        ) from e
+    if _client is not None:
+        client = _client
+    else:
+        try:
+            import anthropic
+        except ImportError as e:  # pragma: no cover - depends on environment
+            raise RuntimeError(
+                "anthropic SDK not installed - run `pip install anthropic`, "
+                "or use the deterministic narrator."
+            ) from e
 
-    client = _client or anthropic.Anthropic(api_key=key)
+        client = anthropic.Anthropic(api_key=key)
 
     def complete(prompt: str) -> str:  # pragma: no cover - needs network/key
         try:
@@ -87,4 +90,3 @@ def make_anthropic_complete(
         return "".join(texts)
 
     return complete
-
