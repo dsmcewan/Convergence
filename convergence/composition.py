@@ -114,9 +114,9 @@ def find_patterns(result: EngineResult, recurrence_min: int = 3) -> list[Pattern
     for s in result.all_signals:
         if s.kind in _SUBSTANTIVE_KINDS:
             seqs_by_kind[s.kind].update(s.seqs)
-    for kind, seqs in seqs_by_kind.items():
-        if len(seqs) >= recurrence_min:
-            ordered = tuple(sorted(seqs))
+    for kind, kind_seqs in seqs_by_kind.items():
+        if len(kind_seqs) >= recurrence_min:
+            ordered = tuple(sorted(kind_seqs))
             out.append(Pattern(
                 name=f"repeated:{kind}", kind="recurrence", seqs=ordered,
                 detail=f"{kind} recurs across {len(ordered)} messages",

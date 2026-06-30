@@ -60,7 +60,7 @@ def make_gemini_complete(model: str = _MODEL, api_key: str | None = None,
 
     # classic SDK: google-generativeai
     try:
-        import google.generativeai as genai  # type: ignore
+        import google.generativeai as genai
     except ImportError:
         genai = None
     if genai is not None:  # pragma: no cover - needs SDK/network
@@ -74,7 +74,7 @@ def make_gemini_complete(model: str = _MODEL, api_key: str | None = None,
 
     # newer SDK: google-genai
     try:
-        from google import genai as _genai  # type: ignore
+        from google import genai as _genai
     except ImportError as e:  # pragma: no cover - depends on environment
         raise RuntimeError(
             "Neither `google-generativeai` nor `google-genai` is installed - "
@@ -83,7 +83,7 @@ def make_gemini_complete(model: str = _MODEL, api_key: str | None = None,
 
     client = _genai.Client(api_key=key)  # pragma: no cover - needs SDK/network
 
-    def complete(prompt: str) -> str:  # pragma: no cover - needs network/key
+    def complete(prompt: str) -> str:  # type: ignore[no-redef]  # two SDKs, mutually exclusive branches  # pragma: no cover - needs network/key
         try:
             resp = client.models.generate_content(model=model, contents=prompt)
         except Exception as e:

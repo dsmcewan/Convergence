@@ -19,6 +19,8 @@ jobs:
         run: pip install -e ".[dev]"
       - name: Lint (ruff)
         run: ruff check .
+      - name: Type check (mypy)
+        run: mypy convergence web
       - name: Run tests (twice — determinism)
         run: |
           pytest -q
