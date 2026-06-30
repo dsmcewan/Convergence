@@ -1,6 +1,7 @@
 """Local stdlib server for the convergence web demo."""
 from __future__ import annotations
 
+import hmac
 import json
 import mimetypes
 import os
@@ -142,12 +143,12 @@ def serve(host: str = "127.0.0.1", port: int = 8765) -> ThreadingHTTPServer:
 
 def _chat_authorized(headers) -> bool:
     """Gate /api/chat. Open by default (localhost dev); when CONVERGENCE_API_KEY
-    is set, require a matching `X-API-Key` header. /api/chat proxies to paid LLM
-    backends, so an exposed deployment should set the key to prevent abuse."""
+    is set, require a matching `X-API-Key` header (constant-time compare)."""
     required = os.environ.get("CONVERGENCE_API_KEY")
     if not required:
         return True
-    return headers.get("X-API-Key") == required
+    provided = headers.get("X-API-Key") or ""
+    return hmac.compare_digest(provided, required)
 
 
 def _config_from_env() -> tuple[str, int]:
