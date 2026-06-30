@@ -60,7 +60,7 @@ def to_prompt(result: EngineResult, persona: str = "", compact: bool = False) ->
             if compact and s.layer == "L4":
                 domain_count += 1
                 continue
-            lines.append(f"   - [{s.layer}] {s.kind}: {s.detail} (seqs {list(s.seqs)})")
+            lines.append(f"   - [{s.layer}] {s.kind}: {s.evidence} (seqs {list(s.seqs)})")
         if compact and domain_count:
             lines.append(f"   - [L4] {domain_count} domain convergence signal(s) present; details omitted.")  # noqa: E501
     return "\n".join(lines)

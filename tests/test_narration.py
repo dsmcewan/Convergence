@@ -108,7 +108,8 @@ def test_blanc_dates_a_self_contradiction():
         Message(seq=2, thread="T", sender="Sam", timestamp="2025-04-11T09:40", domain="d",
                 body="we never agreed to swap weekends"),
     ]
-    sig = Signal("L3", (1, 2), "claim_contradicted", "record R1: agreed_to_swap=True")
+    sig = Signal("L3", "claim_contradicted", 1, "Sam", "T", None,  # noqa: E501
+                 "record R1: agreed_to_swap=True", (2,))
     res = EngineResult((Finding((1, 2), "elevated", ("L3",), (sig,), "contradiction"),), (sig,), 2)
     txt = BlancNarrator(msgs).narrate(res)
     assert "Date 1 (2025-04-07)" in txt                  # the earlier word
@@ -154,9 +155,9 @@ def test_l4_lines_are_capped_with_remainder_note():
 
     def _l4(n_domains):
         doms = ", ".join(f"d{i}" for i in range(n_domains))
-        return Signal("L4", (1, 2), "domain_convergence", f"anchor across {doms}")
+        return Signal("L4", "domain_convergence", 1, "", "T", None, f"anchor across {doms}", (2,))
 
-    sigs = (Signal("L1", (1,), "borrow_authority", "policy says"),) + tuple(
+    sigs = (Signal("L1", "borrow_authority", 1, "", "T", None, "policy says"),) + tuple(
         _l4(n) for n in range(2, 12)   # 10 L4 signals
     )
     f = Finding(seqs=(1,), confidence="elevated", layers=("L1", "L4"),
@@ -174,7 +175,7 @@ def test_l4_cap_keeps_specific_anchors_over_generic_high_count():
 
     def _l4(anchor, n_domains):
         doms = ", ".join(f"d{i}" for i in range(n_domains))
-        return Signal("L4", (1, 2), "domain_convergence", f"{anchor} across {doms}")
+        return Signal("L4", "domain_convergence", 1, "", "T", None, f"{anchor} across {doms}", (2,))
 
     # Generic short words ride MANY domains; substantive anchors span few. The cap
     # must keep the substantive ones (specificity), not the high-count noise.

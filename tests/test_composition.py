@@ -12,7 +12,11 @@ from convergence.engine import EngineResult, Finding, Signal
 
 
 def _sig(layer, seqs, kind, detail="d"):
-    return Signal(layer=layer, seqs=tuple(seqs), kind=kind, detail=detail)
+    seqs = tuple(seqs)
+    anchor = min(seqs) if seqs else 0
+    support = tuple(s for s in sorted(seqs) if s != anchor)
+    return Signal(layer=layer, kind=kind, anchor=anchor, actor="", thread="T",
+                  target=None, evidence=detail, support=support)
 
 
 def _finding(seqs, confidence, signals):

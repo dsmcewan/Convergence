@@ -71,11 +71,11 @@ class TemplateNarrator:
             out.append(f"  {f.summary}")
             non_l4 = [s for s in f.signals if s.layer != "L4"]
             l4 = sorted((s for s in f.signals if s.layer == "L4"),
-                        key=lambda s: (_l4_specificity(s.detail), s.detail), reverse=True)
+                        key=lambda s: (_l4_specificity(s.evidence), s.evidence), reverse=True)
             for s in non_l4:
-                out.append(f"    - [{s.layer}] {s.detail}")
+                out.append(f"    - [{s.layer}] {s.evidence}")
             for s in l4[:MAX_L4_LINES]:
-                out.append(f"    - [{s.layer}] {s.detail}")
+                out.append(f"    - [{s.layer}] {s.evidence}")
             if len(l4) > MAX_L4_LINES:
                 out.append(f"    (+{len(l4) - MAX_L4_LINES} weaker convergences)")
 
@@ -146,7 +146,7 @@ class BlancNarrator:
         seq = s.seqs[-1] if s.seqs else None
         body = self._bodies.get(seq)
         if not body:
-            return f"   {conj} the {s.layer} thread - {s.detail}."
+            return f"   {conj} the {s.layer} thread - {s.evidence}."
         if s.kind == "within_thread_omission":
             return f'   {conj} {name}. The line they removed - seq {seq} - read: "{body}"'
         tag = ""
@@ -154,7 +154,7 @@ class BlancNarrator:
             bhv = tag_behaviors([self._msgs[seq]])
             if bhv:
                 tag = f" (a known behavior - {bhv[0].behavior})"
-        return f'   {conj} {name}{tag}. seq {seq}: "{self._mark(body, s.detail)}"'
+        return f'   {conj} {name}{tag}. seq {seq}: "{self._mark(body, s.evidence)}"'
 
     def explain(self, result=None) -> str:
         """Blanc introduces himself - what the engine is and what it does, in voice.
@@ -396,7 +396,7 @@ class BlancNarrator:
                 quote = ""
                 seq = spoken[0].seqs[-1] if spoken and spoken[0].seqs else None
                 if seq in self._bodies:
-                    quote = f' - seq {seq}: "{self._mark(self._bodies[seq], spoken[0].detail)}"'
+                    quote = f' - seq {seq}: "{self._mark(self._bodies[seq], spoken[0].evidence)}"'
                 out.append(f"   Seqs {list(f.seqs)} ({', '.join(f.layers)}) - a lone voice{quote}. "
                            "Suggestive, perhaps. But it stands alone, uncorroborated, and I'll not "
                            "hang a case on a hunch. A red herring. Set aside.")
