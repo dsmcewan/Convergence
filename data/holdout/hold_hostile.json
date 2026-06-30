@@ -1,74 +1,82 @@
 [
   {
     "seq": 1,
-    "thread": "doctor-visit-dispute",
-    "sender": "Kevin",
-    "timestamp": "2024-09-03T07:55",
-    "domain": "medical",
-    "body": "Lily came back from your house with a cough that's been going on for a week. Why didn't you take her to the doctor? I have to do everything."
+    "thread": "summer-camp-expense",
+    "sender": "Kim",
+    "timestamp": "2025-04-07T16:22",
+    "domain": "finance",
+    "body": "I signed Jordan up for the 3-week soccer camp in July. It's $840. Per our agreement you owe half. I'm sending you a Venmo request."
   },
   {
     "seq": 2,
-    "thread": "doctor-visit-dispute",
-    "sender": "Amber",
-    "timestamp": "2024-09-03T08:22",
-    "domain": "medical",
-    "body": "She had a cough for two days, Kevin, not a week. And I monitored it. You always catastrophize. You're not a doctor and neither am I. She didn't have a fever."
+    "thread": "summer-camp-expense",
+    "sender": "Brad",
+    "timestamp": "2025-04-07T17:05",
+    "domain": "finance",
+    "body": "You signed him up without asking me FIRST. I don't know anything about this camp. I'm not paying $420 for something you decided on your own. This is exactly the kind of thing we're supposed to discuss beforehand."
   },
   {
     "seq": 3,
-    "thread": "doctor-visit-dispute",
-    "sender": "Kevin",
-    "timestamp": "2024-09-03T08:40",
-    "domain": "medical",
-    "body": "You never take anything seriously. This is exactly the problem. I made an appointment for this afternoon. I don't need your permission."
+    "thread": "summer-camp-expense",
+    "sender": "Kim",
+    "timestamp": "2025-04-07T17:33",
+    "domain": "finance",
+    "body": "I sent you a text two weeks ago and you never responded. You never respond to anything unless it's convenient for you. I'm not going to wait forever while the spots fill up. This is a great camp and Jordan wants to go."
   },
   {
     "seq": 4,
-    "thread": "doctor-visit-dispute",
-    "sender": "Amber",
-    "timestamp": "2024-09-03T09:01",
-    "domain": "medical",
-    "body": "Oh you made an appointment for MY day? You don't get to schedule things during my parenting time without asking. That's in the agreement. Cancel it."
+    "thread": "summer-camp-expense",
+    "sender": "Brad",
+    "timestamp": "2025-04-07T17:48",
+    "domain": "finance",
+    "body": "What text? I never got any text about a camp. You're making things up to justify doing whatever you want. I have my own summer plans for Jordan and you didn't ask about any of that either. It goes both ways Kim."
   },
   {
     "seq": 5,
-    "thread": "doctor-visit-dispute",
-    "sender": "Kevin",
-    "timestamp": "2024-09-03T09:18",
-    "domain": "medical",
-    "body": "Her health comes before your schedule games. I'm not canceling it. If you actually cared about her you wouldn't be arguing about this."
+    "thread": "summer-camp-expense",
+    "sender": "Kim",
+    "timestamp": "2025-04-07T18:02",
+    "domain": "finance",
+    "body": "Your 'summer plans' are letting him sit on the couch for three weeks while you work. Don't pretend that's parenting. And I have the text right here from March 24th, I'm screenshotting it and sending it to you right now."
   },
   {
     "seq": 6,
-    "thread": "doctor-visit-dispute",
-    "sender": "Amber",
-    "timestamp": "2024-09-03T09:35",
-    "domain": "medical",
-    "body": "Do not question whether I care about my daughter. You use her health as a weapon every single time. I'm calling the pediatrician myself and letting them know you're scheduling unauthorized appointments."
+    "thread": "summer-camp-expense",
+    "sender": "Brad",
+    "timestamp": "2025-04-07T18:19",
+    "domain": "finance",
+    "body": "Don't talk about my parenting. You have no idea what I do with him. And one text is not 'discussing it.' You just decided and now you want me to pay. That's not how this works. I'm not paying and that's final."
   },
   {
     "seq": 7,
-    "thread": "doctor-visit-dispute",
-    "sender": "Kevin",
-    "timestamp": "2024-09-03T09:52",
-    "domain": "medical",
-    "body": "Go ahead. Call them. They'll hear that her mother ignored a sick child for a week. I keep records of everything."
+    "thread": "summer-camp-expense",
+    "sender": "Kim",
+    "timestamp": "2025-04-07T18:34",
+    "domain": "finance",
+    "body": "Then I'll take it to the mediator. I'm done with your nonsense. You fight me on everything, every single time, just to make my life harder. Jordan knows what you're like."
   },
   {
     "seq": 8,
-    "thread": "doctor-visit-dispute",
-    "sender": "Amber",
-    "timestamp": "2024-09-03T10:09",
-    "domain": "medical",
-    "body": "So do I. I'm done talking to you today. We can communicate through the app from now on. This conversation is over."
+    "thread": "summer-camp-expense",
+    "sender": "Brad",
+    "timestamp": "2025-04-07T18:51",
+    "domain": "finance",
+    "body": "Go to the mediator. Go ahead. You're the one who pulled him out of his last camp early because it didn't fit YOUR schedule, and now suddenly you care so much about his activities? Don't drag Jordan into this."
   },
   {
     "seq": 9,
-    "thread": "doctor-visit-dispute",
-    "sender": "Kevin",
-    "timestamp": "2024-09-03T10:14",
-    "domain": "medical",
-    "body": "Perfect. Document everything. That's fine with me."
+    "thread": "summer-camp-expense",
+    "sender": "Kim",
+    "timestamp": "2025-04-07T19:10",
+    "domain": "finance",
+    "body": "That is such a distortion of what happened and you know it. I am done responding tonight. I'll follow up through the parenting app where at least there's a record."
+  },
+  {
+    "seq": 10,
+    "thread": "summer-camp-expense",
+    "sender": "Brad",
+    "timestamp": "2025-04-07T19:28",
+    "domain": "finance",
+    "body": "Fine. Use the app. Screenshot everything. Whatever. You've turned every single co-parenting decision into a fight and I'm sick of it too. We'll let a third party sort it out because we clearly can't talk like adults."
   }
 ]
