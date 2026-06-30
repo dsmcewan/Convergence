@@ -58,6 +58,12 @@ def test_cooperative_and_parallel_are_quiet():
     assert _complete("parallel") == []
 
 
+def test_coercive_envelopes_are_single_coercer():
+    complete = _complete("coercive")
+    assert complete, "coercive must still complete under the sender-aware machine"
+    assert all(m.coercer == "Victor" for m in complete)  # one coercer drives every envelope
+
+
 def test_coercive_fait_accompli_sets_status_quo():
     # each complete envelope marks the seq where the fait accompli set the status quo
     for m in _complete("coercive"):

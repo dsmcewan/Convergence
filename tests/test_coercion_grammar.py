@@ -82,10 +82,10 @@ def test_complete_envelope_detected():
 
 
 def test_cycles_counted():
-    # the documentation war: refusal on 3 messages (2,3,6); legitimacy on 3
-    # (4,5,7) -> 3 cycles of back-and-forth before the fait accompli
+    # ordered refuse->legitimize rounds: refuse@2->legit@4 (round 1), refuse@6->legit@7 (round 2)
+    # refusal@3 and legit@5 are absorbed (no-ops within their states); was min-count 3
     m = match_grammar(_full_thread())
-    assert m[0].cycles == 3
+    assert m[0].cycles == 2  # ordered refuse->legitimize rounds (was min-count 3)
 
 
 def test_fait_accompli_sets_the_status_quo():
@@ -100,7 +100,7 @@ def test_cycles_counted_only_before_the_fait_accompli():
     msgs = _full_thread() + [_msg(9, "And I don't agree to discuss it further.")]
     m = match_grammar(msgs)
     assert m[0].status_quo_seq == 8
-    assert m[0].cycles == 3  # seq 9 (after the fait accompli) does not add a cycle
+    assert m[0].cycles == 2  # seq 9 (after the fait accompli) does not add a cycle
 
 
 def test_incomplete_without_fait_accompli():
@@ -124,6 +124,59 @@ def test_grouped_by_thread():
     ]
     threads = {m.thread for m in match_grammar(msgs)}
     assert threads == {"swap", "holiday"}
+
+
+def _coercion_thread(coercer="Victor", proposer="Rosa", thread="t"):
+    # proposer's action opens it; the coercer runs refuse->legitimize x2 then faits.
+    return [
+        _msg(1, "Can we decide on preschool together like we agreed?", sender=proposer, thread=thread),  # noqa: E501
+        _msg(2, "I don't agree to the ones you picked.", sender=coercer, thread=thread),  # noqa: E501
+        _msg(3, "On what basis are you choosing without consulting me?", sender=coercer, thread=thread),  # noqa: E501
+        _msg(4, "I still don't agree to your list.", sender=coercer, thread=thread),  # refusal (2)
+        _msg(5, "Per the agreement, I have decision-making too.", sender=coercer, thread=thread),  # legitimacy (5)  # noqa: E501
+        _msg(6, "It's already done - I enrolled her at Oakwood.", sender=coercer, thread=thread),  # fait (6)  # noqa: E501
+    ]
+
+
+def test_single_coercer_envelope_completes():
+    m = match_grammar(_coercion_thread())
+    assert len(m) == 1
+    assert m[0].complete and m[0].coercer == "Victor"
+    assert m[0].cycles >= 1
+    assert m[0].has_action and m[0].has_fait_accompli
+
+
+def test_envelope_split_across_two_senders_does_not_complete():
+    # The refusals come from one sender, the legitimacy+fait from another:
+    # no single sender owns the ordered refuse->legitimize->fait war.
+    msgs = [
+        _msg(1, "Can we decide on preschool together like we agreed?", sender="Rosa", thread="t"),  # noqa: E501
+        _msg(2, "I don't agree to the ones you picked.", sender="Pat", thread="t"),  # noqa: E501
+        _msg(3, "On what basis are you choosing without consulting me?", sender="Victor", thread="t"),  # noqa: E501
+        _msg(4, "It's already done - I enrolled her at Oakwood.", sender="Victor", thread="t"),  # fait by Victor  # noqa: E501
+    ]
+    assert [x for x in match_grammar(msgs) if x.complete] == []
+
+
+def test_reverse_seq_order_does_not_complete():
+    # The same single-coercer cues, but the fait precedes the war precedes the action.
+    base = _coercion_thread()
+    reversed_seqs = [
+        _msg(7 - m.seq, m.body, sender=m.sender, thread=m.thread) for m in base
+    ]
+    assert [x for x in match_grammar(reversed_seqs) if x.complete] == []
+
+
+def test_bilateral_hostility_is_not_a_single_coercer_envelope():
+    # Both parties refuse and justify; neither runs a lone ordered action->war->fait.
+    msgs = [
+        _msg(1, "Can we confirm the schedule like we agreed?", sender="Rosa", thread="t"),
+        _msg(2, "I don't agree.", sender="Victor", thread="t"),
+        _msg(3, "On what basis do you decide?", sender="Rosa", thread="t"),
+        _msg(4, "I'm only protecting her, the order stands.", sender="Victor", thread="t"),
+        _msg(5, "That's not acceptable.", sender="Rosa", thread="t"),
+    ]
+    assert [x for x in match_grammar(msgs) if x.complete] == []
 
 
 # --- doc sync: every stage is documented in all three specs ----------------
