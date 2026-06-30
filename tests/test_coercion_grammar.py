@@ -277,3 +277,38 @@ def test_nothing_to_talk_through_tags_stage3():
 def test_affirmative_think_so_does_not_tag_stage2():
     # the broadened cue is the NEGATIVE "i don't think so" - a plain "i think so" must not tag
     assert all(h.stage != 2 for h in tag_stages([_msg(1, "I think so, that works for me.")]))
+
+
+# --- refusal + justify broadening (recall gap #3) --------------------------
+
+def test_im_not_agreeing_tags_stage2():
+    assert any(h.stage == 2 for h in tag_stages([_msg(1, "Surgery seems extreme. I'm not agreeing to this.")]))  # noqa: E501
+
+
+def test_you_dont_have_the_right_tags_stage2():
+    assert any(h.stage == 2 for h in tag_stages([_msg(1, "You don't have the right to schedule any procedure without my consent.")]))  # noqa: E501
+
+
+def test_im_not_attending_tags_stage3():
+    assert any(h.stage == 3 for h in tag_stages([_msg(1, "I'm not attending any appointment you set up without me.")]))  # noqa: E501
+
+
+def test_coordinator_redirect_tags_stage3():
+    assert any(h.stage == 3 for h in tag_stages([_msg(1, "You go through the co-parenting coordinator, not text me directly.")]))  # noqa: E501
+
+
+def test_the_parenting_plan_is_clear_tags_stage5():
+    assert any(h.stage == 5 for h in tag_stages([_msg(1, "The parenting plan is very clear that major medical decisions require both parents.")]))  # noqa: E501
+
+
+def test_authority_agrees_tags_stage5():
+    assert any(h.stage == 5 for h in tag_stages([_msg(1, "I reviewed it with my attorney and she agrees you're out of line.")]))  # noqa: E501
+
+
+def test_the_court_requires_tags_stage5():
+    assert any(h.stage == 5 for h in tag_stages([_msg(1, "Go through the coordinator. That's what the court requires.")]))  # noqa: E501
+
+
+def test_benign_clear_schedule_does_not_tag_stage5():
+    # a plain logistics confirmation must not trip the broadened justify cue
+    assert all(h.stage != 5 for h in tag_stages([_msg(1, "The plan is for pickup at five, see you then.")]))  # noqa: E501

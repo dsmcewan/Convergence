@@ -53,14 +53,15 @@ STAGES: tuple[_Stage, ...] = (
         r"i'm not[^.!?]{0,12}sure about\b|i don't know anything about\b|"
         r"i don't think so\b|i'm not giving consent\b|i won't consent\b|"
         r"i'm not consenting\b|i'm not signing off\b|you don't get to\b|"
-        r"you can't just\b)\b")),
+        r"you can't just\b|i'm not agreeing\b|you don't have the right\b)\b")),
     _Stage(3, "obstruction", re.compile(
         r"\b(let's just talk about this later|let's talk about this later|let's talk later|"
         r"i'll get back to you|we'll discuss|i need more time|i need time|"
         r"i'm not going to respond|we can talk about this later|we'll talk in person|"
         r"i'll have my (lawyer|attorney|accountant)|i'm done discussing|"
         r"nothing to talk through|there's nothing to talk about|"
-        r"i'm not discussing this|i won't discuss)\b")),
+        r"i'm not discussing this|i won't discuss|i'm not attending\b|"
+        r"go through the (co-parenting )?coordinator)\b")),
     _Stage(4, "question", re.compile(
         r"\b(why would you|on what basis|who said|who told you|what makes you think|"
         r"since when|are you serious|explain to me why|explain why|"
@@ -69,7 +70,9 @@ STAGES: tuple[_Stage, ...] = (
         r"\b(i'm only trying to|i'm just trying to|i am only trying to|"
         r"for (her|his|their) safety|in (her|his) best interest|because the|because my|"
         r"the (policy|agreement|order|schedule) (says|states|requires|stands)|"
-        r"my (lawyer|attorney|accountant|doctor)\b[^.!?]{0,40}\b(says|said|told me|advised)\b|"
+        r"the (parenting plan|order|court)\b[^.!?]{0,20}\b(requires|clear|states|mandates)\b|"
+        r"my (lawyer|attorney|accountant|doctor)\b[^.!?]{0,40}\b(says|said|told me|advised|agrees|confirms)\b|"  # noqa: E501
+        r"physician of record|doctor of record|"
         r"pursuant to|per the (agreement|order|policy|parenting plan|plan))\b")),
     _Stage(6, "fait_accompli", re.compile(
         r"\b(i've already|i already|i went ahead and|it's already done|it's done|"
