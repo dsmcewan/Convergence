@@ -29,7 +29,7 @@ from convergence.composition import find_campaigns, find_patterns
 from convergence.conversation import BLANC_PERSONA, Conversation
 from convergence.corpus import load_corpus, load_sqlite_corpus
 from convergence.engine import run_engine
-from convergence.evaluation import evaluate_dynamics, format_report
+from convergence.evaluation import evaluate_tiered, format_tiered_report
 from convergence.narration import BlancNarrator, narrate, narrate_composition
 from convergence.records import load_records
 
@@ -202,7 +202,7 @@ def main():
         return
 
     if args.eval:
-        print("\n" + format_report(evaluate_dynamics(DATA)))
+        print("\n" + format_tiered_report(evaluate_tiered(DATA)))
         return
 
     if args.investigate:
