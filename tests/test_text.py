@@ -1,5 +1,5 @@
 """Shared deterministic text helpers used by Layers 1, 4, 5."""
-from convergence.text import normalize, tokens, ngrams
+from convergence.text import ngrams, normalize, tokens
 
 
 def test_normalize_lowercases_and_collapses_whitespace():

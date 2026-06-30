@@ -1,6 +1,6 @@
 """Deterministic narration of engine findings."""
+from convergence.composition import Campaign, Pattern
 from convergence.corpus import Message
-from convergence.composition import Pattern, Campaign
 from convergence.engine import run_engine
 from convergence.narration import TemplateNarrator, narrate, narrate_composition
 
@@ -46,7 +46,7 @@ def test_default_narrator_is_template():
 def test_composition_narration_lists_patterns_and_campaigns():
     pats = [
         Pattern("sanitize-record", "template", (3, 10), "contradiction + omission combine"),
-        Pattern("repeated:borrow_authority", "recurrence", (8, 10, 13), "borrow_authority recurs across 3 messages"),
+        Pattern("repeated:borrow_authority", "recurrence", (8, 10, 13), "borrow_authority recurs across 3 messages"),  # noqa: E501
     ]
     camps = [Campaign("Sam", "medical", ("repeated:borrow_authority",), ((8,), (10,)),
                       (8, 10), ("t1", "t2"), "Sam sustains 2 elevated findings against 'medical'")]
@@ -73,7 +73,7 @@ def test_blanc_is_grounded_and_voiced():
 def test_blanc_preserves_the_verdict():
     # voice is presentation: the elevated seqs Blanc reports must equal the engine's
     res = run_engine(_TWO_LAYER)
-    blanc = __import__("convergence.narration", fromlist=["BlancNarrator"]).BlancNarrator().narrate(res)
+    blanc = __import__("convergence.narration", fromlist=["BlancNarrator"]).BlancNarrator().narrate(res)  # noqa: E501
     for f in res.findings:
         if f.confidence == "elevated":
             assert str(list(f.seqs)) in blanc
@@ -100,8 +100,8 @@ def test_blanc_quotes_the_fragment_when_given_messages():
 
 
 def test_blanc_dates_a_self_contradiction():
+    from convergence.engine import EngineResult, Finding, Signal
     from convergence.narration import BlancNarrator
-    from convergence.engine import Signal, Finding, EngineResult
     msgs = [
         Message(seq=1, thread="T", sender="Sam", timestamp="2025-04-07T08:41", domain="d",
                 body="ok, you can swap this weekend for next, that works"),
@@ -120,9 +120,10 @@ def test_blanc_dates_a_self_contradiction():
 
 def test_blanc_walks_the_coercion_grammar():
     from pathlib import Path
-    from convergence.narration import BlancNarrator
+
+    from convergence.coercion_grammar import match_grammar, tag_stages
     from convergence.corpus import load_corpus
-    from convergence.coercion_grammar import tag_stages, match_grammar
+    from convergence.narration import BlancNarrator
     msgs = load_corpus(Path(__file__).parent.parent / "data" / "coercion_grammar_thread.json")
     txt = BlancNarrator(msgs).narrate_grammar(tag_stages(msgs), match_grammar(msgs))
     low = txt.lower()
@@ -149,7 +150,7 @@ def test_blanc_deterministic_and_handles_empty():
 
 def test_l4_lines_are_capped_with_remainder_note():
     from convergence.engine import EngineResult, Finding, Signal
-    from convergence.narration import TemplateNarrator, MAX_L4_LINES
+    from convergence.narration import MAX_L4_LINES, TemplateNarrator
 
     def _l4(n_domains):
         doms = ", ".join(f"d{i}" for i in range(n_domains))

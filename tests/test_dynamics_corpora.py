@@ -10,8 +10,8 @@ is structure (asymmetry), not vocabulary. Synthetic data only.
 """
 from pathlib import Path
 
+from convergence.coercion_grammar import match_grammar, tag_stages
 from convergence.corpus import load_corpus
-from convergence.coercion_grammar import tag_stages, match_grammar
 
 DATA = Path(__file__).parent.parent / "data"
 

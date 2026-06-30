@@ -1,4 +1,3 @@
-import json
 
 from web.server import answer_chat
 

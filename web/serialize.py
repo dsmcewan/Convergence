@@ -10,8 +10,8 @@ import json
 from pathlib import Path
 from typing import Any
 
-from convergence.composition import find_campaigns, find_patterns
 from convergence.coercion_grammar import match_grammar, tag_stages
+from convergence.composition import find_campaigns, find_patterns
 from convergence.corpus import Message, load_corpus
 from convergence.engine import EngineResult, Finding, Signal, run_engine
 from convergence.evaluation import evaluate_dynamics
@@ -23,7 +23,7 @@ DATA = ROOT / "data"
 
 CORPORA = {
     "contractor": ("sample_full.json", "sample_exhibit.json", "sample_records.json"),
-    "coparenting": ("coparenting_full.json", "coparenting_exhibit.json", "coparenting_records.json"),
+    "coparenting": ("coparenting_full.json", "coparenting_exhibit.json", "coparenting_records.json"),  # noqa: E501
 }
 CHANNELS = {
     "channels": ("channels_formal.json", "channels_casual.json"),
@@ -73,7 +73,7 @@ def load_analysis(name: str) -> tuple[list[Message], EngineResult, dict[str, Any
             "label": CORPUS_LABELS[name],
             "mode": "cross-channel",
             "exhibit_label": "Formal channel checked against the casual channel",
-            "exhibit_note": "Layer 6 compares a sender's formal claim against the same sender's own words elsewhere.",
+            "exhibit_note": "Layer 6 compares a sender's formal claim against the same sender's own words elsewhere.",  # noqa: E501
         }
 
     raise KeyError(f"unknown corpus: {name}")

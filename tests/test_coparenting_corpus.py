@@ -6,15 +6,15 @@ import json
 from pathlib import Path
 
 from convergence.corpus import load_corpus
-from convergence.records import load_records
 from convergence.engine import run_engine
+from convergence.records import load_records
 
 DATA = Path(__file__).parent.parent / "data"
 
 
 def _run(prefix):
     full = load_corpus(DATA / f"{prefix}_full.json")
-    included = json.loads((DATA / f"{prefix}_exhibit.json").read_text(encoding="utf-8"))["included_seqs"]
+    included = json.loads((DATA / f"{prefix}_exhibit.json").read_text(encoding="utf-8"))["included_seqs"]  # noqa: E501
     records = load_records(DATA / f"{prefix}_records.json")
     return run_engine(full, included_seqs=included, records=records)
 

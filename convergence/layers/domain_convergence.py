@@ -75,7 +75,7 @@ def find_convergences(messages, min_domains: int = 2):
     # Collapse anchors that describe the exact same (domains, seqs) to the most
     # specific one (longest), so "extra" and "extra hours" don't both report.
     results = [
-        Convergence(domains=key[0], seqs=key[1], anchor=sorted(anchors, key=lambda a: (-len(a), a))[0])
+        Convergence(domains=key[0], seqs=key[1], anchor=sorted(anchors, key=lambda a: (-len(a), a))[0])  # noqa: E501
         for key, anchors in groups.items()
     ]
     results.sort(key=lambda c: (c.domains, c.anchor))

@@ -8,12 +8,14 @@ error so the demo can fall back to the deterministic narrator.
 from __future__ import annotations
 
 import os
-from typing import Callable
+from collections.abc import Callable
 
 _MODEL = "claude-sonnet-4-6"
 
 
-def make_anthropic_complete(model: str = _MODEL, api_key: str | None = None, _env=None) -> Callable[[str], str]:
+def make_anthropic_complete(
+    model: str = _MODEL, api_key: str | None = None, _env=None
+) -> Callable[[str], str]:
     env = _env if _env is not None else os.environ
     key = api_key or env.get("ANTHROPIC_API_KEY")
     if not key:

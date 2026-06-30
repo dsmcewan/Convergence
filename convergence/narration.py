@@ -8,8 +8,8 @@ disqualification principle for the low ones.
 """
 from __future__ import annotations
 
-from convergence.engine import EngineResult
 from convergence.behaviors import tag_behaviors
+from convergence.engine import EngineResult
 
 # how each detected thread is named aloud in the reveal
 _BEHAVIOR_VOICE = {
@@ -224,7 +224,7 @@ class BlancNarrator:
             "raise that up. One alone, I set down.",
             "",
             "The sleight is in what I do NOT do. I do not read minds. I do not weigh a man's tone "
-            "or his mood. I match his words against a fixed rule, and the rule against the record - "
+            "or his mood. I match his words against a fixed rule, and the rule against the record - "  # noqa: E501
             "and I let the coincidences indict themselves. Two strangers telling the very same "
             "story, having never met: that is not a thing I can fake, nor a thing the guilty can "
             "explain away.",
@@ -313,7 +313,7 @@ class BlancNarrator:
         """Walk a coercion-grammar envelope like the slow theft of a decision -
         the reasonable request, the documentation war, the fait accompli."""
         frame = {
-            "action": "It begins, as these things do, with something perfectly reasonable. {who} asks",
+            "action": "It begins, as these things do, with something perfectly reasonable. {who} asks",  # noqa: E501
             "objection": "And the reply is no reply at all - an objection",
             "obstruction": "Then the door, quietly shut - the delay",
             "question": "Then the turn, to put them on the back foot",
@@ -327,7 +327,7 @@ class BlancNarrator:
             return "Gather round. I find no such design here - only ordinary disagreement."
         out = []
         for gm in matches:
-            out.append("Gather round. Here is a shape I know by name - the slow theft of a decision.")
+            out.append("Gather round. Here is a shape I know by name - the slow theft of a decision.")  # noqa: E501
             out.append("")
             for q in sorted(s for s in gm.seqs if s in by_seq and s in self._msgs):
                 h, m = by_seq[q], self._msgs[q]
@@ -335,9 +335,9 @@ class BlancNarrator:
                 out.append(f'   {lead} - {m.timestamp[:10]}, seq {q}: "{m.body}"')
             out.append("")
             if gm.complete:
-                out.append(f"   Round and round it went - {gm.cycles} turns of the same wheel - until "
-                           f"the deed outran the discussion. The fait accompli at seq {gm.status_quo_seq} "
-                           "set the status quo. The question, you see, was never truly open; it only had "
+                out.append(f"   Round and round it went - {gm.cycles} turns of the same wheel - until "  # noqa: E501
+                           f"the deed outran the discussion. The fait accompli at seq {gm.status_quo_seq} "  # noqa: E501
+                           "set the status quo. The question, you see, was never truly open; it only had "  # noqa: E501
                            "to look open until it was too late.")
             else:
                 out.append("   But the shape is not complete - no fait accompli to seal it. "
@@ -351,7 +351,7 @@ class BlancNarrator:
         elevated = [f for f in result.findings if f.confidence == "elevated"]
         low = [f for f in result.findings if f.confidence == "low"]
         substantive = {"L1", "L2", "L3", "L6"}
-        lone = [f for f in low if any(l in substantive for l in f.layers)]
+        lone = [f for f in low if any(l in substantive for l in f.layers)]  # noqa: E741
         context = [f for f in low if f not in lone]
 
         if not result.findings:
@@ -389,7 +389,7 @@ class BlancNarrator:
 
         if lone or context:
             out.append("")
-            out.append("Now - you will want to point me to the loose ends. I have not forgotten them.")
+            out.append("Now - you will want to point me to the loose ends. I have not forgotten them.")  # noqa: E501
             for f in lone:
                 spoken = [s for s in f.signals if s.kind in _SUBSTANTIVE_KINDS] or list(f.signals)
                 quote = ""
@@ -404,7 +404,7 @@ class BlancNarrator:
                            "evidence. Noted, and dismissed.")
 
         out.append("")
-        out.append("So. The shape of it is unmistakable. Where the threads converge, I have shown you - "
+        out.append("So. The shape of it is unmistakable. Where the threads converge, I have shown you - "  # noqa: E501
                    "the donut, and the hole at its heart. I map the hole; I do not fill it. The "
                    "truth of intent, that I leave to the court.")
         return "\n".join(out)

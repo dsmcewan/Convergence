@@ -21,7 +21,7 @@ from __future__ import annotations
 import re
 import shutil
 import time
-from typing import Callable
+from collections.abc import Callable
 
 # CSI / simple-escape control sequences, plus OSC (window-title) strings. `agy` in
 # print mode emits only a short terminal handshake (\x1b[1t \x1b[c \x1b[?1004h

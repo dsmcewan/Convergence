@@ -6,7 +6,6 @@ by the same sender's admission in the casual channel (L6) and corroborated by
 domains converging on the same anchor (L4) -> elevated; a bare borrow-authority
 claim with nothing behind it stays low. Synthetic data only.
 """
-import json
 from pathlib import Path
 
 from convergence.corpus import load_corpus

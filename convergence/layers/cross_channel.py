@@ -64,7 +64,7 @@ class ChannelDivergence:
     basis: str
 
 
-def find_cross_channel_divergences(primary: list[Message], cross: list[Message]) -> list[ChannelDivergence]:
+def find_cross_channel_divergences(primary: list[Message], cross: list[Message]) -> list[ChannelDivergence]:  # noqa: E501
     out: list[ChannelDivergence] = []
     for rule in _CROSS_RULES:
         # earliest contradicting admission per sender in the cross channel

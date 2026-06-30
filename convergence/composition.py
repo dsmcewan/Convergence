@@ -138,7 +138,7 @@ def _template_seqs(template: _Template, finding, result: EngineResult) -> tuple[
                 signal for signal in finding.signals
                 if signal.kind == "domain_convergence" and local.intersection(signal.seqs)
             ]
-            candidates.sort(key=lambda signal: (-len(local.intersection(signal.seqs)), len(signal.seqs), signal.seqs))
+            candidates.sort(key=lambda signal: (-len(local.intersection(signal.seqs)), len(signal.seqs), signal.seqs))  # noqa: E501
             for signal in candidates:
                 expanded = seqs.union(signal.seqs)
                 if len(expanded) >= 4:
@@ -149,7 +149,7 @@ def _template_seqs(template: _Template, finding, result: EngineResult) -> tuple[
 
 def _template_detail(template: _Template, seqs: tuple[int, ...]) -> str:
     if template.name == "sanitize-record" and len(set(seqs)) >= 4:
-        return "reliance, authority shift, denial, and record pressure repeat the sanitize-record structure"
+        return "reliance, authority shift, denial, and record pressure repeat the sanitize-record structure"  # noqa: E501
     return f"{' + '.join(sorted(template.required))} => {template.name}"
 
 

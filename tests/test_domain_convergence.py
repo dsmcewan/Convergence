@@ -8,7 +8,7 @@ def _msg(seq, domain, body):
 
 
 def test_anchor_spanning_two_domains_detected():
-    msgs = [_msg(1, "scope", "please log the extra hours"), _msg(2, "payment", "the invoice has extra hours")]
+    msgs = [_msg(1, "scope", "please log the extra hours"), _msg(2, "payment", "the invoice has extra hours")]  # noqa: E501
     res = find_convergences(msgs)
     assert any(c.domains == ("payment", "scope") and {1, 2} <= set(c.seqs) for c in res)
 
@@ -29,7 +29,7 @@ def test_min_domains_param_respected():
 
 
 def test_results_sorted():
-    msgs = [_msg(1, "scope", "extra hours change order"), _msg(2, "payment", "extra hours change order")]
+    msgs = [_msg(1, "scope", "extra hours change order"), _msg(2, "payment", "extra hours change order")]  # noqa: E501
     res = find_convergences(msgs)
     assert res == sorted(res, key=lambda c: (c.domains, c.anchor))
 

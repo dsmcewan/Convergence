@@ -6,9 +6,9 @@ a threshold. find_campaigns attributes elevated findings and patterns to an
 ACTOR and a TARGET (via the messages) and emits a campaign only when one actor
 sustains >=2 elevated findings against one target over time. Synthetic inputs only.
 """
+from convergence.composition import find_campaigns, find_patterns
 from convergence.corpus import Message
-from convergence.engine import Signal, Finding, EngineResult
-from convergence.composition import find_patterns, find_campaigns
+from convergence.engine import EngineResult, Finding, Signal
 
 
 def _sig(layer, seqs, kind, detail="d"):
@@ -33,14 +33,14 @@ def _msg(seq, sender, domain, ts):
 
 def test_sanitize_record_template():
     f = _finding([3, 10], "elevated",
-                 [_sig("L3", [10], "claim_contradicted"), _sig("L2", [3], "within_thread_omission")])
+                 [_sig("L3", [10], "claim_contradicted"), _sig("L2", [3], "within_thread_omission")])  # noqa: E501
     pats = find_patterns(_result([f], list(f.signals)))
     assert any(p.name == "sanitize-record" and p.kind == "template" for p in pats)
 
 
 def test_sanitize_record_template_expands_to_chronological_structure():
     f = _finding([3, 10], "elevated",
-                 [_sig("L3", [3, 10], "claim_contradicted"), _sig("L2", [3], "within_thread_omission")])
+                 [_sig("L3", [3, 10], "claim_contradicted"), _sig("L2", [3], "within_thread_omission")])  # noqa: E501
     signals = [
         *f.signals,
         _sig("L2", [5], "within_thread_omission"),
@@ -60,7 +60,7 @@ def test_sanitize_record_template_uses_domain_structure_when_needed():
         _sig("L4", [1, 4, 10, 11], "domain_convergence", "swap across medical, schedule"),
     ])
 
-    pattern = next(p for p in find_patterns(_result([f], list(f.signals))) if p.name == "sanitize-record")
+    pattern = next(p for p in find_patterns(_result([f], list(f.signals))) if p.name == "sanitize-record")  # noqa: E501
 
     assert pattern.seqs == (1, 4, 10, 11)
     assert len(set(pattern.seqs)) >= 4
@@ -113,7 +113,7 @@ def test_recurrence_ignores_contextual_kinds():
 
 def test_patterns_are_deterministic():
     f = _finding([3, 10], "elevated",
-                 [_sig("L3", [10], "claim_contradicted"), _sig("L2", [3], "within_thread_omission")])
+                 [_sig("L3", [10], "claim_contradicted"), _sig("L2", [3], "within_thread_omission")])  # noqa: E501
     r = _result([f], list(f.signals))
     assert find_patterns(r) == find_patterns(r)
 
@@ -127,8 +127,8 @@ def _coparenting_like():
         _msg(10, "Sam", "medical", "2025-04-11T09:31"),
         _msg(13, "Sam", "schedule", "2025-04-11T10:05"),
     ]
-    f8 = _finding([8], "elevated", [_sig("L1", [8], "borrow_authority"), _sig("L5", [8], "register_anomaly")])
-    f10 = _finding([10], "elevated", [_sig("L1", [10], "borrow_authority"), _sig("L5", [10], "register_anomaly")])
+    f8 = _finding([8], "elevated", [_sig("L1", [8], "borrow_authority"), _sig("L5", [8], "register_anomaly")])  # noqa: E501
+    f10 = _finding([10], "elevated", [_sig("L1", [10], "borrow_authority"), _sig("L5", [10], "register_anomaly")])  # noqa: E501
     sigs = [_sig("L1", [s], "borrow_authority") for s in (8, 10, 13)]
     return _result([f8, f10], sigs), msgs
 
@@ -149,23 +149,23 @@ def test_campaign_span_is_chronological_not_lexicographic():
     # must reflect real time, parsed, not raw string sort.
     msgs = [_msg(8, "Sam", "medical", "12/01/2024 09:00"),
             _msg(10, "Sam", "medical", "01/05/2025 09:00")]
-    f8 = _finding([8], "elevated", [_sig("L1", [8], "borrow_authority"), _sig("L5", [8], "register_anomaly")])
-    f10 = _finding([10], "elevated", [_sig("L1", [10], "borrow_authority"), _sig("L5", [10], "register_anomaly")])
+    f8 = _finding([8], "elevated", [_sig("L1", [8], "borrow_authority"), _sig("L5", [8], "register_anomaly")])  # noqa: E501
+    f10 = _finding([10], "elevated", [_sig("L1", [10], "borrow_authority"), _sig("L5", [10], "register_anomaly")])  # noqa: E501
     c = find_campaigns(_result([f8, f10], []), msgs)[0]
     assert c.span == ("12/01/2024 09:00", "01/05/2025 09:00")   # earliest .. latest by time
 
 
 def test_single_elevated_finding_is_not_a_campaign():
     msgs = [_msg(8, "Sam", "medical", "2025-04-11T09:03")]
-    f8 = _finding([8], "elevated", [_sig("L1", [8], "borrow_authority"), _sig("L5", [8], "register_anomaly")])
+    f8 = _finding([8], "elevated", [_sig("L1", [8], "borrow_authority"), _sig("L5", [8], "register_anomaly")])  # noqa: E501
     assert find_campaigns(_result([f8], list(f8.signals)), msgs) == []
 
 
 def test_two_findings_on_different_targets_is_not_a_campaign():
     msgs = [_msg(8, "Sam", "medical", "2025-04-11T09:03"),
             _msg(11, "Sam", "schedule", "2025-04-11T09:40")]
-    f8 = _finding([8], "elevated", [_sig("L1", [8], "borrow_authority"), _sig("L5", [8], "register_anomaly")])
-    f11 = _finding([11], "elevated", [_sig("L1", [11], "borrow_authority"), _sig("L5", [11], "register_anomaly")])
+    f8 = _finding([8], "elevated", [_sig("L1", [8], "borrow_authority"), _sig("L5", [8], "register_anomaly")])  # noqa: E501
+    f11 = _finding([11], "elevated", [_sig("L1", [11], "borrow_authority"), _sig("L5", [11], "register_anomaly")])  # noqa: E501
     assert find_campaigns(_result([f8, f11], []), msgs) == []
 
 
@@ -195,7 +195,7 @@ def test_campaign_attributes_modal_sender():
     f1 = _finding([8, 9, 10], "elevated",
                   [_sig("L1", [8], "borrow_authority"), _sig("L2", [9], "within_thread_omission"),
                    _sig("L3", [10], "claim_contradicted")])
-    f2 = _finding([12], "elevated", [_sig("L1", [12], "borrow_authority"), _sig("L5", [12], "register_anomaly")])
+    f2 = _finding([12], "elevated", [_sig("L1", [12], "borrow_authority"), _sig("L5", [12], "register_anomaly")])  # noqa: E501
     camps = find_campaigns(_result([f1, f2], []), msgs)
     assert len(camps) == 1
     assert camps[0].actor == "Sam"

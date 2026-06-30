@@ -1,7 +1,7 @@
 """Layer 3 - claims tested against external records."""
 from convergence.corpus import Message
-from convergence.records import Record
 from convergence.layers.third_party import check_claims
+from convergence.records import Record
 
 
 def _msg(seq, body):
@@ -9,7 +9,7 @@ def _msg(seq, body):
 
 
 def _rec(rid, predicate, value, source_seq):
-    return Record(id=rid, subject="s", predicate=predicate, value=value, source_seq=source_seq, note="n")
+    return Record(id=rid, subject="s", predicate=predicate, value=value, source_seq=source_seq, note="n")  # noqa: E501
 
 
 def test_denial_contradicted_by_record_points_to_source():

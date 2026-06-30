@@ -19,7 +19,7 @@ def test_formal_outlier_flagged():
 
 
 def test_consistent_sender_no_anomaly():
-    msgs = [_msg(1, "Sam", "hey there"), _msg(2, "Sam", "hey again"), _msg(3, "Sam", "hey once more")]
+    msgs = [_msg(1, "Sam", "hey there"), _msg(2, "Sam", "hey again"), _msg(3, "Sam", "hey once more")]  # noqa: E501
     assert detect_register_anomalies(msgs) == []
 
 

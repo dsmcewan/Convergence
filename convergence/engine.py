@@ -93,7 +93,7 @@ def _collect_signals(full, included_seqs, records, cross_channel) -> list[Signal
                                       f"cut between shown {g.prev_seq} and {g.next_seq}"))
     if records is not None:
         for c in check_claims(full, records):
-            seqs = tuple(sorted({c.seq} | ({c.contradicting_seq} if c.contradicting_seq is not None else set())))
+            seqs = tuple(sorted({c.seq} | ({c.contradicting_seq} if c.contradicting_seq is not None else set())))  # noqa: E501
             signals.append(Signal("L3", seqs, "claim_contradicted", c.basis))
     if cross_channel is not None:
         # L6 cites a seq in the *other* channel; the signal anchors only on the
@@ -101,7 +101,7 @@ def _collect_signals(full, included_seqs, records, cross_channel) -> list[Signal
         for d in find_cross_channel_divergences(full, cross_channel):
             signals.append(Signal("L6", (d.seq,), "cross_channel_divergence", d.basis))
     for cv in find_convergences(full):
-        signals.append(Signal("L4", cv.seqs, "domain_convergence", f"{cv.anchor} across {', '.join(cv.domains)}"))
+        signals.append(Signal("L4", cv.seqs, "domain_convergence", f"{cv.anchor} across {', '.join(cv.domains)}"))  # noqa: E501
     for a in detect_register_anomalies(full):
         signals.append(Signal("L5", (a.seq,), "register_anomaly", a.reason))
     return signals
@@ -115,7 +115,7 @@ def _summary(sigs, confidence: str) -> str:
     return "Low - " + ", ".join(phrases) + " (single layer; not corroborated)."
 
 
-def run_engine(full: list[Message], included_seqs=None, records=None, cross_channel=None) -> EngineResult:
+def run_engine(full: list[Message], included_seqs=None, records=None, cross_channel=None) -> EngineResult:  # noqa: E501
     signals = _collect_signals(full, included_seqs, records, cross_channel)
     focal = [s for s in signals if s.layer in _BRIDGING]
     corroborators = [s for s in signals if s.layer not in _BRIDGING]

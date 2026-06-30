@@ -6,7 +6,7 @@ data structure or a layer - so the documented spine cannot drift from the code.
 """
 from pathlib import Path
 
-from convergence.engine import Signal, Finding, _KIND_PHRASES
+from convergence.engine import _KIND_PHRASES
 
 DOC = (Path(__file__).parent.parent / "HIERARCHY.md").read_text(encoding="utf-8")
 _LOWER = DOC.lower()

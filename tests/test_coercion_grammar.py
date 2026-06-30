@@ -8,8 +8,8 @@ accompli. Synthetic inputs only.
 """
 from pathlib import Path
 
+from convergence.coercion_grammar import STAGES, match_grammar, tag_stages
 from convergence.corpus import Message
-from convergence.coercion_grammar import tag_stages, match_grammar, STAGES
 
 _ROOT = Path(__file__).parent.parent
 
@@ -26,23 +26,23 @@ def test_action_stage():
 
 
 def test_objection_stage():
-    assert any(h.stage == 2 for h in tag_stages([_msg(1, "I don't agree that this weekend works.")]))
+    assert any(h.stage == 2 for h in tag_stages([_msg(1, "I don't agree that this weekend works.")]))  # noqa: E501
 
 
 def test_obstruction_stage():
-    assert any(h.stage == 3 for h in tag_stages([_msg(1, "Let's just talk about this later, I'll get back to you.")]))
+    assert any(h.stage == 3 for h in tag_stages([_msg(1, "Let's just talk about this later, I'll get back to you.")]))  # noqa: E501
 
 
 def test_question_stage():
-    assert any(h.stage == 4 for h in tag_stages([_msg(1, "On what basis are you assuming you get this weekend?")]))
+    assert any(h.stage == 4 for h in tag_stages([_msg(1, "On what basis are you assuming you get this weekend?")]))  # noqa: E501
 
 
 def test_justify_stage():
-    assert any(h.stage == 5 for h in tag_stages([_msg(1, "I'm only trying to protect her, and my lawyer says the schedule stands.")]))
+    assert any(h.stage == 5 for h in tag_stages([_msg(1, "I'm only trying to protect her, and my lawyer says the schedule stands.")]))  # noqa: E501
 
 
 def test_fait_accompli_stage():
-    assert any(h.stage == 6 for h in tag_stages([_msg(1, "It's already done, there's nothing to discuss.")]))
+    assert any(h.stage == 6 for h in tag_stages([_msg(1, "It's already done, there's nothing to discuss.")]))  # noqa: E501
 
 
 def test_neutral_message_has_no_stage():
@@ -126,5 +126,5 @@ def test_grouped_by_thread():
 def test_every_stage_documented_in_all_specs():
     for doc in ("FRAGMENTS.md", "INTENT.md", "HIERARCHY.md"):
         text = (_ROOT / doc).read_text(encoding="utf-8").lower()
-        missing = [s.name for s in STAGES if s.name.replace("_", " ") not in text and s.name not in text]
+        missing = [s.name for s in STAGES if s.name.replace("_", " ") not in text and s.name not in text]  # noqa: E501
         assert missing == [], f"{doc} missing stages: {missing}"
