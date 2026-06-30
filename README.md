@@ -13,7 +13,7 @@ across the bundled corpora ship here — contractor, coparenting, channels,
 grammar, and five dynamics variants; the only difference between runs is the
 data in `data/`.)
 
-**Who it's for:** anyone who must show *why* a message is manipulative with an
+**Who it's for:** anyone who needs to show *why* a finding holds with an
 **auditable, deterministic** method instead of a black-box classifier —
 investigators, analysts, and litigants working from a written record. Every
 verdict traces to specific messages and the independent layers that corroborate
@@ -23,13 +23,6 @@ it; a language model can *explain* a finding but can never move one.
 > `data/` is fictional and nothing is imported from any private system. The
 > optional `--corpus db` path reads a private SQLite database **you** supply,
 > read-only; it is never bundled and never leaves your machine.
-
-> **Built fast by a Claude-led multi-model agentic system** — Claude as lead
-> architect, Codex on implementation feasibility, Agy on phase-gating, Grok as
-> adversarial reviewer. The whole of it — six-layer engine, five validated
-> corpora, scored eval, Blanc narrator, and this web demo — came together across
-> **25–26 Jun 2026**, with the multi-model substrate itself stood up in a **single
-> morning**. A fast multi-model build, not a long hand-coded grind.
 
 ## The six layers
 
