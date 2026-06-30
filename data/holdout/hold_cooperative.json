@@ -1,50 +1,82 @@
 [
   {
     "seq": 1,
-    "thread": "summer-schedule-2024",
-    "sender": "Marcus",
-    "timestamp": "2024-05-20T08:30",
-    "domain": "schedule",
-    "body": "Hey Priya, my sister's wedding is July 19-21 in Portland and I'd really love to bring Noah. I know that's your weekend. Would you be open to swapping? I could give you the following weekend plus the Monday."
+    "thread": "theo-dental-crown",
+    "sender": "Nadia",
+    "timestamp": "2025-03-04T08:31",
+    "domain": "medical",
+    "body": "Hey Marcus. Took Theo to Dr. Patel this morning. He has a cavity in the lower left molar that's too big for a filling — she's recommending a stainless steel crown. She said we should do it within the next 4–6 weeks. Wanted to loop you in before we schedule anything."
   },
   {
     "seq": 2,
-    "thread": "summer-schedule-2024",
-    "sender": "Priya",
-    "timestamp": "2024-05-20T11:15",
-    "domain": "schedule",
-    "body": "That's a big deal, of course he should be at his aunt's wedding. The following weekend works for me but I actually have something the Monday after. Could I take a Friday instead? Like July 26?"
+    "thread": "theo-dental-crown",
+    "sender": "Marcus",
+    "timestamp": "2025-03-04T09:15",
+    "domain": "medical",
+    "body": "Thanks for telling me right away. Is that the baby molar or a permanent one? If it's a baby tooth I want to understand whether the crown is actually necessary or if we have other options — I've heard they sometimes just monitor in younger kids."
   },
   {
     "seq": 3,
-    "thread": "summer-schedule-2024",
-    "sender": "Marcus",
-    "timestamp": "2024-05-20T12:02",
-    "domain": "schedule",
-    "body": "July 26 Friday works perfectly. So you'd have him July 19 evening through July 21, then I take him back, and you get him back July 25 (Thursday night) through Sunday instead of the standard weekend?"
+    "thread": "theo-dental-crown",
+    "sender": "Nadia",
+    "timestamp": "2025-03-04T09:44",
+    "domain": "medical",
+    "body": "It's a baby tooth, second molar. I asked Dr. Patel the same thing. She said because of how deep it is, leaving it risks infection and pain, and that tooth won't fall out until he's around 11 or 12. So a few more years. I can send you her written summary if that helps."
   },
   {
     "seq": 4,
-    "thread": "summer-schedule-2024",
-    "sender": "Priya",
-    "timestamp": "2024-05-20T12:44",
-    "domain": "schedule",
-    "body": "Actually can we do Thursday pickup at 6 instead of Thursday night? I'd like to take him to his swim lesson Thursday evening."
+    "thread": "theo-dental-crown",
+    "sender": "Marcus",
+    "timestamp": "2025-03-04T10:02",
+    "domain": "medical",
+    "body": "Yes please send that. My only hesitation is whether to get a second opinion first — not because I distrust Dr. Patel, just feels like a big call. Would you be open to a quick consult somewhere else before we commit?"
   },
   {
     "seq": 5,
-    "thread": "summer-schedule-2024",
-    "sender": "Marcus",
-    "timestamp": "2024-05-20T13:10",
-    "domain": "schedule",
-    "body": "Done. 6pm Thursday July 25 pickup, you keep him through Sunday the 28th. I'll put it in the app. Thanks for being flexible on the wedding, it really means a lot."
+    "thread": "theo-dental-crown",
+    "sender": "Nadia",
+    "timestamp": "2025-03-04T10:28",
+    "domain": "medical",
+    "body": "That's reasonable and I don't mind at all. My neighbor's kids go to a pediatric dentist on Maple — Dr. Anwar — I can call and see if we can get in quickly. If we wait more than a week or two for the consult, though, let's agree to just go ahead with Dr. Patel so we're not dragging it out for Theo."
   },
   {
     "seq": 6,
-    "thread": "summer-schedule-2024",
-    "sender": "Priya",
-    "timestamp": "2024-05-20T13:25",
-    "domain": "schedule",
-    "body": "Of course. He's going to love it. Can you send me a couple photos from the wedding? He'll want to show me."
+    "thread": "theo-dental-crown",
+    "sender": "Marcus",
+    "timestamp": "2025-03-04T10:45",
+    "domain": "medical",
+    "body": "Totally agree, let's not drag it out. Set up the consult. If they confirm the crown, I'm fine proceeding with Dr. Patel since Theo already knows her. Can we split the cost? I think our dental plan covers 50% and I'm guessing the rest is around $200 — happy to go half on that."
+  },
+  {
+    "seq": 7,
+    "thread": "theo-dental-crown",
+    "sender": "Nadia",
+    "timestamp": "2025-03-04T11:10",
+    "domain": "medical",
+    "body": "Yes, 50/50 on the out-of-pocket is fair. I'll call Dr. Anwar today. And I'll forward Dr. Patel's notes this afternoon. Thanks for being thoughtful about this — I'm glad we're on the same page."
+  },
+  {
+    "seq": 8,
+    "thread": "theo-dental-crown",
+    "sender": "Marcus",
+    "timestamp": "2025-03-04T11:24",
+    "domain": "medical",
+    "body": "Same. Let me know what Dr. Anwar's office says. And can you let me know the appointment date once it's set so I can arrange my schedule to be there if possible?"
+  },
+  {
+    "seq": 9,
+    "thread": "theo-dental-crown",
+    "sender": "Nadia",
+    "timestamp": "2025-03-04T14:52",
+    "domain": "medical",
+    "body": "Dr. Anwar can see him March 11th at 3pm. I'll confirm it now. And I just sent you Dr. Patel's summary — check your email. Theo was totally unbothered by all this by the way, had a popsicle and declared himself cured."
+  },
+  {
+    "seq": 10,
+    "thread": "theo-dental-crown",
+    "sender": "Marcus",
+    "timestamp": "2025-03-04T15:08",
+    "domain": "medical",
+    "body": "Ha, love him. March 11th works, I'll be there. Thanks Nadia, this went really smoothly. I'll look at the notes tonight."
   }
 ]
