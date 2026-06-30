@@ -61,10 +61,10 @@
           ],
           "has_action": true,
           "has_fait_accompli": true,
-          "cycles": 3,
+          "cycles": 2,
           "status_quo_seq": 55,
           "complete": true,
-          "summary": "preschool: complete coercion grammar - action=True, 3 documentation-war cycle(s); fait accompli at seq 55 set the status quo"
+          "summary": "preschool: complete coercion grammar by Victor - action=True, 2 ordered refuse-legitimize round(s); fait accompli at seq 55 set the status quo"
         },
         {
           "thread": "summer",
@@ -86,10 +86,10 @@
           ],
           "has_action": true,
           "has_fait_accompli": true,
-          "cycles": 2,
+          "cycles": 1,
           "status_quo_seq": 254,
           "complete": true,
-          "summary": "summer: complete coercion grammar - action=True, 2 documentation-war cycle(s); fait accompli at seq 254 set the status quo"
+          "summary": "summer: complete coercion grammar by Victor - action=True, 1 ordered refuse-legitimize round(s); fait accompli at seq 254 set the status quo"
         }
       ]
     }

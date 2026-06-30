@@ -89,13 +89,14 @@ class StageHit:
 @dataclass(frozen=True)
 class GrammarMatch:
     thread: str
+    coercer: str
     seqs: tuple[int, ...]
     stages_present: tuple[int, ...]
     has_action: bool
     has_fait_accompli: bool
-    cycles: int                  # documentation-war rounds before the fait accompli
+    cycles: int                  # ordered refuse->legitimize rounds before the fait
     status_quo_seq: int | None   # the fait accompli that set the status quo
-    complete: bool               # action + >=1 cycle + fait accompli
+    complete: bool
     summary: str
 
 
@@ -112,6 +113,32 @@ def tag_stages(messages: list[Message]) -> list[StageHit]:
     return out
 
 
+def _run_envelope(hits: list[StageHit], coercer: str) -> tuple[int, bool]:
+    """Ordered per-coercer machine over seq-sorted hits.
+    An action (1, any party) opens it; then the coercer runs >=1 ordered
+    refuse(2/3)->legitimize(4/5) round and a fait(6). Returns (cycles, complete)."""
+    state = "S0"
+    cycles = 0
+    for h in hits:
+        if state == "S0":
+            if h.stage == 1:                      # the proposal opens it (any sender)
+                state = "OPENED"
+            continue
+        if h.sender != coercer:                   # only the coercer drives the war/fait
+            continue
+        if state == "OPENED" and h.stage in _REFUSAL:
+            state = "REFUSED"
+        elif state == "REFUSED" and h.stage in _LEGITIMACY:
+            cycles += 1
+            state = "CYCLED"
+        elif state == "CYCLED" and h.stage in _REFUSAL:
+            state = "REFUSED"                     # start the next round
+        elif state == "CYCLED" and h.stage == 6 and cycles >= 1:
+            state = "COMPLETE"
+            break
+    return cycles, state == "COMPLETE"
+
+
 def match_grammar(messages: list[Message]) -> list[GrammarMatch]:
     by_thread: dict[str, list[Message]] = defaultdict(list)
     for m in messages:
@@ -119,37 +146,39 @@ def match_grammar(messages: list[Message]) -> list[GrammarMatch]:
 
     out: list[GrammarMatch] = []
     for thread, msgs in sorted(by_thread.items()):
-        hits = tag_stages(msgs)
+        hits = tag_stages(msgs)  # already sorted by (seq, stage)
         if not hits:
             continue
-
         has_action = any(h.stage == 1 for h in hits)
-        fait_seqs = sorted(h.seq for h in hits if h.stage == 6)
-        has_fait = bool(fait_seqs)
-        status_quo_seq = fait_seqs[-1] if has_fait else None
-
-        # the documentation war runs *until* the fait accompli sets the status quo
-        war = [h for h in hits if status_quo_seq is None or h.seq < status_quo_seq]
-        refusal = {h.seq for h in war if h.stage in _REFUSAL}
-        legitimacy = {h.seq for h in war if h.stage in _LEGITIMACY}
-        cycles = min(len(refusal), len(legitimacy))
-
-        if cycles < 1 and not has_fait:
-            continue  # no coercion-grammar activity
-
-        complete = has_action and cycles >= 1 and has_fait
-        sq = (f"; fait accompli at seq {status_quo_seq} set the status quo"
-              if status_quo_seq is not None else "")
-        out.append(GrammarMatch(
-            thread=thread,
-            seqs=tuple(sorted({h.seq for h in hits})),
-            stages_present=tuple(sorted({h.stage for h in hits})),
-            has_action=has_action,
-            has_fait_accompli=has_fait,
-            cycles=cycles,
-            status_quo_seq=status_quo_seq,
-            complete=complete,
-            summary=(f"{thread}: {'complete' if complete else 'partial'} coercion grammar - "
-                     f"action={has_action}, {cycles} documentation-war cycle(s){sq}"),
-        ))
+        # candidate coercers: any sender who shows war activity (refusal/legitimacy)
+        # OR a fait. (A war without a fait, or a fait without a war, still yields a
+        # PARTIAL match — preserving the incomplete/fait-alone behavior.)
+        candidates = sorted({
+            h.sender for h in hits
+            if h.stage in _REFUSAL or h.stage in _LEGITIMACY or h.stage == 6
+        })
+        for coercer in candidates:
+            cycles, complete = _run_envelope(hits, coercer)
+            coercer_faits = [h.seq for h in hits if h.stage == 6 and h.sender == coercer]
+            has_fait_c = bool(coercer_faits)
+            if cycles < 1 and not has_fait_c:
+                continue  # no coercion-grammar activity for this candidate (mirrors old skip)
+            status_quo_seq = max(coercer_faits) if has_fait_c else None
+            env = [h for h in hits if h.sender == coercer or h.stage == 1]
+            sq = (f"; fait accompli at seq {status_quo_seq} set the status quo"
+                  if status_quo_seq is not None else "")
+            out.append(GrammarMatch(
+                thread=thread,
+                coercer=coercer,
+                seqs=tuple(sorted({h.seq for h in env})),
+                stages_present=tuple(sorted({h.stage for h in env})),
+                has_action=has_action,
+                has_fait_accompli=has_fait_c,
+                cycles=cycles,
+                status_quo_seq=status_quo_seq,
+                complete=complete,
+                summary=(f"{thread}: {'complete' if complete else 'partial'} coercion grammar by "
+                         f"{coercer} - action={has_action}, {cycles} ordered refuse-legitimize "
+                         f"round(s){sq}"),
+            ))
     return out
