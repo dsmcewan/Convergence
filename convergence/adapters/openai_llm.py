@@ -14,7 +14,7 @@ import os
 from pathlib import Path
 from typing import Callable
 
-_MODEL = "gpt-5.5"  # latest general model on this key; override via make_openai_complete(model=...)
+_MODEL = "gpt-4o"  # override via make_openai_complete(model=...)
 _KEYS = ("OPENAI_API_KEY",)
 
 

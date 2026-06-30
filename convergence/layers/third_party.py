@@ -34,7 +34,11 @@ def _predicate_topic(predicate: str) -> set[str]:
 
 
 def check_claims(messages: list[Message], records: list[Record]) -> list[Contradiction]:
-    agreement_records = [r for r in records if r.value and "agree" in r.predicate]
+    agreement_records = [
+        r for r in records
+        if (r.value is True or (isinstance(r.value, str) and r.value.strip().lower() == "true"))
+        and "agree" in r.predicate
+    ]
     out: list[Contradiction] = []
     for m in messages:
         if not _DENIAL.search(normalize(m.body)):

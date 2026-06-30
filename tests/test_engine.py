@@ -13,6 +13,10 @@ def _msg(seq, sender, domain, body):
     return Message(seq=seq, thread="T", sender=sender, timestamp="t", domain=domain, body=body)
 
 
+def test_empty_corpus_returns_no_findings():
+    assert run_engine([]).findings == ()
+
+
 def test_no_signals_empty():
     msgs = [_msg(1, "A", "d", "hello there friend"), _msg(2, "A", "d", "hi again friend")]
     assert run_engine(msgs).findings == ()
@@ -98,6 +102,6 @@ def test_integration_headline_and_self_disqualification():
     # Every elevated finding carries a substantive layer; context-only is never elevated.
     for f in res.findings:
         if f.confidence == "elevated":
-            assert any(layer in {"L1", "L2", "L3"} for layer in f.layers)
+            assert any(layer in {"L1", "L2", "L3", "L6"} for layer in f.layers)
         if set(f.layers) <= {"L4", "L5"}:
             assert f.confidence == "low"

@@ -175,6 +175,16 @@ def test_recurrence_pattern_attached_to_campaign():
     assert "repeated:borrow_authority" in c.patterns
 
 
+def test_no_template_for_low_confidence_finding():
+    # Regression for the confidence gate: a lone L6 finding is low (uncorroborated)
+    # and must never trigger a template pattern even though it matches "two-faced".
+    f = _finding([2], "low", [_sig("L6", [2], "cross_channel_divergence")])
+    pats = find_patterns(_result([f], list(f.signals)))
+    assert all(p.kind != "template" for p in pats), (
+        "find_patterns must not emit templates for low-confidence findings"
+    )
+
+
 def test_campaign_attributes_modal_sender():
     # a finding spanning multiple senders is attributed to the majority sender
     msgs = [_msg(8, "Sam", "medical", "2025-04-11T09:03"),

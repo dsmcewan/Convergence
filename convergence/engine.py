@@ -7,19 +7,20 @@ material. A lone signal - one tactic, one omission, one domain overlap - stays
 its own findings unless they survive corroboration. It cannot grade its own
 homework.
 
-Grouping detail: L1/L2/L3/L5 are "focal" - they define clusters and may merge
-(e.g. an L3 contradiction names the source message an L2 omission removed, so
-they bind on that shared seq). L4 (domain convergence) is a corroborator only:
-it adds its weight to clusters it overlaps but never merges two clusters that
-would otherwise be separate.
+Grouping detail: L1/L2/L3/L5/L6 are "focal" - they define clusters and may
+merge (e.g. an L3 contradiction names the source message an L2 omission
+removed, so they bind on that shared seq). L4 (domain convergence) is a
+corroborator only: it adds its weight to clusters it overlaps but never merges
+two clusters that would otherwise be separate.
 
-Substantive vs. contextual: L1 (a tactic), L2 (an omission) and L3 (a
-contradiction) are *substantive* - they are the actual moves. L4 (domain
-overlap) and L5 (register shift) are *contextual* - they strengthen a
-substantive finding but cannot, on their own, make one. So a group is elevated
-only when it carries at least one substantive layer AND a second layer of any
-kind. Context-only groups (L4/L5 with nothing substantive) stay low - which is
-exactly the "can't grade its own homework" guarantee.
+Substantive vs. contextual: L1 (tactic), L2 (omission), L3 (contradiction),
+and L6 (cross-channel divergence) are *substantive* - they are the actual
+moves. L4 (domain overlap) is a pure corroborator - it never forms a finding
+on its own. L5 (register shift) is focal-but-contextual - it can bridge
+clusters but is not substantive. So a group is elevated only when it carries at
+least one substantive layer AND a second layer of any kind. Context-only groups
+(L4/L5 with nothing substantive) stay low - which is exactly the "can't grade
+its own homework" guarantee.
 """
 from __future__ import annotations
 

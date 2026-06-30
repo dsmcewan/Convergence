@@ -115,6 +115,10 @@ def load_documentary_ids(path: str | Path, sources) -> set[int]:
         tables = {r["name"] for r in conn.execute(
             "SELECT name FROM sqlite_master WHERE type='table'")}
         for table, col in sources:
+            if not table.replace("_", "").isalnum():
+                raise ValueError(f"unsafe table name: {table}")
+            if not col.replace("_", "").isalnum():
+                raise ValueError(f"unsafe column name: {col}")
             if table not in tables:
                 continue
             cols = {r["name"] for r in conn.execute(f'pragma table_info("{table}")')}

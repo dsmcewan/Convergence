@@ -20,8 +20,9 @@ COPY demo.py ./
 RUN pip install --no-cache-dir -e .
 
 # Containers must bind 0.0.0.0 to be reachable; the app still defaults to
-# localhost everywhere else. /api/chat proxies to paid LLM backends, so only
-# publish this port behind a trusted boundary.
+# localhost everywhere else. /api/chat proxies to paid LLM backends, so
+# CONVERGENCE_API_KEY is required for any exposed deployment — set it via
+# `-e CONVERGENCE_API_KEY=<key>` on `docker run` (see README and SECURITY.md).
 ENV CONVERGENCE_HOST=0.0.0.0
 EXPOSE 8765
 

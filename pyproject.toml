@@ -27,10 +27,9 @@ convergence = "demo:main"               # narrated CLI walkthrough (--corpus, --
 convergence-web = "web.server:main"     # local frontend at http://127.0.0.1:8765/
 convergence-build = "web.build:main"    # write web/site/data/*.json for static hosting
 
-# TODO: set these to the real repo URL once created.
 [project.urls]
-Homepage = "https://github.com/OWNER/convergence"
-Source = "https://github.com/OWNER/convergence"
+Homepage = "https://github.com/dsmcewan/convergence"
+Source = "https://github.com/dsmcewan/convergence"
 
 [tool.setuptools]
 py-modules = ["demo"]                    # demo.py is a top-level module, not a package

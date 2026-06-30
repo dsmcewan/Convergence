@@ -3,8 +3,10 @@
 A six-layer engine for analyzing a corpus of written communications. It does
 **not** know or care whose messages it is fed. It was *built from* the structure
 of message records — not *tailored to* any one conversation — so the **same
-engine** runs on unrelated corpora with no code changes. (Three synthetic corpora
-ship here; the only difference between them is the data in `data/`.)
+engine** runs on unrelated corpora with no code changes. (Fourteen data files
+across the bundled corpora ship here — contractor, coparenting, channels,
+grammar, and five dynamics variants; the only difference between runs is the
+data in `data/`.)
 
 **Who it's for:** anyone who must show *why* a message is manipulative with an
 **auditable, deterministic** method instead of a black-box classifier —
@@ -53,8 +55,10 @@ elevates a finding only when independent layers agree. The layers are weighted:
 
 - **Substantive** — L1 (tactic), L2 (omission), L3 (contradiction), L6
   (cross-channel divergence): the actual moves.
-- **Contextual** — L4 (domain overlap), L5 (register shift): they strengthen a
-  finding but cannot make one alone.
+- **Corroborator** — L4 (domain overlap): strengthens clusters it overlaps but
+  never forms or merges a finding on its own.
+- **Focal-but-contextual** — L5 (register shift): bridges clusters like a focal
+  layer but is not substantive; cannot make a finding without a substantive layer.
 
 A group is **elevated** only when it carries ≥1 substantive layer **and** ≥2
 distinct layers total. Context-only groups, and lone signals, stay **low**. The
@@ -154,7 +158,7 @@ install pulls no runtime dependencies; the optional `llm` extra is only for the
 conversational backends.
 
 ```bash
-git clone https://github.com/OWNER/convergence
+git clone https://github.com/dsmcewan/convergence
 cd convergence
 
 python -m venv .venv
@@ -173,7 +177,7 @@ repo root if you prefer not to install.)
 ## Run
 
 ```bash
-pytest tests/ -q                 # 176 deterministic tests
+pytest tests/ -q                 # 191 deterministic tests
 
 convergence-build                # write web/site/data/*.json (auto-runs on first serve)
 convergence-web                  # local frontend: http://127.0.0.1:8765/
@@ -184,6 +188,7 @@ convergence --corpus channels        # two-channel corpus (Layer 6)
 convergence --about                  # the Voice of Convergence explains itself
 convergence --trick                  # ... explains the magic trick (the method)
 convergence --corpus contractor --voice blanc  # the Voice of Convergence
+convergence --corpus grammar         # coercion-grammar structural analysis
 convergence --corpus dynamics        # 5-type discrimination table
 convergence --corpus db --db /path/to/your.db   # run on your own SQLite export
 convergence --eval                   # scored discriminator report
@@ -202,7 +207,8 @@ degrades to the deterministic narrator when its key/CLI is absent.
 
 ```bash
 docker build -t convergence .
-docker run --rm -p 8765:8765 convergence      # open http://127.0.0.1:8765/
+docker run --rm -p 8765:8765 convergence                                      # local only (no API key needed)
+docker run --rm -p 8765:8765 -e CONVERGENCE_API_KEY=<key> convergence        # required for any exposed deployment
 ```
 
 The image binds `0.0.0.0` (via `CONVERGENCE_HOST`) so the port is reachable from
@@ -261,8 +267,9 @@ convergence/            engine (corpus-agnostic; stdlib only in core)
   conversation.py       grounded Q&A seam (model injected)
   layers/               one module per analytical layer (L1–L6)
   adapters/             optional LLM adapters (Claude, OpenAI, Grok, Gemini, agy)
-data/                   three synthetic corpora (swap freely)
-tests/                  176 deterministic tests
+data/                   14 data files: contractor (sample_*), coparenting, channels (formal+casual), grammar, dynamics (dyn_*)
+tools/                  generate_dynamics.py — seeded dynamics-corpus generator
+tests/                  191 deterministic tests
 web/                    static frontend + local stdlib server
   serialize.py          engine result -> browser JSON
   build.py              writes web/site/data/*.json for static hosting

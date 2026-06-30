@@ -105,7 +105,8 @@ class Handler(BaseHTTPRequestHandler):
     def _static(self, request_path: str) -> None:
         safe_path = request_path.strip("/") or "index.html"
         target = (SITE / safe_path).resolve()
-        if not str(target).startswith(str(SITE.resolve())) or not target.is_file():
+        site = SITE.resolve()
+        if not (site == target or site in target.parents) or not target.is_file():
             self._json({"error": "not found"}, status=404)
             return
         content_type = mimetypes.guess_type(target.name)[0] or "application/octet-stream"
@@ -154,8 +155,16 @@ def _config_from_env() -> tuple[str, int]:
     return host, port
 
 
+_LOOPBACK = {"127.0.0.1", "localhost", "::1"}
+
+
 def main() -> None:
     host, port = _config_from_env()
+    if host not in _LOOPBACK and not os.environ.get("CONVERGENCE_API_KEY"):
+        raise SystemExit(
+            "ERROR: CONVERGENCE_API_KEY must be set when binding to a non-loopback "
+            f"address ({host!r}). Set CONVERGENCE_API_KEY or bind to localhost."
+        )
     serve(host, port)
 
 

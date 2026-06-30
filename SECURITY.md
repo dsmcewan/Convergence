@@ -33,8 +33,8 @@ and how to deploy safely.
 |---|---|
 | **`/api/chat` abuse → runaway LLM spend.** The chat endpoint proxies to paid backends. If exposed, an attacker can drive cost. | Localhost bind by default. For any exposed deployment, set `CONVERGENCE_API_KEY` — `/api/chat` then requires a matching `X-API-Key` header (HTTP 401 otherwise). Consider a reverse proxy with rate limiting (see below). |
 | **Key disclosure.** Committed or logged keys. | Keys live in env or a gitignored `.env` (`.env`, `.env.*` ignored; `.env.example` is the only tracked variant). The server never logs request bodies or keys. CI/history scanned for committed keys. |
-| **Path traversal on static files.** `/<path>` could escape the site root. | `_static` resolves the target and rejects anything outside `web/site` (`startswith` the resolved site root) and any non-file. |
-| **SQL injection via a DB table name.** `load_sqlite_corpus(table=...)`. | Table name is validated (`replace("_","").isalnum()`) before interpolation; the DB is opened read-only (`mode=ro`). |
+| **Path traversal on static files.** `/<path>` could escape the site root. | `_static` resolves the target and rejects anything whose resolved path is not equal to or under `web/site` (parent-walk check) and any non-file. |
+| **SQL injection via a DB table or column name.** `load_sqlite_corpus(table=...)` and `load_documentary_ids(sources=...)`. | Both loaders validate every identifier (`replace("_","").isalnum()`) before any interpolation, and both open the DB read-only (`mode=ro`). |
 | **Corpus exfiltration via chat prompt.** A model sees finding text. | The prompt carries only structured findings (never raw corpus dumps or detection code), and only for the corpus the user selected. Selecting a chat backend is an explicit, network-egress action. |
 | **Verdict tampering by a model.** | Verdicts are computed before any prompt is built; the conversational layer is presentation-only and cannot elevate or suppress a finding. |
 

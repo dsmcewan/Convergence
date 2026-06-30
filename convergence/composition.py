@@ -40,7 +40,10 @@ def _parse_ts(s):
     if not isinstance(s, str) or not s.strip():
         return None
     try:
-        return datetime.fromisoformat(s.strip())
+        s2 = s.strip()
+        if s2.endswith("Z"):
+            s2 = s2[:-1] + "+00:00"
+        return datetime.fromisoformat(s2)
     except ValueError:
         pass
     for fmt in _TS_FORMATS:
@@ -95,6 +98,8 @@ def find_patterns(result: EngineResult, recurrence_min: int = 3) -> list[Pattern
 
     # templates: a named chain present within one finding
     for f in result.findings:
+        if f.confidence != "elevated":
+            continue
         kinds = {s.kind for s in f.signals}
         for t in _TEMPLATES:
             if t.required <= kinds:
