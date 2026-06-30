@@ -3,6 +3,7 @@
 [![tests](https://github.com/dsmcewan/Convergence/actions/workflows/ci.yml/badge.svg)](https://github.com/dsmcewan/Convergence/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue.svg)](pyproject.toml)
+[![coverage](https://img.shields.io/badge/coverage-%E2%89%A580%25-brightgreen.svg)](.github/workflows/ci.yml)
 
 A six-layer engine for analyzing a corpus of written communications. It does
 **not** know or care whose messages it is fed. It was *built from* the structure

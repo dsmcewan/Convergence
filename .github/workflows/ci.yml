@@ -21,6 +21,10 @@ jobs:
         run: |
           pytest -q
           pytest -q
+      - name: Coverage gate (>= 80%)
+        # Enforces the floor the README's coverage badge advertises, so the badge
+        # can never become a false claim — if coverage drops below 80%, CI fails.
+        run: pytest --cov=convergence --cov=web --cov-fail-under=80 -q
       - name: Demo data matches the engine (no drift)
         # Rebuild the static demo data from the current engine and fail if the
         # committed web/site/data/ differs — keeps the published demo honest and
