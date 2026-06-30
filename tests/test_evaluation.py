@@ -79,3 +79,22 @@ def test_documentary_precision_empty_is_zero_not_crash():
     from convergence.evaluation import documentary_precision
     dp = documentary_precision([], {1, 2})
     assert dp.elevated == 0 and dp.precision == 0.0
+
+
+def test_report_is_reframed_as_corpus_level_with_caveat():
+    from convergence.evaluation import format_report
+    txt = format_report(evaluate([("pos", _ENVELOPE, True), ("neg", _BENIGN, False)]))
+    low = txt.lower()
+    # honest framing: corpus-level, explicit count, no-generalization caveat
+    assert "corpus" in low
+    assert "2/2" in txt  # k/N corpora correctly classified
+    assert "no statistical generalization" in low or "not a sampled population" in low
+    # diagnostics still present (keys unchanged)
+    assert "precision" in low and "recall" in low
+
+
+def test_tiered_report_names_each_tier():
+    from convergence.evaluation import evaluate_tiered, format_tiered_report
+    DATA = __import__("pathlib").Path(__file__).parent.parent / "data"
+    txt = format_tiered_report(evaluate_tiered(DATA)).lower()
+    assert "core" in txt and "adversarial" in txt

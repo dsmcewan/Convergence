@@ -100,7 +100,11 @@ ADVERSARIAL_LABELS = {
 }
 
 # Blind holdout tier (Phase 3): filled in T3 by a fresh-subagent-authored set.
-HOLDOUT_LABELS: dict[str, bool] = {}
+HOLDOUT_LABELS: dict[str, bool] = {
+    "hold_coercive.json": True,
+    "hold_cooperative.json": False,
+    "hold_hostile.json": False,
+}
 
 
 def _corpus_label(fname: str) -> str:
@@ -188,23 +192,58 @@ def format_documentary_precision(dp: DocumentaryPrecision, corpus_name: str = "a
     ])
 
 
-def format_report(r: EvalResult) -> str:
-    out = ["Coercion-grammar discriminator - scored eval", ""]
-    out.append(f"  {'corpus':16}{'label':>10}{'predicted':>11}{'stage_hits':>12}{'envelopes':>11}{'ok':>4}")  # noqa: E501
+_CAVEAT = (
+    "  (N curated corpora - corpus-level discrimination, not a sampled population; "
+    "no statistical generalization is claimed.)"
+)
+
+
+def _format_tier(title: str, r: EvalResult) -> str:
+    n = r.tp + r.fp + r.fn + r.tn
+    correct = r.tp + r.tn
+    m = r.metrics
+    out = [
+        f"{title}: {correct}/{n} corpora correctly classified",
+        f"  {'corpus':16}{'label':>10}{'predicted':>11}{'stage_hits':>12}{'envelopes':>11}{'ok':>4}",  # noqa: E501
+    ]
     for c in r.per_corpus:
         out.append(f"  {c.name:16}{('coercive' if c.label else 'other'):>10}"
                    f"{('coercive' if c.predicted else 'other'):>11}{c.stage_hits:>12}"
                    f"{c.envelopes:>11}{('y' if c.correct else 'N'):>4}")
-    m = r.metrics
     out += [
-        "",
         f"  confusion:  TP={r.tp}  FP={r.fp}  FN={r.fn}  TN={r.tn}",
-        f"  precision={m['precision']:.3f}  recall={m['recall']:.3f}  F1={m['f1']:.3f}  "
-        f"specificity={m['specificity']:.3f}  accuracy={m['accuracy']:.3f}",
+        f"  diagnostics: precision={m['precision']:.3f}  recall={m['recall']:.3f}  "
+        f"F1={m['f1']:.3f}  specificity={m['specificity']:.3f}  accuracy={m['accuracy']:.3f}",
     ]
     negatives = [c for c in r.per_corpus if not c.label]
     if negatives:
         hard = max(negatives, key=lambda c: c.stage_hits)
         out.append(f"  hard negative: '{hard.name}' fired {hard.stage_hits} hostile stage-hits "
                    f"but {hard.envelopes} false envelopes - specificity holds under load.")
+    return "\n".join(out)
+
+
+def format_report(r: EvalResult) -> str:
+    return "\n".join([
+        "Coercion-grammar discriminator - corpus-level discrimination",
+        _CAVEAT,
+        "",
+        _format_tier("corpus-level discrimination", r),
+    ])
+
+
+def format_tiered_report(t: TieredEval) -> str:
+    out = [
+        "Coercion-grammar discriminator - tiered corpus-level discrimination",
+        _CAVEAT,
+        "",
+        _format_tier("CORE (dynamics; behavior-preservation guard)", t.core),
+        "",
+        _format_tier("ADVERSARIAL (engineered traps + robustness)", t.adversarial),
+    ]
+    if t.holdout is not None:
+        out += [
+            "",
+            _format_tier("HOLDOUT (blind; generalization - reported, not tuned against)", t.holdout),  # noqa: E501
+        ]
     return "\n".join(out)

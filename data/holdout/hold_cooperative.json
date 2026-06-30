@@ -1,0 +1,50 @@
+[
+  {
+    "seq": 1,
+    "thread": "summer-schedule-2024",
+    "sender": "Marcus",
+    "timestamp": "2024-05-20T08:30",
+    "domain": "schedule",
+    "body": "Hey Priya, my sister's wedding is July 19-21 in Portland and I'd really love to bring Noah. I know that's your weekend. Would you be open to swapping? I could give you the following weekend plus the Monday."
+  },
+  {
+    "seq": 2,
+    "thread": "summer-schedule-2024",
+    "sender": "Priya",
+    "timestamp": "2024-05-20T11:15",
+    "domain": "schedule",
+    "body": "That's a big deal, of course he should be at his aunt's wedding. The following weekend works for me but I actually have something the Monday after. Could I take a Friday instead? Like July 26?"
+  },
+  {
+    "seq": 3,
+    "thread": "summer-schedule-2024",
+    "sender": "Marcus",
+    "timestamp": "2024-05-20T12:02",
+    "domain": "schedule",
+    "body": "July 26 Friday works perfectly. So you'd have him July 19 evening through July 21, then I take him back, and you get him back July 25 (Thursday night) through Sunday instead of the standard weekend?"
+  },
+  {
+    "seq": 4,
+    "thread": "summer-schedule-2024",
+    "sender": "Priya",
+    "timestamp": "2024-05-20T12:44",
+    "domain": "schedule",
+    "body": "Actually can we do Thursday pickup at 6 instead of Thursday night? I'd like to take him to his swim lesson Thursday evening."
+  },
+  {
+    "seq": 5,
+    "thread": "summer-schedule-2024",
+    "sender": "Marcus",
+    "timestamp": "2024-05-20T13:10",
+    "domain": "schedule",
+    "body": "Done. 6pm Thursday July 25 pickup, you keep him through Sunday the 28th. I'll put it in the app. Thanks for being flexible on the wedding, it really means a lot."
+  },
+  {
+    "seq": 6,
+    "thread": "summer-schedule-2024",
+    "sender": "Priya",
+    "timestamp": "2024-05-20T13:25",
+    "domain": "schedule",
+    "body": "Of course. He's going to love it. Can you send me a couple photos from the wedding? He'll want to show me."
+  }
+]

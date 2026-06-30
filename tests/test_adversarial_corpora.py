@@ -52,5 +52,5 @@ def test_tiered_eval_core_is_perfect_and_adversarial_scores():
     assert t.core.metrics["precision"] == 1.0 and t.core.metrics["recall"] == 1.0
     # adversarial tier: 2 positives, 3 negatives, all correct -> no FP, no FN
     assert (t.adversarial.tp, t.adversarial.fp, t.adversarial.fn, t.adversarial.tn) == (2, 0, 0, 3)
-    # holdout not wired until T3
-    assert t.holdout is None
+    # holdout wired in T3: now non-None
+    assert t.holdout is not None
