@@ -2,8 +2,9 @@
 
 **Goal:** Replace the coercion-grammar **stage-counting** in
 `convergence/coercion_grammar.py` with a **sender-aware, ordered state machine**:
-one coercer must drive `action → (objection → deflection)⁺ → fait_accompli` in
-`seq` order, so a coercive envelope can no longer be falsely assembled from
+a proposer's `action` opens the episode, then **one coercer** drives
+`(refuse → legitimize)⁺ → fait_accompli` in `seq` order (the coercer owns stages
+2/3/4/5/6), so a coercive envelope can no longer be falsely assembled from
 different senders' messages or from out-of-order stage hits.
 
 **Status:** design approved 2026-06-30. Sub-project 2 of the five-phase redesign;
@@ -43,30 +44,36 @@ hits in `seq` order.
 
 `seq` is the canonical record order (monotonic position in the complete record),
 so the machine processes a thread's stage hits sorted by `seq`. For each thread,
-for each **candidate coercer** `C` — a sender with at least one stage-1 (action)
-and one stage-6 (fait) hit — run:
+for each **candidate coercer** `C` — a sender who has a stage-6 (fait) hit **and**
+refusal/legitimacy war activity (a stage 2/3 and/or 4/5 hit) — run:
 
 ```
-S0         ──[ C's action (stage 1) ]──────────────▶ ACTED
-ACTED      ──[ objection (stage 2), ANY sender ]───▶ CONTESTED
-DEFLECTED  ──[ objection (stage 2), ANY sender ]───▶ CONTESTED      (next cycle)
-CONTESTED  ──[ C's obstruction/question/justify (3/4/5) ]──▶ DEFLECTED   (cycles += 1)
-DEFLECTED  ──[ C's fait (stage 6), requires cycles ≥ 1 ]──▶ COMPLETE
+S0       ──[ action (stage 1), by ANY party — the proposal that opens it ]──▶ OPENED
+OPENED   ──[ C's refusal: objection(2) or obstruction(3) ]─────────────────▶ REFUSED
+CYCLED   ──[ C's refusal: objection(2) or obstruction(3) ]─────────────────▶ REFUSED   (next round)
+REFUSED  ──[ C's legitimacy: question(4) or justify(5) ]───────────────────▶ CYCLED    (cycles += 1)
+CYCLED   ──[ C's fait (stage 6), requires cycles ≥ 1 ]─────────────────────▶ COMPLETE
 ```
 
-Transitions fire only on hits with strictly increasing `seq`. The **objection**
-(stage 2) being deflected may come from any sender (it is the pushback being
-steamrolled); **every other envelope stage (1, 3, 4, 5, 6) must be `C`'s.**
+Transitions fire only on hits with strictly increasing `seq`. **The action (stage
+1) opens the episode and may come from any party — it is the good-faith
+proposal/request being steamrolled (typically the victim's, not the coercer's).
+The coercer `C` owns the documentation war and the fait: stages 2, 3, 4, 5, 6
+must be `C`'s.**
 
-- **`complete` for `C`** ⇔ `C`'s action, then **≥1** ordered (objection →
-  `C`-deflection) cycle, then `C`'s fait — strictly increasing in `seq`.
-- A coercer's justification with no preceding objection is **not** a war cycle;
-  the fait counts only after `cycles ≥ 1`.
-- A reversed-chronology record (fait appears at a lower `seq` than the action)
-  cannot reach COMPLETE.
+- **`complete` for `C`** ⇔ an action (any party) opens it, then `C` runs **≥1**
+  ordered documentation-war round (a refusal `2/3` followed in `seq` by a
+  legitimacy `4/5`, both `C`'s), then `C`'s fait — all strictly increasing in
+  `seq`.
+- A bare refusal with no following legitimacy is not a completed round; a
+  legitimacy with no preceding refusal does not open one. The fait counts only
+  after `cycles ≥ 1`.
+- A reversed-chronology record (the fait at a lower `seq` than the war, or the war
+  before the action) cannot reach COMPLETE.
 
-`cycles` is now **the count of ordered objection→deflection pairs before the
-fait** (replacing `min(len(refusal), len(legitimacy))`).
+`cycles` is now **the count of ordered refuse→legitimize rounds the coercer runs
+before the fait** (replacing `min(len(refusal), len(legitimacy))`). A "round" is a
+`C` refusal (2/3) followed by a later `C` legitimacy (4/5) in `seq` order.
 
 ## Data + structure changes
 
@@ -80,8 +87,9 @@ fait** (replacing `min(len(refusal), len(legitimacy))`).
   coercer.
 - **`match_grammar(messages) -> list[GrammarMatch]`** keeps its signature.
   Internals: group by thread (unchanged); for each thread, iterate candidate
-  coercers (senders with both an action and a fait), run the ordered machine over
-  the thread's `seq`-sorted hits, and emit a `GrammarMatch` per coercer that shows
+  coercers (senders with a fait **and** refusal/legitimacy war activity), run the
+  ordered machine over the thread's `seq`-sorted hits (the action that opens the
+  episode may be any party's), and emit a `GrammarMatch` per coercer that shows
   activity. A thread may yield one coercer; if none completes, emit partial
   matches exactly where the old code would have (so "no activity" still `continue`s).
 - **`classify_coercive(messages)`** is unchanged: `any(m.complete for m in
@@ -108,14 +116,16 @@ fait** (replacing `min(len(refusal), len(legitimacy))`).
 
 ## Testing
 
-- **Sender-awareness unit test:** an envelope whose stages are split across **two
-  senders** (e.g. sender A's action + sender B's deflections + sender A's fait, or
-  the deflections from a different sender than the action) does **NOT** complete.
+- **Sender-awareness unit test:** an envelope whose **war/fait stages are split
+  across two senders** (so no single sender owns the refuse→legitimize→fait
+  sequence — e.g. the refusals from one sender and the legitimacy/fait from
+  another) does **NOT** complete.
 - **Ordering unit test:** the same stage cues arranged in **reverse `seq` order**
-  (fait before the cycle before the action) do **NOT** complete.
-- **Positive unit test:** a clean single-coercer ordered envelope (one sender:
-  action → objection(other) → that sender's justify → that sender's fait)
-  completes, with the correct `coercer` and `cycles ≥ 1`.
+  (the fait before the war before the action) do **NOT** complete.
+- **Positive unit test:** a clean single-coercer ordered envelope — a proposer's
+  action (stage 1), then ONE coercer's refusal (2/3) → legitimacy (4/5) → fait (6)
+  in `seq` order — completes, with the correct `coercer` (the war/fait sender, not
+  the proposer) and `cycles ≥ 1`.
 - **Hard-negative unit test:** a hostile two-party exchange with many stage hits
   but no single ordered coercer stays **not complete** (mirrors `high_conflict`).
 - **Eval regression:** `evaluate_dynamics` still returns precision=recall=F1=1.00;
@@ -139,11 +149,16 @@ fait** (replacing `min(len(refusal), len(legitimacy))`).
 
 ## Decisions log (brainstorming, 2026-06-30)
 
-- **Attribution:** one coercer owns stages 1/3/4/5/6; the objection (2) being
-  deflected may come from any sender. The coercer drives their own envelope.
-- **Ordering:** a *complete* envelope is `C`'s action → ≥1 ordered
-  (objection → `C`-deflection) cycle → `C`'s fait, strictly increasing in `seq`. A
-  reversed-chronology record cannot complete.
+- **Attribution (corrected against the corpus, 2026-06-30):** the **action (1)
+  opens the episode and is the proposer's** (any party — the good-faith request
+  being steamrolled, typically the victim's). The **coercer `C` owns the
+  documentation war and the fait — stages 2/3/4/5/6.** (An earlier draft had the
+  coercer owning the action; grounding in `dyn_coercive` showed the coercer owns
+  refusal/legitimacy/fait while the *victim* makes the action — corrected here so
+  the strict machine still completes `dyn_coercive`.)
+- **Ordering:** a *complete* envelope is an action (any party) → ≥1 ordered
+  refuse(2/3)→legitimize(4/5) round by `C` → `C`'s fait, strictly increasing in
+  `seq`. A reversed-chronology record cannot complete.
 - **Eval discipline:** keep the 5-corpus eval at 1.00; verify `dyn_coercive` still
   completes; re-baseline a corpus only with explicit justification. Phase 2 adds
   direct sender-split and reverse-order unit tests; the full adversarial corpora,
