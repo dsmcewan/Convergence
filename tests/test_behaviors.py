@@ -5,8 +5,8 @@ attribution) shipped because they fired on their target dynamic types without
 false-firing on the benign corpora. access_gatekeeping did NOT ship, so it is
 absent here. Synthetic only.
 """
-from convergence.corpus import Message
 from convergence.behaviors import tag_behaviors
+from convergence.corpus import Message
 
 
 def _msg(seq, body):
@@ -24,7 +24,7 @@ def test_detects_derogation():
 
 
 def test_detects_isolation():
-    hits = tag_behaviors([_msg(1, "This is exactly the alienation I've been telling everyone about.")])
+    hits = tag_behaviors([_msg(1, "This is exactly the alienation I've been telling everyone about.")])  # noqa: E501
     assert any(h.behavior == "isolation" for h in hits)
 
 

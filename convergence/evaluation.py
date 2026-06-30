@@ -14,8 +14,8 @@ from __future__ import annotations
 from dataclasses import dataclass
 from pathlib import Path
 
+from convergence.coercion_grammar import match_grammar, tag_stages
 from convergence.corpus import load_corpus
-from convergence.coercion_grammar import tag_stages, match_grammar
 
 # Ground truth: which dynamics corpus is coercive-controlling?
 DYNAMICS_LABELS = {
@@ -77,7 +77,7 @@ def evaluate(labeled) -> EvalResult:
             fp += 1
         else:
             tn += 1
-        rows.append(CorpusEval(name, is_pos, pred, len(tag_stages(msgs)), len(complete), is_pos == pred))
+        rows.append(CorpusEval(name, is_pos, pred, len(tag_stages(msgs)), len(complete), is_pos == pred))  # noqa: E501
     return EvalResult(tuple(rows), tp, fp, fn, tn, metrics(tp, fp, fn, tn))
 
 
@@ -107,7 +107,7 @@ class DocumentaryPrecision:
     corroborated: int                   # elevated findings with >=1 documentary-anchored message
     precision: float                    # corroborated / elevated
     corroboration_pool: int             # size of the independent documentary message-id set
-    uncorroborated_seqs: tuple          # elevated messages with no documentary anchor (for review, not error)
+    uncorroborated_seqs: tuple          # elevated messages with no documentary anchor (for review, not error)  # noqa: E501
 
 
 def documentary_precision(elevated_finding_seqs, corroborated_ids) -> DocumentaryPrecision:
@@ -123,7 +123,7 @@ def documentary_precision(elevated_finding_seqs, corroborated_ids) -> Documentar
     return DocumentaryPrecision(total, len(hit), prec, len(corr), tuple(uncorr))
 
 
-def format_documentary_precision(dp: DocumentaryPrecision, corpus_name: str = "a real corpus") -> str:
+def format_documentary_precision(dp: DocumentaryPrecision, corpus_name: str = "a real corpus") -> str:  # noqa: E501
     return "\n".join([
         f"Documentary-corroboration precision - {corpus_name} (real-data slice)",
         "",
@@ -141,7 +141,7 @@ def format_documentary_precision(dp: DocumentaryPrecision, corpus_name: str = "a
 
 def format_report(r: EvalResult) -> str:
     out = ["Coercion-grammar discriminator - scored eval", ""]
-    out.append(f"  {'corpus':16}{'label':>10}{'predicted':>11}{'stage_hits':>12}{'envelopes':>11}{'ok':>4}")
+    out.append(f"  {'corpus':16}{'label':>10}{'predicted':>11}{'stage_hits':>12}{'envelopes':>11}{'ok':>4}")  # noqa: E501
     for c in r.per_corpus:
         out.append(f"  {c.name:16}{('coercive' if c.label else 'other'):>10}"
                    f"{('coercive' if c.predicted else 'other'):>11}{c.stage_hits:>12}"

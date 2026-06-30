@@ -6,8 +6,8 @@ tactic-chain (composition) is added in code but not documented in INTENT.md.
 """
 from pathlib import Path
 
-from convergence.engine import _KIND_PHRASES
 from convergence.composition import _TEMPLATES
+from convergence.engine import _KIND_PHRASES
 
 DOC = (Path(__file__).parent.parent / "INTENT.md").read_text(encoding="utf-8").lower()
 

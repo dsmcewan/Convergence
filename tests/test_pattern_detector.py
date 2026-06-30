@@ -8,7 +8,7 @@ def _msg(seq, body):
 
 
 def test_platform_policy_says_fires():
-    hits = detect_patterns([_msg(5, "The platform's billing policy says revisions are included, so I won't be approving extra hours.")])
+    hits = detect_patterns([_msg(5, "The platform's billing policy says revisions are included, so I won't be approving extra hours.")])  # noqa: E501
     assert len(hits) == 1
     assert hits[0].tactic == "borrow_authority"
     assert hits[0].seq == 5
@@ -23,12 +23,12 @@ def test_accountant_says_fires():
 def test_direct_factual_statement_does_not_fire():
     # Mentions 'policy' but asserts the fact directly and offers the document;
     # no authority bound to an assertion verb. This boundary must hold.
-    hits = detect_patterns([_msg(6, "Revisions are included; new scope isn't. I can send you the policy section if helpful.")])
+    hits = detect_patterns([_msg(6, "Revisions are included; new scope isn't. I can send you the policy section if helpful.")])  # noqa: E501
     assert hits == []
 
 
 def test_neutral_message_no_hit():
-    hits = detect_patterns([_msg(1, "Can we make the homepage hero full-width? The client loves the mockup.")])
+    hits = detect_patterns([_msg(1, "Can we make the homepage hero full-width? The client loves the mockup.")])  # noqa: E501
     assert hits == []
 
 

@@ -11,8 +11,8 @@ and watch which interior pieces are gone.
 """
 from __future__ import annotations
 
+from collections.abc import Iterable
 from dataclasses import dataclass
-from typing import Iterable
 
 from convergence.corpus import Message
 

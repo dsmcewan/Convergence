@@ -10,7 +10,13 @@ from urllib.parse import unquote, urlparse
 
 from convergence.conversation import BLANC_PERSONA, Conversation
 from web.build import build
-from web.serialize import corpus_names, load_analysis, serialize_corpus, serialize_dynamics, serialize_index
+from web.serialize import (
+    corpus_names,
+    load_analysis,
+    serialize_corpus,
+    serialize_dynamics,
+    serialize_index,
+)
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE = ROOT / "web" / "site"
@@ -43,7 +49,7 @@ def make_complete(model: str):
     return make_anthropic_complete()
 
 
-def answer_chat(corpus: str, question: str, voice: str = "blanc", model: str = "claude", complete=None) -> str:
+def answer_chat(corpus: str, question: str, voice: str = "blanc", model: str = "claude", complete=None) -> str:  # noqa: E501
     if corpus not in corpus_names():
         raise KeyError(f"unknown corpus: {corpus}")
     if not question.strip():

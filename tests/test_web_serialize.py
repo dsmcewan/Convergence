@@ -1,6 +1,6 @@
+from convergence.corpus import load_corpus
 from convergence.engine import run_engine
 from convergence.records import load_records
-from convergence.corpus import load_corpus
 from web.serialize import DATA, serialize_corpus, serialize_dynamics
 
 
@@ -27,7 +27,7 @@ def test_serialized_corpus_has_frontend_contract():
     assert payload["messages"]
     assert {"plain", "blanc"} <= set(payload["narration"])
     assert {"plain", "blanc"} <= set(payload["composition_narration"])
-    assert all({"seqs", "confidence", "layers", "signals", "messages"} <= set(f) for f in payload["findings"])
+    assert all({"seqs", "confidence", "layers", "signals", "messages"} <= set(f) for f in payload["findings"])  # noqa: E501
 
 
 def test_serialized_dynamics_scorecard_is_perfect_for_demo_corpora():

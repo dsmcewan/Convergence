@@ -41,18 +41,18 @@ _SHIPPED = [
     ("isolation", re.compile(
         r"(?:you can see (?:her|him|them) after|withholding (?:her|him|them)\b|"
         r"the alienation i(?:'|’)?ve been telling|telling everyone about|"
-        r"aligning\b.{0,30}\bagainst|turn(?:ing|ed)? (?:her|him|them|the kids?|the child) against (?:you|me)|"
-        r"won(?:'|’)?t (?:let|allow) (?:you|her|him) (?:see|visit)|not allowed to (?:see|visit)|"
+        r"aligning\b.{0,30}\bagainst|turn(?:ing|ed)? (?:her|him|them|the kids?|the child) against (?:you|me)|"  # noqa: E501
+        r"won(?:’|’)?t (?:let|allow) (?:you|her|him) (?:see|visit)|not allowed to (?:see|visit)|"  # noqa: E501
         r"you don(?:'|’)?t need to see)")),
     ("surveillance_framing", re.compile(
-        r"(?:who(?:'s| is| are| were)\s+(?:you|she|he|they)\s+(?:with|seeing|dating|texting|talking to))|"
-        r"(?:where\s+(?:were|are|was)\s+you\s+(?:last night|saturday night|friday night|that night|all night|really|over the weekend))|"
-        r"(?:who(?:'s| is| was)\s+(?:this )?(?:new )?(?:guy|man|woman|boyfriend|girlfriend|person)\b)|"
+        r"(?:who(?:'s| is| are| were)\s+(?:you|she|he|they)\s+(?:with|seeing|dating|texting|talking to))|"  # noqa: E501
+        r"(?:where\s+(?:were|are|was)\s+you\s+(?:last night|saturday night|friday night|that night|all night|really|over the weekend))|"  # noqa: E501
+        r"(?:who(?:'s| is| was)\s+(?:this )?(?:new )?(?:guy|man|woman|boyfriend|girlfriend|person)\b)|"  # noqa: E501
         r"(?:are you (?:seeing|dating|sleeping with|living with)\s+(?:someone|anyone))|"
-        r"(?:(?:she|he|the kids?|sofia|lily)\s+(?:said|told me|mentioned|says)\s+(?:you|there)\b[^.?!]{0,40}\b"
-        r"(?:at your place|over|sleepover|new |a man|a woman|drinking|wine|texting|out late|dropped (?:her|him|them) (?:at|off)))|"
-        r"(?:i(?:'m| am)?\s*(?:always|just)?\s*(?:watching out for|keeping an eye on|looking out for)\s+(?:her|him|them|the kids?))|"
-        r"(?:stop asking (?:her|him|them|the kids?|sofia|lily)\s+about my (?:personal life|whereabouts|dating|private life))")),
+        r"(?:(?:she|he|the kids?|sofia|lily)\s+(?:said|told me|mentioned|says)\s+(?:you|there)\b[^.?!]{0,40}\b"  # noqa: E501
+        r"(?:at your place|over|sleepover|new |a man|a woman|drinking|wine|texting|out late|dropped (?:her|him|them) (?:at|off)))|"  # noqa: E501
+        r"(?:i(?:'m| am)?\s*(?:always|just)?\s*(?:watching out for|keeping an eye on|looking out for)\s+(?:her|him|them|the kids?))|"  # noqa: E501
+        r"(?:stop asking (?:her|him|them|the kids?|sofia|lily)\s+about my (?:personal life|whereabouts|dating|private life))")),  # noqa: E501
 ]
 
 

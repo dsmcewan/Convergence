@@ -7,7 +7,7 @@ documented - so the doc cannot silently rot.
 """
 from pathlib import Path
 
-from convergence.layers.pattern_detector import AUTHORITY_ROOTS, ASSERTION_VERBS
+from convergence.layers.pattern_detector import ASSERTION_VERBS, AUTHORITY_ROOTS
 from convergence.layers.phrase_fragmentation import FORMAL_LEXICON
 
 DOC = (Path(__file__).parent.parent / "FRAGMENTS.md").read_text(encoding="utf-8").lower()

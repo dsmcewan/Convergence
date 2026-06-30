@@ -21,7 +21,7 @@ war is cover and the fait accompli is the objective.
 Deterministic, fragment-based, synthetic-data only. Each stage has its own controlled
 vocabulary (see FRAGMENTS.md); the *envelope* (action + cover cycles + fait accompli)
 is what carries weight — a single stage in isolation is deniable, the shape is not.
-"""
+"""  # noqa: E501
 from __future__ import annotations
 
 import re

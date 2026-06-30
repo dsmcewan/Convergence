@@ -24,19 +24,19 @@ try:
 except Exception:
     pass
 
+from convergence.coercion_grammar import match_grammar, tag_stages
+from convergence.composition import find_campaigns, find_patterns
+from convergence.conversation import BLANC_PERSONA, Conversation
 from convergence.corpus import load_corpus, load_sqlite_corpus
-from convergence.records import load_records
 from convergence.engine import run_engine
-from convergence.composition import find_patterns, find_campaigns
-from convergence.coercion_grammar import tag_stages, match_grammar
 from convergence.evaluation import evaluate_dynamics, format_report
-from convergence.narration import narrate, narrate_composition, BlancNarrator
-from convergence.conversation import Conversation, BLANC_PERSONA
+from convergence.narration import BlancNarrator, narrate, narrate_composition
+from convergence.records import load_records
 
 DATA = Path(__file__).parent / "data"
 CORPORA = {
     "contractor": ("sample_full.json", "sample_exhibit.json", "sample_records.json"),
-    "coparenting": ("coparenting_full.json", "coparenting_exhibit.json", "coparenting_records.json"),
+    "coparenting": ("coparenting_full.json", "coparenting_exhibit.json", "coparenting_records.json"),  # noqa: E501
 }
 # Two-channel corpora: (primary/formal, cross/casual). Run through L6 instead of
 # the exhibit/records layers - the same engine, a different evidence shape.
@@ -165,12 +165,12 @@ def main():
     parser = argparse.ArgumentParser(description="convergence engine demo")
     parser.add_argument("--corpus", choices=ALL_CORPORA, default="contractor")
     parser.add_argument("--chat", action="store_true", help="conversational Q&A over the findings")
-    parser.add_argument("--eval", action="store_true", help="scored eval of the discriminator over the dynamics corpora")
-    parser.add_argument("--investigate", action="store_true", help="propose new fragment families and adversarially verify them")
+    parser.add_argument("--eval", action="store_true", help="scored eval of the discriminator over the dynamics corpora")  # noqa: E501
+    parser.add_argument("--investigate", action="store_true", help="propose new fragment families and adversarially verify them")  # noqa: E501
     parser.add_argument("--voice", choices=["plain", "blanc"], default="plain",
                         help="narration voice: plain, or the Voice of Convergence (Benoit Blanc)")
-    parser.add_argument("--model", choices=["claude", "anthropic", "gemini", "openai", "grok", "agy"], default="claude",
-                        help="conversational backend for --chat (agy = Antigravity CLI, no key needed)")
+    parser.add_argument("--model", choices=["claude", "anthropic", "gemini", "openai", "grok", "agy"], default="claude",  # noqa: E501
+                        help="conversational backend for --chat (agy = Antigravity CLI, no key needed)")  # noqa: E501
     parser.add_argument("--db",
                         help="path to a SQLite database when --corpus db is selected")
     parser.add_argument("--db-table", default="ofw_messages",
@@ -215,8 +215,8 @@ def main():
 
     if args.corpus == "dynamics":
         print("\n=== convergence :: coparenting dynamics (5 corpora, 2023-2025) ===")
-        print("Discriminator: the coercion-grammar envelope (action -> war -> fait accompli, by ONE actor).")
-        print("Same hostility can appear in high-conflict; only unilateral coercion completes the envelope.\n")
+        print("Discriminator: the coercion-grammar envelope (action -> war -> fait accompli, by ONE actor).")  # noqa: E501
+        print("Same hostility can appear in high-conflict; only unilateral coercion completes the envelope.\n")  # noqa: E501
         print(f"  {'type':14} {'msgs':>5} {'stage-hits':>11} {'complete-envelopes':>19}")
         for name, fname in DYNAMICS.items():
             msgs = load_corpus(DATA / fname)
@@ -224,7 +224,7 @@ def main():
             complete = [m for m in match_grammar(msgs) if m.complete]
             flag = "  <-- COERCIVE CONTROL" if complete else ""
             print(f"  {name:14} {len(msgs):>5} {hits:>11} {len(complete):>19}{flag}")
-        print("\nThe envelope separates coercive control from high-conflict structurally, not by word choice.")
+        print("\nThe envelope separates coercive control from high-conflict structurally, not by word choice.")  # noqa: E501
         return
 
     if args.corpus == "db":
@@ -243,20 +243,20 @@ def main():
         narrator = BlancNarrator(messages) if args.voice == "blanc" else None
         print(narrate(result, narrator))
         print("\n--- composition ---")
-        print(narrate_composition(find_patterns(result), find_campaigns(result, messages), voice=args.voice))
+        print(narrate_composition(find_patterns(result), find_campaigns(result, messages), voice=args.voice))  # noqa: E501
         if args.chat:
             _run_chat(result, persona=persona, model=args.model)
         return
 
     if args.corpus in GRAMMAR:
         messages = load_corpus(DATA / GRAMMAR[args.corpus])
-        print(f"\n=== convergence :: {args.corpus} corpus ({len(messages)} messages, one thread) ===")
+        print(f"\n=== convergence :: {args.corpus} corpus ({len(messages)} messages, one thread) ===")  # noqa: E501
         print("Coercion grammar: 1 Action -> [(2 objection<->3 obstruction) <-> "
               "(4 question<->5 justify)]^n -> 6 fait accompli\n")
         if args.voice == "blanc":
-            print(BlancNarrator(messages).narrate_grammar(tag_stages(messages), match_grammar(messages)))
+            print(BlancNarrator(messages).narrate_grammar(tag_stages(messages), match_grammar(messages)))  # noqa: E501
             return
-        stage_name = {s.stage: s.name for s in tag_stages(messages)}
+        _ = {s.stage: s.name for s in tag_stages(messages)}  # unused; stages are printed inline below  # noqa: E501
         for m in messages:
             tags = [f"{h.stage}:{h.name}" for h in tag_stages([m])]
             print(f"  seq {m.seq} [{m.sender}] {', '.join(tags) or '-':<28} {m.body}")
@@ -291,7 +291,7 @@ def main():
 
     # composition layer: patterns (recurring structure) + campaigns (sustained conduct)
     print("\n--- composition ---")
-    print(narrate_composition(find_patterns(result), find_campaigns(result, messages), voice=args.voice))
+    print(narrate_composition(find_patterns(result), find_campaigns(result, messages), voice=args.voice))  # noqa: E501
 
     if args.chat:
         _run_chat(result, persona=persona, model=args.model)

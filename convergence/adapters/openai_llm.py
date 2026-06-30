@@ -11,8 +11,8 @@ deterministic narrator.
 from __future__ import annotations
 
 import os
+from collections.abc import Callable
 from pathlib import Path
-from typing import Callable
 
 _MODEL = "gpt-4o"  # override via make_openai_complete(model=...)
 _KEYS = ("OPENAI_API_KEY",)

@@ -6,7 +6,7 @@ Per the eval posts, the report also surfaces the *hard negative* - high-conflict
 which is hostile (many stage-hits) yet must stay a true negative. Synthetic only.
 """
 from convergence.corpus import Message
-from convergence.evaluation import classify_coercive, metrics, evaluate, format_report
+from convergence.evaluation import classify_coercive, evaluate, format_report, metrics
 
 DATA = __import__("pathlib").Path(__file__).parent.parent / "data"
 
@@ -28,7 +28,7 @@ _BENIGN = [_msg(1, "Pickup at 5, thanks!"), _msg(2, "Sounds good.")]
 
 def test_metrics_perfect():
     m = metrics(tp=1, fp=0, fn=0, tn=4)
-    assert m["precision"] == 1.0 and m["recall"] == 1.0 and m["f1"] == 1.0 and m["specificity"] == 1.0
+    assert m["precision"] == 1.0 and m["recall"] == 1.0 and m["f1"] == 1.0 and m["specificity"] == 1.0  # noqa: E501
 
 
 def test_metrics_with_errors():

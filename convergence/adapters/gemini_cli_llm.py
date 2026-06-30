@@ -12,7 +12,7 @@ from __future__ import annotations
 
 import shutil
 import subprocess
-from typing import Callable
+from collections.abc import Callable
 
 _MODEL = "gemini-2.5-flash"  # flash = fast
 

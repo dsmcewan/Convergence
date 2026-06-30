@@ -15,7 +15,7 @@ benign corpora (cooperative, parallel). `propose_seed()` is the pluggable propos
 from __future__ import annotations
 
 import re
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from pathlib import Path
 
 from convergence.corpus import load_corpus
@@ -63,7 +63,7 @@ def verify(candidate: Candidate, corpora: dict) -> Verdict:
     false_pos = sum(per[t] for t in BENIGN_TYPES if t in per)
     ship = fires >= _MIN_TARGET and false_pos <= _MAX_FALSE
     why = ("ships: fires on target, quiet on benign" if ship
-           else "rejected: " + ("silent on target" if fires < _MIN_TARGET else "over-fires on benign"))
+           else "rejected: " + ("silent on target" if fires < _MIN_TARGET else "over-fires on benign"))  # noqa: E501
     return Verdict(candidate, per, fires, false_pos, ship, why)
 
 

@@ -13,7 +13,7 @@ real adapter when a key is present.
 """
 from __future__ import annotations
 
-from typing import Callable
+from collections.abc import Callable
 
 from convergence.engine import EngineResult
 
@@ -49,7 +49,7 @@ def to_prompt(result: EngineResult, persona: str = "", compact: bool = False) ->
     if compact:
         findings = tuple(f for f in result.findings if f.confidence == "elevated")
         if low:
-            lines.append(f"{low} low/context-only finding(s) are omitted from this compact chat context.")
+            lines.append(f"{low} low/context-only finding(s) are omitted from this compact chat context.")  # noqa: E501
             lines.append("")
 
     for i, f in enumerate(findings, 1):
@@ -62,7 +62,7 @@ def to_prompt(result: EngineResult, persona: str = "", compact: bool = False) ->
                 continue
             lines.append(f"   - [{s.layer}] {s.kind}: {s.detail} (seqs {list(s.seqs)})")
         if compact and domain_count:
-            lines.append(f"   - [L4] {domain_count} domain convergence signal(s) present; details omitted.")
+            lines.append(f"   - [L4] {domain_count} domain convergence signal(s) present; details omitted.")  # noqa: E501
     return "\n".join(lines)
 
 

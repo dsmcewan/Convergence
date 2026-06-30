@@ -29,7 +29,7 @@ def load_corpus(path: str | Path) -> list[Message]:
     return sorted((Message(**m) for m in raw), key=lambda m: m.seq)
 
 
-def load_sqlite_corpus(path: str | Path, table: str = "ofw_messages", limit: int | None = None) -> list[Message]:
+def load_sqlite_corpus(path: str | Path, table: str = "ofw_messages", limit: int | None = None) -> list[Message]:  # noqa: E501
     """Load messages from a SQLite database (bring your own export).
 
     The loader maps an OFW-style message table (default `ofw_messages`, with
@@ -52,9 +52,9 @@ def load_sqlite_corpus(path: str | Path, table: str = "ofw_messages", limit: int
         if missing:
             raise ValueError(f"table {table!r} is missing columns: {sorted(missing)}")
 
-        domain_parts = [f'nullif({name}, "")' for name in ("primary_domain", "behavior_cluster") if name in cols]
+        domain_parts = [f'nullif({name}, "")' for name in ("primary_domain", "behavior_cluster") if name in cols]  # noqa: E501
         domain_expr = "coalesce(" + ", ".join(domain_parts) + ")" if domain_parts else None
-        select_domain = f", {domain_expr} as domain_value" if domain_expr else ", NULL as domain_value"
+        select_domain = f", {domain_expr} as domain_value" if domain_expr else ", NULL as domain_value"  # noqa: E501
         sql = (
             f'SELECT ID, date_time, sent_by, subject, ofw_message_text{select_domain} '
             f'FROM "{table}" '

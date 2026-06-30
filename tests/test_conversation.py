@@ -1,7 +1,7 @@
 """Conversational seam: detection stays deterministic; the model only explains."""
+from convergence.conversation import Conversation, to_prompt
 from convergence.corpus import Message
 from convergence.engine import run_engine
-from convergence.conversation import Conversation, to_prompt
 
 
 def _msg(seq, sender, body):
@@ -21,7 +21,7 @@ def test_ask_routes_through_injected_complete():
 
 def test_prompt_is_grounded_in_findings():
     captured = {}
-    conv = Conversation(run_engine(_TWO_LAYER), complete=lambda p: captured.setdefault("p", p) or "ok")
+    conv = Conversation(run_engine(_TWO_LAYER), complete=lambda p: captured.setdefault("p", p) or "ok")  # noqa: E501
     conv.ask("explain seq 2")
     p = captured["p"]
     assert "ELEVATED" in p          # the fixed verdict is in the prompt

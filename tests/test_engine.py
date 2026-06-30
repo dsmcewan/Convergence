@@ -3,8 +3,8 @@ import json
 from pathlib import Path
 
 from convergence.corpus import Message, load_corpus
+from convergence.engine import Signal, _signal_sort_key, run_engine
 from convergence.records import load_records
-from convergence.engine import run_engine, Signal, _signal_sort_key
 
 DATA = Path(__file__).parent.parent / "data"
 
@@ -35,7 +35,7 @@ def test_two_layers_elevated():
     # seq 2 fires L1 (accountant says) AND L5 (formal vs casual baseline).
     msgs = [
         _msg(1, "M", "d", "hey start it soon thanks"),
-        _msg(2, "M", "d", "my accountant says I am not approving the authorization pursuant to policy"),
+        _msg(2, "M", "d", "my accountant says I am not approving the authorization pursuant to policy"),  # noqa: E501
     ]
     res = run_engine(msgs)
     f = next(f for f in res.findings if 2 in f.seqs)
@@ -58,7 +58,7 @@ def test_cross_channel_divergence_elevates_with_corroboration():
     # Same L6 divergence, now the claim message also converges two domains on its
     # anchor (L4) -> substantive + a second layer -> elevated.
     primary = [
-        _msg(2, "A", "medical", "I have always kept you informed about every appointment with the dentist."),
+        _msg(2, "A", "medical", "I have always kept you informed about every appointment with the dentist."),  # noqa: E501
         _msg(3, "A", "schedule", "the appointment scheduling has always been shared in advance."),
     ]
     cross = [_msg(7, "A", "d", "honestly I forgot to tell you about the dentist.")]
@@ -71,7 +71,7 @@ def test_cross_channel_divergence_elevates_with_corroboration():
 def test_findings_sorted_elevated_first():
     msgs = [
         _msg(1, "M", "d", "hey start it soon thanks"),
-        _msg(2, "M", "d", "my accountant says I am not approving the authorization pursuant to policy"),
+        _msg(2, "M", "d", "my accountant says I am not approving the authorization pursuant to policy"),  # noqa: E501
         _msg(3, "Z", "d", "my lawyer says no"),  # single message sender -> L1 only -> low
     ]
     res = run_engine(msgs)
@@ -80,7 +80,7 @@ def test_findings_sorted_elevated_first():
 
 def test_integration_headline_and_self_disqualification():
     full = load_corpus(DATA / "sample_full.json")
-    included = json.loads((DATA / "sample_exhibit.json").read_text(encoding="utf-8"))["included_seqs"]
+    included = json.loads((DATA / "sample_exhibit.json").read_text(encoding="utf-8"))["included_seqs"]  # noqa: E501
     records = load_records(DATA / "sample_records.json")
     res = run_engine(full, included_seqs=included, records=records)
 
@@ -128,7 +128,7 @@ def test_engine_emits_signals_in_canonical_order():
     # Over a real multi-L4 corpus, every finding's signals come out canonically
     # sorted — so the serialized narration is reproducible across Python versions.
     full = load_corpus(DATA / "coparenting_full.json")
-    included = json.loads((DATA / "coparenting_exhibit.json").read_text(encoding="utf-8"))["included_seqs"]
+    included = json.loads((DATA / "coparenting_exhibit.json").read_text(encoding="utf-8"))["included_seqs"]  # noqa: E501
     records = load_records(DATA / "coparenting_records.json")
     result = run_engine(full, included_seqs=included, records=records)
     assert result.findings  # corpus does produce findings

@@ -8,8 +8,8 @@ stdlib-only and never imports this module.
 from __future__ import annotations
 
 import os
+from collections.abc import Callable
 from pathlib import Path
-from typing import Callable
 
 _MODEL = "grok-4"
 _BASE_URL = "https://api.x.ai/v1"

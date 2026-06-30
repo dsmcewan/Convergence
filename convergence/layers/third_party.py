@@ -16,7 +16,7 @@ from convergence.corpus import Message
 from convergence.records import Record
 from convergence.text import normalize, tokens
 
-_DENIAL = re.compile(r"\bnever (agreed|approved|consented)\b|\b(didn't|did not) (agree|approve|consent)\b")
+_DENIAL = re.compile(r"\bnever (agreed|approved|consented)\b|\b(didn't|did not) (agree|approve|consent)\b")  # noqa: E501
 _PREDICATE_SKIP = {"agreed", "agree", "to", "of", "the"}
 
 

@@ -10,7 +10,7 @@ def read(path: str) -> str:
 
 def test_verification_doc_screenshots_exist():
     doc = read("web/VERIFICATION.md")
-    for shot in ["docs/verification/s03-dynamics-discriminator.png", "docs/verification/s04-scorecard.png"]:
+    for shot in ["docs/verification/s03-dynamics-discriminator.png", "docs/verification/s04-scorecard.png"]:  # noqa: E501
         assert (ROOT / shot).is_file(), f"missing committed screenshot {shot}"
         assert shot.split("/")[-1] in doc
 
@@ -32,6 +32,6 @@ def test_verification_doc_cites_real_tests():
 def test_verification_doc_slide_types_match_app():
     doc = read("web/VERIFICATION.md")
     app = read("web/site/app.js")
-    for slide_type in ["message", "behavior", "pattern", "campaign", "phase", "review", "dynamics", "scorecard"]:
+    for slide_type in ["message", "behavior", "pattern", "campaign", "phase", "review", "dynamics", "scorecard"]:  # noqa: E501
         assert f'"{slide_type}"' in app, f"{slide_type} is not dispatched in app.js"
         assert slide_type in doc, f"{slide_type} not documented in VERIFICATION.md"

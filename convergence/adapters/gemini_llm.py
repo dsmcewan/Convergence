@@ -13,8 +13,8 @@ Supports either Google SDK: the classic `google-generativeai` or the newer
 from __future__ import annotations
 
 import os
+from collections.abc import Callable
 from pathlib import Path
-from typing import Callable
 
 _MODEL = "gemini-2.5-flash"  # flash = fast; override via make_gemini_complete(model=...)
 _KEYS = ("GEMINI_API_KEY", "GOOGLE_API_KEY")
