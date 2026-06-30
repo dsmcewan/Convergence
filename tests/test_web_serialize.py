@@ -39,3 +39,18 @@ def test_serialized_dynamics_scorecard_is_perfect_for_demo_corpora():
     assert payload["scorecard"]["specificity"] == 1.0
     assert payload["hard_negative"]["name"] == "high_conflict"
 
+
+def test_signal_json_includes_provenance_fields():
+    from web.serialize import serialize_corpus
+    data = serialize_corpus("contractor")
+    sigs = [s for f in data["findings"] for s in f["signals"]]
+    assert sigs, "contractor corpus should produce signals"
+    for s in sigs:
+        # additive provenance — existing keys still present
+        assert {"layer", "seqs", "kind", "detail"} <= set(s)
+        # new keys
+        assert {"actor", "thread", "target", "anchor"} <= set(s)
+        assert isinstance(s["actor"], str) and isinstance(s["thread"], str)
+        assert s["anchor"] in s["seqs"]
+        assert s["target"] is None or isinstance(s["target"], str)
+

@@ -70,7 +70,11 @@
             2
           ],
           "kind": "cross_channel_divergence",
-          "detail": "Quinn claims 'kept the other parent informed' here; other channel shows 'withheld a disclosure' (seq 2)"
+          "detail": "Quinn claims 'kept the other parent informed' here; other channel shows 'withheld a disclosure' (seq 2)",
+          "anchor": 2,
+          "actor": "Quinn",
+          "thread": "health",
+          "target": null
         },
         {
           "layer": "L4",
@@ -79,7 +83,11 @@
             3
           ],
           "kind": "domain_convergence",
-          "detail": "appointment across medical, schedule"
+          "detail": "appointment across medical, schedule",
+          "anchor": 2,
+          "actor": "Quinn",
+          "thread": "health",
+          "target": null
         }
       ],
       "messages": [
@@ -113,7 +121,11 @@
             4
           ],
           "kind": "borrow_authority",
-          "detail": "lawyer says"
+          "detail": "lawyer says",
+          "anchor": 4,
+          "actor": "Quinn",
+          "thread": "arrangement",
+          "target": null
         }
       ],
       "messages": [

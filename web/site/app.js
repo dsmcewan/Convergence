@@ -407,6 +407,7 @@ function signalPanelMarkup(finding) {
           <span>${escapeHtml(signal.layer)} / ${escapeHtml(LAYER_LABELS[signal.layer] || "signal")}</span>
           <strong>${escapeHtml(signal.kind)}</strong>
           <p>${escapeHtml(signal.detail)}</p>
+          <small>${escapeHtml(signal.actor)} · thread ${escapeHtml(signal.thread)}${signal.target ? ` · re: ${escapeHtml(signal.target)}` : ""}</small>
           <small>seqs ${escapeHtml(signal.seqs.join(", "))}</small>
         </article>
       `).join("")}

@@ -144,7 +144,11 @@
             4
           ],
           "kind": "within_thread_omission",
-          "detail": "cut between shown 3 and 5"
+          "detail": "cut between shown 3 and 5",
+          "anchor": 4,
+          "actor": "Sam",
+          "thread": "T1",
+          "target": null
         },
         {
           "layer": "L3",
@@ -153,7 +157,11 @@
             11
           ],
           "kind": "claim_contradicted",
-          "detail": "record R1: agreed_to_weekend_swap=True"
+          "detail": "record R1: agreed_to_weekend_swap=True",
+          "anchor": 11,
+          "actor": "Sam",
+          "thread": "T1",
+          "target": null
         },
         {
           "layer": "L4",
@@ -166,7 +174,11 @@
             14
           ],
           "kind": "domain_convergence",
-          "detail": "weekend across medical, schedule"
+          "detail": "weekend across medical, schedule",
+          "anchor": 1,
+          "actor": "Alex",
+          "thread": "T1",
+          "target": null
         },
         {
           "layer": "L4",
@@ -177,7 +189,11 @@
             11
           ],
           "kind": "domain_convergence",
-          "detail": "swap across medical, schedule"
+          "detail": "swap across medical, schedule",
+          "anchor": 1,
+          "actor": "Alex",
+          "thread": "T1",
+          "target": null
         },
         {
           "layer": "L4",
@@ -187,7 +203,11 @@
             14
           ],
           "kind": "domain_convergence",
-          "detail": "agreed across medical, schedule"
+          "detail": "agreed across medical, schedule",
+          "anchor": 9,
+          "actor": "Alex",
+          "thread": "T2",
+          "target": null
         }
       ],
       "messages": [
@@ -231,7 +251,11 @@
             8
           ],
           "kind": "borrow_authority",
-          "detail": "pediatrician says"
+          "detail": "pediatrician says",
+          "anchor": 8,
+          "actor": "Sam",
+          "thread": "T2",
+          "target": null
         },
         {
           "layer": "L4",
@@ -244,7 +268,11 @@
             14
           ],
           "kind": "domain_convergence",
-          "detail": "weekend across medical, schedule"
+          "detail": "weekend across medical, schedule",
+          "anchor": 1,
+          "actor": "Alex",
+          "thread": "T1",
+          "target": null
         },
         {
           "layer": "L5",
@@ -252,7 +280,11 @@
             8
           ],
           "kind": "register_anomaly",
-          "detail": "register deviates from Sam's baseline (score 0.1503)"
+          "detail": "register deviates from Sam's baseline (score 0.1503)",
+          "anchor": 8,
+          "actor": "Sam",
+          "thread": "T2",
+          "target": null
         }
       ],
       "messages": [
@@ -288,7 +320,11 @@
             10
           ],
           "kind": "borrow_authority",
-          "detail": "lawyer says"
+          "detail": "lawyer says",
+          "anchor": 10,
+          "actor": "Sam",
+          "thread": "T2",
+          "target": null
         },
         {
           "layer": "L4",
@@ -299,7 +335,11 @@
             11
           ],
           "kind": "domain_convergence",
-          "detail": "swap across medical, schedule"
+          "detail": "swap across medical, schedule",
+          "anchor": 1,
+          "actor": "Alex",
+          "thread": "T1",
+          "target": null
         },
         {
           "layer": "L5",
@@ -307,7 +347,11 @@
             10
           ],
           "kind": "register_anomaly",
-          "detail": "register deviates from Sam's baseline (score 0.2872)"
+          "detail": "register deviates from Sam's baseline (score 0.2872)",
+          "anchor": 10,
+          "actor": "Sam",
+          "thread": "T2",
+          "target": null
         }
       ],
       "messages": [
@@ -348,7 +392,11 @@
             14
           ],
           "kind": "domain_convergence",
-          "detail": "weekend across medical, schedule"
+          "detail": "weekend across medical, schedule",
+          "anchor": 1,
+          "actor": "Alex",
+          "thread": "T1",
+          "target": null
         },
         {
           "layer": "L4",
@@ -359,7 +407,11 @@
             11
           ],
           "kind": "domain_convergence",
-          "detail": "swap across medical, schedule"
+          "detail": "swap across medical, schedule",
+          "anchor": 1,
+          "actor": "Alex",
+          "thread": "T1",
+          "target": null
         },
         {
           "layer": "L4",
@@ -369,7 +421,11 @@
             12
           ],
           "kind": "domain_convergence",
-          "detail": "saturday across medical, schedule"
+          "detail": "saturday across medical, schedule",
+          "anchor": 1,
+          "actor": "Alex",
+          "thread": "T1",
+          "target": null
         }
       ],
       "messages": [
@@ -425,7 +481,11 @@
             14
           ],
           "kind": "domain_convergence",
-          "detail": "weekend across medical, schedule"
+          "detail": "weekend across medical, schedule",
+          "anchor": 1,
+          "actor": "Alex",
+          "thread": "T1",
+          "target": null
         },
         {
           "layer": "L5",
@@ -433,7 +493,11 @@
             3
           ],
           "kind": "register_anomaly",
-          "detail": "register deviates from Alex's baseline (score 0.233)"
+          "detail": "register deviates from Alex's baseline (score 0.233)",
+          "anchor": 3,
+          "actor": "Alex",
+          "thread": "T1",
+          "target": null
         }
       ],
       "messages": [
@@ -469,7 +533,11 @@
             7
           ],
           "kind": "domain_convergence",
-          "detail": "thanks across medical, schedule"
+          "detail": "thanks across medical, schedule",
+          "anchor": 5,
+          "actor": "Alex",
+          "thread": "T1",
+          "target": null
         },
         {
           "layer": "L5",
@@ -477,7 +545,11 @@
             5
           ],
           "kind": "register_anomaly",
-          "detail": "register deviates from Alex's baseline (score 0.2163)"
+          "detail": "register deviates from Alex's baseline (score 0.2163)",
+          "anchor": 5,
+          "actor": "Alex",
+          "thread": "T1",
+          "target": null
         }
       ],
       "messages": [
@@ -511,7 +583,11 @@
             13
           ],
           "kind": "borrow_authority",
-          "detail": "attorney says"
+          "detail": "attorney says",
+          "anchor": 13,
+          "actor": "Sam",
+          "thread": "T1",
+          "target": null
         }
       ],
       "messages": [
