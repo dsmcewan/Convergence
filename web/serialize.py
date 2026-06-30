@@ -177,6 +177,10 @@ def _signal(s: Signal) -> dict[str, Any]:
         "seqs": list(s.seqs),
         "kind": s.kind,
         "detail": s.evidence,
+        "anchor": s.anchor,
+        "actor": s.actor,
+        "thread": s.thread,
+        "target": s.target,
     }
 
 

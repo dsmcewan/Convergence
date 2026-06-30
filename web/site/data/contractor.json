@@ -144,7 +144,11 @@
             3
           ],
           "kind": "within_thread_omission",
-          "detail": "cut between shown 2 and 4"
+          "detail": "cut between shown 2 and 4",
+          "anchor": 3,
+          "actor": "Morgan",
+          "thread": "T1",
+          "target": null
         },
         {
           "layer": "L3",
@@ -153,7 +157,11 @@
             10
           ],
           "kind": "claim_contradicted",
-          "detail": "record R1: agreed_to_extra_hours=True"
+          "detail": "record R1: agreed_to_extra_hours=True",
+          "anchor": 10,
+          "actor": "Morgan",
+          "thread": "T2",
+          "target": null
         },
         {
           "layer": "L4",
@@ -165,7 +173,11 @@
             10
           ],
           "kind": "domain_convergence",
-          "detail": "hours across payment, scope"
+          "detail": "hours across payment, scope",
+          "anchor": 2,
+          "actor": "Riley",
+          "thread": "T1",
+          "target": null
         },
         {
           "layer": "L4",
@@ -174,7 +186,11 @@
             11
           ],
           "kind": "domain_convergence",
-          "detail": "start across payment, scope"
+          "detail": "start across payment, scope",
+          "anchor": 3,
+          "actor": "Morgan",
+          "thread": "T1",
+          "target": null
         },
         {
           "layer": "L4",
@@ -184,7 +200,11 @@
             10
           ],
           "kind": "domain_convergence",
-          "detail": "extra across payment, scope"
+          "detail": "extra across payment, scope",
+          "anchor": 5,
+          "actor": "Morgan",
+          "thread": "T1",
+          "target": null
         },
         {
           "layer": "L4",
@@ -193,7 +213,11 @@
             10
           ],
           "kind": "domain_convergence",
-          "detail": "extra hours across payment, scope"
+          "detail": "extra hours across payment, scope",
+          "anchor": 5,
+          "actor": "Morgan",
+          "thread": "T1",
+          "target": null
         }
       ],
       "messages": [
@@ -238,7 +262,11 @@
             5
           ],
           "kind": "borrow_authority",
-          "detail": "policy says"
+          "detail": "policy says",
+          "anchor": 5,
+          "actor": "Morgan",
+          "thread": "T1",
+          "target": null
         },
         {
           "layer": "L2",
@@ -246,7 +274,11 @@
             5
           ],
           "kind": "within_thread_omission",
-          "detail": "cut between shown 4 and 6"
+          "detail": "cut between shown 4 and 6",
+          "anchor": 5,
+          "actor": "Morgan",
+          "thread": "T1",
+          "target": null
         },
         {
           "layer": "L4",
@@ -258,7 +290,11 @@
             10
           ],
           "kind": "domain_convergence",
-          "detail": "hours across payment, scope"
+          "detail": "hours across payment, scope",
+          "anchor": 2,
+          "actor": "Riley",
+          "thread": "T1",
+          "target": null
         },
         {
           "layer": "L4",
@@ -268,7 +304,11 @@
             10
           ],
           "kind": "domain_convergence",
-          "detail": "extra across payment, scope"
+          "detail": "extra across payment, scope",
+          "anchor": 5,
+          "actor": "Morgan",
+          "thread": "T1",
+          "target": null
         },
         {
           "layer": "L4",
@@ -277,7 +317,11 @@
             10
           ],
           "kind": "domain_convergence",
-          "detail": "extra hours across payment, scope"
+          "detail": "extra hours across payment, scope",
+          "anchor": 5,
+          "actor": "Morgan",
+          "thread": "T1",
+          "target": null
         },
         {
           "layer": "L5",
@@ -285,7 +329,11 @@
             5
           ],
           "kind": "register_anomaly",
-          "detail": "register deviates from Morgan's baseline (score 0.2765)"
+          "detail": "register deviates from Morgan's baseline (score 0.2765)",
+          "anchor": 5,
+          "actor": "Morgan",
+          "thread": "T1",
+          "target": null
         }
       ],
       "messages": [
@@ -321,7 +369,11 @@
             11
           ],
           "kind": "within_thread_omission",
-          "detail": "cut between shown 10 and 12"
+          "detail": "cut between shown 10 and 12",
+          "anchor": 11,
+          "actor": "Riley",
+          "thread": "T2",
+          "target": null
         },
         {
           "layer": "L4",
@@ -330,7 +382,11 @@
             11
           ],
           "kind": "domain_convergence",
-          "detail": "start across payment, scope"
+          "detail": "start across payment, scope",
+          "anchor": 3,
+          "actor": "Morgan",
+          "thread": "T1",
+          "target": null
         },
         {
           "layer": "L5",
@@ -338,7 +394,11 @@
             11
           ],
           "kind": "register_anomaly",
-          "detail": "register deviates from Riley's baseline (score 0.2056)"
+          "detail": "register deviates from Riley's baseline (score 0.2056)",
+          "anchor": 11,
+          "actor": "Riley",
+          "thread": "T2",
+          "target": null
         }
       ],
       "messages": [
@@ -374,7 +434,11 @@
             9
           ],
           "kind": "domain_convergence",
-          "detail": "homepage across payment, scope"
+          "detail": "homepage across payment, scope",
+          "anchor": 1,
+          "actor": "Morgan",
+          "thread": "T1",
+          "target": null
         },
         {
           "layer": "L5",
@@ -382,7 +446,11 @@
             1
           ],
           "kind": "register_anomaly",
-          "detail": "register deviates from Morgan's baseline (score 0.1613)"
+          "detail": "register deviates from Morgan's baseline (score 0.1613)",
+          "anchor": 1,
+          "actor": "Morgan",
+          "thread": "T1",
+          "target": null
         }
       ],
       "messages": [
@@ -421,7 +489,11 @@
             10
           ],
           "kind": "domain_convergence",
-          "detail": "hours across payment, scope"
+          "detail": "hours across payment, scope",
+          "anchor": 2,
+          "actor": "Riley",
+          "thread": "T1",
+          "target": null
         },
         {
           "layer": "L4",
@@ -431,7 +503,11 @@
             9
           ],
           "kind": "domain_convergence",
-          "detail": "change across payment, scope"
+          "detail": "change across payment, scope",
+          "anchor": 2,
+          "actor": "Riley",
+          "thread": "T1",
+          "target": null
         },
         {
           "layer": "L5",
@@ -439,7 +515,11 @@
             2
           ],
           "kind": "register_anomaly",
-          "detail": "register deviates from Riley's baseline (score 0.1527)"
+          "detail": "register deviates from Riley's baseline (score 0.1527)",
+          "anchor": 2,
+          "actor": "Riley",
+          "thread": "T1",
+          "target": null
         }
       ],
       "messages": [
@@ -473,7 +553,11 @@
             8
           ],
           "kind": "register_anomaly",
-          "detail": "register deviates from Morgan's baseline (score 0.1578)"
+          "detail": "register deviates from Morgan's baseline (score 0.1578)",
+          "anchor": 8,
+          "actor": "Morgan",
+          "thread": "T2",
+          "target": null
         }
       ],
       "messages": [
@@ -509,7 +593,11 @@
             9
           ],
           "kind": "domain_convergence",
-          "detail": "homepage across payment, scope"
+          "detail": "homepage across payment, scope",
+          "anchor": 1,
+          "actor": "Morgan",
+          "thread": "T1",
+          "target": null
         },
         {
           "layer": "L4",
@@ -521,7 +609,11 @@
             10
           ],
           "kind": "domain_convergence",
-          "detail": "hours across payment, scope"
+          "detail": "hours across payment, scope",
+          "anchor": 2,
+          "actor": "Riley",
+          "thread": "T1",
+          "target": null
         },
         {
           "layer": "L4",
@@ -531,7 +623,11 @@
             9
           ],
           "kind": "domain_convergence",
-          "detail": "change across payment, scope"
+          "detail": "change across payment, scope",
+          "anchor": 2,
+          "actor": "Riley",
+          "thread": "T1",
+          "target": null
         },
         {
           "layer": "L4",
@@ -540,7 +636,11 @@
             9
           ],
           "kind": "domain_convergence",
-          "detail": "change order across payment, scope"
+          "detail": "change order across payment, scope",
+          "anchor": 4,
+          "actor": "Riley",
+          "thread": "T1",
+          "target": null
         },
         {
           "layer": "L4",
@@ -550,7 +650,11 @@
             10
           ],
           "kind": "domain_convergence",
-          "detail": "extra across payment, scope"
+          "detail": "extra across payment, scope",
+          "anchor": 5,
+          "actor": "Morgan",
+          "thread": "T1",
+          "target": null
         },
         {
           "layer": "L5",
@@ -558,7 +662,11 @@
             9
           ],
           "kind": "register_anomaly",
-          "detail": "register deviates from Riley's baseline (score 0.1968)"
+          "detail": "register deviates from Riley's baseline (score 0.1968)",
+          "anchor": 9,
+          "actor": "Riley",
+          "thread": "T2",
+          "target": null
         }
       ],
       "messages": [
@@ -592,7 +700,11 @@
             12
           ],
           "kind": "borrow_authority",
-          "detail": "accountant says"
+          "detail": "accountant says",
+          "anchor": 12,
+          "actor": "Morgan",
+          "thread": "T2",
+          "target": null
         }
       ],
       "messages": [
@@ -628,7 +740,11 @@
             13
           ],
           "kind": "domain_convergence",
-          "detail": "send across payment, scope"
+          "detail": "send across payment, scope",
+          "anchor": 6,
+          "actor": "Riley",
+          "thread": "T1",
+          "target": null
         },
         {
           "layer": "L5",
@@ -636,7 +752,11 @@
             13
           ],
           "kind": "register_anomaly",
-          "detail": "register deviates from Riley's baseline (score 0.2477)"
+          "detail": "register deviates from Riley's baseline (score 0.2477)",
+          "anchor": 13,
+          "actor": "Riley",
+          "thread": "T2",
+          "target": null
         }
       ],
       "messages": [
