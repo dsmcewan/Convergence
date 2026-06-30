@@ -111,16 +111,16 @@ def test_signal_order_is_canonical_and_input_independent():
     # Multiple L4 corroborators on one anchor: their emission order from
     # find_convergences can vary with set/dict iteration (and thus across Python
     # versions), so a finding must impose a total, version-stable signal order.
-    a = Signal("L4", (8,), "domain_convergence", "weekend across medical, schedule")
-    b = Signal("L4", (8,), "domain_convergence", "agreed across medical, schedule")
-    c = Signal("L4", (8,), "domain_convergence", "swap across medical, schedule")
+    a = Signal("L4", "domain_convergence", 8, "Sam", "T", None, "weekend across medical, schedule")
+    b = Signal("L4", "domain_convergence", 8, "Sam", "T", None, "agreed across medical, schedule")
+    c = Signal("L4", "domain_convergence", 8, "Sam", "T", None, "swap across medical, schedule")
     forward = sorted([a, b, c], key=_signal_sort_key)
     reverse = sorted([c, b, a], key=_signal_sort_key)
     assert forward == reverse  # final order does not depend on input order
-    # canonical: ascending by detail within the same layer + seqs
-    assert [s.detail for s in forward] == sorted(s.detail for s in (a, b, c))
+    # canonical: ascending by evidence within the same layer + seqs
+    assert [s.evidence for s in forward] == sorted(s.evidence for s in (a, b, c))
     # substantive layers sort before contextual ones regardless of input order
-    sub = Signal("L1", (8,), "borrow_authority", "lawyer says")
+    sub = Signal("L1", "borrow_authority", 8, "Sam", "T", None, "lawyer says")
     assert sorted([a, sub], key=_signal_sort_key)[0] is sub
 
 

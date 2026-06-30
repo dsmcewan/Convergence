@@ -176,7 +176,7 @@ def _signal(s: Signal) -> dict[str, Any]:
         "layer": s.layer,
         "seqs": list(s.seqs),
         "kind": s.kind,
-        "detail": s.detail,
+        "detail": s.evidence,
     }
 
 

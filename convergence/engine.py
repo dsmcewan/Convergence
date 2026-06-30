@@ -54,16 +54,24 @@ _LAYER_ORDER = {"L1": 0, "L2": 1, "L3": 2, "L6": 3, "L4": 4, "L5": 5}
 
 
 def _signal_sort_key(s) -> tuple:
-    """Total, version-stable ordering key for a Signal: (layer, seqs, kind, detail)."""
-    return (_LAYER_ORDER.get(s.layer, 99), s.seqs, s.kind, s.detail)
+    """Total, version-stable ordering key for a Signal: (layer, seqs, kind, evidence)."""
+    return (_LAYER_ORDER.get(s.layer, 99), s.seqs, s.kind, s.evidence)
 
 
 @dataclass(frozen=True)
 class Signal:
-    layer: str
-    seqs: tuple[int, ...]
-    kind: str
-    detail: str
+    layer: str                  # "L1".."L6"
+    kind: str                   # tactic / kind
+    anchor: int                 # the single message the move is ABOUT
+    actor: str                  # sender of the anchor message
+    thread: str                 # thread of the anchor message
+    target: str | None          # who the move is aimed at, when determinable; else None
+    evidence: str               # the proof/cue string (was `detail`)
+    support: tuple[int, ...] = ()  # the move's other seqs (anchor excluded)
+
+    @property
+    def seqs(self) -> tuple[int, ...]:
+        return tuple(sorted({self.anchor, *self.support}))
 
 
 @dataclass(frozen=True)
@@ -83,27 +91,47 @@ class EngineResult:
 
 
 def _collect_signals(full, included_seqs, records, cross_channel) -> list[Signal]:
+    by_seq = {m.seq: m for m in full}
+
+    def prov(anchor: int) -> tuple[str, str]:
+        m = by_seq.get(anchor)
+        return (m.sender, m.thread) if m else ("", "")
+
     signals: list[Signal] = []
     for h in detect_patterns(full):
-        signals.append(Signal("L1", (h.seq,), h.tactic, h.cue))
+        actor, thread = prov(h.seq)
+        signals.append(Signal("L1", h.tactic, h.seq, actor, thread, None, h.cue))
     if included_seqs is not None:
         for g in find_omissions(full, included_seqs):
             if g.within_thread:
-                signals.append(Signal("L2", (g.seq,), "within_thread_omission",
-                                      f"cut between shown {g.prev_seq} and {g.next_seq}"))
+                actor, thread = prov(g.seq)
+                signals.append(Signal(
+                    "L2", "within_thread_omission", g.seq, actor, thread, None,
+                    f"cut between shown {g.prev_seq} and {g.next_seq}"))
     if records is not None:
         for c in check_claims(full, records):
-            seqs = tuple(sorted({c.seq} | ({c.contradicting_seq} if c.contradicting_seq is not None else set())))  # noqa: E501
-            signals.append(Signal("L3", seqs, "claim_contradicted", c.basis))
+            actor, thread = prov(c.seq)
+            support = (c.contradicting_seq,) if c.contradicting_seq is not None else ()
+            signals.append(Signal(
+                "L3", "claim_contradicted", c.seq, actor, thread, None, c.basis, support))
     if cross_channel is not None:
-        # L6 cites a seq in the *other* channel; the signal anchors only on the
-        # primary seq so it never collides with an unrelated primary message.
+        # L6 anchors only on the primary seq (support stays empty) so it never
+        # collides with an unrelated primary message — exactly as before.
         for d in find_cross_channel_divergences(full, cross_channel):
-            signals.append(Signal("L6", (d.seq,), "cross_channel_divergence", d.basis))
+            actor, thread = prov(d.seq)
+            signals.append(Signal(
+                "L6", "cross_channel_divergence", d.seq, actor, thread, None, d.basis))
     for cv in find_convergences(full):
-        signals.append(Signal("L4", cv.seqs, "domain_convergence", f"{cv.anchor} across {', '.join(cv.domains)}"))  # noqa: E501
+        anchor = min(cv.seqs)
+        support = tuple(s for s in sorted(cv.seqs) if s != anchor)
+        actor, thread = prov(anchor)
+        signals.append(Signal(
+            "L4", "domain_convergence", anchor, actor, thread, None,
+            f"{cv.anchor} across {', '.join(cv.domains)}", support))
     for a in detect_register_anomalies(full):
-        signals.append(Signal("L5", (a.seq,), "register_anomaly", a.reason))
+        actor, thread = prov(a.seq)
+        signals.append(Signal(
+            "L5", "register_anomaly", a.seq, actor, thread, None, a.reason))
     return signals
 
 
