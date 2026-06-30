@@ -15,7 +15,7 @@ from convergence.composition import find_campaigns, find_patterns
 from convergence.corpus import Message, load_corpus
 from convergence.engine import EngineResult, Finding, Signal, run_engine
 from convergence.evaluation import evaluate_dynamics
-from convergence.narration import BlancNarrator, TemplateNarrator, narrate_composition
+from convergence.narration import TemplateNarrator, narrate_composition
 from convergence.records import load_records
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -79,7 +79,7 @@ def load_analysis(name: str) -> tuple[list[Message], EngineResult, dict[str, Any
     raise KeyError(f"unknown corpus: {name}")
 
 
-def serialize_corpus(name: str) -> dict[str, Any]:
+def serialize_engine(name: str) -> dict[str, Any]:
     messages, result, meta = load_analysis(name)
     patterns = find_patterns(result)
     campaigns = find_campaigns(result, messages)
@@ -98,11 +98,9 @@ def serialize_corpus(name: str) -> dict[str, Any]:
         "campaigns": [_campaign(c) for c in campaigns],
         "narration": {
             "plain": TemplateNarrator().narrate(result),
-            "blanc": BlancNarrator(messages).narrate(result),
         },
         "composition_narration": {
             "plain": narrate_composition(patterns, campaigns, voice="plain"),
-            "blanc": narrate_composition(patterns, campaigns, voice="blanc"),
         },
     }
 
@@ -196,7 +194,6 @@ def _finding(f: Finding, messages: list[Message]) -> dict[str, Any]:
         "messages": [_message(m) for m in cited],
         "narration": {
             "plain": _finding_narration(f),
-            "blanc": _finding_blanc_narration(f),
         },
     }
 
@@ -204,18 +201,6 @@ def _finding(f: Finding, messages: list[Message]) -> dict[str, Any]:
 def _finding_narration(f: Finding) -> str:
     layers = ", ".join(f.layers)
     return f"{f.confidence.title()} finding at seqs {list(f.seqs)} ({layers}). {f.summary}"
-
-
-def _finding_blanc_narration(f: Finding) -> str:
-    if f.confidence == "elevated":
-        return (
-            f"Here the threads meet: seqs {list(f.seqs)}, layers {', '.join(f.layers)}. "
-            "Not a hunch, but corroboration."
-        )
-    return (
-        f"Seqs {list(f.seqs)} remain low. Suggestive, perhaps, but the method refuses "
-        "to elevate a lone thread."
-    )
 
 
 def _pattern(p) -> dict[str, Any]:

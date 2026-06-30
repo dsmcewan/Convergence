@@ -102,6 +102,17 @@ async function selectCorpus(name) {
   });
   const url = state.localApi ? `/api/corpus/${encodeURIComponent(name)}` : `data/${name}.json`;
   state.corpus = await loadJson(url);
+  if (state.corpus && state.corpus.curated) {
+    const cur = state.corpus.curated;
+    state.corpus.narration = state.corpus.narration || {};
+    state.corpus.narration.blanc = cur.narration_blanc;
+    state.corpus.composition_narration = state.corpus.composition_narration || {};
+    state.corpus.composition_narration.blanc = cur.composition_blanc;
+    (state.corpus.findings || []).forEach((f, i) => {
+      f.narration = f.narration || {};
+      f.narration.blanc = (cur.finding_blanc || [])[i];
+    });
+  }
   state.activeFindingIndex = firstElevatedIndex();
   state.activeSlideIndex = 0;
   state.slides = buildSlides(activeFinding());
