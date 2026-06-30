@@ -254,3 +254,26 @@ def test_action_refuse_fait_without_a_round_does_not_complete():
         _msg(3, "It's already done - I enrolled her at Oakwood.", sender="Victor"),
     ]
     assert [x for x in match_grammar(msgs) if x.complete] == []  # noqa: E501
+
+
+# --- refusal-engine broadening (recall gap #2) -----------------------------
+
+def test_i_dont_think_so_tags_stage2():
+    assert any(h.stage == 2 for h in tag_stages([_msg(1, "I don't think so. That's my week per the schedule.")]))  # noqa: E501
+
+
+def test_consent_refusal_tags_stage2():
+    assert any(h.stage == 2 for h in tag_stages([_msg(1, "I'm not giving consent for the flight to Florida.")]))  # noqa: E501
+
+
+def test_you_dont_get_to_tags_stage2():
+    assert any(h.stage == 2 for h in tag_stages([_msg(1, "You don't get to just decide to take her out of state.")]))  # noqa: E501
+
+
+def test_nothing_to_talk_through_tags_stage3():
+    assert any(h.stage == 3 for h in tag_stages([_msg(1, "There's nothing to talk through.")]))
+
+
+def test_affirmative_think_so_does_not_tag_stage2():
+    # the broadened cue is the NEGATIVE "i don't think so" - a plain "i think so" must not tag
+    assert all(h.stage != 2 for h in tag_stages([_msg(1, "I think so, that works for me.")]))
