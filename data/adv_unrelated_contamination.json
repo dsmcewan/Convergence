@@ -1,0 +1,6 @@
+[
+  {"seq": 1, "thread": "logistics", "sender": "Dana", "timestamp": "2024-05-01T09:00", "domain": "schedule", "body": "Can we confirm the schedule like we agreed?"},
+  {"seq": 2, "thread": "logistics", "sender": "Chris", "timestamp": "2024-05-01T10:00", "domain": "schedule", "body": "I don't agree, let's do 6pm instead - works better for the bus."},
+  {"seq": 3, "thread": "logistics", "sender": "Dana", "timestamp": "2024-05-01T11:00", "domain": "schedule", "body": "Sounds good. It's already done, I updated the calendar."},
+  {"seq": 4, "thread": "logistics", "sender": "Dana", "timestamp": "2024-05-01T12:00", "domain": "schedule", "body": "Per the agreement, that's the usual slot anyway. Thanks!"}
+]
