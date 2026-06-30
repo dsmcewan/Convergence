@@ -1,6 +1,7 @@
 # convergence — a communication-forensics engine (demo)
 
 [![tests](https://github.com/dsmcewan/Convergence/actions/workflows/ci.yml/badge.svg)](https://github.com/dsmcewan/Convergence/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 A six-layer engine for analyzing a corpus of written communications. It does
 **not** know or care whose messages it is fed. It was *built from* the structure
