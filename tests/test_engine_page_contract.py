@@ -30,3 +30,17 @@ def test_lecture_links_to_engine_page():
 def test_engine_js_ignores_curated_section():
     js = read("web/site/engine.js")
     assert "curated" not in js  # the plain view must not read the curated section
+
+
+def test_engine_page_links_own_stylesheet():
+    html = read("web/site/engine.html")
+    # engine console must link its own stylesheet, not the lecture's style.css
+    assert "engine.css" in html
+
+
+def test_engine_js_has_badge_and_convergence_trace():
+    js = read("web/site/engine.js")
+    # confidence badge is rendered for every finding
+    assert "badge" in js
+    # convergence trace is generated from signal data for elevated findings
+    assert "trace" in js
