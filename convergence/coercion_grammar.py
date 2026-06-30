@@ -50,12 +50,17 @@ STAGES: tuple[_Stage, ...] = (
         r"that's not acceptable|that is not acceptable|i'm not comfortable|"
         r"i am not comfortable|i won't agree|i refuse|that's not happening|"
         r"i don't think[^.!?]{0,40}\b(right|appropriate|a good idea)\b|"
-        r"i'm not[^.!?]{0,12}sure about\b|i don't know anything about\b)\b")),
+        r"i'm not[^.!?]{0,12}sure about\b|i don't know anything about\b|"
+        r"i don't think so\b|i'm not giving consent\b|i won't consent\b|"
+        r"i'm not consenting\b|i'm not signing off\b|you don't get to\b|"
+        r"you can't just\b)\b")),
     _Stage(3, "obstruction", re.compile(
         r"\b(let's just talk about this later|let's talk about this later|let's talk later|"
         r"i'll get back to you|we'll discuss|i need more time|i need time|"
         r"i'm not going to respond|we can talk about this later|we'll talk in person|"
-        r"i'll have my (lawyer|attorney|accountant)|i'm done discussing)\b")),
+        r"i'll have my (lawyer|attorney|accountant)|i'm done discussing|"
+        r"nothing to talk through|there's nothing to talk about|"
+        r"i'm not discussing this|i won't discuss)\b")),
     _Stage(4, "question", re.compile(
         r"\b(why would you|on what basis|who said|who told you|what makes you think|"
         r"since when|are you serious|explain to me why|explain why|"
