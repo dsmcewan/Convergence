@@ -226,3 +226,31 @@ def test_bare_dont_know_does_not_tag_stage2():
 
 def test_bare_not_sure_does_not_tag_stage2():
     assert all(h.stage != 2 for h in tag_stages([_msg(1, "I'm not sure. Either day works for me though.")]))  # noqa: E501
+
+
+def test_envelope_ending_refuse_then_fait_completes():
+    # action -> refuse -> legitimize (round 1) -> refuse -> fait
+    # The fait follows a final OBJECTION (not a legitimacy). Real coercers often
+    # fait right after a last objection; once a round has occurred, the fait
+    # terminates the war and should complete.
+    msgs = [
+        _msg(1, "Can we decide on preschool together like we agreed?", sender="Rosa"),
+        _msg(2, "I don't agree to the ones you picked.", sender="Victor"),
+        _msg(3, "Per the agreement, I have decision-making too.", sender="Victor"),
+        _msg(4, "I still don't agree to your list.", sender="Victor"),
+        _msg(5, "It's already done - I enrolled her at Oakwood.", sender="Victor"),
+    ]
+    m = [x for x in match_grammar(msgs) if x.complete]
+    assert len(m) == 1 and m[0].coercer == "Victor"
+    assert m[0].cycles >= 1
+
+
+def test_action_refuse_fait_without_a_round_does_not_complete():
+    # No completed refuse->legitimize round (cycles == 0): a fait alone after a
+    # lone objection must NOT complete.
+    msgs = [
+        _msg(1, "Can we decide on preschool together like we agreed?", sender="Rosa"),
+        _msg(2, "I don't agree to the ones you picked.", sender="Victor"),
+        _msg(3, "It's already done - I enrolled her at Oakwood.", sender="Victor"),
+    ]
+    assert [x for x in match_grammar(msgs) if x.complete] == []  # noqa: E501
