@@ -36,36 +36,44 @@ over generic engine facts. This phase makes that separation real: the generic en
 view is self-contained and reusable; the Blanc lecture is an optional curated layer
 on top.
 
-**Thread-locality finding (measured, 2026-06-30):** the other half of the original
-"thread-local omission/pattern" workstream is **already satisfied** and needs no
-behavior change. L2 omission already gates on `within_thread` (only within-thread
-gaps become signals). For elevation, `run_engine` groups signals by **seq overlap**,
-and each seq belongs to exactly one thread, so single-seq within-thread signals
-(L1/L2/L3-anchor/L5) can only merge same-thread. An empirical sweep of every corpus
-found **no elevated cross-thread finding**; the only multi-thread groups are pure
-**L4** domain-convergence (a token recurring across threads), which are exempt by
-design and never elevate (L4 alone is not substantive and is a single layer). So the
-thread-locality property is an *implicit architectural guarantee* — this phase locks
-it with a characterization test rather than changing behavior.
+**Thread-locality finding (measured against the real `load_analysis` pipeline,
+2026-06-30):** the other half of the original "thread-local omission/pattern"
+workstream needs **no behavior change** — but the accurate invariant is narrower than
+"every finding is single-thread." L2 omission already gates on `within_thread` (only
+within-thread gaps become signals). For elevation, `run_engine` groups signals by
+**seq overlap**, and each seq belongs to exactly one thread, so the **within-thread-only
+layers (L1 pattern, L2 omission, L5 register)** can never assemble a finding across
+threads by themselves. A finding *may* still legitimately span threads — but only via
+a **bridging layer** that by its nature references another context: **L3** (a claim
+contradicted by a record/message elsewhere), **L4** (a token converging across
+domains/threads), or **L6** (cross-channel). The flagship **contractor** demo finding
+is exactly this: an L2 omission in thread T1 + an L3 contradiction in T2 (tied back to
+T1 by record R1) + L4 domain convergence — a correct, intended elevated finding that
+spans threads. So the property to lock is: *within-thread-only layers {L1,L2,L5} never
+span threads; bridging layers {L3,L4,L6} may.* This phase locks that with a
+characterization test (verified: 0 violations) rather than changing behavior.
+
+(An earlier draft of this spec claimed "no elevated cross-thread finding exists" and
+treated L3 as within-thread — both were wrong: that measurement used a bare
+`run_engine` without records/included_seqs, so L2/L3 did not fire as they do in the
+real analysis. Corrected here.)
 
 ## Component 1 — thread-locality invariant lock (no behavior change)
 
-A characterization test (e.g. `tests/test_thread_locality.py`) that makes the
-implicit guarantee explicit and regression-protected. Three assertions over small
-synthetic corpora built with the public `run_engine`:
+A characterization test (`tests/test_thread_locality.py`) over the real demo corpora
+(via `web.serialize.load_analysis`, which enables records + included_seqs so L2/L3
+fire as in production) that locks the accurate invariant:
 
-- **Cross-thread within-thread signals do NOT co-elevate:** a corpus where two
-  within-thread substantive layers (e.g. an L1 borrow-authority pattern and an L2
-  within-thread omission) fire in **different** threads with no shared seq yields **no
-  single elevated finding spanning both threads** (they remain separate, and neither
-  reaches the substantive + ≥2-layer bar alone).
-- **Within-thread convergence DOES elevate:** the same two layers firing in the
-  **same** thread (overlapping/adjacent seqs) produce one elevated finding.
-- **L4 exemption holds:** an L4 domain-convergence may span threads, stays `low`
-  (single non-substantive layer), and does not by itself elevate.
+- **Within-thread-only layers never span threads:** no L1/L2/L5 signal's seqs
+  (anchor + support) cross more than one thread.
+- **Cross-thread findings require a bridging layer:** any finding whose seqs span
+  more than one thread contains at least one of {L3, L4, L6}. (And at least one
+  cross-thread finding exists — the contractor finding — so the assertion is live.)
 
-No engine code changes. If any assertion cannot be constructed because the property
-does not actually hold, that is a real finding — surface it; do not weaken the test.
+No engine code changes. Verified: 0 violations across the demo corpora. If a future
+change lets a within-thread-only layer assemble across threads, this test fails. If
+the property is found not to hold, that is a real finding — surface it; do not weaken
+the test or edit the engine.
 
 ## Component 2 — module boundary (the architectural core)
 
