@@ -28,6 +28,13 @@ def test_detects_isolation():
     assert any(h.behavior == "isolation" for h in hits)
 
 
+def test_detects_isolation_wont_let_see_straight_apostrophe():
+    # Regression: the won't-let-see isolation branch must match a STRAIGHT ASCII
+    # apostrophe, not only a curly one (guards against smart-quote drift in the regex).
+    hits = tag_behaviors([_msg(1, "He won't let you see her this weekend.")])
+    assert any(h.behavior == "isolation" for h in hits)
+
+
 def test_detects_surveillance_framing():
     hits = tag_behaviors([_msg(1, "Where were you Saturday night?")])
     assert any(h.behavior == "surveillance_framing" for h in hits)

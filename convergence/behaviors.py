@@ -42,7 +42,7 @@ _SHIPPED = [
         r"(?:you can see (?:her|him|them) after|withholding (?:her|him|them)\b|"
         r"the alienation i(?:'|’)?ve been telling|telling everyone about|"
         r"aligning\b.{0,30}\bagainst|turn(?:ing|ed)? (?:her|him|them|the kids?|the child) against (?:you|me)|"  # noqa: E501
-        r"won(?:’|’)?t (?:let|allow) (?:you|her|him) (?:see|visit)|not allowed to (?:see|visit)|"  # noqa: E501
+        r"won(?:'|’)?t (?:let|allow) (?:you|her|him) (?:see|visit)|not allowed to (?:see|visit)|"  # noqa: E501
         r"you don(?:'|’)?t need to see)")),
     ("surveillance_framing", re.compile(
         r"(?:who(?:'s| is| are| were)\s+(?:you|she|he|they)\s+(?:with|seeing|dating|texting|talking to))|"  # noqa: E501
