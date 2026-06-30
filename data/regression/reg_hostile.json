@@ -1,0 +1,74 @@
+[
+  {
+    "seq": 1,
+    "thread": "doctor-visit-dispute",
+    "sender": "Kevin",
+    "timestamp": "2024-09-03T07:55",
+    "domain": "medical",
+    "body": "Lily came back from your house with a cough that's been going on for a week. Why didn't you take her to the doctor? I have to do everything."
+  },
+  {
+    "seq": 2,
+    "thread": "doctor-visit-dispute",
+    "sender": "Amber",
+    "timestamp": "2024-09-03T08:22",
+    "domain": "medical",
+    "body": "She had a cough for two days, Kevin, not a week. And I monitored it. You always catastrophize. You're not a doctor and neither am I. She didn't have a fever."
+  },
+  {
+    "seq": 3,
+    "thread": "doctor-visit-dispute",
+    "sender": "Kevin",
+    "timestamp": "2024-09-03T08:40",
+    "domain": "medical",
+    "body": "You never take anything seriously. This is exactly the problem. I made an appointment for this afternoon. I don't need your permission."
+  },
+  {
+    "seq": 4,
+    "thread": "doctor-visit-dispute",
+    "sender": "Amber",
+    "timestamp": "2024-09-03T09:01",
+    "domain": "medical",
+    "body": "Oh you made an appointment for MY day? You don't get to schedule things during my parenting time without asking. That's in the agreement. Cancel it."
+  },
+  {
+    "seq": 5,
+    "thread": "doctor-visit-dispute",
+    "sender": "Kevin",
+    "timestamp": "2024-09-03T09:18",
+    "domain": "medical",
+    "body": "Her health comes before your schedule games. I'm not canceling it. If you actually cared about her you wouldn't be arguing about this."
+  },
+  {
+    "seq": 6,
+    "thread": "doctor-visit-dispute",
+    "sender": "Amber",
+    "timestamp": "2024-09-03T09:35",
+    "domain": "medical",
+    "body": "Do not question whether I care about my daughter. You use her health as a weapon every single time. I'm calling the pediatrician myself and letting them know you're scheduling unauthorized appointments."
+  },
+  {
+    "seq": 7,
+    "thread": "doctor-visit-dispute",
+    "sender": "Kevin",
+    "timestamp": "2024-09-03T09:52",
+    "domain": "medical",
+    "body": "Go ahead. Call them. They'll hear that her mother ignored a sick child for a week. I keep records of everything."
+  },
+  {
+    "seq": 8,
+    "thread": "doctor-visit-dispute",
+    "sender": "Amber",
+    "timestamp": "2024-09-03T10:09",
+    "domain": "medical",
+    "body": "So do I. I'm done talking to you today. We can communicate through the app from now on. This conversation is over."
+  },
+  {
+    "seq": 9,
+    "thread": "doctor-visit-dispute",
+    "sender": "Kevin",
+    "timestamp": "2024-09-03T10:14",
+    "domain": "medical",
+    "body": "Perfect. Document everything. That's fine with me."
+  }
+]

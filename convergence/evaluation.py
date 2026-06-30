@@ -99,6 +99,13 @@ ADVERSARIAL_LABELS = {
     "adv_subject_mismatch.json": True,
 }
 
+# Regression tier (recall-fix): the former blind holdout, now KNOWN; ASSERTED.
+REGRESSION_LABELS: dict[str, bool] = {
+    "reg_coercive.json": True,
+    "reg_cooperative.json": False,
+    "reg_hostile.json": False,
+}
+
 # Blind holdout tier (Phase 3): filled in T3 by a fresh-subagent-authored set.
 HOLDOUT_LABELS: dict[str, bool] = {
     "hold_coercive.json": True,
@@ -129,18 +136,23 @@ def evaluate_labelset(base_dir, labels: dict[str, bool]) -> EvalResult:
 class TieredEval:
     core: EvalResult              # the 5 dynamics corpora (behavior-preservation guard)
     adversarial: EvalResult       # the 5 engineered corpora
-    holdout: EvalResult | None    # the blind holdout (None until wired in T3)
+    regression: EvalResult | None  # the former blind holdout, now known; ASSERTED
+    holdout: EvalResult | None    # the fresh blind holdout (reported, not asserted)
 
 
 def evaluate_tiered(data_dir) -> TieredEval:
     data_dir = Path(data_dir)
     core = evaluate_dynamics(data_dir)                    # unchanged result
     adversarial = evaluate_labelset(data_dir, ADVERSARIAL_LABELS)
+    regression = (
+        evaluate_labelset(data_dir / "regression", REGRESSION_LABELS)
+        if REGRESSION_LABELS else None
+    )
     holdout = (
         evaluate_labelset(data_dir / "holdout", HOLDOUT_LABELS)
         if HOLDOUT_LABELS else None
     )
-    return TieredEval(core=core, adversarial=adversarial, holdout=holdout)
+    return TieredEval(core=core, adversarial=adversarial, regression=regression, holdout=holdout)
 
 
 @dataclass(frozen=True)
@@ -241,6 +253,11 @@ def format_tiered_report(t: TieredEval) -> str:
         "",
         _format_tier("ADVERSARIAL (engineered traps + robustness)", t.adversarial),
     ]
+    if t.regression is not None:
+        out += [
+            "",
+            _format_tier("REGRESSION (known; asserted - the recall-fix target)", t.regression),
+        ]
     if t.holdout is not None:
         out += [
             "",
