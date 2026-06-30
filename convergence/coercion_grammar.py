@@ -44,7 +44,8 @@ STAGES: tuple[_Stage, ...] = (
     _Stage(1, "action", re.compile(
         r"\b(can we|could we|could you|i'd like to|i would like to|i'm planning to|"
         r"i intend to|i'll be|i will be|please confirm|please let me know|i'm taking|"
-        r"i'm picking|i want to confirm|like we agreed)\b")),
+        r"i'm picking|i want to confirm|like we agreed|give you a heads up|"
+        r"wanted to let you know)\b")),
     _Stage(2, "objection", re.compile(
         r"\b(i object\b|don't agree|do not agree|i disagree|that won't work|"
         r"that's not acceptable|that is not acceptable|i'm not comfortable|"
@@ -82,7 +83,7 @@ STAGES: tuple[_Stage, ...] = (
         r"i (enrolled|booked|registered|scheduled|withdrew|switched|moved|"
         r"signed (her|him|them) up)\b|"
         r"too late now|too late to|there's nothing to discuss|nothing to discuss|"
-        r"the decision is made|the decision has been made)\b")),
+        r"the decision is made|the decision has been made|this is done|this is final)\b")),
 )
 
 _REFUSAL = {2, 3}      # objection <-> obstruction

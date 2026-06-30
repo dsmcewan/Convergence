@@ -110,6 +110,9 @@ REGRESSION_LABELS: dict[str, bool] = {
     "reg_medical_coercive.json": True,
     "reg_swim_cooperative.json": False,
     "reg_religion_hostile.json": False,
+    "reg_relocation_coercive.json": True,
+    "reg_relocation_cooperative.json": False,
+    "reg_relocation_hostile.json": False,
 }
 
 # Blind holdout tier (Phase 3): filled in T3 by a fresh-subagent-authored set.

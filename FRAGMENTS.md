@@ -120,12 +120,12 @@ each stage's function). Each is a controlled vocabulary over normalized text.
 
 | # | Stage | Representative cues |
 |---|---|---|
-| 1 | **action** | can we / could you / i'd like to / i'm taking / please confirm / like we agreed |
+| 1 | **action** | can we / could you / i'd like to / i'm taking / please confirm / like we agreed / give you a heads up / wanted to let you know |
 | 2 | **objection** | don't agree / do not agree / i disagree / that won't work / i'm not comfortable / i refuse / i don't think X is right / i'm not sure about X / i don't know anything about X / i don't think so / i'm not giving consent / i won't consent / you don't get to / you can't just / i'm not agreeing / you don't have the right |
 | 3 | **obstruction** | let's talk about this later / i'll get back to you / we'll discuss / i need more time / i'm done discussing / nothing to talk through / i'm not discussing this / i won't discuss / i'm not attending / go through the coordinator |
 | 4 | **question** | why would you / on what basis / who said / what makes you think / since when / says who |
 | 5 | **justify** | i'm only trying to / for her safety / the (policy\|agreement\|order) says / my (lawyer\|doctor) … says/said/told me / pursuant to / per the (agreement\|order\|policy\|parenting plan) / the (parenting plan\|order\|court) requires/is clear / my (lawyer\|attorney\|doctor) ... agrees/confirms / physician of record |
-| 6 | **fait_accompli** | i've already / i went ahead and / it's already done / it's final / we've moved / i (enrolled\|booked\|registered\|scheduled\|withdrew\|switched\|moved) / there's nothing to discuss |
+| 6 | **fait_accompli** | i've already / i went ahead and / it's already done / it's final / we've moved / i (enrolled\|booked\|registered\|scheduled\|withdrew\|switched\|moved) / there's nothing to discuss / this is done / this is final |
 
 **Precision boundary:** these are deliberately dual-use — *question* must not fire on
 an ordinary logistics question ("what time is pickup?"), and *justify* ("for her

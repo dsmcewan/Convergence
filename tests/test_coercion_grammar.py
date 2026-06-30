@@ -312,3 +312,25 @@ def test_the_court_requires_tags_stage5():
 def test_benign_clear_schedule_does_not_tag_stage5():
     # a plain logistics confirmation must not trip the broadened justify cue
     assert all(h.stage != 5 for h in tag_stages([_msg(1, "The plan is for pickup at five, see you then.")]))  # noqa: E501
+
+
+# --- relocation-coercion broadening (holdout gap #4) -----------------------
+
+def test_give_you_a_heads_up_tags_stage1():
+    msg_val = "Wanted to give you a heads up that I found a place."
+    assert any(h.stage == 1 for h in tag_stages([_msg(1, msg_val)]))
+
+
+def test_wanted_to_let_you_know_tags_stage1():
+    msg_val = "I wanted to let you know before signing."
+    assert any(h.stage == 1 for h in tag_stages([_msg(1, msg_val)]))
+
+
+def test_this_is_done_tags_stage6():
+    msg_val = "My attorney filed it today. This is done."
+    assert any(h.stage == 6 for h in tag_stages([_msg(1, msg_val)]))
+
+
+def test_this_is_final_tags_stage6():
+    msg_val = "The court will decide. This is final."
+    assert any(h.stage == 6 for h in tag_stages([_msg(1, msg_val)]))
