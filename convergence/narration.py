@@ -9,6 +9,7 @@ disqualification principle for the low ones.
 from __future__ import annotations
 
 from convergence.behaviors import tag_behaviors
+from convergence.coercion_grammar import StageHit
 from convergence.engine import EngineResult
 
 # how each detected thread is named aloud in the reveal
@@ -320,7 +321,7 @@ class BlancNarrator:
             "justify": "Then the robe and gavel - authority borrowed to dress it up",
             "fait_accompli": "And at last, the thing simply done",
         }
-        by_seq = {}
+        by_seq: dict[int, StageHit] = {}
         for h in stage_hits:
             by_seq.setdefault(h.seq, h)
         if not matches:

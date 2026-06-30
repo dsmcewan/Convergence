@@ -19,7 +19,7 @@ classifiers = [
 dependencies = []  # the engine core is stdlib-only by design
 
 [project.optional-dependencies]
-dev = ["pytest>=7", "pytest-cov>=4", "ruff>=0.6"]
+dev = ["pytest>=7", "pytest-cov>=4", "ruff>=0.6", "mypy>=1.8"]
 llm = ["anthropic>=0.40", "openai>=1.0"]  # only needed for optional conversational narration
 
 [project.scripts]
@@ -51,3 +51,17 @@ select = ["E", "W", "F", "I", "B", "UP"]
 [tool.ruff.lint.per-file-ignores]
 "__init__.py" = ["F401"]  # re-exports
 "tests/*" = ["E402"]      # tests may import after small setup
+
+[tool.mypy]
+python_version = "3.10"
+warn_unused_ignores = true
+no_implicit_optional = true
+check_untyped_defs = true
+warn_redundant_casts = true
+warn_unused_configs = true
+# ratchet (enable in a later phase): disallow_untyped_defs, disallow_any_generics,
+# warn_return_any, strict_equality.
+
+[[tool.mypy.overrides]]
+module = ["openai.*", "anthropic.*", "google.*", "pexpect.*", "wexpect.*", "winpty.*"]
+ignore_missing_imports = true
