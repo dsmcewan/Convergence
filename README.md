@@ -280,5 +280,6 @@ requirements.txt        optional backend deps (core is stdlib only)
 
 ## Credits
 
-Architected and directed by [Drason McEwan](https://github.com/dsmcewan); built in
-collaboration with Claude and other AI model backends under human direction.
+[Drason McEwan](https://github.com/dsmcewan) designed and directs Convergence.
+Claude implemented alongside the other model backends, with every layer landing
+under human review.
