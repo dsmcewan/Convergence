@@ -9,7 +9,7 @@ description = "A corroboration-first communication-forensics engine: findings el
 readme = "README.md"
 requires-python = ">=3.10"
 license = { text = "MIT" }
-authors = [{ name = "The Convergence Authors" }]
+authors = [{ name = "Drason McEwan" }]
 keywords = ["forensics", "nlp", "communication-analysis", "corroboration", "deterministic", "auditability"]
 classifiers = [
     "Programming Language :: Python :: 3",
