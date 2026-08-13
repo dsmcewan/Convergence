@@ -26,21 +26,21 @@ it; a language model can *explain* a finding but can never move one.
 
 ## The six layers
 
-1. **Pattern detection** (`layers/pattern_detector.py`) — tags a message with the
+1. **Pattern detection** (`convergence/layers/pattern_detector.py`) — tags a message with the
    communicative tactic it makes, starting with *borrow-authority /
    displace-accountability* ("the platform's policy says…", "my lawyer says…").
-2. **Record-vs-exhibit reconstruction / "frog DNA"** (`layers/gap_detector.py`) —
+2. **Record-vs-exhibit reconstruction / "frog DNA"** (`convergence/layers/gap_detector.py`) —
    given the full record and a curated *exhibit subset of it*, reconstructs what was
    removed and flags **within-thread** omissions (a message cut from inside one
    continuous conversation) apart from ordinary boundary trims.
-3. **Third-party referencing** (`layers/third_party.py`) — tests claims against an
+3. **Third-party referencing** (`convergence/layers/third_party.py`) — tests claims against an
    external records set and surfaces contradictions, pointing back at the message
    that proves the truth.
-4. **Domain convergence** (`layers/domain_convergence.py`) — detects where
+4. **Domain convergence** (`convergence/layers/domain_convergence.py`) — detects where
    independent topical domains converge on a single anchor.
-5. **Phrase fragmentation** (`layers/phrase_fragmentation.py`) — register anomalies
+5. **Phrase fragmentation** (`convergence/layers/phrase_fragmentation.py`) — register anomalies
    (a sender departing from their own baseline) and recurring n-grams.
-6. **Cross-channel correlation** (`layers/cross_channel.py`) — tests a sender's
+6. **Cross-channel correlation** (`convergence/layers/cross_channel.py`) — tests a sender's
    *claim* in one channel against that **same sender's own words in a second
    channel**, aligned by sender and predicate ("I always kept you informed" in the
    formal channel vs. "forgot to tell you…" in the casual one). Flags the divergence
@@ -133,13 +133,18 @@ involved.
   injected `complete(prompt) -> str`. The model can explain a verdict; it cannot
   move one. An optional persona (`BLANC_PERSONA`) rides on top of the grounding — the
   voice changes, the constraints do not.
-- **`adapters/anthropic_llm.py`** — optional Claude backend (needs `anthropic` +
+- **`convergence/adapters/anthropic_llm.py`** — optional Claude backend (needs `anthropic` +
   `ANTHROPIC_API_KEY`).
-- **`adapters/openai_llm.py`** — optional OpenAI backend (needs `openai` +
+- **`convergence/adapters/openai_llm.py`** — optional OpenAI backend (needs `openai` +
   `OPENAI_API_KEY`).
-- **`adapters/grok_llm.py`** — optional Grok/xAI backend (uses the OpenAI-compatible
+- **`convergence/adapters/grok_llm.py`** — optional Grok/xAI backend (uses the OpenAI-compatible
   xAI API; needs `openai` + `XAI_API_KEY` or `GROK_API_KEY`).
-- **`adapters/antigravity_cli_llm.py`** — optional **keyless** backend that drives the
+- **`convergence/adapters/gemini_llm.py`** — optional Gemini backend (needs
+  `google-generativeai` or `google-genai` + `GEMINI_API_KEY`/`GOOGLE_API_KEY`).
+  `--model gemini` tries this first, then falls back to
+  **`convergence/adapters/gemini_cli_llm.py`** — a **keyless** backend that drives
+  the installed `gemini` CLI (`npm i -g @google/gemini-cli`) via its own OAuth.
+- **`convergence/adapters/antigravity_cli_llm.py`** — optional **keyless** backend that drives the
   installed Antigravity CLI (`agy`, a fast Gemini backend via the app's OAuth). `agy`
   only prints its answer to a real terminal, so this adapter runs it inside a ConPTY
   (needs `pywinpty`) and strips the terminal control bytes. `--model agy`.
@@ -175,7 +180,7 @@ repo root if you prefer not to install.)
 ## Run
 
 ```bash
-pytest tests/ -q                 # 191 deterministic tests
+pytest tests/ -q                 # 272 deterministic tests
 
 convergence-build                # write web/site/data/*.json (auto-runs on first serve)
 convergence-web                  # local frontend: http://127.0.0.1:8765/
@@ -268,7 +273,7 @@ convergence/            engine (corpus-agnostic; stdlib only in core)
   adapters/             optional LLM adapters (Claude, OpenAI, Grok, Gemini, agy)
 data/                   14 data files: contractor (sample_*), coparenting, channels (formal+casual), grammar, dynamics (dyn_*)
 tools/                  generate_dynamics.py — seeded dynamics-corpus generator
-tests/                  191 deterministic tests
+tests/                  272 deterministic tests
 web/                    static frontend + local stdlib server
   serialize.py          engine result -> browser JSON
   build.py              writes web/site/data/*.json for static hosting
