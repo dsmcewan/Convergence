@@ -277,3 +277,8 @@ web/                    static frontend + local stdlib server
 demo.py                 narrated walkthrough (--corpus, --chat, --model)
 requirements.txt        optional backend deps (core is stdlib only)
 ```
+
+## Credits
+
+Architected and directed by [Drason McEwan](https://github.com/dsmcewan); built in
+collaboration with Claude and other AI model backends under human direction.
