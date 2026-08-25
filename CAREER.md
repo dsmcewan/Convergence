@@ -1,106 +1,110 @@
 # Convergence — Engineering Portfolio Brief
 
-## What I built
+> **Hiring-manager path:** Convergence is the evidence-synthesis / explainability project in this portfolio. The main README documents the product; this page explains the engineering signal quickly.
 
-Convergence is a deterministic communication-forensics and evidence-synthesis engine. It analyzes written records through six independent analytical layers and refuses to elevate a finding unless independent forms of evidence corroborate the same material.
+## What it solves
 
-The core design principle is simple:
+Convergence is a deterministic communication-forensics and evidence-synthesis engine. It analyzes written records through six independent analytical layers and refuses to elevate a finding unless different mechanisms corroborate the same material.
+
+The governing rule is:
 
 > **An assertion cannot supply the evidence required to promote itself.**
 
-Language models may explain structured findings, but they do not determine verdicts.
+Language models may explain structured findings. They do not determine verdicts.
 
-## The engineering problem
+## Why the architecture is different
 
-Many AI analysis systems ask a model to inspect a corpus and return a conclusion with a confidence score. That creates a difficult verification problem: the same probabilistic component generates the claim, interprets the evidence, and grades its own result.
-
-Convergence separates those responsibilities.
-
-Six deterministic detectors emit a common `Signal` representation. Signals have different evidentiary roles: substantive signals represent actual moves; contextual signals may strengthen or connect evidence but cannot independently manufacture a high-confidence finding. The engine promotes a finding only when at least one substantive signal is corroborated by a second independent layer.
-
-This makes confidence a property of **independent evidence structure**, not model certainty.
-
-## Architecture at a glance
+A common AI-analysis pattern is:
 
 ```text
-raw records
-    ↓
-independent deterministic detectors (L1–L6)
-    ↓
-normalized Signals
-    ↓
-independent-layer corroboration
-    ↓
-Findings
-    ↓
-recurrence / named composition
-    ↓
-Patterns
-    ↓
-actor + target + time attribution
-    ↓
-Campaigns
+corpus → model → conclusion + confidence score
 ```
 
-A separate ordered grammar can identify higher-order temporal structures only when the complete sequence is present. Individual stages do not inherit the conclusion of the complete pattern.
+That leaves the same probabilistic component generating the claim, interpreting the evidence, and grading its own result.
 
-## What this demonstrates
+Convergence instead uses six deterministic detectors that normalize to a common `Signal` model. Each signal retains the message material that produced it, and different layers have different evidentiary permissions.
 
-- **AI systems architecture** — probabilistic models are kept behind a narrow explanatory seam rather than placed in the verdict path.
-- **Deterministic validation** — findings are promoted by explicit, testable rules.
-- **Evidence fusion** — heterogeneous analytical layers normalize to a common signal model while retaining provenance.
-- **False-positive control** — contextual signals cannot independently elevate findings; lone signals remain low confidence.
-- **Hierarchical inference** — fragments become tactics, tactics become corroborated findings, findings compose into patterns, and sustained attributed findings become campaigns.
-- **Temporal / structural reasoning** — ordered grammars distinguish isolated events from complete behavioral sequences.
-- **Extensible detector research** — agent-proposed detector families are treated as untrusted candidates and must pass deterministic adversarial checks before shipping.
-- **Provider abstraction** — optional Claude, OpenAI, Grok, Gemini, and CLI adapters are isolated from the dependency-free core.
-- **Evaluation discipline** — synthetic labeled discrimination is kept separate from real-data documentary precision so metrics do not claim more than the available ground truth supports.
-- **Product engineering** — CLI, static build, web presentation, Docker deployment, grounded conversational explanation, and automated tests surround the core engine.
-
-## Code worth reviewing
-
-| Area | File | Why it matters |
-|---|---|---|
-| Evidence convergence | `convergence/engine.py` | Normalizes signals, constructs evidence groups, and enforces the independent-layer elevation rule. |
-| Higher-order composition | `convergence/composition.py` | Promotes corroborated events into recurring patterns and actor/target/time campaigns. |
-| Ordered structural analysis | `convergence/coercion_grammar.py` | Recognizes a complete cyclic/temporal envelope rather than classifying isolated phrases. |
-| Detector research | `convergence/investigator.py` | Separates agent proposal from deterministic acceptance testing. |
-| Evaluation | `convergence/evaluation.py` | Keeps synthetic discriminator metrics distinct from documentary corroboration on real records. |
-| Model boundary | `convergence/conversation.py` | Lets an LLM explain fixed structured findings without changing them. |
-| Architecture | `HIERARCHY.md` | Documents the promotion rules from tactic → finding → pattern → campaign. |
-| Engineering rationale | `ENGINEERING.md` | Explains deterministic-over-agentic design decisions and evaluation strategy. |
-
-## The unusual part
-
-Convergence is not an ensemble-voting system.
-
-Several models agreeing is still potentially one correlated failure mode. Convergence instead asks whether **different analytical mechanisms independently produce compatible evidence**, and then changes the kind of claim it is willing to make as evidence survives successive promotion rules.
+## Evidence-promotion architecture
 
 ```text
-observation ≠ finding
-finding ≠ pattern
-pattern ≠ sustained campaign
+fragment
+   ↓ contextual match
+tactic / Signal
+   ↓ independent-layer corroboration
+Finding
+   ↓ named composition or recurrence
+Pattern
+   ↓ actor + target + time attribution
+Campaign
 ```
 
-Each transition has a separate burden of proof.
+Each arrow has a separate rule. The kind of claim changes only when the evidence burden for the next level is met.
+
+### Evidentiary roles
+
+- **Substantive:** L1 tactic, L2 omission, L3 contradiction, L6 cross-channel divergence.
+- **Corroborator-only:** L4 domain convergence can strengthen an existing group but cannot create or merge findings.
+- **Focal/contextual:** L5 register shift can bridge related material but cannot elevate a context-only group.
+
+A finding becomes `elevated` only with **at least one substantive layer and at least two distinct layers total**. Lone signals remain low.
+
+## Higher-order structure
+
+`composition.py` operates above event-level findings:
+
+- **Patterns** identify named tactic combinations or recurring substantive moves.
+- **Campaigns** require multiple elevated findings attributable to the same actor against the same target over time.
+- `coercion_grammar.py` separately tests ordered/cyclic structure and only completes when the full envelope is present; isolated stages do not inherit the higher-order conclusion.
+
+This is not model voting. It is **evidence promotion through independent mechanisms, recurrence, attribution, and sequence**.
+
+## Agent boundary
+
+Convergence uses agents only where open-ended generation is useful. `investigator.py` can accept proposed detector families, but deterministic evaluation decides whether they ship. Candidate detectors must fire on target corpora while remaining quiet on defined benign corpora.
+
+That preserves the same rule used by the core engine: **the proposer does not grade the proposal.**
+
+## Proof points in the repository
+
+- **272 deterministic tests** in the documented run path.
+- Core engine is **standard-library only**; LLM integrations are optional adapters.
+- Six detector modules feed one normalized signal representation.
+- Synthetic discriminator evaluation explicitly labels its perfect score as synthetic-only and keeps a high-conflict corpus as a hard negative.
+- Real-data evaluation uses documentary precision without pretending an incomplete evidence set provides recall ground truth.
+- Optional Claude, OpenAI, Grok, Gemini, and CLI backends are isolated from the verdict path.
+
+## Best code-review entry points
+
+| Area | Start here |
+| --- | --- |
+| Signal normalization + convergence rule | `convergence/engine.py` |
+| Patterns and campaigns | `convergence/composition.py` |
+| Ordered structural grammar | `convergence/coercion_grammar.py` |
+| Detector proposal / deterministic acceptance | `convergence/investigator.py` |
+| Evaluation | `convergence/evaluation.py` |
+| Grounded conversational seam | `convergence/conversation.py` |
+| Promotion rules | `HIERARCHY.md` |
+| Engineering rationale | `ENGINEERING.md` |
+
+## What this demonstrates to an employer
+
+Convergence is evidence of work in:
+
+- deterministic AI-system design
+- evidence fusion and provenance
+- explainable analytical pipelines
+- false-positive controls
+- hierarchical and temporal reasoning
+- adversarial evaluation
+- provider abstraction
+- corpus/data modeling
+- test-driven implementation
+- productizing a technical method as CLI, web output, Docker deployment, and grounded Q&A
 
 ## Relevant roles
 
-This project is representative of work in:
+AI Systems Engineer · Applied AI Engineer · Forward-Deployed Engineer · AI Evaluation / Assurance Engineer · Trust & Safety Engineer · Evidence / Investigation Platform Engineer
 
-- AI Systems Engineering
-- Applied AI / Generative AI Engineering
-- AI Evaluation and Verification
-- Forward-Deployed Engineering
-- AI Governance and Assurance
-- Evidence / Investigation Platforms
-- Trust & Safety Engineering
-- Technical Product Incubation
+## Portfolio connection
 
-## Design philosophy
-
-Convergence is one implementation of a broader systems principle I use across AI projects:
-
-> **Generation may propose. Promotion requires independent evidence.**
-
-That same principle appears in TELOS, where independently attributable review and deterministic verification govern when proposed AI-mediated work earns implementation authority.
+**Convergence asks when evidence has earned a finding. TELOS asks when evidence has earned authority.** Both keep generation useful while making promotion depend on independently checkable structure.
