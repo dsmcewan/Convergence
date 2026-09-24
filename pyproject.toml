@@ -63,7 +63,7 @@ warn_unused_configs = true
 # warn_return_any, strict_equality.
 
 [[tool.mypy.overrides]]
-module = ["openai.*", "anthropic.*", "google.*", "pexpect.*", "wexpect.*", "winpty.*"]
+module = ["openai.*", "anthropic.*", "google.*", "winpty.*"]
 ignore_missing_imports = true
 
 [tool.coverage.run]

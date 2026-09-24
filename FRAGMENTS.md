@@ -30,7 +30,7 @@ and where to extend it.
 ---
 
 ## L1 · borrow-authority / displace-accountability
-`layers/pattern_detector.py`
+`convergence/layers/pattern_detector.py`
 
 Presenting a decision as the dictate of an outside authority ("the platform's
 policy says…", "my accountant says…") so the speaker never owns it. A fragment
@@ -56,7 +56,7 @@ corpus seq-6 negative case.)
 ---
 
 ## L3 · claim contradicted (denial of agreement)
-`layers/third_party.py`
+`convergence/layers/third_party.py`
 
 A denial fragment whose factual claim is tested against an external records set.
 The denial is only the *trigger*; the contradiction is confirmed by a record, not
@@ -73,7 +73,7 @@ No matching record → nothing emitted. The engine never invents a contradiction
 ---
 
 ## L5 · register anomaly (formal-register fragments)
-`layers/phrase_fragmentation.py`
+`convergence/layers/phrase_fragmentation.py`
 
 Not a tactic by itself — a *contextual* signal. These legalistic tokens raise a
 message's "formal share"; a spike above the sender's own baseline flags a register
@@ -92,7 +92,7 @@ elevates a finding alone.
 ---
 
 ## L6 · cross-channel divergence (claim vs. admission)
-`layers/cross_channel.py`
+`convergence/layers/cross_channel.py`
 
 Paired fragments: a favorable **claim** in one channel vs. the same sender's
 contradicting **admission** in another. Aligned by sender *and* predicate.
@@ -139,11 +139,11 @@ same "the lawyer says" fragment, now read as the *justify* role.
 Two layers carry no phrase fragments — their signal is **structure**, which is why
 they are often the most decisive:
 
-- **L2 · within-thread omission** (`layers/gap_detector.py`) — the building block is
+- **L2 · within-thread omission** (`convergence/layers/gap_detector.py`) — the building block is
   a *gap*: a message cut from inside one continuous thread (its shown neighbors on
   both sides share its thread). You cannot see a splice by reading the splice; you
   reconstruct the record and watch which interior pieces are missing.
-- **L4 · domain convergence** (`layers/domain_convergence.py`) — the building block
+- **L4 · domain convergence** (`convergence/layers/domain_convergence.py`) — the building block
   is a shared **anchor** (a content word/bigram, ≥4 chars, non-stopword) recurring
   across ≥2 independent domains. It also maintains an *anti-fragment* `STOPWORDS`
   list — the connective tissue and generic verbs that must never count as anchors.
