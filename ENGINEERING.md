@@ -16,8 +16,8 @@ load-bearing nowhere a decision is made.
    file — which a probabilistic classifier cannot give.
 2. **The model sits at a narrow, grounded seam.** `conversation.py` receives only the
    *structured findings*, never the raw corpus or the detection logic, via an injected
-   `complete()`. The model can rephrase or explain a verdict; it cannot move one. The
-   SDK is touched in exactly one file (`adapters/`).
+   `complete()`. The model can rephrase or explain a verdict; it cannot move one. Vendor
+   SDKs are imported only inside `convergence/adapters/`, one module per backend.
 3. **Evals are first-class.** 100+ deterministic tests, a five-corpus discrimination
    eval, doc-sync guards that fail on drift, and a scored report
    (`demo.py --eval`). "It works" is replaced by numbers.

@@ -8,10 +8,10 @@
 A six-layer engine for analyzing a corpus of written communications. It does
 **not** know or care whose messages it is fed. It was *built from* the structure
 of message records — not *tailored to* any one conversation — so the **same
-engine** runs on unrelated corpora with no code changes. (Fourteen data files
-across the bundled corpora ship here — contractor, coparenting, channels,
-grammar, and five dynamics variants; the only difference between runs is the
-data in `data/`.)
+engine** runs on unrelated corpora with no code changes. (Fourteen corpus files
+ship here — contractor, coparenting, channels, grammar, and five dynamics
+variants — alongside adversarial, holdout, and regression sets used by the
+tests; the only difference between runs is the data in `data/`.)
 
 **Who it's for:** anyone who needs to show *why* a finding holds with an
 **auditable, deterministic** method instead of a black-box classifier —
@@ -194,6 +194,10 @@ convergence --corpus contractor --voice blanc  # the Voice of Convergence
 convergence --corpus grammar         # coercion-grammar structural analysis
 convergence --corpus dynamics        # 5-type discrimination table
 convergence --corpus db --db /path/to/your.db   # run on your own SQLite export
+convergence --corpus db --db x.db --db-table msgs --db-limit 500  # pick table, cap rows
+convergence --summary                # compact findings summary
+convergence --summary --sender Morgan  # ... only findings involving one sender
+convergence --seq 12                 # one message and the findings that touch it
 convergence --eval                   # scored discriminator report
 convergence --investigate            # propose + verify new detectors
 convergence --chat --voice blanc     # conversational Blanc with Claude
@@ -271,7 +275,9 @@ convergence/            engine (corpus-agnostic; stdlib only in core)
   conversation.py       grounded Q&A seam (model injected)
   layers/               one module per analytical layer (L1–L6)
   adapters/             optional LLM adapters (Claude, OpenAI, Grok, Gemini, agy)
-data/                   14 data files: contractor (sample_*), coparenting, channels (formal+casual), grammar, dynamics (dyn_*)
+data/                   14 corpus files: contractor (sample_*), coparenting, channels (formal+casual), grammar, dynamics (dyn_*)
+  adv_*.json            adversarial record-assembly cases (tests)
+  holdout/, regression/ held-out and regression dynamics corpora (tests)
 tools/                  generate_dynamics.py — seeded dynamics-corpus generator
 tests/                  272 deterministic tests
 web/                    static frontend + local stdlib server
