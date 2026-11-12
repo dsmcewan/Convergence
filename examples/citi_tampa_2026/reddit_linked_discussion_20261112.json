@@ -1,0 +1,158 @@
+{
+  "as_of": "2026-11-12",
+  "case_id": "citi_tampa_2026_11_04",
+  "scope": "Two manually reviewed public Reddit chains; cannot be linked to executive LinkedIn posts or verified employee status",
+  "units": [
+    {
+      "id": "memo_post",
+      "thread_id": "memo_thread",
+      "timestamp": "2026-11-05",
+      "actor": "public_forum_op",
+      "role": "public_forum_participant",
+      "source": "https://www.reddit.com/r/citibank/comments/1xohb6t/who_was_the_shooter/",
+      "coverage": "excerpt",
+      "text": "Has anyone confirmed if the shooter was an employee? What do people think of Jane’s email? (I know it needed to be quick given they can’t release too much yet, but seems too generic for me)",
+      "frames": [
+        {
+          "topic": "other",
+          "quote": "What do people think of Jane’s email?"
+        }
+      ],
+      "reply_to": null,
+      "asks_issue_ids": [
+        "memo_specificity"
+      ],
+      "addresses_issue_ids": [],
+      "note": ""
+    },
+    {
+      "id": "memo_response",
+      "thread_id": "memo_thread",
+      "timestamp": "2026-11-05",
+      "actor": "public_forum_commenter_1",
+      "role": "public_forum_participant",
+      "source": "https://www.reddit.com/r/citibank/comments/1xohb6t/who_was_the_shooter/",
+      "coverage": "excerpt",
+      "text": "I’m unhappy with the response. While I don’t work in Tampa, I’d like to know where the “resources” are. I also feel that a full security assessment should be completed by a 3rd party, and until that is completed, published and remediated RTO should not be tracked. Especially for other surburban campus style sites where the spaces feel eerily similar to what we’ve seen in Tampa.",
+      "frames": [
+        {
+          "topic": "post_event_support",
+          "quote": "where the “resources” are"
+        },
+        {
+          "topic": "pre_attack_prevention",
+          "quote": "full security assessment"
+        }
+      ],
+      "reply_to": "memo_post",
+      "asks_issue_ids": [
+        "resources_access",
+        "independent_security_review"
+      ],
+      "addresses_issue_ids": [
+        "memo_specificity"
+      ],
+      "note": ""
+    },
+    {
+      "id": "memo_followup",
+      "thread_id": "memo_thread",
+      "timestamp": "2026-11-05",
+      "actor": "public_forum_op",
+      "role": "public_forum_participant",
+      "source": "https://www.reddit.com/r/citibank/comments/1xohb6t/who_was_the_shooter/",
+      "coverage": "excerpt",
+      "text": "I agree, this is a really good point … Citi employees are under high stress due to the ongoing layoffs, so protections need to be in place and all sites assessed with this in mind. How can people really not be thinking about what happened?",
+      "frames": [
+        {
+          "topic": "pre_attack_prevention",
+          "quote": "all sites assessed"
+        },
+        {
+          "topic": "other",
+          "quote": "ongoing layoffs"
+        }
+      ],
+      "reply_to": "memo_response",
+      "asks_issue_ids": [],
+      "addresses_issue_ids": [],
+      "note": "Agreement and continued demand, not a source-backed answer that an assessment occurred."
+    },
+    {
+      "id": "prevention_question",
+      "thread_id": "active_shooter_thread",
+      "timestamp": "2026-11-06",
+      "actor": "public_forum_commenter_2",
+      "role": "public_forum_participant",
+      "source": "https://www.reddit.com/r/citibank/comments/1xnuil5/tampa_site_active_shooter/",
+      "coverage": "excerpt",
+      "text": "The heroic actions of one employee shouldn't automatically be taken as proof that Citi's entire security system worked properly. I think Citi owes its employees an explanation of when they first learned about the threat, who assessed the risk, and why additional safety measures weren't taken before the shooting happened. Stopping the shooter was one thing. Preventing the attack in the first place was another.",
+      "frames": [
+        {
+          "topic": "heroism",
+          "quote": "heroic actions of one employee"
+        },
+        {
+          "topic": "pre_attack_prevention",
+          "quote": "when they first learned about the threat"
+        },
+        {
+          "topic": "institutional_responsibility",
+          "quote": "Citi owes its employees an explanation"
+        }
+      ],
+      "reply_to": null,
+      "asks_issue_ids": [
+        "citi_first_receipt",
+        "threat_assessment",
+        "pre_attack_measures"
+      ],
+      "addresses_issue_ids": [],
+      "note": ""
+    },
+    {
+      "id": "prevention_response",
+      "thread_id": "active_shooter_thread",
+      "timestamp": "2026-11-06",
+      "actor": "public_forum_commenter_3",
+      "role": "public_forum_participant",
+      "source": "https://www.reddit.com/r/citibank/comments/1xnuil5/tampa_site_active_shooter/",
+      "coverage": "excerpt",
+      "text": "They do. Ceo informed employees security would be increasing across all campuses. I know someone who works at a different location, but they have said they themselves have had someone threaten violence over the phone and that's just absolutely terrifying to think they had an hour warning and still someone died and others were hurt.",
+      "frames": [
+        {
+          "topic": "post_event_support",
+          "quote": "security would be increasing across all campuses"
+        },
+        {
+          "topic": "pre_attack_prevention",
+          "quote": "an hour warning"
+        }
+      ],
+      "reply_to": "prevention_question",
+      "asks_issue_ids": [],
+      "addresses_issue_ids": [],
+      "note": "Post-event security announcement is a different action from a pre-breach protective measure. Commenter's claimed one-hour window is not verified."
+    },
+    {
+      "id": "prevention_counterreply",
+      "thread_id": "active_shooter_thread",
+      "timestamp": "2026-11-06",
+      "actor": "public_forum_commenter_4",
+      "role": "public_forum_participant",
+      "source": "https://www.reddit.com/r/citibank/comments/1xnuil5/tampa_site_active_shooter/",
+      "coverage": "excerpt",
+      "text": "They had three hours warning…the man stated the threat around 9 a.m.",
+      "frames": [
+        {
+          "topic": "pre_attack_prevention",
+          "quote": "threat around 9 a.m."
+        }
+      ],
+      "reply_to": "prevention_response",
+      "asks_issue_ids": [],
+      "addresses_issue_ids": [],
+      "note": "This comment conflates the threat at the law office with a proven moment Citi first received it. Treat as unverified, not a factual correction."
+    }
+  ]
+}
