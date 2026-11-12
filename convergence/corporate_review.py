@@ -35,7 +35,7 @@ CUES = {
         r"\b\$250,000 contribution\b",
         r"\b\$250,000\b",
     ),
-    "pre_attack_security_description": (r"\bchanging their security posture\b",),
+    "contemporaneous_security_posture_description": (r"\bchanging their security posture\b",),
 }
 COMPILED = {kind: tuple(re.compile(p, re.I) for p in patterns)
             for kind, patterns in CUES.items()}
