@@ -113,8 +113,8 @@ def audit_followthrough(case: dict[str, Any]) -> dict[str, Any]:
             "verified_incident_fact_ids": [r["id"] for r in verified],
             "all_official_responses_are_direct_to_original_question":
                 all_official_are_direct,
-            "full_answer_independently_verified": False,
-            "external_investigation_completed": False,
+            "full_answer_independently_verified_in_selected_sources": False,
+            "external_investigation_completion": "not_established_in_selected_sources",
         })
     by_source_origin = defaultdict(set)
     for s in sources:
@@ -127,7 +127,7 @@ def audit_followthrough(case: dict[str, Any]) -> dict[str, Any]:
             len(by_source_origin),
         "issues": issues,
         "inferences": {
-            "all_questions_answered": False,
+            "all_questions_fully_answered_in_selected_sources": False,
             "public_questions_suppressed": "not_established",
             "institutional_neglect": "not_determined",
             "communications_caused_distraction": "not_established",
