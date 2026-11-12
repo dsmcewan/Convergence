@@ -1,6 +1,7 @@
 """Negative controls for evidence-conservative corporate wording review."""
 import json
 import unittest
+
 from convergence.corporate_review import review
 
 
