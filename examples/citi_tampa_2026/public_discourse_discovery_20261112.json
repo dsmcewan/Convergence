@@ -20,7 +20,9 @@
       "posted_time_verified": false,
       "direct_replies_to_linkedin_verified": false,
       "original_author_observed_in_activity_feed": true,
-      "attribution_status": "official_company_feed"
+      "attribution_status": "official_company_feed",
+      "referenced_communication_ids": [],
+      "reference_kind": null
     },
     {
       "id": "fraser_memo",
@@ -40,7 +42,9 @@
       "posted_time_verified": false,
       "direct_replies_to_linkedin_verified": false,
       "original_author_observed_in_activity_feed": false,
-      "attribution_status": "memo_reproduced_by_news"
+      "attribution_status": "memo_reproduced_by_news",
+      "referenced_communication_ids": [],
+      "reference_kind": null
     },
     {
       "id": "skyler_fund",
@@ -58,7 +62,9 @@
       "posted_time_verified": false,
       "direct_replies_to_linkedin_verified": false,
       "original_author_observed_in_activity_feed": true,
-      "attribution_status": "attributed_by_reactor_feed_no_original_permalink"
+      "attribution_status": "attributed_by_reactor_feed_no_original_permalink",
+      "referenced_communication_ids": [],
+      "reference_kind": null
     },
     {
       "id": "former_exec",
@@ -76,7 +82,9 @@
       "posted_time_verified": false,
       "direct_replies_to_linkedin_verified": false,
       "original_author_observed_in_activity_feed": false,
-      "attribution_status": "user_screenshot"
+      "attribution_status": "user_screenshot",
+      "referenced_communication_ids": [],
+      "reference_kind": null
     },
     {
       "id": "zo_amani",
@@ -95,7 +103,9 @@
       "posted_time_verified": false,
       "direct_replies_to_linkedin_verified": false,
       "original_author_observed_in_activity_feed": true,
-      "attribution_status": "attributed_by_reactor_feed_no_original_permalink"
+      "attribution_status": "attributed_by_reactor_feed_no_original_permalink",
+      "referenced_communication_ids": [],
+      "reference_kind": null
     },
     {
       "id": "marshall_moorhead",
@@ -114,7 +124,9 @@
       "posted_time_verified": false,
       "direct_replies_to_linkedin_verified": false,
       "original_author_observed_in_activity_feed": true,
-      "attribution_status": "attributed_by_reactor_feed_no_original_permalink"
+      "attribution_status": "attributed_by_reactor_feed_no_original_permalink",
+      "referenced_communication_ids": [],
+      "reference_kind": null
     },
     {
       "id": "tom_lahoud",
@@ -133,7 +145,9 @@
       "posted_time_verified": false,
       "direct_replies_to_linkedin_verified": false,
       "original_author_observed_in_activity_feed": true,
-      "attribution_status": "attributed_by_reactor_feed_no_original_permalink"
+      "attribution_status": "attributed_by_reactor_feed_no_original_permalink",
+      "referenced_communication_ids": [],
+      "reference_kind": null
     },
     {
       "id": "xiomara_vaquiro",
@@ -152,7 +166,9 @@
       "posted_time_verified": false,
       "direct_replies_to_linkedin_verified": false,
       "original_author_observed_in_activity_feed": true,
-      "attribution_status": "attributed_by_reactor_feed_no_original_permalink"
+      "attribution_status": "attributed_by_reactor_feed_no_original_permalink",
+      "referenced_communication_ids": [],
+      "reference_kind": null
     },
     {
       "id": "gabriel_rincon",
@@ -171,7 +187,9 @@
       "posted_time_verified": false,
       "direct_replies_to_linkedin_verified": false,
       "original_author_observed_in_activity_feed": true,
-      "attribution_status": "attributed_by_reactor_feed_no_original_permalink"
+      "attribution_status": "attributed_by_reactor_feed_no_original_permalink",
+      "referenced_communication_ids": [],
+      "reference_kind": null
     },
     {
       "id": "forum_memo_question",
@@ -188,7 +206,11 @@
       "posted_time_verified": false,
       "direct_replies_to_linkedin_verified": false,
       "original_author_observed_in_activity_feed": false,
-      "attribution_status": "direct_forum_thread"
+      "attribution_status": "direct_forum_thread",
+      "referenced_communication_ids": [
+        "fraser_memo"
+      ],
+      "reference_kind": "cross_platform_discussion_about_memo_not_direct_reply"
     },
     {
       "id": "forum_memo_assessment",
@@ -208,7 +230,11 @@
       "posted_time_verified": false,
       "direct_replies_to_linkedin_verified": false,
       "original_author_observed_in_activity_feed": false,
-      "attribution_status": "direct_forum_thread"
+      "attribution_status": "direct_forum_thread",
+      "referenced_communication_ids": [
+        "fraser_memo"
+      ],
+      "reference_kind": "cross_platform_discussion_about_memo_not_direct_reply"
     },
     {
       "id": "forum_memo_notification",
@@ -226,7 +252,11 @@
       "posted_time_verified": false,
       "direct_replies_to_linkedin_verified": false,
       "original_author_observed_in_activity_feed": false,
-      "attribution_status": "direct_forum_thread"
+      "attribution_status": "direct_forum_thread",
+      "referenced_communication_ids": [
+        "fraser_memo"
+      ],
+      "reference_kind": "cross_platform_discussion_about_memo_not_direct_reply"
     },
     {
       "id": "forum_warning",
@@ -243,7 +273,9 @@
       "posted_time_verified": false,
       "direct_replies_to_linkedin_verified": false,
       "original_author_observed_in_activity_feed": false,
-      "attribution_status": "direct_forum_thread"
+      "attribution_status": "direct_forum_thread",
+      "referenced_communication_ids": [],
+      "reference_kind": null
     },
     {
       "id": "forum_barrier",
@@ -260,7 +292,9 @@
       "posted_time_verified": false,
       "direct_replies_to_linkedin_verified": false,
       "original_author_observed_in_activity_feed": false,
-      "attribution_status": "direct_forum_thread"
+      "attribution_status": "direct_forum_thread",
+      "referenced_communication_ids": [],
+      "reference_kind": null
     },
     {
       "id": "forum_lockdown",
@@ -277,7 +311,9 @@
       "posted_time_verified": false,
       "direct_replies_to_linkedin_verified": false,
       "original_author_observed_in_activity_feed": false,
-      "attribution_status": "indexed_forum_comment"
+      "attribution_status": "indexed_forum_comment",
+      "referenced_communication_ids": [],
+      "reference_kind": null
     },
     {
       "id": "forum_worker_support",
@@ -294,7 +330,9 @@
       "posted_time_verified": false,
       "direct_replies_to_linkedin_verified": false,
       "original_author_observed_in_activity_feed": false,
-      "attribution_status": "indexed_forum_comment"
+      "attribution_status": "indexed_forum_comment",
+      "referenced_communication_ids": [],
+      "reference_kind": null
     },
     {
       "id": "forum_response_prevention",
@@ -312,7 +350,9 @@
       "posted_time_verified": false,
       "direct_replies_to_linkedin_verified": false,
       "original_author_observed_in_activity_feed": false,
-      "attribution_status": "indexed_forum_comment"
+      "attribution_status": "indexed_forum_comment",
+      "referenced_communication_ids": [],
+      "reference_kind": null
     }
   ],
   "limitations": [
