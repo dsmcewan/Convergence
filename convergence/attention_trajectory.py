@@ -139,7 +139,8 @@ def analyze_attention(
 
     edges = []
     for u in ordered:
-        p = by_id.get(u.get("reply_to"))
+        parent_id = u.get("reply_to")
+        p = by_id.get(parent_id) if isinstance(parent_id, str) else None
         if p is None:
             continue
         parent_topics = {f["topic"] for f in p.get("frames", [])}
@@ -177,7 +178,8 @@ def analyze_attention(
     for action in sorted(actions, key=lambda a: a.get("id", "")):
         if not isinstance(action.get("id"), str) or not action["id"]:
             raise ValueError("invalid action ID")
-        root = by_id.get(action.get("unit_id"))
+        unit_id = action.get("unit_id")
+        root = by_id.get(unit_id) if isinstance(unit_id, str) else None
         if root is None:
             raise ValueError(f"action {action['id']} references missing unit")
         replies = [u for u in ordered if u.get("reply_to") == root["id"]]
