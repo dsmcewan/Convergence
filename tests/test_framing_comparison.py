@@ -2,7 +2,6 @@
 import json
 import unittest
 
-from convergence.causal_audit import audit_causal_chain
 from convergence.corporate_review import review
 from convergence.framing_comparison import compare_framing
 
