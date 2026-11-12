@@ -1,0 +1,112 @@
+[
+  {
+    "id": "former_site_exec_post",
+    "actor": "Former Tampa site executive (name not visible in supplied screenshot)",
+    "date": "2026-11-11",
+    "source": "User-supplied LinkedIn screenshot; original URL not verified",
+    "coverage": "excerpt",
+    "text": "For many years, I had the privilege of overseeing this site. Communities like Citi's demonstrate the extraordinary power of people showing up for one another. Please continue to take care of one another. Photo Caption: Citi Tampa has always been a tremendous force for good in the community.",
+    "reported_actions": [],
+    "source_note": "Screenshot shared November 11; exact post date and full original not verified. Not a Citi-authorized operational statement."
+  },
+  {
+    "id": "fraser_memo",
+    "actor": "Jane Fraser",
+    "date": "2026-11-04",
+    "source": "https://www.fox5ny.com/news/heavy-law-enforcement-presence-outside-brandon-citibank-triggers-traffic-alert",
+    "coverage": "excerpt",
+    "text": "I ask that we all look out for one another. Additional security. Counseling and other resources available.",
+    "reported_actions": [
+      {
+        "action_id": "employee_counseling",
+        "description": "Counseling and resources made available to staff",
+        "status": "announced"
+      },
+      {
+        "action_id": "other_site_security",
+        "description": "Additional security at other sites as necessary",
+        "status": "announced"
+      }
+    ],
+    "source_note": "Employee memo reproduced in reporting; excerpt not full message."
+  },
+  {
+    "id": "skyler_fund_post",
+    "actor": "Edward Skyler",
+    "date": "2026-11-11",
+    "source": "https://uk.linkedin.com/in/wendy-shannon-810421110 (visible excerpt of Skyler's post)",
+    "coverage": "excerpt",
+    "text": "This afternoon we shared with our colleagues that Citi will be making a $250,000 contribution in honor of LeAnne Selman.",
+    "reported_actions": [
+      {
+        "action_id": "performing_arts_fund",
+        "description": "$250,000 contribution announced for local performing arts memorial fund",
+        "status": "announced"
+      }
+    ],
+    "source_note": "Seen via another public profile; exact publication time not authenticated."
+  },
+  {
+    "id": "citi_corporate_post",
+    "actor": "Citi official corporate account",
+    "date": "2026-11-11",
+    "source": "https://sj.linkedin.com/company/citi",
+    "coverage": "excerpt",
+    "text": "LeAnne Selman loved music and animals. Citi will be giving $250,000. We're grateful to our security team for their professionalism and bravery.",
+    "reported_actions": [
+      {
+        "action_id": "performing_arts_fund",
+        "description": "$250,000 contribution announced for local performing arts memorial fund",
+        "status": "announced"
+      }
+    ],
+    "source_note": "Seen on corporate public feed November 11; posting time not independently verified."
+  },
+  {
+    "id": "skyler_interview",
+    "actor": "Edward Skyler",
+    "date": "2026-11-05",
+    "source": "https://www.fox13news.com/news/citibank-shooting-new-details-emerge-law-enforcement-response",
+    "coverage": "reported_quote",
+    "text": "There are threats that come in frequently. Our security team was changing their security posture as the event was starting.",
+    "reported_actions": [
+      {
+        "action_id": "security_posture_change",
+        "description": "Citi said security posture was changing as attack began",
+        "status": "reported"
+      }
+    ],
+    "source_note": "Executive's reported remarks, not an independent operational log."
+  },
+  {
+    "id": "skyler_employee_support_interview",
+    "actor": "Edward Skyler",
+    "date": "2026-11-05",
+    "source": "https://www.tampabay28.com/news/region-hillsborough/shooting-at-citibank-corporate-campus-sparked-by-2-500-debt-threat-made-hours-before-gunfire-sheriff-says",
+    "coverage": "reported_quote",
+    "text": "It's really important for us to recognize the traumatic events that our colleagues experienced.",
+    "reported_actions": [
+      {
+        "action_id": "remote_work_flexibility",
+        "description": "Employees reportedly not required to return to campus immediately",
+        "status": "reported"
+      }
+    ]
+  },
+  {
+    "id": "employee_firsthand_account",
+    "actor": "Gabriel Rincon",
+    "date": "2026-11-11",
+    "source": "https://do.linkedin.com/in/rocio-velarde-citi (visible excerpt of Rincon post)",
+    "coverage": "excerpt",
+    "text": "I was equally grateful to receive a personal call from one of the leaders in my organization.",
+    "reported_actions": [
+      {
+        "action_id": "personal_leadership_outreach",
+        "description": "Employee reports receiving personal leadership welfare call",
+        "status": "firsthand_report"
+      }
+    ],
+    "source_note": "Observed via another public profile, not independently authenticated original post."
+  }
+]
