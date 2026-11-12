@@ -4,6 +4,12 @@
 
 This case distinguishes the memorial of LeAnne Selman and recognition of John Fraley from an investigation of the decisions and protective controls preceding the November 4, 2026 shooting. The key question is what was known, when it was known, what protective actions were required and implemented, and what records could prove the difference.
 
+## Follow-on public discourse discovery (November 12, 2026)
+
+See [CROSS_CHANNEL_RESEARCH_20261112.md](CROSS_CHANNEL_RESEARCH_20261112.md) for the new sourced comparison of institutional statements, separately attributed colleague posts, and forum discussion of the CEO memo and pre-attack prevention. The 17 selected units are stored in [public_discourse_discovery_20261112.json](public_discourse_discovery_20261112.json). This is purposive discovery **not** a complete LinkedIn audience sample or a causal claim.
+
+Run `python examples/citi_tampa_2026/run_cross_channel.py` after installing the package. The cross-channel analyzer does not change or promote any existing Convergence verdict.
+
 ## Reproduce
 
 From the repository root:
