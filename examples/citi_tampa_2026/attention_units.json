@@ -1,0 +1,181 @@
+{
+  "note": "NONRANDOM EXCERPTED STATEMENTS ONLY; no verified reply, reach, impressions or engagement log. Topic labels are human-auditable because each is tied to an exact phrase. This sample cannot measure diversion or audience effects.",
+  "as_of": "2026-11-11",
+  "units": [
+    {
+      "id": "former_site_exec_post",
+      "actor": "Former Tampa site executive (name not visible in supplied screenshot)",
+      "role": "former_executive",
+      "thread_id": "executive_public_discussion",
+      "timestamp": "2026-11-11",
+      "source": "User-supplied LinkedIn screenshot; original URL not verified",
+      "coverage": "excerpt",
+      "text": "For many years, I had the privilege of overseeing this site. Communities like Citi's demonstrate the extraordinary power of people showing up for one another. Please continue to take care of one another. Photo Caption: Citi Tampa has always been a tremendous force for good in the community.",
+      "frames": [
+        {
+          "topic": "institutional_virtue",
+          "quote": "Citi Tampa has always been a tremendous force for good"
+        },
+        {
+          "topic": "mutual_support",
+          "quote": "Please continue to take care of one another"
+        }
+      ],
+      "reply_to": null,
+      "asks_issue_ids": [],
+      "addresses_issue_ids": []
+    },
+    {
+      "id": "fraser_memo",
+      "actor": "Jane Fraser",
+      "role": "executive",
+      "thread_id": "internal_memo",
+      "timestamp": "2026-11-04",
+      "source": "https://www.fox5ny.com/news/heavy-law-enforcement-presence-outside-brandon-citibank-triggers-traffic-alert",
+      "coverage": "excerpt",
+      "text": "I ask that we all look out for one another. Additional security. Counseling and other resources available.",
+      "frames": [
+        {
+          "topic": "mutual_support",
+          "quote": "I ask that we all look out for one another"
+        },
+        {
+          "topic": "post_event_support",
+          "quote": "Counseling and other resources available"
+        }
+      ],
+      "reply_to": null,
+      "asks_issue_ids": [],
+      "addresses_issue_ids": []
+    },
+    {
+      "id": "skyler_fund_post",
+      "actor": "Edward Skyler",
+      "role": "executive",
+      "thread_id": "fund_announcement",
+      "timestamp": "2026-11-11",
+      "source": "https://uk.linkedin.com/in/wendy-shannon-810421110 (visible excerpt of Skyler's post)",
+      "coverage": "excerpt",
+      "text": "This afternoon we shared with our colleagues that Citi will be making a $250,000 contribution in honor of LeAnne Selman.",
+      "frames": [
+        {
+          "topic": "memorial",
+          "quote": "in honor of LeAnne Selman"
+        },
+        {
+          "topic": "post_event_support",
+          "quote": "$250,000 contribution"
+        }
+      ],
+      "reply_to": null,
+      "asks_issue_ids": [],
+      "addresses_issue_ids": []
+    },
+    {
+      "id": "citi_corporate_post",
+      "actor": "Citi official corporate account",
+      "role": "institution",
+      "thread_id": "corporate_tribute",
+      "timestamp": "2026-11-11",
+      "source": "https://sj.linkedin.com/company/citi",
+      "coverage": "excerpt",
+      "text": "LeAnne Selman loved music and animals. Citi will be giving $250,000. We're grateful to our security team for their professionalism and bravery.",
+      "frames": [
+        {
+          "topic": "memorial",
+          "quote": "LeAnne Selman loved music and animals"
+        },
+        {
+          "topic": "heroism",
+          "quote": "grateful to our security team for their professionalism and bravery"
+        },
+        {
+          "topic": "post_event_support",
+          "quote": "Citi will be giving $250,000"
+        }
+      ],
+      "reply_to": null,
+      "asks_issue_ids": [],
+      "addresses_issue_ids": []
+    },
+    {
+      "id": "skyler_interview",
+      "actor": "Edward Skyler",
+      "role": "executive",
+      "thread_id": "press_interview_1",
+      "timestamp": "2026-11-05",
+      "source": "https://www.fox13news.com/news/citibank-shooting-new-details-emerge-law-enforcement-response",
+      "coverage": "reported_quote",
+      "text": "There are threats that come in frequently. Our security team was changing their security posture as the event was starting.",
+      "frames": [
+        {
+          "topic": "security_response",
+          "quote": "changing their security posture as the event was starting"
+        }
+      ],
+      "reply_to": null,
+      "asks_issue_ids": [],
+      "addresses_issue_ids": []
+    },
+    {
+      "id": "skyler_employee_support_interview",
+      "actor": "Edward Skyler",
+      "role": "executive",
+      "thread_id": "press_interview_2",
+      "timestamp": "2026-11-05",
+      "source": "https://www.tampabay28.com/news/region-hillsborough/shooting-at-citibank-corporate-campus-sparked-by-2-500-debt-threat-made-hours-before-gunfire-sheriff-says",
+      "coverage": "reported_quote",
+      "text": "It's really important for us to recognize the traumatic events that our colleagues experienced.",
+      "frames": [
+        {
+          "topic": "post_event_support",
+          "quote": "recognize the traumatic events that our colleagues experienced"
+        }
+      ],
+      "reply_to": null,
+      "asks_issue_ids": [],
+      "addresses_issue_ids": []
+    },
+    {
+      "id": "employee_firsthand_account",
+      "actor": "Gabriel Rincon",
+      "role": "employee",
+      "thread_id": "employee_public_account",
+      "timestamp": "2026-11-11",
+      "source": "https://do.linkedin.com/in/rocio-velarde-citi (visible excerpt of Rincon post)",
+      "coverage": "excerpt",
+      "text": "I was equally grateful to receive a personal call from one of the leaders in my organization.",
+      "frames": [
+        {
+          "topic": "post_event_support",
+          "quote": "personal call from one of the leaders in my organization"
+        }
+      ],
+      "reply_to": null,
+      "asks_issue_ids": [],
+      "addresses_issue_ids": []
+    }
+  ],
+  "actions": [
+    {
+      "id": "fraser_employee_memo",
+      "unit_id": "fraser_memo",
+      "kind": "employee_communication"
+    },
+    {
+      "id": "former_site_executive_post",
+      "unit_id": "former_site_exec_post",
+      "kind": "public_post"
+    },
+    {
+      "id": "citi_memorial_post",
+      "unit_id": "citi_corporate_post",
+      "kind": "institutional_post"
+    },
+    {
+      "id": "skyler_memorial_fund_announcement",
+      "unit_id": "skyler_fund_post",
+      "kind": "public_post"
+    }
+  ]
+}

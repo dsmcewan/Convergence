@@ -1,0 +1,24 @@
+{
+  "scope": "Preliminary screenshot-only tag observation; not an attributable post network. Authenticated original URLs with complete hashtag-bearing posts are needed before counting author links.",
+  "as_of": "2026-11-12",
+  "posts": [],
+  "unattributed_visual_observations": [
+    {
+      "id": "cropped_tag_strip_2026_11_12",
+      "source": "User-provided cropped LinkedIn screenshot in conversation",
+      "hashtags": [
+        "CitiStrong",
+        "CitiTampa",
+        "CitiJacksonville",
+        "CitiProud",
+        "Jacksonville",
+        "Tampa"
+      ],
+      "actor": "unattributed",
+      "post_url": null,
+      "published_at": null,
+      "status": "observed_hashtags_only_not_counted_as_original_post"
+    }
+  ],
+  "public_search_note": "Searchable LinkedIn profiles repeat a single Citi corporate tribute in reaction feeds; count only unique attributable original post URLs as separate authorship evidence."
+}
