@@ -1,0 +1,327 @@
+{
+  "case_id": "citi_tampa_2026_11_04",
+  "as_of": "2026-11-12",
+  "sampling": "PURPOSIVE_NOT_REPRESENTATIVE",
+  "units": [
+    {
+      "id": "citi_official",
+      "channel": "institutional",
+      "actor": "Citi",
+      "role": "corporate",
+      "source_kind": "official_company_feed",
+      "source_url": "https://ib.linkedin.com/company/citi",
+      "topics": [
+        "memorial",
+        "response_praise",
+        "post_event_commitment"
+      ],
+      "summary": "Memorial of LeAnne and announced $250k fund with gratitude to security",
+      "original_post_url": null,
+      "posted_time_verified": false,
+      "direct_replies_to_linkedin_verified": false,
+      "original_author_observed_in_activity_feed": true,
+      "attribution_status": "official_company_feed"
+    },
+    {
+      "id": "fraser_memo",
+      "channel": "institutional",
+      "actor": "Jane Fraser",
+      "role": "chief_executive",
+      "source_kind": "memo_reproduced_by_news",
+      "source_url": "https://www.fox13seattle.com/news/heavy-law-enforcement-presence-outside-brandon-citibank-triggers-traffic-alert",
+      "topics": [
+        "memorial",
+        "response_praise",
+        "post_event_commitment",
+        "mutual_support"
+      ],
+      "summary": "Employee memo praised security and announced counseling and other site security",
+      "original_post_url": null,
+      "posted_time_verified": false,
+      "direct_replies_to_linkedin_verified": false,
+      "original_author_observed_in_activity_feed": false,
+      "attribution_status": "memo_reproduced_by_news"
+    },
+    {
+      "id": "skyler_fund",
+      "channel": "institutional",
+      "actor": "Edward Skyler",
+      "role": "executive",
+      "source_kind": "indexed_activity_mirror",
+      "source_url": "https://pl.linkedin.com/in/adrian-koscielniak-b2a2511",
+      "topics": [
+        "memorial",
+        "post_event_commitment"
+      ],
+      "summary": "Executive post announcing the performing arts memorial fund",
+      "original_post_url": null,
+      "posted_time_verified": false,
+      "direct_replies_to_linkedin_verified": false,
+      "original_author_observed_in_activity_feed": true,
+      "attribution_status": "attributed_by_reactor_feed_no_original_permalink"
+    },
+    {
+      "id": "former_exec",
+      "channel": "individual_posts",
+      "actor": "Former site executive unidentified",
+      "role": "former_executive",
+      "source_kind": "user_screenshot",
+      "source_url": "conversation:image-3038.jpg",
+      "topics": [
+        "institutional_virtue",
+        "mutual_support"
+      ],
+      "summary": "Former site overseer praised Citi community and urged mutual care",
+      "original_post_url": null,
+      "posted_time_verified": false,
+      "direct_replies_to_linkedin_verified": false,
+      "original_author_observed_in_activity_feed": false,
+      "attribution_status": "user_screenshot"
+    },
+    {
+      "id": "zo_amani",
+      "channel": "individual_posts",
+      "actor": "Zo Amani",
+      "role": "employee",
+      "source_kind": "indexed_activity_mirror",
+      "source_url": "https://ae.linkedin.com/in/atharahmed",
+      "topics": [
+        "personal_experience",
+        "memorial",
+        "response_praise"
+      ],
+      "summary": "Personal account of devastating event and gratitude to security",
+      "original_post_url": null,
+      "posted_time_verified": false,
+      "direct_replies_to_linkedin_verified": false,
+      "original_author_observed_in_activity_feed": true,
+      "attribution_status": "attributed_by_reactor_feed_no_original_permalink"
+    },
+    {
+      "id": "marshall_moorhead",
+      "channel": "individual_posts",
+      "actor": "J. Marshall Moorhead",
+      "role": "employee",
+      "source_kind": "indexed_activity_mirror",
+      "source_url": "https://in.linkedin.com/in/vineet-b-465b4857",
+      "topics": [
+        "personal_experience",
+        "memorial",
+        "response_praise"
+      ],
+      "summary": "Eyewitness account from café with gratitude for armed response",
+      "original_post_url": null,
+      "posted_time_verified": false,
+      "direct_replies_to_linkedin_verified": false,
+      "original_author_observed_in_activity_feed": true,
+      "attribution_status": "attributed_by_reactor_feed_no_original_permalink"
+    },
+    {
+      "id": "tom_lahoud",
+      "channel": "individual_posts",
+      "actor": "Tom Lahoud",
+      "role": "colleague",
+      "source_kind": "indexed_activity_mirror",
+      "source_url": "https://uk.linkedin.com/in/charlotte-taylor-a77643a1",
+      "topics": [
+        "personal_tribute",
+        "memorial",
+        "training_context"
+      ],
+      "summary": "Personal memories of LeAnne and her protective action training role",
+      "original_post_url": null,
+      "posted_time_verified": false,
+      "direct_replies_to_linkedin_verified": false,
+      "original_author_observed_in_activity_feed": true,
+      "attribution_status": "attributed_by_reactor_feed_no_original_permalink"
+    },
+    {
+      "id": "xiomara_vaquiro",
+      "channel": "individual_posts",
+      "actor": "Xiomara Váquiro",
+      "role": "colleague",
+      "source_kind": "indexed_activity_mirror",
+      "source_url": "https://uk.linkedin.com/in/charlotte-taylor-a77643a1",
+      "topics": [
+        "personal_experience",
+        "institutional_virtue",
+        "mutual_support"
+      ],
+      "summary": "Reported colleagues and leaders supporting one another after incident",
+      "original_post_url": null,
+      "posted_time_verified": false,
+      "direct_replies_to_linkedin_verified": false,
+      "original_author_observed_in_activity_feed": true,
+      "attribution_status": "attributed_by_reactor_feed_no_original_permalink"
+    },
+    {
+      "id": "gabriel_rincon",
+      "channel": "individual_posts",
+      "actor": "Gabriel Rincon",
+      "role": "employee",
+      "source_kind": "indexed_activity_mirror",
+      "source_url": "https://do.linkedin.com/in/rocio-velarde-citi",
+      "topics": [
+        "personal_experience",
+        "institutional_virtue",
+        "post_event_commitment"
+      ],
+      "summary": "Reports personal contact from organizational leaders and employee support",
+      "original_post_url": null,
+      "posted_time_verified": false,
+      "direct_replies_to_linkedin_verified": false,
+      "original_author_observed_in_activity_feed": true,
+      "attribution_status": "attributed_by_reactor_feed_no_original_permalink"
+    },
+    {
+      "id": "forum_memo_question",
+      "channel": "public_forum",
+      "actor": "r/citibank poster anonymous",
+      "role": "forum_participant",
+      "source_kind": "direct_forum_thread",
+      "source_url": "https://www.reddit.com/r/citibank/comments/1xohb6t/who_was_the_shooter/",
+      "topics": [
+        "internal_comms_review"
+      ],
+      "summary": "Asked about the CEO memo and called its tone generic",
+      "original_post_url": null,
+      "posted_time_verified": false,
+      "direct_replies_to_linkedin_verified": false,
+      "original_author_observed_in_activity_feed": false,
+      "attribution_status": "direct_forum_thread"
+    },
+    {
+      "id": "forum_memo_assessment",
+      "channel": "public_forum",
+      "actor": "r/citibank commenter anonymous",
+      "role": "forum_participant",
+      "source_kind": "direct_forum_thread",
+      "source_url": "https://www.reddit.com/r/citibank/comments/1xohb6t/who_was_the_shooter/",
+      "topics": [
+        "internal_comms_review",
+        "prevention_question",
+        "post_event_commitment",
+        "workplace_policy"
+      ],
+      "summary": "Requested third party security assessment and clarification of employee resources",
+      "original_post_url": null,
+      "posted_time_verified": false,
+      "direct_replies_to_linkedin_verified": false,
+      "original_author_observed_in_activity_feed": false,
+      "attribution_status": "direct_forum_thread"
+    },
+    {
+      "id": "forum_memo_notification",
+      "channel": "public_forum",
+      "actor": "r/citibank commenter anonymous",
+      "role": "forum_participant",
+      "source_kind": "direct_forum_thread",
+      "source_url": "https://www.reddit.com/r/citibank/comments/1xohb6t/who_was_the_shooter/",
+      "topics": [
+        "prevention_question",
+        "internal_comms_review"
+      ],
+      "summary": "Questioned whether employees at other sites received adequate incident notification",
+      "original_post_url": null,
+      "posted_time_verified": false,
+      "direct_replies_to_linkedin_verified": false,
+      "original_author_observed_in_activity_feed": false,
+      "attribution_status": "direct_forum_thread"
+    },
+    {
+      "id": "forum_warning",
+      "channel": "public_forum",
+      "actor": "r/tampa commenter anonymous",
+      "role": "forum_participant",
+      "source_kind": "direct_forum_thread",
+      "source_url": "https://www.reddit.com/r/tampa/comments/1xosoky/citi_bank_shooting_update/",
+      "topics": [
+        "prevention_question"
+      ],
+      "summary": "Questioned lack of warning and why police were not deployed earlier",
+      "original_post_url": null,
+      "posted_time_verified": false,
+      "direct_replies_to_linkedin_verified": false,
+      "original_author_observed_in_activity_feed": false,
+      "attribution_status": "direct_forum_thread"
+    },
+    {
+      "id": "forum_barrier",
+      "channel": "public_forum",
+      "actor": "r/tampa commenter anonymous",
+      "role": "forum_participant",
+      "source_kind": "direct_forum_thread",
+      "source_url": "https://www.reddit.com/r/tampa/comments/1xosoky/citi_bank_shooting_update/",
+      "topics": [
+        "prevention_question"
+      ],
+      "summary": "Questioned physical vehicle barriers at courtyard walking path",
+      "original_post_url": null,
+      "posted_time_verified": false,
+      "direct_replies_to_linkedin_verified": false,
+      "original_author_observed_in_activity_feed": false,
+      "attribution_status": "direct_forum_thread"
+    },
+    {
+      "id": "forum_lockdown",
+      "channel": "public_forum",
+      "actor": "r/tampa commenter anonymous",
+      "role": "forum_participant",
+      "source_kind": "indexed_forum_comment",
+      "source_url": "https://www.reddit.com/r/tampa/comments/1xp5pux/citi_responsible_for_the_death_of_employee/",
+      "topics": [
+        "prevention_question"
+      ],
+      "summary": "Questioned whether campus protective action should have occurred before attack",
+      "original_post_url": null,
+      "posted_time_verified": false,
+      "direct_replies_to_linkedin_verified": false,
+      "original_author_observed_in_activity_feed": false,
+      "attribution_status": "indexed_forum_comment"
+    },
+    {
+      "id": "forum_worker_support",
+      "channel": "public_forum",
+      "actor": "r/tampa commenter anonymous",
+      "role": "forum_participant",
+      "source_kind": "indexed_forum_comment",
+      "source_url": "https://www.reddit.com/r/tampa/comments/1xosoky/citi_bank_shooting_update/",
+      "topics": [
+        "post_event_commitment"
+      ],
+      "summary": "Asked whether cafeteria workers receive post incident support",
+      "original_post_url": null,
+      "posted_time_verified": false,
+      "direct_replies_to_linkedin_verified": false,
+      "original_author_observed_in_activity_feed": false,
+      "attribution_status": "indexed_forum_comment"
+    },
+    {
+      "id": "forum_response_prevention",
+      "channel": "public_forum",
+      "actor": "r/tampa commenter anonymous",
+      "role": "forum_participant",
+      "source_kind": "indexed_forum_comment",
+      "source_url": "https://www.reddit.com/r/tampa/comments/1xp5pux/citi_responsible_for_the_death_of_employee/",
+      "topics": [
+        "response_praise",
+        "prevention_question"
+      ],
+      "summary": "Praised security response while questioning adequacy of prior protection",
+      "original_post_url": null,
+      "posted_time_verified": false,
+      "direct_replies_to_linkedin_verified": false,
+      "original_author_observed_in_activity_feed": false,
+      "attribution_status": "indexed_forum_comment"
+    }
+  ],
+  "limitations": [
+    "Reactors' indexed LinkedIn feeds attribute original posts but do not supply verified original permalinks or full comment text.",
+    "A user-provided former executive screenshot does not establish the name or public post URL.",
+    "Forum participants' employment status is not verified.",
+    "Statements across platforms cannot be treated as direct replies to each other.",
+    "Dates and engagement counts have not been authenticated; no time-series inference is allowed.",
+    "Topic coding describes selected statements and comments; no population prevalence or causal diversion finding follows.",
+    "Citi and Edward Skyler descriptions of the same $250k fund are not independent financial commitments."
+  ]
+}
