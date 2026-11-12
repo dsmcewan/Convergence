@@ -8,10 +8,10 @@ This case distinguishes the memorial of LeAnne Selman and recognition of John Fr
 
 From the repository root:
 
-    python -m pytest tests/test_corporate_review.py tests/test_causal_audit.py tests/test_framing_comparison.py tests/test_attention_trajectory.py -q
+    python -m pytest tests/test_corporate_review.py tests/test_causal_audit.py tests/test_framing_comparison.py tests/test_attention_trajectory.py tests/test_hashtag_network.py -q
     PYTHONPATH=. python examples/citi_tampa_2026/run_review.py > citi_audit.json
 
-The four observational modules use the standard library. They do not change the existing six-layer engine or any verdict. The repository's full test workflow passed on Python 3.10, 3.11, and 3.12 before this extension; the updated workflow must be rechecked.
+The five observational modules use the standard library. They do not change the existing six-layer engine or any verdict. The repository's full test workflow passed on Python 3.10, 3.11, and 3.12 before this extension; the updated workflow must be rechecked.
 
 ## Why this is not just sentiment analysis
 
@@ -57,6 +57,24 @@ The hypothesis is **not** that an executive tribute was obliged to be a security
 **To measure actual shifts:** Add full dated posts and replies, their explicit parent links, a stable sampling window, audience/platform breakdown, and source-of-origin de-duplication. Compare observed topic shares before/after an identifiable communication while accounting for simultaneous new facts, selection bias, posting times, and changing audiences. A causal claim would need further quasi-experimental design or independent supporting evidence. Likes, reposts and impressions are separate reach signals, not measures of what readers thought.
 
 **Illustrative negative tests:** A prevention question followed by a heroism-only reply gets `prevention_to_response_in_direct_reply`. A reply that addresses the prevention question is not classified as that shift. Posts without linked replies are never assigned audience impacts. These scenarios are synthetic tests, not claimed Citi comment exchanges.
+
+
+## Hashtag convergence: independent posts versus mirrored activity
+
+The supplied screenshot displays **#CitiStrong, #CitiTampa, #CitiJacksonville, #CitiProud, #Jacksonville and #Tampa**. Its crop does **not** identify the original post author, URL or publication timestamp. It is preserved as an *unattributed visual observation* in \`hashtag_evidence.json\`, not invented as a distinct executive post.
+
+Several publicly indexed LinkedIn profiles expose the same Citi corporate memorial because an employee **reacted** to it. That is redistribution of one original message, not multiple original executive communications.
+
+\`convergence/hashtag_network.py\` is an audit-only view with the following invariants:
+
+- Only verifiable author-generated **original posts** or **quote posts** can contribute new authorship nodes; reactions and plain reposts are counted as distribution activity referencing the original.
+- It groups separate original authors by **shared case-normalized hashtags**, records the number of unique original posts and posting intervals, and retains source/evidence quality.
+- It never labels shared tags or close timing as proof of a centrally managed PR campaign. Common Citi branding hashtags were already in use before the shooting.
+- Hashtags describe an opportunity for discoverability, **not demonstrated reach, recommendations, impressions, or what the audience thought**.
+- Without authenticated original post URLs and their actual hashtag lists, this case emits **zero verified cross-author hashtag links** and an explicit unverified screenshot observation. This is an evidence-completeness statement, not a finding that no such network exists.
+
+To investigate the user's observed independent posts, gather each original post URL, author, publication time, complete visible text, hashtags, and whether it is originally authored or a repost/reaction. Compare that network with the incident timeline, contemporaneous press statements and later comments. Use \`attention_trajectory.py\` to test what the resulting discussions actually focused on instead of equating tag reuse with diversion.
+
 
 ## Seven control questions
 
