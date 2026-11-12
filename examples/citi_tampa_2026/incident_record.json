@@ -1,0 +1,295 @@
+{
+  "case_id": "citi_tampa_2026_11_04",
+  "as_of": "2026-11-11",
+  "scope": "Publicly reported chronology and institutional statement comparison; no final investigative findings",
+  "sources": [
+    {
+      "id": "hcso_nov5",
+      "origin": "HCSO_NOV5_ACCOUNT",
+      "url": "https://www.teamhcso.com/News/PressRelease/484cefde-4e2b-4566-a12e-751d0cba3d1e/es-US",
+      "type": "law_enforcement_primary"
+    },
+    {
+      "id": "fox13_timeline",
+      "origin": "HCSO_NOV5_ACCOUNT",
+      "url": "https://www.fox13news.com/news/citibank-center-tampa-shooting-timeline-what-happened-minute-minute",
+      "type": "reporting_on_sheriff_briefing"
+    },
+    {
+      "id": "wfts_security",
+      "origin": "HCSO_NOV5_ACCOUNT",
+      "url": "https://www.tampabay28.com/news/region-hillsborough/shooting-at-citibank-corporate-campus-sparked-by-2-500-debt-threat-made-hours-before-gunfire-sheriff-says",
+      "type": "reporting_on_sheriff_briefing"
+    },
+    {
+      "id": "abc_skyler",
+      "origin": "ED_SKYLER_NOV5_REMARKS",
+      "url": "https://abcnews.com/US/suspect-deadly-citibank-shooting-irate-court-summons-2500/story?id=137888575",
+      "type": "reporting_on_citi_executive"
+    },
+    {
+      "id": "fox13_skyler",
+      "origin": "ED_SKYLER_NOV5_REMARKS",
+      "url": "https://www.fox13news.com/news/citibank-shooting-new-details-emerge-law-enforcement-response",
+      "type": "reporting_on_citi_executive"
+    },
+    {
+      "id": "fox_memo",
+      "origin": "JANE_FRASER_NOV4_MEMO",
+      "url": "https://www.fox5ny.com/news/heavy-law-enforcement-presence-outside-brandon-citibank-triggers-traffic-alert",
+      "type": "corporate_memo_reproduced"
+    },
+    {
+      "id": "wfts_support",
+      "origin": "ED_SKYLER_NOV5_REMARKS",
+      "url": "https://www.tampabay28.com/news/region-hillsborough/shooting-at-citibank-corporate-campus-sparked-by-2-500-debt-threat-made-hours-before-gunfire-sheriff-says",
+      "type": "reported_citi_statement"
+    }
+  ],
+  "events": [
+    {
+      "id": "E01",
+      "seq": 1,
+      "time": "2026-11-04 approximately 09:00 EST",
+      "kind": "threat",
+      "text": "An explicit armed threat was communicated to Citi's contracted collections law firm. The exact time of Citi's receipt has not been established.",
+      "signals": [
+        "threat_external_known"
+      ],
+      "source_ids": [
+        "fox13_timeline",
+        "wfts_security"
+      ],
+      "evidence_level": "sheriff_attributed"
+    },
+    {
+      "id": "E02",
+      "seq": 2,
+      "time": "2026-11-04 before noon; minute unknown",
+      "kind": "notification",
+      "text": "Law firm reportedly contacted Citi security. Citi contacted Orlando police, which attempted to locate suspect.",
+      "signals": [
+        "law_enforcement_contact_orlando_reported"
+      ],
+      "source_ids": [
+        "wfts_security"
+      ],
+      "evidence_level": "sheriff_attributed"
+    },
+    {
+      "id": "E03",
+      "seq": 3,
+      "time": "2026-11-04 shortly before noon",
+      "kind": "notification",
+      "text": "Citi notified Hillsborough deputies of a credible threat to campus; deputies responded.",
+      "signals": [
+        "local_law_enforcement_notified"
+      ],
+      "source_ids": [
+        "hcso_nov5"
+      ],
+      "evidence_level": "law_enforcement_primary"
+    },
+    {
+      "id": "E05",
+      "seq": 4,
+      "time": "2026-11-04 12:10 EST",
+      "kind": "perimeter",
+      "text": "Attacker drove through secured campus gate toward occupied employee courtyard.",
+      "signals": [
+        "perimeter_breached",
+        "courtyard_exposed"
+      ],
+      "source_ids": [
+        "hcso_nov5",
+        "fox13_timeline"
+      ],
+      "evidence_level": "law_enforcement_primary"
+    },
+    {
+      "id": "E04",
+      "seq": 5,
+      "time": "2026-11-04 as the attack began; ordering relative to breach unknown",
+      "kind": "reported_security_action",
+      "text": "Citi executive Ed Skyler said security was changing posture as the attack began; precise actions and activation time were not specified.",
+      "signals": [
+        "security_posture_change_reported"
+      ],
+      "source_ids": [
+        "abc_skyler",
+        "fox13_skyler"
+      ],
+      "evidence_level": "executive_reported"
+    },
+    {
+      "id": "E06",
+      "seq": 6,
+      "time": "2026-11-04 12:11 EST",
+      "kind": "harm",
+      "text": "Gunfire began and LeAnne Selman was killed. The sheriff-described sequence involved rifle malfunction and a return with a handgun.",
+      "signals": [
+        "employee_killed",
+        "employee_exposed"
+      ],
+      "source_ids": [
+        "hcso_nov5",
+        "fox13_timeline"
+      ],
+      "evidence_level": "law_enforcement_primary"
+    },
+    {
+      "id": "E07",
+      "seq": 7,
+      "time": "2026-11-04 about a minute after first shots",
+      "kind": "armed_response",
+      "text": "John Fraley confronted and shot the attacker inside the cafeteria.",
+      "signals": [
+        "armed_security_intervention"
+      ],
+      "source_ids": [
+        "hcso_nov5"
+      ],
+      "evidence_level": "law_enforcement_primary"
+    },
+    {
+      "id": "E08",
+      "seq": 8,
+      "time": "2026-11-04 after the attack",
+      "kind": "employee_support",
+      "text": "Fraser's memo announced counseling and security measures elsewhere; Skyler reported immediate campus-return flexibility.",
+      "signals": [
+        "post_event_support_announced"
+      ],
+      "source_ids": [
+        "fox_memo",
+        "wfts_support"
+      ],
+      "evidence_level": "corporate_statements_reported"
+    }
+  ],
+  "questions": [
+    {
+      "id": "Q01",
+      "title": "When Citi first received and classified the armed threat",
+      "positive_signals": [
+        "timestamped_citi_intake_verified"
+      ],
+      "negative_signals": [
+        "intake_not_logged_explicitly_verified"
+      ],
+      "exposure_signals": [
+        "threat_external_known"
+      ],
+      "required_evidence": [
+        "Law firm-to-Citi notification record",
+        "Citi security intake and severity timestamps"
+      ],
+      "limit": "A threat at the law firm around 09:00 does not establish Citi knew at 09:00."
+    },
+    {
+      "id": "Q02",
+      "title": "Threat escalation to campus protective decision makers",
+      "positive_signals": [
+        "campus_protection_activation_verified"
+      ],
+      "negative_signals": [
+        "no_campus_protection_explicitly_verified"
+      ],
+      "exposure_signals": [
+        "local_law_enforcement_notified",
+        "security_posture_change_reported"
+      ],
+      "required_evidence": [
+        "Citi incident escalation logs",
+        "Decision and activation authority"
+      ],
+      "limit": "Police notification is documented; internal campus activation is not independently established."
+    },
+    {
+      "id": "Q03",
+      "title": "Pre-breach employee warning or precautionary lockdown",
+      "positive_signals": [
+        "pre_breach_employee_warning_verified"
+      ],
+      "negative_signals": [
+        "warning_not_sent_explicitly_verified"
+      ],
+      "exposure_signals": [
+        "courtyard_exposed",
+        "employee_exposed"
+      ],
+      "required_evidence": [
+        "PA, SMS and mass-notification logs",
+        "Shelter activation and delivery evidence"
+      ],
+      "limit": "Courtyard exposure does not prove a warning was not sent, delivered or actionable."
+    },
+    {
+      "id": "Q04",
+      "title": "Perimeter protection against vehicle intrusion",
+      "positive_signals": [
+        "vehicle_barrier_stopped_entry"
+      ],
+      "negative_signals": [
+        "perimeter_breached"
+      ],
+      "exposure_signals": [
+        "courtyard_exposed"
+      ],
+      "required_evidence": [
+        "Facility perimeter design basis",
+        "Vehicle barrier ratings, inspections, and approvals"
+      ],
+      "limit": "A physical breach occurred; design requirements, alternative controls, and negligence remain unknown."
+    },
+    {
+      "id": "Q05",
+      "title": "Security posture activated before the gate breach",
+      "positive_signals": [
+        "pre_breach_posture_actuated_verified"
+      ],
+      "negative_signals": [
+        "posture_not_activated_explicitly_verified"
+      ],
+      "exposure_signals": [
+        "security_posture_change_reported",
+        "perimeter_breached"
+      ],
+      "required_evidence": [
+        "Security posture checklist",
+        "Officer and dispatcher time-stamped records"
+      ],
+      "limit": "Changing posture as the attack started does not prove pre-breach protection or its absence."
+    },
+    {
+      "id": "Q06",
+      "title": "Armed intervention after the gunfire began",
+      "positive_signals": [
+        "armed_security_intervention"
+      ],
+      "negative_signals": [],
+      "exposure_signals": [
+        "employee_killed"
+      ],
+      "required_evidence": [
+        "Independent response reconstruction",
+        "After-action report"
+      ],
+      "limit": "Documented intervention is not proof the preventive controls worked."
+    },
+    {
+      "id": "Q07",
+      "title": "Post-event employee support announced or provided",
+      "positive_signals": [
+        "post_event_support_announced"
+      ],
+      "negative_signals": [],
+      "exposure_signals": [],
+      "required_evidence": [
+        "Service delivery, access and uptake records",
+        "Employee return-to-campus instructions"
+      ],
+      "limit": "Announcement is not an independently audited measure of delivered support."
+    }
+  ]
+}
