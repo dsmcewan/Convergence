@@ -37,7 +37,7 @@ class ReviewTests(unittest.TestCase):
 
     def test_excerpt_does_not_prove_absence(self):
         result = review([statement("a", "A", "We stand with our colleagues.")])
-        self.assertFalse(any(o["label"] == "pre_attack_security_description"
+        self.assertFalse(any(o["label"] == "contemporaneous_security_posture_description"
                              for o in result["observations"]))
         self.assertIn("An absent phrase in an excerpt does not establish a missing procedure.",
                       result["disclaimers"])
