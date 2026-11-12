@@ -35,7 +35,7 @@ class QuestionFollowthroughTests(unittest.TestCase):
     def test_no_automatic_full_answer_from_partial_fact(self):
         r = audit_followthrough(case())
         self.assertTrue(all(
-            not x["full_answer_independently_verified"] for x in r["issues"]
+            not x["full_answer_independently_verified_in_selected_sources"] for x in r["issues"]
         ))
         self.assertEqual(r["inferences"]["institutional_neglect"], "not_determined")
         self.assertEqual(r["inferences"]["communications_caused_distraction"],
@@ -72,7 +72,7 @@ class QuestionFollowthroughTests(unittest.TestCase):
         issue = next(i for i in r["issues"] if i["id"] == "P06")
         self.assertEqual(issue["scope"], "selected_public_material")
         self.assertEqual(issue["response_ids"], [])
-        self.assertFalse(r["inferences"]["all_questions_answered"])
+        self.assertFalse(r["inferences"]["all_questions_fully_answered_in_selected_sources"])
 
     def test_bad_source_and_orphan_questions_are_rejected(self):
         d = case()
