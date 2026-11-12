@@ -8,10 +8,10 @@ This case distinguishes the memorial of LeAnne Selman and recognition of John Fr
 
 From the repository root:
 
-    python -m pytest tests/test_corporate_review.py tests/test_causal_audit.py tests/test_framing_comparison.py -q
+    python -m pytest tests/test_corporate_review.py tests/test_causal_audit.py tests/test_framing_comparison.py tests/test_attention_trajectory.py -q
     PYTHONPATH=. python examples/citi_tampa_2026/run_review.py > citi_audit.json
 
-The three observational modules use the standard library. They do not change the existing six-layer engine or any verdict. The repository's full test workflow passed on Python 3.10, 3.11, and 3.12 before this extension; the updated workflow must be rechecked.
+The four observational modules use the standard library. They do not change the existing six-layer engine or any verdict. The repository's full test workflow passed on Python 3.10, 3.11, and 3.12 before this extension; the updated workflow must be rechecked.
 
 ## Why this is not just sentiment analysis
 
@@ -39,6 +39,24 @@ The `framing_comparison` output makes this distinction explicit:
 The hypothesis is **not** that an executive tribute was obliged to be a security postmortem. It is that the **organization-wide communication record**, combined with the absence of a verified causal account in the materials reviewed, merits examination for what it leads readers to consider and what remains unaddressed. A missing public record cannot establish internal nonaction.
 
 **No audience-attention measurements, motive findings, negligence findings or causal verdicts have been generated.**
+
+
+## Attention effects: what gets focused and what is displaced?
+
+`convergence/attention_trajectory.py` measures **observable communication focus**, not hypothetical psychological motives. Every coded topic carries an exact text anchor that must occur in the supplied statement. This enables an auditor to challenge a label without relying on an LLM classification.
+
+**Outputs**
+
+- `observed_focus` — unique-message share per topic. Multiple topics can apply to one message, so percentages need not total 100%.
+- `focus_by_role` and `daily_focus` — which speakers and periods foreground memorialization, heroism, mutual support, announced aftercare, security response, or pre-attack prevention.
+- `direct_reply_transitions` — only when an actual reply link is supplied. Records when a prevention question receives a response focused on heroism or solidarity **without an explicitly coded answer**, including the question IDs and exact source links. This is a topic shift, not proof the speaker deliberately diverted attention.
+- `communication_action_traces` — replies explicitly linked to a particular post/announcement, the topics in those replies, and whether those downstream effects are even observable.
+
+**Current Citi snapshot:** The seven publicly accessible **selected excerpts** support topic observations, but the input contains *zero authenticated linked audience replies*, no engagement/reach analytics, and no complete public discourse census. Accordingly, the output explicitly reports `measured_audience_attention_change=not_established` and `causal_message_effect=not_established`. A topic not mentioned in an excerpt cannot be counted as absent from the full document. Nor is a post-event benefit or condolence evidence of a failure to implement earlier controls.
+
+**To measure actual shifts:** Add full dated posts and replies, their explicit parent links, a stable sampling window, audience/platform breakdown, and source-of-origin de-duplication. Compare observed topic shares before/after an identifiable communication while accounting for simultaneous new facts, selection bias, posting times, and changing audiences. A causal claim would need further quasi-experimental design or independent supporting evidence. Likes, reposts and impressions are separate reach signals, not measures of what readers thought.
+
+**Illustrative negative tests:** A prevention question followed by a heroism-only reply gets `prevention_to_response_in_direct_reply`. A reply that addresses the prevention question is not classified as that shift. Posts without linked replies are never assigned audience impacts. These scenarios are synthetic tests, not claimed Citi comment exchanges.
 
 ## Seven control questions
 
@@ -71,6 +89,6 @@ The case data contains **short excerpts and paraphrases**, not complete copyrigh
 
 ## Integrity controls
 
-The corporate wording adapter reports observed fragments and deduplicated announcements; it never promotes them as findings. The incident adapter reports evidence categories and unanswered questions; it does not transform missing documentation into verified nonaction. The framing comparator combines those two ledgers to surface a hypothesis about attention shifts without asserting that a shift occurred.
+The attention analyzer quantifies grounded themes and explicit reply transitions but does not assert persuasion or causation. The corporate wording adapter reports observed fragments and deduplicated announcements; it never promotes them as findings. The incident adapter reports evidence categories and unanswered questions; it does not transform missing documentation into verified nonaction. The framing comparator combines those two ledgers to surface a hypothesis about attention shifts without asserting that a shift occurred.
 
 Negative tests establish that ordinary condolences remain unflagged, repeated expressions of support are not labeled coordinated, multiple announcements of one gift do not create multiple actions, screenshot excerpts cannot prove omissions, the results are deterministic, heroism does not erase unresolved preventive-control questions, ordinary tributes remain unflagged, prevention-aware statements are treated as counterexamples, and the framing output never upgrades to a motive or causal verdict.
