@@ -95,7 +95,7 @@ class HashtagNetworkTests(unittest.TestCase):
         ]
         self.assertEqual(
             json.dumps(analyze_post_network(sample), sort_keys=True),
-            json.dumps(analyze_post_network(list(reversed(sample)), sort_keys=True)),
+            json.dumps(analyze_post_network(list(reversed(sample))), sort_keys=True),
         )
 
 
