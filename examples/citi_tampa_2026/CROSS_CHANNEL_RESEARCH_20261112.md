@@ -58,3 +58,38 @@ From the repository root, run:
 The output distinguishes selected unit and source counts, topic incidence, and references to the CEO memo. Population attention shift, corporate-message causation, and coordinated publication are all explicitly **not established**.
 
 No posts, comments, or external outreach were made on the user's behalf.
+
+
+## Follow-through: nine public prevention and support questions
+
+The new ledger in question_followthrough_20261112.json traces each issue to topic-related executive statements, independent incident reporting, and attributed but unauthenticated forum claims. It does not pretend Citi directly replied to any individual Reddit commenter. Missing public records cannot prove internal nonaction.
+
+| Question | Public material located | Remaining evidence needed |
+|---|---|---|
+| First Citi knowledge and severity | Skyler reported serious assessment and change in posture | Original security intake and classification timestamps |
+| Internal escalation | HCSO confirmed Citi notified deputies shortly before noon | Citi escalation and protective-action decision logs |
+| Employee warning before breach | Commenters say no pre-breach warning reached them | Notification and delivery logs |
+| Alert timing | Commenters report 12:40 text and 12:56 recorded call | Sender logs and actual device receipts |
+| Vehicle perimeter | HCSO established that the gate was breached | Vehicle rating, threat model and design acceptance |
+| Independent security review | Forum commenter requested an external assessment | Formal commissioned scope and report, if any |
+| Counseling | Fraser announced counseling resources | Eligibility, access and delivery evidence |
+| Work-location relief | Skyler reported an immediate remote-work accommodation | Full notice and duration/extension terms |
+| Armed intervention | HCSO documented Fraley's intervention | Independent reconstruction if evaluating completeness |
+
+Every issue has an explicit evidence-status classification, and none is assumed to have a complete verified institutional answer. Announcement, delivery and effectiveness are separate questions.
+
+## Two real linked reply chains, not hypothetical examples
+
+The new reddit_linked_discussion_20261112.json retains six selected, anchored statements across four real reply links, as visible in the public r/citibank threads.
+
+- A question about Fraser's memo generated a request for accessible resources and an independent security assessment. The next response agreed with the need for protective action. The discussion moved toward examination of prevention, not away from it.
+- A prevention-focused comment contrasted heroic intervention with pre-attack safeguards. A reply mentioned added security at other sites but still addressed the existence of earlier warning. It did not supply Citi's intake or decision logs; a further reply's asserted three-hour window conflated the law firm's initial threat with the unverified time Citi actually learned of it.
+
+The existing attention-trajectory engine therefore records topic changes, unanswered issues, and continued prevention attention. In this selected set it must **not** emit a prevention-to-response displacement classification. That would overstate the evidence.
+
+## Reproduce the full follow-through review
+
+    python -m pytest tests/test_cross_channel_discourse.py tests/test_question_followthrough.py tests/test_public_discourse_linked.py -q
+    PYTHONPATH=. python examples/citi_tampa_2026/run_cross_channel.py
+
+The output includes source-bounded question statuses and four selected Reddit reply transitions. It establishes no authenticated LinkedIn audience replies, overall attention trend, concealment, institutional negligence or coordination.
