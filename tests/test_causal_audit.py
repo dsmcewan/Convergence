@@ -2,6 +2,7 @@
 import json
 import unittest
 from pathlib import Path
+
 from convergence.causal_audit import audit_causal_chain
 
 ROOT = Path(__file__).parent.parent / "examples" / "citi_tampa_2026"
