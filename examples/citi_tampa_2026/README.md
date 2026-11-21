@@ -11,6 +11,12 @@ From the repository root:
     python -m pytest tests/test_corporate_review.py tests/test_causal_audit.py tests/test_framing_comparison.py tests/test_attention_trajectory.py tests/test_hashtag_network.py -q
     PYTHONPATH=. python examples/citi_tampa_2026/run_review.py > citi_audit.json
 
+What belongs to this case and what belongs to the package: the review modules in `convergence/` are
+generic and name no organisation or person. Everything particular to this case is supplied from here:
+the wording cues (Citi's phrases, the named person, the dollar amount) in `cues.json`, the case's
+limitations in `incident_record.json`, and the routinely used tags in `run_review.py`. To review another
+case, supply its own cues, limitations and tags; no package code changes.
+
 The five observational modules use the standard library. They do not change the existing six-layer engine or any verdict. The repository's full test workflow passed on Python 3.10, 3.11, and 3.12 before this extension; the updated workflow must be rechecked.
 
 ## Why this is not just sentiment analysis

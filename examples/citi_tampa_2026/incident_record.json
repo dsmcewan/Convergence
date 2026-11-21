@@ -291,5 +291,14 @@
       ],
       "limit": "Announcement is not an independently audited measure of delivered support."
     }
+  ],
+  "limitations": [
+    "Known threat to a third party is not equivalent to Citi knowing at the same time.",
+    "A breached fence does not alone prove its design requirement was inadequate.",
+    "Missing public documentation is not proof that warning or lockdown did not occur.",
+    "One source repeated by multiple outlets is one underlying account.",
+    "Post-event support cannot resolve pre-event control questions.",
+    "A tribute is not expected to serve as an operational postmortem.",
+    "No inference of coordinated messaging, negligence, or intent is authorized."
   ]
 }

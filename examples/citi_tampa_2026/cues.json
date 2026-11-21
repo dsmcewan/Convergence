@@ -1,0 +1,17 @@
+{
+  "institutional_virtue_claim": [
+    "\\bcommunities like citi[’']?s demonstrate\\b",
+    "\\bciti tampa has always been a tremendous force for good\\b",
+    "\\bciti has leaders and colleagues who genuinely care\\b"
+  ],
+  "proximity_claim": [
+    "\\bprivilege of overseeing this site\\b"
+  ],
+  "named_victim": [
+    "\\bleanne selman\\b"
+  ],
+  "announced_action": [
+    "(?<!\\w)\\$250,000 contribution\\b",
+    "(?<!\\w)\\$250,000(?!,?\\d)"
+  ]
+}

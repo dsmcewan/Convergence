@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import re
 from collections import Counter, defaultdict
+from collections.abc import Iterable
 from datetime import datetime
 from itertools import combinations
 from typing import Any
@@ -20,10 +21,6 @@ _TAG = re.compile(r"(?<![\w])#([A-Za-z][A-Za-z0-9_]*)")
 _ORIGINAL_TYPES = {"original", "quote_post"}
 _ACTIVITY_TYPES = _ORIGINAL_TYPES | {"repost", "reaction"}
 _EVIDENCE = {"verified_public", "user_screenshot", "search_snippet"}
-_COMMON = {
-    "citi", "citiproud", "citistrong", "cititampa", "citijacksonville",
-    "tampa", "jacksonville",
-}
 
 
 def hashtags(text: str) -> tuple[str, ...]:
@@ -44,8 +41,16 @@ def _date(value: str) -> datetime:
 def analyze_post_network(
     posts: list[dict[str, Any]],
     min_shared_tags: int = 2,
+    common_tags: Iterable[str] = (),
 ) -> dict[str, Any]:
-    """Grounded post/tag network; never emit author-intent or coordination verdicts."""
+    """Grounded post/tag network; never emit author-intent or coordination verdicts.
+
+    `common_tags` are tags the caller knows an organisation uses routinely (brand and place
+    tags). They stay in the network; each post just reports which of its tags are among them,
+    because a routine tag recurring is weaker evidence than an event-specific one. The module
+    knows no organisation or event: the caller supplies them, case by case.
+    """
+    common = {t.casefold() for t in common_tags}
     if min_shared_tags < 1:
         raise ValueError("min_shared_tags must be >=1")
     if len({p.get("id") for p in posts}) != len(posts):
@@ -83,7 +88,7 @@ def analyze_post_network(
             "source": p["source"], "evidence": p["evidence"],
             "published_at": p["published_at"], "tags": hashtags(p["text"]),
             "common_corporate_tags": tuple(
-                t for t in hashtags(p["text"]) if t in _COMMON
+                t for t in hashtags(p["text"]) if t in common
             ),
         })
     pair_links = []
