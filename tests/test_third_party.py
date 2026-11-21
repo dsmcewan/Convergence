@@ -44,3 +44,23 @@ def test_sorted_by_seq():
     msgs = [_msg(10, "I never agreed to extra hours."), _msg(8, "I never agreed to extra hours.")]
     recs = [_rec("R1", "agreed_to_extra_hours", True, 3)]
     assert [x.seq for x in check_claims(msgs, recs)] == [8, 10]
+
+
+# "agree" used to be matched as a substring of the record's predicate, so a record that says the
+# opposite counted as agreement and a denial was reported as contradicted by it.
+def test_disagreement_record_does_not_contradict_a_denial_of_agreement():
+    msgs = [_msg(10, "I never agreed to extra hours.")]
+    recs = [_rec("R1", "disagreed_about_extra_hours", True, 3)]
+    assert check_claims(msgs, recs) == []
+
+
+def test_negated_agreement_record_does_not_contradict_a_denial_of_agreement():
+    msgs = [_msg(10, "I never agreed to extra hours.")]
+    recs = [_rec("R1", "never_agreed_to_extra_hours", True, 3)]
+    assert check_claims(msgs, recs) == []
+
+
+def test_agreement_noun_predicate_still_contradicts():
+    msgs = [_msg(10, "I never agreed to extra hours.")]
+    recs = [_rec("R1", "agreement_on_extra_hours", True, 3)]
+    assert [c.record_id for c in check_claims(msgs, recs)] == ["R1"]

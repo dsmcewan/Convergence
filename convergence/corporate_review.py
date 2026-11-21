@@ -32,8 +32,11 @@ CUES = {
     "announced_action": (
         r"\bcounseling and other resources available\b",
         r"\badditional security\b",
-        r"\b\$250,000 contribution\b",
-        r"\b\$250,000\b",
+        # `$` is not a word character, so `\b` before it only matched glued to a letter
+        # ("USD$250,000"). Anchor on "not preceded by a word character" instead, and do not
+        # match the front of $250,000,000.
+        r"(?<!\w)\$250,000 contribution\b",
+        r"(?<!\w)\$250,000(?!,?\d)",
     ),
     "contemporaneous_security_posture_description": (r"\bchanging their security posture\b",),
 }
