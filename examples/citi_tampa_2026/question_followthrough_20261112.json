@@ -1,0 +1,214 @@
+{
+  "case_id": "citi_tampa_2026_11_04",
+  "as_of": "2026-11-12",
+  "sampling_limit": "Selected publicly accessible reporting, sheriff release and forum comments through November 12; no internal Citi logs, no complete corporate message archive and no authenticated original LinkedIn comment threads.",
+  "sources": [
+    {
+      "id": "hcso_nov5",
+      "url": "https://www.teamhcso.com/News/PressRelease/484cefde-4e2b-4566-a12e-751d0cba3d1e/en-US",
+      "origin": "HCSO_SHERIFF_BRIEFING_NOV5",
+      "quality": "official_primary"
+    },
+    {
+      "id": "abc_skyler_nov5",
+      "url": "https://abcnews.com/amp/US/suspect-deadly-citibank-shooting-irate-court-summons-2500/story?id=137888575",
+      "origin": "SKYLER_NOV5_PUBLIC_REMARKS",
+      "quality": "attributed_executive"
+    },
+    {
+      "id": "wfts_skyler_nov5",
+      "url": "https://www.tampabay28.com/news/region-hillsborough/shooting-at-citibank-corporate-campus-sparked-by-2-500-debt-threat-made-hours-before-gunfire-sheriff-says",
+      "origin": "SKYLER_NOV5_PUBLIC_REMARKS",
+      "quality": "attributed_executive"
+    },
+    {
+      "id": "abc_fraser_nov4",
+      "url": "https://abcnews.com/US/citibank-florida-tampa-targeted-incident-threat/story?id=137856078",
+      "origin": "FRASER_NOV4_EMPLOYEE_MEMO",
+      "quality": "attributed_executive"
+    },
+    {
+      "id": "forum_citibank_memo",
+      "url": "https://www.reddit.com/r/citibank/comments/1xohb6t/who_was_the_shooter/",
+      "origin": "REDDIT_CITIBANK_MEMO_THREAD",
+      "quality": "unverified_forum"
+    },
+    {
+      "id": "forum_citibank_shooter",
+      "url": "https://www.reddit.com/r/citibank/comments/1xnuil5/tampa_site_active_shooter/",
+      "origin": "REDDIT_CITIBANK_INCIDENT_THREAD",
+      "quality": "unverified_forum"
+    },
+    {
+      "id": "forum_tampa_prevention",
+      "url": "https://www.reddit.com/r/tampa/comments/1xp5pux/citi_responsible_for_the_death_of_employee/",
+      "origin": "REDDIT_TAMPA_PREVENTION_THREAD",
+      "quality": "unverified_forum"
+    },
+    {
+      "id": "forum_tampa_update",
+      "url": "https://www.reddit.com/r/tampa/comments/1xosoky/citi_bank_shooting_update/",
+      "origin": "REDDIT_TAMPA_UPDATE_THREAD",
+      "quality": "unverified_forum"
+    }
+  ],
+  "questions": [
+    {
+      "id": "P01",
+      "domain": "threat_intake",
+      "text": "When did Citi security first receive the explicit armed threat and record its severity?",
+      "question_source": "forum_tampa_update",
+      "required_evidence": "Citi security intake timestamp, classification and original contractor notification"
+    },
+    {
+      "id": "P02",
+      "domain": "threat_escalation",
+      "text": "Which internal decision-makers were notified, under what protocol, and when were protective measures authorized?",
+      "question_source": "forum_tampa_prevention",
+      "required_evidence": "Citi security escalation log, activation threshold and decision-authority record"
+    },
+    {
+      "id": "P03",
+      "domain": "employee_warning",
+      "text": "Were employees notified of the credible threat before the 12:10 p.m. breach?",
+      "question_source": "forum_tampa_prevention",
+      "required_evidence": "Dated PA/SMS/phone/email records, recipient lists and delivery acknowledgment"
+    },
+    {
+      "id": "P04",
+      "domain": "alert_delivery",
+      "text": "When were the first shelter-in-place and emergency alerts actually sent and delivered to campus employees?",
+      "question_source": "forum_tampa_prevention",
+      "required_evidence": "Server send, gateway delivery, device receipt and announcement activation timestamps"
+    },
+    {
+      "id": "P05",
+      "domain": "vehicle_perimeter",
+      "text": "Was the courtyard perimeter designed or rated to resist a deliberate vehicle intrusion?",
+      "question_source": "forum_tampa_update",
+      "required_evidence": "Site threat assessment, barrier specification, engineering design and inspection logs"
+    },
+    {
+      "id": "P06",
+      "domain": "independent_review",
+      "text": "Will Citi publish an independent assessment of preventive controls and remediation?",
+      "question_source": "forum_citibank_memo",
+      "required_evidence": "Formal review commissioning, scope, independence, corrective-action milestones and public report"
+    },
+    {
+      "id": "P07",
+      "domain": "counseling_access",
+      "text": "What specific counseling and other support resources are available, and how can affected workers access them?",
+      "question_source": "forum_citibank_memo",
+      "required_evidence": "Employee notices, eligibility, scheduling, service access and delivered support records"
+    },
+    {
+      "id": "P08",
+      "domain": "return_to_office",
+      "text": "Were affected employees given an explicit option to work remotely and for how long?",
+      "question_source": "forum_citibank_shooter",
+      "required_evidence": "Complete employee work-location notices and defined duration/extension criteria"
+    },
+    {
+      "id": "P09",
+      "domain": "armed_intervention",
+      "text": "What occurred during the armed security response once gunfire began?",
+      "question_source": "forum_citibank_shooter",
+      "required_evidence": "Law-enforcement chronology and an independent response reconstruction"
+    }
+  ],
+  "responses": [
+    {
+      "id": "R01",
+      "question_ids": [
+        "P01",
+        "P02"
+      ],
+      "source_id": "abc_skyler_nov5",
+      "kind": "reported_operational_action",
+      "link_type": "topic_related_public_statement",
+      "summary": "Skyler said threats are routinely assessed, this one was taken very seriously and security was changing posture as the attack began; no initial Citi receipt timestamp or internal procedure was specified."
+    },
+    {
+      "id": "R02",
+      "question_ids": [
+        "P02"
+      ],
+      "source_id": "hcso_nov5",
+      "kind": "documented_fact",
+      "link_type": "independent_incident_evidence",
+      "summary": "Sheriff reported Citi notified Hillsborough deputies of a credible threat shortly before noon; deputies responded. Does not establish internal activation or employee notification."
+    },
+    {
+      "id": "R03",
+      "question_ids": [
+        "P03",
+        "P04"
+      ],
+      "source_id": "forum_tampa_prevention",
+      "kind": "anonymous_experience",
+      "link_type": "third_party_comment",
+      "summary": "A forum commenter claiming firsthand experience says they received an emergency text with a 12:40 timestamp after fleeing. Not authenticated by system logs."
+    },
+    {
+      "id": "R04",
+      "question_ids": [
+        "P04"
+      ],
+      "source_id": "forum_tampa_prevention",
+      "kind": "anonymous_experience",
+      "link_type": "third_party_comment",
+      "summary": "Another forum commenter described a recorded shelter-in-place call at 12:56 and a text time-stamped 12:40; receipt timing was disputed. Not independently verified."
+    },
+    {
+      "id": "R05",
+      "question_ids": [
+        "P05"
+      ],
+      "source_id": "hcso_nov5",
+      "kind": "documented_fact",
+      "link_type": "independent_incident_evidence",
+      "summary": "Sheriff documented the attacker driving through the campus gate at approximately 12:10 p.m. This establishes a breach, not the barrier's rated design requirement."
+    },
+    {
+      "id": "R06",
+      "question_ids": [
+        "P07"
+      ],
+      "source_id": "abc_fraser_nov4",
+      "kind": "specific_commitment",
+      "link_type": "topic_related_public_statement",
+      "summary": "Fraser said counseling and other employee resources were available. The public excerpt does not identify enrollment, eligibility or uptake."
+    },
+    {
+      "id": "R07",
+      "question_ids": [
+        "P08"
+      ],
+      "source_id": "wfts_skyler_nov5",
+      "kind": "specific_commitment",
+      "link_type": "topic_related_public_statement",
+      "summary": "Skyler said Citi would not demand an immediate return to the campus, including the next Monday. Long-term criteria and delivered accommodation not independently audited."
+    },
+    {
+      "id": "R08",
+      "question_ids": [
+        "P09"
+      ],
+      "source_id": "hcso_nov5",
+      "kind": "documented_fact",
+      "link_type": "independent_incident_evidence",
+      "summary": "HCSO documented John Fraley confronting and stopping the attacker after shots began. Does not evaluate pre-attack controls."
+    },
+    {
+      "id": "R09",
+      "question_ids": [
+        "P03"
+      ],
+      "source_id": "forum_citibank_shooter",
+      "kind": "anonymous_experience",
+      "link_type": "third_party_comment",
+      "summary": "A commenter alleged the campus was not locked down before the shooting. Treat as opinion or firsthand claim, not proof that no protective measure occurred."
+    }
+  ]
+}
