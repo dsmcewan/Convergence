@@ -172,5 +172,20 @@ class SyntheticAuditTests(unittest.TestCase):
                 audit_causal_chain(bad)
 
 
+class SyntheticAuditOrderingTests(unittest.TestCase):
+    def test_event_ids_under_a_question_are_listed_sorted_not_in_arrival_order(self):
+        ids = ["E5", "E3", "E9", "E1", "E7", "E2", "E8"]
+        case = tiny_case(events=[
+            {"id": i, "seq": n, "kind": "k", "text": "t", "source_ids": ["s1"],
+             "signals": ["act", "bad"]} for n, i in enumerate(ids)],
+            questions=[{"id": "Q", "title": "t", "positive_signals": ["act"],
+                        "negative_signals": ["bad"], "exposure_signals": ["act"],
+                        "required_evidence": [], "limit": "l"}])
+        q = audit_causal_chain(case)["control_questions"][0]
+        expected = sorted(ids)
+        got = (q["positive_event_ids"], q["negative_event_ids"], q["exposure_event_ids"])
+        self.assertEqual(got, (expected, expected, expected))
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -199,6 +199,7 @@ def test_accuracy_is_defined_whenever_any_corpus_was_scored():
     assert metrics(1, 0, 1, 0)["accuracy"] == 0.5
     assert metrics(0, 1, 1, 0)["accuracy"] == 0.0
     assert metrics(2, 1, 0, 3)["accuracy"] == 5 / 6
+    assert metrics(1, 1, 0, 0)["accuracy"] == 0.5
 
 
 def test_documentary_precision_counts_a_finding_once_if_any_of_its_messages_is_anchored():
@@ -218,3 +219,9 @@ def test_scores_and_results_are_immutable_records():
         r.tp = 9  # type: ignore[misc]
     with pytest.raises(dataclasses.FrozenInstanceError):
         r.per_corpus[0].correct = False  # type: ignore[misc]
+    from convergence.evaluation import TieredEval, documentary_precision
+    tiered = TieredEval(core=r, adversarial=r, regression=None, holdout=None)
+    with pytest.raises(dataclasses.FrozenInstanceError):
+        tiered.core = None  # type: ignore[misc,assignment]
+    with pytest.raises(dataclasses.FrozenInstanceError):
+        documentary_precision([(1,)], {1}).elevated = 0  # type: ignore[misc]
