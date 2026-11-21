@@ -9,6 +9,16 @@ from __future__ import annotations
 from collections import defaultdict
 from typing import Any
 
+# Limits that hold for any case. Limits particular to one incident belong in that case's data, under
+# a "limitations" key, which replaces these.
+DEFAULT_LIMITATIONS = (
+    "Known threat to a third party is not equivalent to the institution knowing at the same time.",
+    "Missing public documentation is not proof that warning or lockdown did not occur.",
+    "One source repeated by multiple outlets is one underlying account.",
+    "Post-event support cannot resolve pre-event control questions.",
+    "No inference of coordinated messaging, negligence, or intent is authorized.",
+)
+
 
 def _unique_ids(rows: list[dict[str, Any]], label: str) -> None:
     ids = [r.get("id") for r in rows]
@@ -87,13 +97,6 @@ def audit_causal_chain(case: dict[str, Any]) -> dict[str, Any]:
         },
         "causation_verdict": "not_determined",
         "intent_verdict": "not_determined",
-        "limitations": [
-            "Known threat to a third party is not equivalent to Citi knowing at the same time.",
-            "A breached fence does not alone prove its design requirement was inadequate.",
-            "Missing public documentation is not proof that warning or lockdown did not occur.",
-            "One source repeated by multiple outlets is one underlying account.",
-            "Post-event support cannot resolve pre-event control questions.",
-            "A tribute is not expected to serve as an operational postmortem.",
-            "No inference of coordinated messaging, negligence, or intent is authorized.",
-        ],
+        "limitations": list(case["limitations"]) if "limitations" in case
+        else list(DEFAULT_LIMITATIONS),
     }

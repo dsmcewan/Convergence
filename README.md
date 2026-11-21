@@ -19,8 +19,12 @@ investigators, analysts, and litigants working from a written record. Every
 verdict traces to specific messages and the independent layers that corroborate
 it; a language model can *explain* a finding but can never move one.
 
-> **Privacy:** The shipped demo and every bundled corpus are **synthetic** —
-> `data/` is fictional and nothing is imported from any private system. The
+> **Privacy:** The shipped demo and every corpus under `data/` are **synthetic** —
+> `data/` is fictional and nothing is imported from any private system. The one
+> exception in this repository is [`examples/citi_tampa_2026/`](examples/citi_tampa_2026/),
+> a worked public-record case study: it names real people and a real company and
+> quotes public statements about a real incident (its own README gives the sources
+> and limits). It is not used by the six layers, the demo or the web UI. The
 > optional `--corpus db` path reads a private SQLite database **you** supply,
 > read-only; it is never bundled and never leaves your machine.
 

@@ -11,37 +11,46 @@ from __future__ import annotations
 
 import re
 from collections import defaultdict
+from collections.abc import Iterable, Mapping
 from typing import Any
 
-CUES = {
+# Generic wording cues for reviewing public statements about a crisis. They name no organisation and
+# no person. A case adds its own wording (an institution's phrases, a named person, an amount) by
+# passing `cues` to review(), built with merge_cues(); that wording lives with the case, not here.
+DEFAULT_CUES: dict[str, tuple[str, ...]] = {
     "collective_care_directive": (
         r"\blook out for one another\b",
         r"\btake care of one another\b",
-    ),
-    "institutional_virtue_claim": (
-        r"\bcommunities like citi[’']?s demonstrate\b",
-        r"\bciti tampa has always been a tremendous force for good\b",
-        r"\bciti has leaders and colleagues who genuinely care\b",
     ),
     "response_recognition": (
         r"\bsecurity team\b.{0,80}\b(?:brave|bravery|professionalism)\b",
         r"\bbrave actions of our security team\b",
     ),
-    "proximity_claim": (r"\bprivilege of overseeing this site\b",),
-    "named_victim": (r"\bleanne selman\b",),
     "announced_action": (
         r"\bcounseling and other resources available\b",
         r"\badditional security\b",
-        # `$` is not a word character, so `\b` before it only matched glued to a letter
-        # ("USD$250,000"). Anchor on "not preceded by a word character" instead, and do not
-        # match the front of $250,000,000.
-        r"(?<!\w)\$250,000 contribution\b",
-        r"(?<!\w)\$250,000(?!,?\d)",
     ),
     "contemporaneous_security_posture_description": (r"\bchanging their security posture\b",),
 }
-COMPILED = {kind: tuple(re.compile(p, re.I) for p in patterns)
-            for kind, patterns in CUES.items()}
+
+
+def merge_cues(*cue_sets: Mapping[str, Iterable[str]]) -> dict[str, tuple[str, ...]]:
+    """Combine cue sets label by label; a later set's patterns follow the earlier ones'.
+
+    Order matters: for each label the first pattern that matches is the one reported.
+    """
+    merged: dict[str, tuple[str, ...]] = {}
+    for cue_set in cue_sets:
+        for label, patterns in cue_set.items():
+            merged[label] = (*merged.get(label, ()), *patterns)
+    return merged
+
+
+def _compile(cues: Mapping[str, Iterable[str]]) -> dict[str, tuple[re.Pattern[str], ...]]:
+    return {label: tuple(re.compile(p, re.I) for p in patterns) for label, patterns in cues.items()}
+
+
+_DEFAULT_COMPILED = _compile(DEFAULT_CUES)
 
 
 def _validate(record: dict[str, Any]) -> None:
@@ -57,8 +66,13 @@ def _validate(record: dict[str, Any]) -> None:
             raise ValueError("unknown action evidence status")
 
 
-def review(statements: list[dict[str, Any]]) -> dict[str, Any]:
-    """Deterministic source-traceable wording/action ledger; no motive verdicts."""
+def review(statements: list[dict[str, Any]],
+           cues: Mapping[str, Iterable[str]] | None = None) -> dict[str, Any]:
+    """Deterministic source-traceable wording/action ledger; no motive verdicts.
+
+    `cues` maps a label to regex patterns; omitted, the generic DEFAULT_CUES are used.
+    """
+    compiled = _DEFAULT_COMPILED if cues is None else _compile(cues)
     if len({s.get("id") for s in statements}) != len(statements):
         raise ValueError("duplicate statement id")
     for s in statements:
@@ -66,7 +80,7 @@ def review(statements: list[dict[str, Any]]) -> dict[str, Any]:
     observations: list[dict[str, str]] = []
     action_map: dict[str, dict[str, Any]] = {}
     for s in sorted(statements, key=lambda row: (row["date"], row["id"])):
-        for label, patterns in COMPILED.items():
+        for label, patterns in compiled.items():
             matched = next((m for pat in patterns if (m := pat.search(s["text"]))), None)
             if matched:
                 observations.append({

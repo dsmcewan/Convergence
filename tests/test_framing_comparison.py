@@ -31,7 +31,7 @@ class FramingTests(unittest.TestCase):
         return compare_framing(statements, review(statements), audit or incident())
 
     def test_tribute_without_response_cues_is_not_labeled(self):
-        result = self.assess([statement("memorial", "We will remember LeAnne Selman.")])
+        result = self.assess([statement("memorial", "We will remember Jane Doe.")])
         self.assertEqual(result["response_framing_examples"], [])
         self.assertEqual(result["audience_attention_effect"], "not_measured")
 
@@ -75,7 +75,7 @@ class FramingTests(unittest.TestCase):
     def test_results_deterministic_and_no_core_promotion(self):
         statements = [
             statement("b", "Please continue to take care of one another."),
-            statement("a", "We remember LeAnne Selman."),
+            statement("a", "We remember Jane Doe."),
         ]
         first = self.assess(statements)
         second = self.assess(list(reversed(statements)))
