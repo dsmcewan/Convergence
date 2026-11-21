@@ -196,7 +196,7 @@ convergence --corpus dynamics        # 5-type discrimination table
 convergence --corpus db --db /path/to/your.db   # run on your own SQLite export
 convergence --corpus db --db x.db --db-table msgs --db-limit 500  # pick table, cap rows
 convergence --summary                # compact findings summary
-convergence --summary --sender Morgan  # ... only findings involving one sender
+convergence --summary --sender "Tim Allen"  # ... only findings involving one sender
 convergence --seq 12                 # one message and the findings that touch it
 convergence --eval                   # scored discriminator report
 convergence --investigate            # propose + verify new detectors

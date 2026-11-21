@@ -35,5 +35,5 @@ def test_demo_seq_exits_zero() -> None:
 
 def test_demo_sender_exits_zero() -> None:
     """--sender filters summary; exercises demo.py:133/139 (s.evidence)."""
-    result = _run("--corpus", "contractor", "--sender", "Morgan")
+    result = _run("--corpus", "contractor", "--sender", "Tim Allen")
     assert result.returncode == 0, result.stderr
