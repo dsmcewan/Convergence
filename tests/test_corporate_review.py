@@ -51,6 +51,22 @@ class ReviewTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             review([x, x])
 
+    # A dollar sign is not a word character, so a \b in front of it can never match after a space:
+    # the amount cues were dead for ordinary sentences.
+    def test_dollar_amount_in_a_sentence_is_an_announced_action_cue(self):
+        result = review([
+            statement("a", "A", "Citi announced a $250,000 contribution to the fund."),
+            statement("b", "B", "The fund will receive $250,000."),
+        ])
+        cues = {o["statement_id"]: o["cue"] for o in result["observations"]
+                if o["label"] == "announced_action"}
+        self.assertEqual(cues, {"a": "$250,000 contribution", "b": "$250,000"})
+
+    def test_larger_amount_sharing_the_prefix_is_not_the_announced_amount(self):
+        result = review([statement("a", "A", "The settlement was $250,000,000.")])
+        labels = [o["label"] for o in result["observations"]]
+        self.assertNotIn("announced_action", labels)
+
 
 if __name__ == "__main__":
     unittest.main()

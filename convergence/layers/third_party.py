@@ -18,6 +18,11 @@ from convergence.text import normalize, tokens
 
 _DENIAL = re.compile(r"\bnever (agreed|approved|consented)\b|\b(didn't|did not) (agree|approve|consent)\b")  # noqa: E501
 _PREDICATE_SKIP = {"agreed", "agree", "to", "of", "the"}
+# A record counts as agreement only if its predicate says so as a whole word and does not negate
+# it. A substring test on "agree" also accepted "disagreed_..." and "never_agreed_...", which
+# reported a true denial as contradicted by a record that in fact backs the denial.
+_AGREEMENT_WORDS = {"agree", "agreed", "agreement"}
+_NEGATION_WORDS = {"never", "not", "no", "didnt"}
 
 
 @dataclass(frozen=True)
@@ -29,6 +34,11 @@ class Contradiction:
     basis: str
 
 
+def _is_agreement(predicate: str) -> bool:
+    words = set(predicate.split("_"))
+    return bool(words & _AGREEMENT_WORDS) and not words & _NEGATION_WORDS
+
+
 def _predicate_topic(predicate: str) -> set[str]:
     return {p for p in predicate.split("_") if p not in _PREDICATE_SKIP and len(p) > 2}
 
@@ -37,7 +47,7 @@ def check_claims(messages: list[Message], records: list[Record]) -> list[Contrad
     agreement_records = [
         r for r in records
         if (r.value is True or (isinstance(r.value, str) and r.value.strip().lower() == "true"))
-        and "agree" in r.predicate
+        and _is_agreement(r.predicate)
     ]
     out: list[Contradiction] = []
     for m in messages:
